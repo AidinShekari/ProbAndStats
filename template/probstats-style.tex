@@ -1,0 +1,236 @@
+% ============================================================
+%  ProbAndStats — shared visual style (colours, headings, boxes,
+%  code, tables, header/footer, cover pages)
+% ============================================================
+
+% ---------- palette ----------
+\definecolor{PSnavy}{HTML}{16324F}
+\definecolor{PSnavyL}{HTML}{2C5282}
+\definecolor{PSteal}{HTML}{0F766E}
+\definecolor{PSgold}{HTML}{C9A13B}
+\definecolor{PSrose}{HTML}{A23B4B}
+\definecolor{PSviolet}{HTML}{5B4B8A}
+\definecolor{PSink}{HTML}{1F2933}
+\definecolor{PScode}{HTML}{F6F8FB}
+\definecolor{PSzebra}{HTML}{F2F5F9}
+\color{PSink}
+
+% ---------- bidi-aware helpers ----------
+\ifPSrtl
+  \newcommand{\PSen}[1]{\lr{#1}}
+  \newcommand{\PSfa}[1]{#1}
+  \newenvironment{PSltr}{\begin{latin}}{\end{latin}}
+  \newcommand{\PSfaInLtr}[1]{\rl{#1}}
+  \newcommand{\PSprim}[1]{\rl{#1}}
+  \newcommand{\PSoth}[1]{#1}
+  \newcommand{\PSsep}{{\color{PSgold}\rule[0.18em]{0.32em}{0.32em}}}
+  % dotted numbers (1.2, 0.05) keep left-to-right order with Persian digits
+  \newcommand{\PSnum}[1]{\lr{\persianfont #1}}
+\else
+  \newcommand{\PSen}[1]{#1}
+  \newcommand{\PSfa}[1]{\rl{#1}}
+  \newenvironment{PSltr}{}{}
+  \newcommand{\PSfaInLtr}[1]{\rl{#1}}
+  \newcommand{\PSprim}[1]{#1}
+  \newcommand{\PSoth}[1]{\rl{#1}}
+  \newcommand{\PSsep}{{\color{PSgold}\rule[0.18em]{0.32em}{0.32em}}}
+  \newcommand{\PSnum}[1]{#1}
+\fi
+
+\ifPSrtl\newcommand{\PSmtext}[1]{\text{\lr{#1}}}\else\newcommand{\PSmtext}[1]{\text{#1}}\fi
+
+% ---------- pandoc compatibility ----------
+\providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\def\LTcaptype{none}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{3em}
+\raggedbottom
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+
+% ---------- lists ----------
+\setlist{itemsep=2pt,topsep=4pt,parsep=0pt}
+\setlist[itemize]{label={\color{PSteal}\small\ensuremath{\blacktriangleright}}}
+\setlist[itemize,2]{label={\color{PSgold}\ensuremath{\bullet}}}
+
+% ---------- inline elements ----------
+\newcommand{\PScode}[1]{{\ttfamily\color{PSnavyL}#1}}
+\newcommand{\PSth}[1]{{\color{white}\bfseries #1}}
+\newcommand{\PSbr}{\leavevmode\newline}
+\newcommand{\PSyes}{{\color{PSteal}\ding{52}}}
+\newcommand{\PSno}{{\color{PSrose}\ding{56}}}
+\newcommand{\PSwarn}{\tikz[baseline=0pt]{\fill[PSgold,rounded corners=0.5pt] (0,0)--(0.8em,0)--(0.4em,0.72em)--cycle;
+  \node[white,font=\bfseries\tiny,inner sep=0pt] at (0.4em,0.26em) {!};}}
+\newcommand{\PSsolution}{%
+  {\setlength{\fboxsep}{2.2pt}\colorbox{PSteal}{\color{white}\bfseries\small\,\PSlangSolution\,}}\hspace{0.35em}}
+
+% ---------- headings ----------
+\newcommand{\PSsection}[2]{%
+  \par\Needspace{7\baselineskip}\vspace{1.3em}%
+  \noindent
+  \ifx\relax#1\relax\else
+    {\setlength{\fboxsep}{3.5pt}\colorbox{PSnavy}{\color{white}\bfseries\large\strut\,\PSnum{#1}\,}}\hspace{0.55em}%
+  \fi
+  {\color{PSnavy}\bfseries\Large #2}\par\nobreak
+  \vspace{-0.25em}\textcolor{PSgold}{\rule{\linewidth}{1.1pt}}\par\nobreak\vspace{0.35em}%
+  \addcontentsline{toc}{section}{\ifx\relax#1\relax\else \protect\PSnum{#1}\quad\fi #2}%
+}
+\newcommand{\PSsubsection}[1]{%
+  \par\Needspace{5\baselineskip}\vspace{0.75em}%
+  \noindent{\color{PSteal}\rule[0.12em]{0.55em}{0.55em}}\hspace{0.5em}%
+  {\color{PSteal}\bfseries\large #1}\par\nobreak\vspace{0.15em}}
+\newcommand{\PSsubsubsection}[1]{%
+  \par\Needspace{4\baselineskip}\vspace{0.4em}%
+  \noindent{\color{PSnavyL}\bfseries #1}\par\nobreak}
+
+% ---------- boxes ----------
+\tcbset{
+  PSbase/.style={enhanced, breakable, arc=2.2mm, boxrule=0.7pt,
+    left=3mm, right=3mm, top=1.6mm, bottom=1.6mm,
+    toptitle=1.1mm, bottomtitle=1.1mm,
+    fonttitle=\bfseries, coltitle=white,
+    before skip=0.9em, after skip=0.9em},
+  PS@def/.style={PSbase, colframe=PSnavy, colback=PSnavy!3, colbacktitle=PSnavy},
+  PS@ex/.style={PSbase, colframe=PSteal, colback=PSteal!4, colbacktitle=PSteal},
+  PS@prob/.style={PSbase, colframe=PSrose, colback=PSrose!3, colbacktitle=PSrose},
+  PS@thm/.style={PSbase, colframe=PSviolet, colback=PSviolet!4, colbacktitle=PSviolet},
+  PS@obj/.style={PSbase, colframe=PSgold, colback=PSgold!7, colbacktitle=PSgold!90!black},
+}
+\newenvironment{PSbox}[3][breakable]{%
+  \begin{tcolorbox}[PS@#2, title={#3}, #1]}{\end{tcolorbox}}
+
+\newtcolorbox{PSquote}{enhanced, breakable, frame hidden, arc=0mm,
+  colback=PSgold!9, boxrule=0pt, left=4mm, right=4mm, top=1.5mm, bottom=1.5mm,
+  before skip=0.7em, after skip=0.7em,
+  overlay={\ifPSrtl
+      \fill[PSgold] (frame.north east) rectangle ([xshift=-1.2mm]frame.south east);
+    \else
+      \fill[PSgold] (frame.north west) rectangle ([xshift=1.2mm]frame.south west);
+    \fi}}
+
+% ---------- code ----------
+\input{\PSroot/highlighting}
+\fvset{fontsize=\small, baselinestretch=1.05, breaklines=true, breakanywhere=true,
+  breaksymbolleft={\tiny\color{PSnavy!40}\ensuremath{\hookrightarrow}}}
+\tcbset{PScodemode/.style={breakable}}
+\newtcolorbox{PScodebox}{enhanced, PScodemode, arc=1.6mm, boxrule=0.5pt,
+  colback=PScode, colframe=PSnavy!22, left=2.5mm, right=2.5mm, top=1mm, bottom=1mm,
+  before skip=0.7em, after skip=0.7em,
+  overlay unbroken and first={\node[anchor=north east, inner sep=1.5pt, xshift=-2mm, yshift=-0.6mm,
+      font=\scriptsize\sffamily\bfseries, text=PSnavy!55] at (frame.north east) {\PSen{MATLAB}};}}
+\newtcolorbox{PSplaincodebox}{enhanced, PScodemode, arc=1.6mm, boxrule=0.5pt,
+  colback=PScode, colframe=PSnavy!22, left=2.5mm, right=2.5mm, top=1mm, bottom=1mm,
+  before skip=0.7em, after skip=0.7em}
+\renewenvironment{Shaded}{\begin{PScodebox}\begin{PSltr}}{\end{PSltr}\end{PScodebox}}
+\newenvironment{PSplaincode}{\begin{PSplaincodebox}\begin{PSltr}\small}{\end{PSltr}\end{PSplaincodebox}}
+
+% ---------- tables ----------
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{5pt}
+\arrayrulecolor{PSnavy!55}
+\setlength{\aboverulesep}{0pt}\setlength{\belowrulesep}{0pt}
+\AtBeginEnvironment{longtable}{\small\rowcolors{2}{white}{PSzebra}}
+\setlength{\LTpre}{0.8em}\setlength{\LTpost}{0.8em}
+
+% ---------- header / footer ----------
+\def\PSmodnum{}\def\PSmodtitle{}\def\PSmodtitleOther{}
+\newcommand{\PSsetmodule}[3]{\gdef\PSmodnum{#1}\gdef\PSmodtitle{#2}\gdef\PSmodtitleOther{#3}}
+\newcommand{\PSheadmodule}{\ifx\PSmodnum\empty\else\PSlangModule~\PSmodnum\ \PSsep\ \fi\PSmodtitle}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\small\color{PSnavy}\bfseries\ifPSrtl\PSlangCourse\else\PSheadmodule\fi}
+\fancyhead[L]{\small\color{PSnavy!80}\ifPSrtl\PSheadmodule\else\PSlangCourse\fi}
+\fancyfoot[C]{{\setlength{\fboxsep}{3pt}\colorbox{PSnavy}{\color{white}\small\bfseries\,\thepage\,}}}
+\newcommand{\PSfootinstr}{\href{\PSinstructorURL}{\PSlangInstructorLabel\ \PSlangInstructor}}
+\fancyfoot[R]{\scriptsize\color{PSnavy!60}\ifPSrtl\PSfootinstr\else\PSlangTerm\fi}
+\fancyfoot[L]{\scriptsize\color{PSnavy!60}\ifPSrtl\PSlangTerm\else\PSfootinstr\fi}
+\renewcommand{\headrule}{{\color{PSgold}\hrule height 0.7pt}}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- cover pages ----------
+% decorative background: faint histogram + bell curve
+\newcommand{\PSdecor}{%
+  \begin{scope}[shift={($(current page.south west)+(0,3.2)$)}]
+    \foreach \x/\h in {1/0.3,2/0.7,3/1.4,4/2.5,5/3.8,6/5.0,7/5.6,8/5.0,9/3.8,10/2.5,11/1.4,12/0.7,13/0.3}{
+      \fill[PSnavy!5] ({\x*1.5-0.62},0) rectangle ({\x*1.5+0.62},\h);
+    }
+    \draw[PSteal!35, line width=1.4pt, domain=0:21, samples=120, smooth]
+      plot (\x, {5.9*exp(-((\x-10.5)^2)/(2*2.6^2))});
+  \end{scope}}
+
+% #1 = card label (e.g. "Module 1"), #2 = main title, #3 = other-language title
+\newcommand{\PScoverpage}[3]{%
+  \thispagestyle{empty}%
+  \begin{PSltr}%
+  \begin{tikzpicture}[remember picture, overlay]
+    % bands
+    \fill[PSnavy] (current page.north west) rectangle ([yshift=-1.25cm]current page.north east);
+    \fill[PSgold] ([yshift=-1.25cm]current page.north west) rectangle ([yshift=-1.4cm]current page.north east);
+    \fill[PSnavy] (current page.south west) rectangle ([yshift=2.2cm]current page.south east);
+    \fill[PSgold] ([yshift=2.2cm]current page.south west) rectangle ([yshift=2.35cm]current page.south east);
+    \PSdecor
+    % top band text
+    \node[text=white, font=\small\bfseries, anchor=east] at ([xshift=-1.6cm,yshift=-0.62cm]current page.north east)
+      {\PSfaInLtr{\PSfaDisplay دانشگاه فردوسی مشهد}};
+    \node[text=white, font=\small\scshape, anchor=west] at ([xshift=1.6cm,yshift=-0.62cm]current page.north west)
+      {Ferdowsi University of Mashhad};
+    % logo
+    \node[anchor=north] (logo) at ([yshift=-2.4cm]current page.north)
+      {\includegraphics[width=3.4cm]{\PSroot/ferdowsi-logo.png}};
+    % course titles
+    \node[anchor=north, text=PSnavy, font=\fontsize{38}{46}\selectfont] (fa) at ([yshift=-0.9cm]logo.south)
+      {\PSfaInLtr{\PSfaDisplay آمار و احتمال مهندسی}};
+    \node[anchor=north, text=PSnavyL, font=\fontsize{21}{26}\selectfont\scshape] (en) at ([yshift=-0.25cm]fa.south)
+      {Engineering Probability \& Statistics};
+    % ornament
+    \draw[PSgold, line width=0.9pt] ([xshift=-4.2cm,yshift=-0.55cm]en.south) -- ([xshift=-0.35cm,yshift=-0.55cm]en.south);
+    \draw[PSgold, line width=0.9pt] ([xshift=0.35cm,yshift=-0.55cm]en.south) -- ([xshift=4.2cm,yshift=-0.55cm]en.south);
+    \fill[PSgold] ([yshift=-0.55cm]en.south) +(0,0.16) -- +(0.16,0) -- +(0,-0.16) -- +(-0.16,0) -- cycle;
+    \node[anchor=north, text=PSteal, font=\large] (notes) at ([yshift=-0.95cm]en.south)
+      {\ifPSrtl\textsc{Lecture Notes}\quad\PSsep\quad\PSfaInLtr{\PSfaDisplay جزوه درسی}%
+       \else\textsc{Lecture Notes}\quad\PSsep\quad\PSfaInLtr{\PSfaDisplay جزوه درسی}\fi};
+    % card
+    \node[anchor=north, fill=PSnavy, rounded corners=4mm, inner xsep=10mm, inner ysep=6mm,
+          text width=12.5cm, align=center, text=white] (card) at ([yshift=-1.3cm]notes.south)
+      {{\color{PSgold}\large\bfseries \PSprim{#1}}\\[3mm]
+       {\fontsize{24}{32}\selectfont\bfseries \PSprim{#2}}\\[3mm]
+       {\large\color{white!80!PSnavy} \PSoth{#3}}};
+    % instructor
+    \node[anchor=north, text=PSnavy, align=center] at ([yshift=-0.8cm]card.south)
+      {\href{\PSinstructorURL}{{\large\bfseries\PSprim{\PSlangInstructorLabel\ \PSlangInstructor}}}\\[1.5mm]
+       \href{\PSinstructorURL}{{\normalsize\color{PSnavyL}\PSoth{\PSlangInstructorOther}}\quad{\small\ttfamily\color{PSteal}github.com/AminAzari}}};
+    % term
+    \node[anchor=center, text=white, align=center] at ([yshift=1.1cm]current page.south)
+      {{\Large\PSfaInLtr{\PSfaDisplay نیمسال پاییز \PSyearfa}}\\[1mm]
+       {\normalsize\scshape Fall Semester 2026-2027}};
+  \end{tikzpicture}%
+  \end{PSltr}%
+  \null\newpage}
+
+% module opener inside the full book
+\newcommand{\PSmoduleopener}[3]{%
+  \clearpage
+  \PSsetmodule{#1}{#2}{#3}%
+  \thispagestyle{empty}%
+  \addcontentsline{toc}{part}{\PSlangModule~#1\quad #2}%
+  \begin{PSltr}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[PSnavy] (current page.north west) rectangle ([yshift=-11cm]current page.north east);
+    \fill[PSgold] ([yshift=-11cm]current page.north west) rectangle ([yshift=-11.18cm]current page.north east);
+    \node[text=PSgold, font=\fontsize{90}{90}\selectfont\bfseries, anchor=south east]
+      at ([xshift=-2cm,yshift=-10.2cm]current page.north east) {#1};
+    \node[text=white, anchor=south west, align=left, text width=13cm]
+      at ([xshift=2cm,yshift=-10cm]current page.north west)
+      {{\color{PSgold}\large\bfseries\PSprim{\PSlangModule~#1}}\\[3mm]
+       {\fontsize{26}{34}\selectfont\bfseries \PSprim{#2}}\\[3mm]{\large\color{white!80!PSnavy}\PSoth{#3}}};
+    \begin{scope}[shift={($(current page.south west)+(0,1.2)$)}]
+      \foreach \x/\h in {1/0.3,2/0.7,3/1.4,4/2.5,5/3.8,6/5.0,7/5.6,8/5.0,9/3.8,10/2.5,11/1.4,12/0.7,13/0.3}{
+        \fill[PSnavy!5] ({\x*1.5-0.62},0) rectangle ({\x*1.5+0.62},\h);}
+      \draw[PSteal!35, line width=1.4pt, domain=0:21, samples=120, smooth]
+        plot (\x, {5.9*exp(-((\x-10.5)^2)/(2*2.6^2))});
+    \end{scope}
+  \end{tikzpicture}%
+  \end{PSltr}%
+  \null\clearpage}

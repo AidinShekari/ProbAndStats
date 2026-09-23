@@ -1,0 +1,456 @@
+\begin{PSbox}[unbreakable]{obj}{Learning Objectives}
+
+After completing this module, students will be able to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Distinguish between estimator (rule) and estimate (number)
+\item
+  Evaluate estimator properties: bias, consistency, efficiency, MSE
+\item
+  Apply the Method of Moments
+\item
+  Apply Maximum Likelihood Estimation (MLE)
+\item
+  Compare estimators using MSE and bias-variance tradeoff
+\end{enumerate}
+
+\end{PSbox}
+
+\PSsection{13.1}{Introduction}
+
+We observe data X\textsubscript{1}, …, X\textsubscript{n} from a distribution with unknown parameter \ensuremath{\theta}. \textbf{Parameter estimation} gives us a method to infer \ensuremath{\theta} from data.
+
+Engineering examples:
+
+\begin{itemize}
+\tightlist
+\item
+  Estimate noise variance \ensuremath{\sigma}\textsuperscript{2} from recorded samples
+\item
+  Estimate failure rate \ensuremath{\lambda} from component lifetimes
+\item
+  Estimate channel gain from received signal strength
+\item
+  Estimate mean signal level from measurements
+\end{itemize}
+
+\PSsection{13.2}{Estimator vs. Estimate}
+
+\PSsubsection{Definitions}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.1875}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.1875}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.3438}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.2812}}@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Term} & \PSth{Type} & \PSth{Definition} & \PSth{Example} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Estimator} \ensuremath{\hat{\theta}} & Random variable (function of data) & The RULE applied to data & \ensuremath{\hat{\theta}} = \ensuremath{\bar{X}} = (1/n)\ensuremath{\Sigma}X\textsubscript{i} \\
+\textbf{Estimate} & Number & The VALUE from a specific sample & \ensuremath{\hat{\theta}} = 3.47 (from one dataset) \\
+\end{longtable}
+}
+
+\PSsubsection{Key Insight}
+
+The \textbf{estimator} is a random variable — it has a sampling distribution.\PSbr{}The \textbf{estimate} is one realization of that random variable.
+
+\textbf{Analogy:} ``Take the average'' is the estimator (rule). ``The average was 3.47'' is the estimate (result).
+
+\PSsection{13.3}{Properties of Estimators}
+
+\PSsubsection{Bias}
+
+\[B(\hat{\theta}) = E[\hat{\theta}] - \theta\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Unbiased:} B(\ensuremath{\hat{\theta}}) = 0, i.e., E[\ensuremath{\hat{\theta}}] = \ensuremath{\theta} (on average, correct)
+\item
+  \textbf{Biased:} E[\ensuremath{\hat{\theta}}] \ensuremath{\neq} \ensuremath{\theta} (systematic error)
+\end{itemize}
+
+Examples:
+
+\begin{itemize}
+\tightlist
+\item
+  \ensuremath{\bar{X}} is unbiased for \ensuremath{\mu}: E[\ensuremath{\bar{X}}] = \ensuremath{\mu} \PSyes{}
+\item
+  S\textsuperscript{2} (with n-1) is unbiased for \ensuremath{\sigma}\textsuperscript{2}: E[S\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2} \PSyes{}
+\item
+  S (sample std dev) is biased for \ensuremath{\sigma}: E[S] \ensuremath{\neq} \ensuremath{\sigma} (slight downward bias)
+\end{itemize}
+
+\PSsubsection{Consistency}
+
+\ensuremath{\hat{\theta}}\textsubscript{n} is \textbf{consistent} if \ensuremath{\hat{\theta}}\textsubscript{n} \ensuremath{\to} \ensuremath{\theta} in probability as n \ensuremath{\to} \ensuremath{\infty}.
+
+Practical meaning: with enough data, the estimator gets arbitrarily close to the truth.
+
+Sufficient condition: If bias \ensuremath{\to} 0 and variance \ensuremath{\to} 0 as n \ensuremath{\to} \ensuremath{\infty}, then consistent.
+
+\PSsubsection{Efficiency}
+
+Among all unbiased estimators, the \textbf{efficient} one has the smallest variance.
+
+The \textbf{Cramér-Rao Lower Bound} (CRLB) gives the minimum possible variance:\PSbr{}\[\text{Var}(\hat{\theta}) \geq \frac{1}{nI(\theta)}\]
+
+where I(\ensuremath{\theta}) = Fisher information = -E[\ensuremath{\partial}\textsuperscript{2}ln f(X;\ensuremath{\theta})/\ensuremath{\partial}\ensuremath{\theta}\textsuperscript{2}].
+
+An estimator achieving the CRLB is called \textbf{efficient} or \textbf{minimum variance unbiased (MVU)}.
+
+\PSsubsection{Mean Squared Error (MSE)}
+
+\[\text{MSE}(\hat{\theta}) = E[(\hat{\theta} - \theta)^2] = \text{Var}(\hat{\theta}) + [B(\hat{\theta})]^2\]
+
+\textbf{MSE = Variance + Bias\textsuperscript{2}}
+
+This is the \textbf{bias-variance tradeoff}: sometimes a slightly biased estimator with much lower variance has smaller MSE than an unbiased one.
+
+\PSsection{13.4}{Method of Moments (MoM)}
+
+\PSsubsection{Principle}
+
+Set population moments equal to sample moments, then solve for parameters.
+
+\begin{itemize}
+\tightlist
+\item
+  k-th population moment: \ensuremath{\mu}’\textsubscript{k} = E[X\textsuperscript{k}]
+\item
+  k-th sample moment: m’\textsubscript{k} = (1/n)\ensuremath{\Sigma}X\textsubscript{i}\textsuperscript{k}
+\end{itemize}
+
+\PSsubsection{Procedure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Express parameters in terms of population moments
+\item
+  Replace population moments with sample moments
+\item
+  Solve for parameter estimates
+\end{enumerate}
+
+\begin{PSbox}[unbreakable]{ex}{Example: Exponential Distribution}
+
+Data from Exp(\ensuremath{\lambda}). Population moment: E[X] = 1/\ensuremath{\lambda}.\PSbr{}Set equal: (1/n)\ensuremath{\Sigma}X\textsubscript{i} = 1/\ensuremath{\hat{\lambda}} \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MoM} = 1/\ensuremath{\bar{X}}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example: Gaussian Distribution}
+
+Data from N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}):
+
+\begin{itemize}
+\tightlist
+\item
+  1st moment: \ensuremath{\hat{\mu}} = \ensuremath{\bar{X}}
+\item
+  2nd central moment: \ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i} - \ensuremath{\bar{X}})\textsuperscript{2} (note: biased, uses n not n-1)
+\end{itemize}
+
+\end{PSbox}
+
+\PSsubsection{Advantages/Disadvantages}
+
+\PSyes{} Simple, always applicable, closed-form solutions often available\PSbr{}\PSno{} Not always efficient, can produce biased estimates, may give invalid parameter values
+
+\PSsection{13.5}{Maximum Likelihood Estimation (MLE)}
+
+\PSsubsection{Principle}
+
+Choose the parameter value that makes the observed data \textbf{most probable}.
+
+\PSsubsection{Likelihood Function}
+
+Given data x\textsubscript{1}, …, x\textsubscript{n} from f(x; \ensuremath{\theta}):
+
+\[L(\theta) = \prod_{i=1}^n f(x_i; \theta)\]
+
+\PSsubsection{Log-Likelihood (usually easier)}
+
+\[\ell(\theta) = \ln L(\theta) = \sum_{i=1}^n \ln f(x_i; \theta)\]
+
+\PSsubsection{MLE Procedure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Write the log-likelihood \ensuremath{\ell}(\ensuremath{\theta})
+\item
+  Differentiate: d\ensuremath{\ell}/d\ensuremath{\theta} = 0
+\item
+  Solve for \ensuremath{\hat{\theta}}\textsubscript{MLE}
+\item
+  Verify it’s a maximum (d\textsuperscript{2}\ensuremath{\ell}/d\ensuremath{\theta}\textsuperscript{2} \textless{} 0)
+\end{enumerate}
+
+\PSsubsection{Properties of MLE}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Consistent} (converges to true value)
+\item
+  \textbf{Asymptotically unbiased} (bias \ensuremath{\to} 0 as n \ensuremath{\to} \ensuremath{\infty})
+\item
+  \textbf{Asymptotically efficient} (achieves CRLB for large n)
+\item
+  \textbf{Invariant:} If \ensuremath{\hat{\theta}} is MLE of \ensuremath{\theta}, then g(\ensuremath{\hat{\theta}}) is MLE of g(\ensuremath{\theta})
+\end{enumerate}
+
+\begin{PSbox}[unbreakable]{ex}{Example: MLE for Gaussian Mean}
+
+Data X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}) with \ensuremath{\sigma}\textsuperscript{2} known.
+
+\ensuremath{\ell}(\ensuremath{\mu}) = -(n/2)ln(2\ensuremath{\pi}\ensuremath{\sigma}\textsuperscript{2}) - (1/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}
+
+d\ensuremath{\ell}/d\ensuremath{\mu} = (1/\ensuremath{\sigma}\textsuperscript{2})\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu}) = 0 \ensuremath{\to} \ensuremath{\hat{\mu}}\textsubscript{MLE} = \ensuremath{\bar{X}}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example: MLE for Exponential Rate}
+
+Data X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} Exp(\ensuremath{\lambda}).
+
+\ensuremath{\ell}(\ensuremath{\lambda}) = n\ensuremath{\cdot}ln(\ensuremath{\lambda}) - \ensuremath{\lambda}\ensuremath{\cdot}\ensuremath{\Sigma}x\textsubscript{i}
+
+d\ensuremath{\ell}/d\ensuremath{\lambda} = n/\ensuremath{\lambda} - \ensuremath{\Sigma}x\textsubscript{i} = 0 \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MLE} = n/\ensuremath{\Sigma}x\textsubscript{i} = 1/\ensuremath{\bar{X}}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example: MLE for Gaussian Variance}
+
+Data X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}), \ensuremath{\mu} known.
+
+\ensuremath{\ell}(\ensuremath{\sigma}\textsuperscript{2}) = -(n/2)ln(2\ensuremath{\pi}\ensuremath{\sigma}\textsuperscript{2}) - (1/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}
+
+d\ensuremath{\ell}/d(\ensuremath{\sigma}\textsuperscript{2}) = -n/(2\ensuremath{\sigma}\textsuperscript{2}) + (1/(2\ensuremath{\sigma}\textsuperscript{4}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2} = 0
+
+\ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}
+
+Note: With \ensuremath{\mu} unknown, \ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2} — biased! (Uses n, not n-1)
+
+\end{PSbox}
+
+\PSsection{13.6}{Engineering Examples}
+
+\PSsubsection{Estimating Noise Variance}
+
+\textbf{Problem:} Measure n samples of noise. Estimate noise power \ensuremath{\sigma}\textsuperscript{2}.
+
+\textbf{Data:} x\textsubscript{1}, …, x\textsubscript{n} (noise voltage samples, assumed zero-mean)
+
+\textbf{MLE:} \ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2} (biased by factor (n-1)/n)\PSbr{}\textbf{Unbiased:} S\textsuperscript{2} = (1/(n-1))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2} or if \ensuremath{\mu}=0 known: (1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2} is actually unbiased for E[X\textsuperscript{2}]=\ensuremath{\sigma}\textsuperscript{2}
+
+\PSsubsection{Estimating Failure Rate}
+
+\textbf{Problem:} 20 components tested until failure. Lifetimes: t\textsubscript{1}, …, t\textsubscript{20}.
+
+\textbf{Model:} T \textasciitilde{} Exp(\ensuremath{\lambda}), parameter \ensuremath{\lambda} (failure rate).
+
+\textbf{MLE:} \ensuremath{\hat{\lambda}} = 20/\ensuremath{\Sigma}t\textsubscript{i} = 1/\ensuremath{\bar{T}}
+
+If \ensuremath{\bar{T}} = 500 hours: \ensuremath{\hat{\lambda}} = 1/500 = 0.002 failures/hour.
+
+\PSsubsection{Estimating Channel Parameter}
+
+\textbf{Problem:} Rayleigh fading channel. Observed power samples: p\textsubscript{1}, …, p\textsubscript{n}.
+
+\textbf{Model:} Power P \textasciitilde{} Exp(1/\ensuremath{\Omega}), where \ensuremath{\Omega} = E[P] = average power.
+
+\textbf{MLE:} \ensuremath{\hat{\Omega}} = \ensuremath{\bar{P}} = (1/n)\ensuremath{\Sigma}p\textsubscript{i}
+
+\PSsection{13.7}{Comparing Estimators}
+
+\PSsubsection{Bias-Variance Tradeoff}
+
+Two estimators for \ensuremath{\sigma}\textsuperscript{2}:
+
+\begin{itemize}
+\tightlist
+\item
+  \ensuremath{\hat{\theta}}\textsubscript{1} = S\textsuperscript{2} (unbiased, variance = 2\ensuremath{\sigma}\textsuperscript{4}/(n-1))
+\item
+  \ensuremath{\hat{\theta}}\textsubscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i}-\ensuremath{\bar{X}})\textsuperscript{2} (biased by -\ensuremath{\sigma}\textsuperscript{2}/n, variance = 2\ensuremath{\sigma}\textsuperscript{4}(n-1)/n\textsuperscript{2})
+\end{itemize}
+
+MSE(\ensuremath{\hat{\theta}}\textsubscript{1}) = 2\ensuremath{\sigma}\textsuperscript{4}/(n-1)\PSbr{}MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) = 2\ensuremath{\sigma}\textsuperscript{4}(n-1)/n\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{4}/n\textsuperscript{2} = \ensuremath{\sigma}\textsuperscript{4}(2n-1)/n\textsuperscript{2}
+
+For any n \ensuremath{\ge} 2: MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) \textless{} MSE(\ensuremath{\hat{\theta}}\textsubscript{1})! The biased MLE actually has smaller total error.
+
+\PSsection{13.8}{MATLAB Examples}
+
+\begin{PSbox}[unbreakable]{ex}{Example 1: MLE for Exponential Distribution}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% MLE for Exponential: Estimate failure rate}
+\VariableTok{lambda\_true} \OperatorTok{=} \FloatTok{0.005}\OperatorTok{;}  \CommentTok{\% True failure rate}
+\VariableTok{n} \OperatorTok{=} \FloatTok{30}\OperatorTok{;}
+
+\CommentTok{\% Simulate data}
+\VariableTok{data} \OperatorTok{=} \VariableTok{exprnd}\NormalTok{(}\FloatTok{1}\OperatorTok{/}\VariableTok{lambda\_true}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{n}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{\% MLE}
+\VariableTok{lambda\_hat} \OperatorTok{=} \FloatTok{1} \OperatorTok{/} \VariableTok{mean}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}True λ = \%.4f, MLE λ̂ = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{lambda\_true}\OperatorTok{,} \VariableTok{lambda\_hat}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{\% Repeated experiments to see variability}
+\VariableTok{N\_exp} \OperatorTok{=} \FloatTok{10000}\OperatorTok{;}
+\VariableTok{lambda\_estimates} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N\_exp}\NormalTok{)}\OperatorTok{;}
+\KeywordTok{for} \VariableTok{i} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\VariableTok{N\_exp}
+    \VariableTok{d} \OperatorTok{=} \VariableTok{exprnd}\NormalTok{(}\FloatTok{1}\OperatorTok{/}\VariableTok{lambda\_true}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{n}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{lambda\_estimates}\NormalTok{(}\VariableTok{i}\NormalTok{) }\OperatorTok{=} \FloatTok{1}\OperatorTok{/}\VariableTok{mean}\NormalTok{(}\VariableTok{d}\NormalTok{)}\OperatorTok{;}
+\KeywordTok{end}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}E[λ̂] = \%.5f (biased: true is \%.5f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{lambda\_estimates}\NormalTok{)}\OperatorTok{,} \VariableTok{lambda\_true}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Std(λ̂) = \%.5f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{std}\NormalTok{(}\VariableTok{lambda\_estimates}\NormalTok{))}\OperatorTok{;}
+
+\VariableTok{figure}\OperatorTok{;}
+\VariableTok{histogram}\NormalTok{(}\VariableTok{lambda\_estimates}\OperatorTok{,} \FloatTok{80}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}pdf\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}λ̂\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}PDF\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Sampling Distribution of MLE λ̂\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example 2: MLE vs Method of Moments}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% Compare MLE and MoM for Uniform(0, θ)}
+\CommentTok{\% MLE: θ̂ = max(X₁,...,X\_n)}
+\CommentTok{\% MoM: θ̂ = 2*X̄}
+\VariableTok{theta\_true} \OperatorTok{=} \FloatTok{10}\OperatorTok{;}  \VariableTok{n} \OperatorTok{=} \FloatTok{20}\OperatorTok{;}
+\VariableTok{N\_exp} \OperatorTok{=} \FloatTok{50000}\OperatorTok{;}
+
+\VariableTok{MLE\_est} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N\_exp}\NormalTok{)}\OperatorTok{;}
+\VariableTok{MoM\_est} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N\_exp}\NormalTok{)}\OperatorTok{;}
+
+\KeywordTok{for} \VariableTok{i} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\VariableTok{N\_exp}
+    \VariableTok{data} \OperatorTok{=} \VariableTok{theta\_true} \OperatorTok{*} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{n}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{MLE\_est}\NormalTok{(}\VariableTok{i}\NormalTok{) }\OperatorTok{=} \VariableTok{max}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{MoM\_est}\NormalTok{(}\VariableTok{i}\NormalTok{) }\OperatorTok{=} \FloatTok{2} \OperatorTok{*} \VariableTok{mean}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+\KeywordTok{end}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Method      | E[θ̂]  | Bias   | Var    | MSE\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}MLE (max)   | \%.3f | \%.3f | \%.3f | \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \OperatorTok{...}
+    \VariableTok{mean}\NormalTok{(}\VariableTok{MLE\_est}\NormalTok{)}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{MLE\_est}\NormalTok{)}\OperatorTok{{-}}\VariableTok{theta\_true}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{MLE\_est}\NormalTok{)}\OperatorTok{,} \OperatorTok{...}
+    \VariableTok{var}\NormalTok{(}\VariableTok{MLE\_est}\NormalTok{)}\OperatorTok{+}\NormalTok{(}\VariableTok{mean}\NormalTok{(}\VariableTok{MLE\_est}\NormalTok{)}\OperatorTok{{-}}\VariableTok{theta\_true}\NormalTok{)}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}MoM (2*mean)| \%.3f | \%.3f | \%.3f | \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \OperatorTok{...}
+    \VariableTok{mean}\NormalTok{(}\VariableTok{MoM\_est}\NormalTok{)}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{MoM\_est}\NormalTok{)}\OperatorTok{{-}}\VariableTok{theta\_true}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{MoM\_est}\NormalTok{)}\OperatorTok{,} \OperatorTok{...}
+    \VariableTok{var}\NormalTok{(}\VariableTok{MoM\_est}\NormalTok{)}\OperatorTok{+}\NormalTok{(}\VariableTok{mean}\NormalTok{(}\VariableTok{MoM\_est}\NormalTok{)}\OperatorTok{{-}}\VariableTok{theta\_true}\NormalTok{)}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example 3: MLE for Gaussian Parameters}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% MLE for Gaussian: Estimate both μ and σ²}
+\VariableTok{mu\_true} \OperatorTok{=} \FloatTok{5}\OperatorTok{;}  \VariableTok{sigma2\_true} \OperatorTok{=} \FloatTok{4}\OperatorTok{;}  \VariableTok{n} \OperatorTok{=} \FloatTok{50}\OperatorTok{;}
+\VariableTok{N\_exp} \OperatorTok{=} \FloatTok{10000}\OperatorTok{;}
+
+\VariableTok{mu\_hat} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N\_exp}\NormalTok{)}\OperatorTok{;}
+\VariableTok{sigma2\_MLE} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N\_exp}\NormalTok{)}\OperatorTok{;}
+\VariableTok{sigma2\_unbiased} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N\_exp}\NormalTok{)}\OperatorTok{;}
+
+\KeywordTok{for} \VariableTok{i} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\VariableTok{N\_exp}
+    \VariableTok{data} \OperatorTok{=} \VariableTok{mu\_true} \OperatorTok{+} \VariableTok{sqrt}\NormalTok{(}\VariableTok{sigma2\_true}\NormalTok{)}\OperatorTok{*}\VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{n}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{mu\_hat}\NormalTok{(}\VariableTok{i}\NormalTok{) }\OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{sigma2\_MLE}\NormalTok{(}\VariableTok{i}\NormalTok{) }\OperatorTok{=} \VariableTok{mean}\NormalTok{((}\VariableTok{data} \OperatorTok{{-}} \VariableTok{mean}\NormalTok{(}\VariableTok{data}\NormalTok{))}\OperatorTok{.\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}       \CommentTok{\% MLE: divides by n}
+    \VariableTok{sigma2\_unbiased}\NormalTok{(}\VariableTok{i}\NormalTok{) }\OperatorTok{=} \VariableTok{var}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}                      \CommentTok{\% Unbiased: divides by n{-}1}
+\KeywordTok{end}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}μ̂: E=\%.3f (true=\%.1f), Var=\%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{mu\_hat}\NormalTok{)}\OperatorTok{,} \VariableTok{mu\_true}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{mu\_hat}\NormalTok{))}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}σ²\_MLE: E=\%.3f (true=\%.1f, biased!)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{sigma2\_MLE}\NormalTok{)}\OperatorTok{,} \VariableTok{sigma2\_true}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}σ²\_unbiased: E=\%.3f (true=\%.1f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{sigma2\_unbiased}\NormalTok{)}\OperatorTok{,} \VariableTok{sigma2\_true}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\PSsection{13.9}{Practice Problems}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 1}
+
+Data from N(\ensuremath{\mu}, 9): \ensuremath{\bar{x}} = 4.2, n = 25.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Give the MLE of \ensuremath{\mu}. (b) What is Var(\ensuremath{\hat{\mu}})? (c) Is \ensuremath{\bar{X}} efficient for \ensuremath{\mu}?
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  \ensuremath{\hat{\mu}}\textsubscript{MLE} = \ensuremath{\bar{X}} = 4.2
+\item
+  Var(\ensuremath{\bar{X}}) = \ensuremath{\sigma}\textsuperscript{2}/n = 9/25 = 0.36
+\item
+  CRLB for N(\ensuremath{\mu},\ensuremath{\sigma}\textsuperscript{2}): 1/(n\ensuremath{\cdot}I(\ensuremath{\mu})) = \ensuremath{\sigma}\textsuperscript{2}/n = 0.36. \ensuremath{\bar{X}} achieves CRLB \ensuremath{\to} yes, efficient.
+\end{enumerate}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 2}
+
+Component lifetimes (hours): 120, 350, 200, 480, 90, 560, 310, 175, 420, 280.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Estimate \ensuremath{\lambda} (failure rate) by MLE assuming Exp(\ensuremath{\lambda}). (b) Estimate MTTF.
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  \ensuremath{\bar{X}} = (120+350+200+480+90+560+310+175+420+280)/10 = 298.5.\PSbr{}\ensuremath{\hat{\lambda}} = 1/298.5 = 0.00335 failures/hour.
+\item
+  MTTF = 1/\ensuremath{\hat{\lambda}} = \ensuremath{\bar{X}} = 298.5 hours.
+\end{enumerate}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 3}
+
+For Poisson(\ensuremath{\lambda}) data: x\textsubscript{1},…,x\textsubscript{n}. Derive the MLE of \ensuremath{\lambda}.
+
+\PSsolution{} \ensuremath{\ell}(\ensuremath{\lambda}) = \ensuremath{\Sigma}[x\textsubscript{i} ln(\ensuremath{\lambda}) - \ensuremath{\lambda} - ln(x\textsubscript{i}!)] = (\ensuremath{\Sigma}x\textsubscript{i})ln(\ensuremath{\lambda}) - n\ensuremath{\lambda} - \ensuremath{\Sigma}ln(x\textsubscript{i}!)\PSbr{}d\ensuremath{\ell}/d\ensuremath{\lambda} = (\ensuremath{\Sigma}x\textsubscript{i})/\ensuremath{\lambda} - n = 0 \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}x\textsubscript{i} = \ensuremath{\bar{X}}.\PSbr{}The MLE for Poisson rate is the sample mean.
+
+\emph{Next Module: {Module 14 — Confidence Intervals}}
+
+\end{PSbox}
