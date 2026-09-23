@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="template/ferdowsi-logo.png" width="110" alt="Ferdowsi University of Mashhad">
+<img src="template/ferdowsi-logo-white.png" width="130" alt="Ferdowsi University of Mashhad">
 
 # آمار و احتمال مهندسی
 ### Engineering Probability & Statistics
