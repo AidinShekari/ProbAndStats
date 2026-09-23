@@ -1087,7 +1087,7 @@ fprintf('Var:  Theory=%d, Sim=%.2f\n', 2*n_dof, var(X_sim));
 
 ### Decision Tree: Discrete Distributions
 
-```
+```{.figure #m03-tree-discrete}
 Is the random variable discrete (countable outcomes)?
 │
 ├── Only two outcomes (success/failure)?
@@ -1108,7 +1108,7 @@ Is the random variable discrete (countable outcomes)?
 
 ### Decision Tree: Continuous Distributions
 
-```
+```{.figure #m03-tree-continuous}
 Is the random variable continuous?
 │
 ├── Equally likely over a bounded range?

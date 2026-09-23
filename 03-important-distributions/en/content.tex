@@ -1228,56 +1228,11 @@ No closed form for general n. Computed via incomplete gamma function.
 
 \PSsubsection{Decision Tree: Discrete Distributions}
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-Is the random variable discrete (countable outcomes)?
-│
-├── Only two outcomes (success/failure)?
-│   └── YES → Bernoulli(p)
-│
-├── Fixed n trials, counting successes?
-│   └── YES → Binomial(n, p)
-│
-├── Counting trials until FIRST success?
-│   └── YES → Geometric(p)
-│
-├── Counting trials until r-th success?
-│   └── YES → Negative Binomial(r, p)
-│
-└── Counting events in a fixed interval?
-    └── Events independent and rare? → Poisson(λ)
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m03-tree-discrete}
 
 \PSsubsection{Decision Tree: Continuous Distributions}
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-Is the random variable continuous?
-│
-├── Equally likely over a bounded range?
-│   └── YES → Uniform(a, b)
-│
-├── Time between events (memoryless)?
-│   └── YES → Exponential(λ)
-│
-├── Sum of many small independent effects?
-│   └── YES → Gaussian(μ, σ²)
-│
-├── Total time for k events (sum of exponentials)?
-│   └── YES → Gamma(k, β)
-│
-├── Magnitude of 2D Gaussian vector?
-│   └── YES → Rayleigh(σ)
-│
-└── Sum of squared Gaussians?
-    └── YES → Chi-square(n)
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m03-tree-continuous}
 
 \PSsubsection{Quick Recognition Patterns}
 

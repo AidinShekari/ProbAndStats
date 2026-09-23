@@ -136,7 +136,7 @@ $$p_X(x) = P(X = x)$$
 
 The PMF is represented as **vertical lines** (impulses) at each possible value, with height equal to the probability.
 
-```
+```{.figure #m02-pmf-stems}
 p_X(x)
   |
 0.4|     |
@@ -193,7 +193,7 @@ The PDF gives probability **density** — probability per unit length. Only the 
 
 ### Visualization
 
-```
+```{.figure #m02-pdf-area}
 f_X(x)
   |
   |      ╭────╮
@@ -236,7 +236,7 @@ $$F_X(x) = P(X \leq x)$$
 
 The CDF is a **staircase function** with jumps at each possible value:
 
-```
+```{.figure #m02-cdf-discrete}
 F_X(x)
   |
 1.0|                          ──────────
@@ -261,7 +261,7 @@ $$F_X(x) = \int_{-\infty}^{x} f_X(t) \, dt$$
 And conversely:
 $$f_X(x) = \frac{dF_X(x)}{dx}$$
 
-```
+```{.figure #m02-cdf-continuous}
 F_X(x)
   |
 1.0|                         ___________
@@ -305,7 +305,7 @@ Imagine probability as "material" distributed across possible values:
 
 **Discrete (PMF):** Like storing material in numbered boxes. Each box has a specific mass. The PMF tells you the mass in each box.
 
-```
+```{.figure #m02-pmf-boxes}
     ┌───┐
     │0.4│ ┌───┐
     │   │ │0.3│ ┌───┐
@@ -318,7 +318,7 @@ Imagine probability as "material" distributed across possible values:
 
 **Continuous (PDF):** Like spreading material along a continuous shelf. The density tells you how thick the material is at each point. You find mass by computing area (thickness × width).
 
-```
+```{.figure #m02-pdf-area-12}
          ╭────────╮
         ╱          ╲
        ╱     ░░░░    ╲      ← Area of shaded region = P(1 ≤ X ≤ 2)

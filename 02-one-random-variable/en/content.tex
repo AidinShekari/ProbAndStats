@@ -198,24 +198,7 @@ For a discrete random variable X, the \textbf{probability mass function} is:
 
 The PMF is represented as \textbf{vertical lines} (impulses) at each possible value, with height equal to the probability.
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-p_X(x)
-  |
-0.4|     |
-  |     |
-0.3|  |  |
-  |  |  |
-0.2|  |  |  |
-  |  |  |  |
-0.1|  |  |  |  |
-  |  |  |  |  |
-  +--+--+--+--+--→ x
-     0  1  2  3  4
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pmf-stems}
 
 \PSsubsection{Engineering Example: Bit Errors in a Byte}
 
@@ -277,21 +260,7 @@ The PDF gives probability \textbf{density} — probability per unit length. Only
 
 \PSsubsection{Visualization}
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-f_X(x)
-  |
-  |      ╭────╮
-  |     ╱ ░░░░ ╲        ← Shaded area = P(a ≤ X ≤ b)
-  |    ╱ ░░░░░░ ╲
-  |   ╱ ░░░░░░░░ ╲
-  |──╱───░░░░░░░░──╲──→ x
-  |      a      b
-  Total area under curve = 1
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pdf-area}
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Thermal Noise Voltage}
 
@@ -334,23 +303,7 @@ For any random variable X (discrete or continuous), the \textbf{cumulative distr
 
 The CDF is a \textbf{staircase function} with jumps at each possible value:
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-F_X(x)
-  |
-1.0|                          ──────────
-  |                    ○─────┘
-0.8|              ○────┘
-  |         ○───┘
-0.4|    ○───┘
-  |────┘
-0.0|
-  +----+----+----+----+---→ x
-       0    1    2    3
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-cdf-discrete}
 
 Jump at x = k has height p\textsubscript{X}(k).
 
@@ -362,22 +315,7 @@ The CDF is a \textbf{smooth, continuous} curve:
 
 And conversely:\PSdisplay{f_X(x) = \frac{dF_X(x)}{dx}}
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-F_X(x)
-  |
-1.0|                         ___________
-  |                    ╱
-  |                 ╱
-0.5|             ╱
-  |          ╱
-  |       ╱
-0.0|______╱
-  +---+---+---+---+---+---→ x
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-cdf-continuous}
 
 \PSsubsection{Relationship: PDF \ensuremath{\leftrightarrow} CDF}
 
@@ -429,37 +367,11 @@ Imagine probability as ``material'' distributed across possible values:
 
 \textbf{Discrete (PMF):} Like storing material in numbered boxes. Each box has a specific mass. The PMF tells you the mass in each box.
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-    ┌───┐
-    │0.4│ ┌───┐
-    │   │ │0.3│ ┌───┐
-    │   │ │   │ │0.2│ ┌───┐
-    └───┘ └───┘ └───┘ └───┘
-     x=0   x=1   x=2   x=3
-     
-    Total mass in all boxes = 1
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pmf-boxes}
 
 \textbf{Continuous (PDF):} Like spreading material along a continuous shelf. The density tells you how thick the material is at each point. You find mass by computing area (thickness \ensuremath{\times} width).
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-         ╭────────╮
-        ╱          ╲
-       ╱     ░░░░    ╲      ← Area of shaded region = P(1 ≤ X ≤ 2)
-      ╱     ░░░░░░    ╲
-    ─╱──────░░░░░░░░────╲──
-          1      2
-
-    Total area under curve = 1
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pdf-area-12}
 
 \textbf{Cumulative (CDF):} Like a running total — how much material have you accumulated up to this point?
 

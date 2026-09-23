@@ -179,11 +179,7 @@ Three temperature sensors with:
 - ρ₂₃ = 0.4
 
 Correlation matrix:
-```
-R = [1.0  0.8  0.3]
-    [0.8  1.0  0.4]
-    [0.3  0.4  1.0]
-```
+$$R = \begin{bmatrix} 1.0 & 0.8 & 0.3 \\ 0.8 & 1.0 & 0.4 \\ 0.3 & 0.4 & 1.0 \end{bmatrix}$$
 
 ---
 

@@ -94,7 +94,7 @@
 
 یک فرستنده یک بیت (0 یا 1) را روی یک کانال نویزی ارسال می‌کند. گیرنده تصمیم‌گیری می‌کند.
 
-```text
+```{.figure #m01-sample-space}
 Sample Space for (transmitted, received) pairs:
 S = {(0,0), (0,1), (1,0), (1,1)}
 

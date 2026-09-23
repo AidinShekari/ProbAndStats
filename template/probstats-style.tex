@@ -44,6 +44,27 @@
   \par\vspace{0.25em}\noindent\hspace*{1.6em}%
   \ifPSrtl\lr{$\displaystyle #1$}\else$\displaystyle #1$\fi\par\vspace{0.25em}}
 
+% ---------- figures (template/figures/*.tex, drawn with TikZ/PGFPlots) ----------
+% \PSL{English}{فارسی}: label text in the document language
+\ifPSrtl
+  \newcommand{\PSL}[2]{\rl{#2}}
+  \def\PSstart{east}\def\PSend{west}\def\PSalign{right}
+\else
+  \newcommand{\PSL}[2]{#1}
+  \def\PSstart{west}\def\PSend{east}\def\PSalign{left}
+\fi
+\pgfplotsset{PSplot/.style={
+  axis lines=left, axis line style={PSnavy!70, -{Stealth[length=5pt]}},
+  tick style={PSnavy!60}, tick label style={font=\small, text=PSink},
+  label style={font=\small, text=PSnavy},
+  every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, xshift=3pt},
+  every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, yshift=3pt},
+  grid style={PSnavy!10}, enlargelimits=false, clip=false}}
+\newcommand{\PSfigure}[1]{%
+  \par\Needspace{12\baselineskip}\medskip
+  \begin{center}\begin{PSltr}\input{\PSroot/figures/#1}\end{PSltr}\end{center}\medskip
+  \write-1{PSFIGURE #1 page \thepage}}
+
 % ---------- pandoc compatibility ----------
 \providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
 \providecommand{\pandocbounded}[1]{#1}

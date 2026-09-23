@@ -205,24 +205,7 @@
 
 \lr{\mbox{PMF}} به‌صورت \textbf{خطوط عمودی} (ضربه‌ها) در هر مقدار ممکن نمایش داده می‌شود، که ارتفاع آن برابر با احتمال است.
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-p_X(x)
-  |
-0.4|     |
-  |     |
-0.3|  |  |
-  |  |  |
-0.2|  |  |  |
-  |  |  |  |
-0.1|  |  |  |  |
-  |  |  |  |  |
-  +--+--+--+--+--→ x
-     0  1  2  3  4
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pmf-stems}
 
 \PSsubsection{مثال مهندسی: خطاهای بیت در یک بایت}
 
@@ -284,21 +267,7 @@ p_X(x)
 
 \PSsubsection{مصورسازی}
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-f_X(x)
-  |
-  |      ╭────╮
-  |     ╱ ░░░░ ╲        ← Shaded area = P(a ≤ X ≤ b)
-  |    ╱ ░░░░░░ ╲
-  |   ╱ ░░░░░░░░ ╲
-  |──╱───░░░░░░░░──╲──→ x
-  |      a      b
-  Total area under curve = 1
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pdf-area}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: ولتاژ نویز حرارتی}
 
@@ -341,23 +310,7 @@ f_X(x)
 
 \lr{\mbox{CDF}} یک \textbf{تابع پله‌ای} با جهش‌هایی در هر مقدار ممکن است:
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-F_X(x)
-  |
-1.0|                          ──────────
-  |                    ○─────┘
-0.8|              ○────┘
-  |         ○───┘
-0.4|    ○───┘
-  |────┘
-0.0|
-  +----+----+----+----+---→ x
-       0    1    2    3
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-cdf-discrete}
 
 جهش در \lr{\mbox{x = k}} دارای ارتفاع \lr{\mbox{p\textsubscript{X}(k)}} است.
 
@@ -369,22 +322,7 @@ F_X(x)
 
 و برعکس:\PSdisplay{f_X(x) = \frac{dF_X(x)}{dx}}
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-F_X(x)
-  |
-1.0|                         ___________
-  |                    ╱
-  |                 ╱
-0.5|             ╱
-  |          ╱
-  |       ╱
-0.0|______╱
-  +---+---+---+---+---+---→ x
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-cdf-continuous}
 
 \PSsubsection{رابطه: \lr{\mbox{PDF \ensuremath{\leftrightarrow} CDF}}}
 
@@ -436,37 +374,11 @@ F_X(x)
 
 \textbf{گسسته \lr{\mbox{(PMF)}}:} مانند انبار کردن ماده در جعبه‌های شماره‌گذاری‌شده. هر جعبه یک جرم مشخص دارد. \lr{\mbox{PMF}} جرم هر جعبه را به شما می‌گوید.
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-    ┌───┐
-    │0.4│ ┌───┐
-    │   │ │0.3│ ┌───┐
-    │   │ │   │ │0.2│ ┌───┐
-    └───┘ └───┘ └───┘ └───┘
-     x=0   x=1   x=2   x=3
-     
-    Total mass in all boxes = 1
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pmf-boxes}
 
 \textbf{پیوسته \lr{\mbox{(PDF)}}:} مانند پهن‌کردن ماده در طول یک قفسه پیوسته. چگالی به شما می‌گوید ماده در هر نقطه چقدر ضخیم است. جرم را با محاسبه مساحت (ضخامت \ensuremath{\times} عرض) به دست می‌آورید.
 
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{PSplaincode}
-\begin{Verbatim}
-         ╭────────╮
-        ╱          ╲
-       ╱     ░░░░    ╲      ← Area of shaded region = P(1 ≤ X ≤ 2)
-      ╱     ░░░░░░    ╲
-    ─╱──────░░░░░░░░────╲──
-          1      2
-
-    Total area under curve = 1
-\end{Verbatim}
-\end{PSplaincode}
+\PSfigure{m02-pdf-area-12}
 
 \textbf{تجمعی \lr{\mbox{(CDF)}}:} مانند یک جمع در حال اجرا \lr{—} تا این نقطه چه مقدار ماده انباشته‌اید؟
 

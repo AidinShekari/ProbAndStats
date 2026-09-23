@@ -93,7 +93,7 @@ The **sample space** S (or Ω) is the set of all possible outcomes of a random e
 
 A transmitter sends a bit (0 or 1) over a noisy channel. The receiver makes a decision.
 
-```
+```{.figure #m01-sample-space}
 Sample Space for (transmitted, received) pairs:
 S = {(0,0), (0,1), (1,0), (1,1)}
 
