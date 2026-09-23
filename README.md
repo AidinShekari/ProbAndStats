@@ -10,6 +10,8 @@
 
 استاد: [امین آذری](https://github.com/AminAzari) · Instructor: [Amin Azari](https://github.com/AminAzari)
 
+گردآوری شده توسط [آیدین شکاری](https://shekari.me) · Compiled by [Aidin Shekari](https://shekari.me)
+
 </div>
 
 ---

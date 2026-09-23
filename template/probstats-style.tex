@@ -233,6 +233,15 @@
     \node[anchor=north, text=PSnavy, align=center] at ([yshift=-0.8cm]card.south)
       {\href{\PSinstructorURL}{{\large\bfseries\PSprim{\PSlangInstructorLabel\ \PSlangInstructor}}}\\[1.5mm]
        \href{\PSinstructorURL}{{\normalsize\color{PSnavyL}\PSoth{\PSlangInstructorOther}}\quad{\small\ttfamily\color{PSteal}github.com/AminAzari}}};
+    % compiler
+    \node[anchor=north, align=center] at ([yshift=-2.55cm]card.south)
+      {\href{\PScompilerURL}{\ifPSrtl
+         {\small\ttfamily\color{PSgold!80!black}Shekari.me}\quad{\small\color{PSnavyL}\PSoth{\PSlangCompilerOther}}\quad
+         {\normalsize\bfseries\color{PSteal}\PSprim{\PSlangCompiler}}%
+       \else
+         {\normalsize\bfseries\color{PSteal}\PSprim{\PSlangCompiler}}\quad
+         {\small\color{PSnavyL}\PSoth{\PSlangCompilerOther}}\quad{\small\ttfamily\color{PSgold!80!black}Shekari.me}%
+       \fi}};
     % term
     \node[anchor=center, text=white, align=center] at ([yshift=1.1cm]current page.south)
       {{\Large\PSfaInLtr{\PSfaDisplay نیمسال پاییز \PSyearfa}}\\[1mm]
