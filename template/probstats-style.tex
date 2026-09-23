@@ -39,6 +39,11 @@
 
 \ifPSrtl\newcommand{\PSmtext}[1]{\text{\lr{#1}}}\else\newcommand{\PSmtext}[1]{\text{#1}}\fi
 
+% display equations: aligned to the start of the line, close to their sentence
+\newcommand{\PSdisplay}[1]{%
+  \par\vspace{0.25em}\noindent\hspace*{1.6em}%
+  \ifPSrtl\lr{$\displaystyle #1$}\else$\displaystyle #1$\fi\par\vspace{0.25em}}
+
 % ---------- pandoc compatibility ----------
 \providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
 \providecommand{\pandocbounded}[1]{#1}
@@ -66,16 +71,37 @@
   {\setlength{\fboxsep}{2.2pt}\colorbox{PSteal}{\color{white}\bfseries\small\,\PSlangSolution\,}}\hspace{0.35em}}
 
 % ---------- headings ----------
+\newcounter{PSsec}
+\newcommand{\PSbadge}[1]{\tikz[baseline={([yshift=-0.36em]b.center)}]
+  \node[fill=PSnavy, text=white, font=\bfseries\large, rounded corners=1.2pt,
+        minimum height=1.75em, minimum width=2.5em, inner xsep=0.45em,
+        text height=0.72em, text depth=0pt, align=center] (b) {\PSnum{#1}};}
+% numbered sections (1.1, 1.2 …) always start on a fresh page
 \newcommand{\PSsection}[2]{%
-  \par\Needspace{7\baselineskip}\vspace{1.3em}%
-  \noindent
-  \ifx\relax#1\relax\else
-    {\setlength{\fboxsep}{3.5pt}\colorbox{PSnavy}{\color{white}\bfseries\large\strut\,\PSnum{#1}\,}}\hspace{0.55em}%
+  \ifx\relax#1\relax
+    \par\Needspace{7\baselineskip}\vspace{1.3em}%
+  \else
+    \clearpage
   \fi
+  \refstepcounter{PSsec}\label{PSsec:\PSmodkey:\arabic{PSsec}}%
+  \noindent
+  \ifx\relax#1\relax\else\PSbadge{#1}\hspace{0.6em}\fi
   {\color{PSnavy}\bfseries\Large #2}\par\nobreak
-  \vspace{-0.25em}\textcolor{PSgold}{\rule{\linewidth}{1.1pt}}\par\nobreak\vspace{0.35em}%
+  \vspace{0.1em}\textcolor{PSgold}{\rule{\linewidth}{1.1pt}}\par\nobreak\vspace{0.35em}%
   \addcontentsline{toc}{section}{\ifx\relax#1\relax\else \protect\PSnum{#1}\quad\fi #2}%
 }
+% clickable per-module table of contents
+\newtcolorbox{PSminitoc}{enhanced, unbreakable, arc=2.2mm, boxrule=0.7pt,
+  colframe=PSnavy, colback=white, colbacktitle=PSnavy, coltitle=white,
+  fonttitle=\bfseries\large, title={\PSlangModuleContents},
+  left=4mm, right=4mm, top=2mm, bottom=2mm, before skip=0.5em, after skip=1.2em}
+\newcommand{\PStocitem}[3]{%
+  \par\noindent\hyperref[PSsec:\PSmodkey:#1]{%
+    \ifx\relax#2\relax\else{\color{PSnavy}\bfseries\PSnum{#2}}\hspace{0.7em}\fi
+    {\color{PSink}#3}}%
+  {\color{PSnavy!35}\leaders\hbox to 0.6em{\hss.\hss}\hskip 1em plus 1fill}
+  \hyperref[PSsec:\PSmodkey:#1]{{\color{PSteal}\bfseries\pageref{PSsec:\PSmodkey:#1}}}\par
+  \vspace{0.15em}}
 \newcommand{\PSsubsection}[1]{%
   \par\Needspace{5\baselineskip}\vspace{0.75em}%
   \noindent{\color{PSteal}\rule[0.12em]{0.55em}{0.55em}}\hspace{0.5em}%
@@ -135,14 +161,20 @@
 
 % ---------- header / footer ----------
 \def\PSmodnum{}\def\PSmodtitle{}\def\PSmodtitleOther{}
-\newcommand{\PSsetmodule}[3]{\gdef\PSmodnum{#1}\gdef\PSmodtitle{#2}\gdef\PSmodtitleOther{#3}}
+\def\PSmodkey{x}
+\newcommand{\PSsetmodule}[3]{\gdef\PSmodnum{#1}\gdef\PSmodtitle{#2}\gdef\PSmodtitleOther{#3}%
+  \ifx\relax#1\relax\xdef\PSmodkey{\PSmodkey x}\else\gdef\PSmodkey{#1}\fi
+  \setcounter{PSsec}{0}}
 \newcommand{\PSheadmodule}{\ifx\PSmodnum\empty\else\PSlangModule~\PSmodnum\ \PSsep\ \fi\PSmodtitle}
 
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{\small\color{PSnavy}\bfseries\ifPSrtl\PSlangCourse\else\PSheadmodule\fi}
 \fancyhead[L]{\small\color{PSnavy!80}\ifPSrtl\PSheadmodule\else\PSlangCourse\fi}
-\fancyfoot[C]{{\setlength{\fboxsep}{3pt}\colorbox{PSnavy}{\color{white}\small\bfseries\,\thepage\,}}}
+\fancyfoot[C]{\makebox[0pt][c]{\tikz[baseline={([yshift=-0.3em]p.center)}]
+  \node[fill=PSnavy, text=white, font=\small\bfseries, rounded corners=1.2pt,
+        minimum width=2.2em, minimum height=1.5em, text height=0.62em, text depth=0pt,
+        align=center] (p) {\thepage};}}
 \newcommand{\PSfootinstr}{\href{\PSinstructorURL}{\PSlangInstructorLabel\ \PSlangInstructor}}
 \fancyfoot[R]{\scriptsize\color{PSnavy!60}\ifPSrtl\PSfootinstr\else\PSlangTerm\fi}
 \fancyfoot[L]{\scriptsize\color{PSnavy!60}\ifPSrtl\PSlangTerm\else\PSfootinstr\fi}

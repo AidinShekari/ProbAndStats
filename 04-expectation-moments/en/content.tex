@@ -1,0 +1,822 @@
+\begin{PSbox}[unbreakable]{obj}{Learning Objectives}
+
+After completing this module, students will be able to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compute expected values for discrete and continuous random variables
+\item
+  Calculate variance and standard deviation and interpret their engineering meaning
+\item
+  Apply properties of expectation and variance in engineering analysis
+\item
+  Compute and interpret higher-order moments
+\item
+  Use the moment generating function (MGF)
+\item
+  Relate statistical moments to physical engineering quantities
+\end{enumerate}
+
+\end{PSbox}
+
+\PSsection{4.1}{Introduction: Why Summary Statistics?}
+
+\PSsubsection{The Engineering Need}
+
+A probability distribution contains ALL information about a random variable. But for engineering decisions, we often need concise summaries:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Signal processing:} What is the average power? \ensuremath{\to} Mean of X\textsuperscript{2}
+\item
+  \textbf{Quality control:} How much do components vary? \ensuremath{\to} Variance
+\item
+  \textbf{Communication:} What is the noise power? \ensuremath{\to} E[N\textsuperscript{2}]
+\item
+  \textbf{Reliability:} What is the average lifetime? \ensuremath{\to} Mean
+\end{itemize}
+
+Moments (mean, variance, etc.) are the essential \textbf{engineering-relevant summaries} of a distribution.
+
+\PSsection{4.2}{Expected Value (Mean)}
+
+\begin{PSbox}[unbreakable]{def}{Definition — Discrete RV}
+
+\PSdisplay{E[X] = \mu_X = \sum_{x} x \cdot p_X(x)}
+
+Sum of (each value \ensuremath{\times} its probability).
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{def}{Definition — Continuous RV}
+
+\PSdisplay{E[X] = \mu_X = \int_{-\infty}^{\infty} x \cdot f_X(x) \, dx}
+
+\end{PSbox}
+
+\PSsubsection{Engineering Interpretation}
+
+The expected value is the \textbf{long-run average}: if you repeat the experiment many times and average the results, you get approximately E[X].
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}cc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Engineering Quantity} & \PSth{Expected Value Meaning} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Noise voltage E[N] & DC bias/offset in noise \\
+Signal amplitude E[A] & Average signal level \\
+Component lifetime E[T] & Mean time to failure (MTTF) \\
+Packet delay E[D] & Average delay \\
+Bit errors E[X] & Average error count \\
+\end{longtable}
+}
+
+\begin{PSbox}[unbreakable]{ex}{Example: Average Noise Power}
+
+For zero-mean Gaussian noise N \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}):
+
+\begin{itemize}
+\tightlist
+\item
+  E[N] = 0 (no DC component)
+\item
+  Average power = E[N\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2} (this is the variance!)
+\end{itemize}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example: Expected Number of Retransmissions}
+
+ARQ protocol: each transmission succeeds with probability p = 0.8.\PSbr{}Number of attempts X \textasciitilde{} Geometric(0.8).\PSbr{}E[X] = 1/p = 1/0.8 = 1.25 attempts on average.
+
+\end{PSbox}
+
+\PSsection{4.3}{Expected Value of a Function: E[g(X)]}
+
+\PSsubsection{The LOTUS Theorem (Law of the Unconscious Statistician)}
+
+To find E[g(X)], you do NOT need the distribution of Y = g(X):
+
+\textbf{Discrete:}\PSdisplay{E[g(X)] = \sum_{x} g(x) \cdot p_X(x)}
+
+\textbf{Continuous:}\PSdisplay{E[g(X)] = \int_{-\infty}^{\infty} g(x) \cdot f_X(x) \, dx}
+
+\PSsubsection{Engineering Applications}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}cc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Function g(X)} & \PSth{Engineering Meaning} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+g(X) = X\textsuperscript{2} & Mean square value (power) \\
+g(X) = (X - \ensuremath{\mu})\textsuperscript{2} & Variance (AC power) \\
+g(X) = & X \\
+g(X) = e\textsuperscript{j\ensuremath{\omega}X} & Characteristic function \\
+\end{longtable}
+}
+
+\begin{PSbox}[unbreakable]{ex}{Example: Mean Power of a Signal}
+
+Signal X has PDF f\textsubscript{X}(x). Power P = X\textsuperscript{2}.
+
+E[P] = E[X\textsuperscript{2}] = \ensuremath{\int} x\textsuperscript{2} f\textsubscript{X}(x) dx
+
+For X \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}): E[X\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2} (the noise power equals the variance).
+
+For X \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}): E[X\textsuperscript{2}] = \ensuremath{\mu}\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{2} (total power = DC power + AC power).
+
+\end{PSbox}
+
+\PSsection{4.4}{Variance}
+
+\begin{PSbox}[unbreakable]{def}{Definition}
+
+\PSdisplay{\text{Var}(X) = E[(X - \mu_X)^2] = E[X^2] - (E[X])^2}
+
+The second formula (computational formula) is often easier to use.
+
+\end{PSbox}
+
+\PSsubsection{Derivation of Computational Formula}
+
+Var(X) = E[(X - \ensuremath{\mu})\textsuperscript{2}]\PSbr{}= E[X\textsuperscript{2} - 2\ensuremath{\mu}X + \ensuremath{\mu}\textsuperscript{2}]\PSbr{}= E[X\textsuperscript{2}] - 2\ensuremath{\mu}E[X] + \ensuremath{\mu}\textsuperscript{2}\PSbr{}= E[X\textsuperscript{2}] - 2\ensuremath{\mu}\textsuperscript{2} + \ensuremath{\mu}\textsuperscript{2}\PSbr{}= E[X\textsuperscript{2}] - \ensuremath{\mu}\textsuperscript{2}
+
+\PSsubsection{Engineering Interpretation}
+
+The variance measures \textbf{spread/dispersion/uncertainty}:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}cc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Context} & \PSth{Variance Meaning} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Noise signal & Noise power (for zero-mean noise) \\
+Manufacturing & How much components deviate from nominal \\
+Measurements & Measurement precision (smaller = more precise) \\
+Signal & AC power component \\
+Lifetime & How predictable is the lifetime? \\
+\end{longtable}
+}
+
+\PSsubsection{Key Insight: Variance = Power in Engineering}
+
+For a zero-mean signal X:
+
+\begin{itemize}
+\tightlist
+\item
+  E[X\textsuperscript{2}] = Var(X) = \ensuremath{\sigma}\textsuperscript{2} = \textbf{total power}
+\item
+  For X \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}): noise power = \ensuremath{\sigma}\textsuperscript{2} = Var(X)
+\end{itemize}
+
+For a signal with DC offset (\ensuremath{\mu} \ensuremath{\neq} 0):
+
+\begin{itemize}
+\tightlist
+\item
+  E[X\textsuperscript{2}] = \ensuremath{\mu}\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{2} = \textbf{total power = DC power + AC power}
+\item
+  Var(X) = \ensuremath{\sigma}\textsuperscript{2} = \textbf{AC power only}
+\end{itemize}
+
+\PSsection{4.5}{Standard Deviation}
+
+\begin{PSbox}[unbreakable]{def}{Definition}
+
+\PSdisplay{\sigma_X = \sqrt{\text{Var}(X)}}
+
+\end{PSbox}
+
+\PSsubsection{Engineering Significance}
+
+The standard deviation has the \textbf{same units} as X, making it directly interpretable:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}ccc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Random Variable} & \PSth{Standard Deviation Unit} & \PSth{Interpretation} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Voltage noise & Volts & RMS noise voltage \\
+Timing jitter & Seconds & RMS jitter \\
+Distance error & Meters & RMS position error \\
+Temperature & \ensuremath{^{\circ}}C & RMS temperature fluctuation \\
+\end{longtable}
+}
+
+The standard deviation is the \textbf{RMS (root-mean-square)} value for zero-mean signals.
+
+\PSsection{4.6}{Properties of Expectation}
+
+\PSsubsection{Linearity (FUNDAMENTAL)}
+
+\PSdisplay{E[aX + b] = aE[X] + b}
+
+\PSdisplay{E[X + Y] = E[X] + E[Y] \quad \text{(ALWAYS, even if dependent!)}}
+
+\PSdisplay{E\left[\sum_{i=1}^n a_i X_i\right] = \sum_{i=1}^n a_i E[X_i]}
+
+\PSsubsection{Monotonicity}
+
+If X \ensuremath{\ge} 0 always, then E[X] \ensuremath{\ge} 0.
+
+If X \ensuremath{\ge} Y always, then E[X] \ensuremath{\ge} E[Y].
+
+\PSsubsection{For Independent RVs}
+
+If X and Y are independent:\PSdisplay{E[XY] = E[X] \cdot E[Y]}
+
+\begin{PSquote}
+
+\PSwarn{} This does NOT hold for dependent variables!
+
+\end{PSquote}
+
+\begin{PSbox}[unbreakable]{ex}{Engineering Example: Total Noise}
+
+A received signal: R = S + N\textsubscript{1} + N\textsubscript{2} (signal plus two noise sources)
+
+E[R] = E[S] + E[N\textsubscript{1}] + E[N\textsubscript{2}] = E[S] + 0 + 0 = E[S]
+
+(Zero-mean noise doesn’t bias the expected received signal.)
+
+\end{PSbox}
+
+\PSsection{4.7}{Properties of Variance}
+
+\PSsubsection{Scaling and Shift}
+
+\PSdisplay{\text{Var}(aX + b) = a^2 \text{Var}(X)}
+
+\begin{itemize}
+\tightlist
+\item
+  Adding a constant b does NOT change variance (shifting doesn’t change spread)
+\item
+  Scaling by a multiplies variance by a\textsuperscript{2}
+\end{itemize}
+
+\PSsubsection{Sum of Independent RVs}
+
+If X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n} are \textbf{independent}:
+
+\PSdisplay{\text{Var}(X_1 + X_2 + \cdots + X_n) = \text{Var}(X_1) + \text{Var}(X_2) + \cdots + \text{Var}(X_n)}
+
+\begin{PSquote}
+
+\PSwarn{} Variances add for INDEPENDENT variables only!
+
+\end{PSquote}
+
+\begin{PSbox}[unbreakable]{ex}{Engineering Example: Noise Power Addition}
+
+Two independent noise sources (\ensuremath{\sigma}\textsubscript{1}\textsuperscript{2} = 0.01 V\textsuperscript{2}, \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2} = 0.04 V\textsuperscript{2}):
+
+Total noise power = \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2} + \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2} = 0.05 V\textsuperscript{2}\PSbr{}Total RMS noise = \ensuremath{\surd}0.05 = 0.224 V
+
+Note: RMS values do NOT add directly! (0.1 + 0.2 \ensuremath{\neq} 0.224)
+
+\end{PSbox}
+
+\PSsubsection{Variance of Sample Mean}
+
+For n i.i.d. observations X\textsubscript{1}, …, X\textsubscript{n} with variance \ensuremath{\sigma}\textsuperscript{2}:
+
+\PSdisplay{\text{Var}(\bar{X}) = \text{Var}\left(\frac{1}{n}\sum X_i\right) = \frac{\sigma^2}{n}}
+
+More measurements \ensuremath{\to} lower uncertainty in the average.
+
+\PSsection{4.8}{Higher-Order Moments}
+
+\PSsubsection{n-th Moment}
+
+\PSdisplay{\mu_n' = E[X^n] = \int_{-\infty}^{\infty} x^n f_X(x) \, dx}
+
+\PSsubsection{n-th Central Moment}
+
+\PSdisplay{\mu_n = E[(X - \mu)^n]}
+
+\begin{itemize}
+\tightlist
+\item
+  \ensuremath{\mu}\textsubscript{1} = 0 (always)
+\item
+  \ensuremath{\mu}\textsubscript{2} = Var(X)
+\item
+  \ensuremath{\mu}\textsubscript{3} relates to \textbf{skewness}
+\item
+  \ensuremath{\mu}\textsubscript{4} relates to \textbf{kurtosis}
+\end{itemize}
+
+\PSsubsection{Skewness (3rd Central Moment, Normalized)}
+
+\PSdisplay{\gamma_1 = \frac{E[(X-\mu)^3]}{\sigma^3}}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}ccc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Skewness} & \PSth{Shape} & \PSth{Example} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\ensuremath{\gamma}\textsubscript{1} = 0 & Symmetric & Gaussian \\
+\ensuremath{\gamma}\textsubscript{1} \textgreater{} 0 & Right-skewed (long right tail) & Exponential \\
+\ensuremath{\gamma}\textsubscript{1} \textless{} 0 & Left-skewed (long left tail) & Negated exponential \\
+\end{longtable}
+}
+
+\textbf{Engineering significance:} Skewness tells us if extreme values are more likely in one direction. Important for reliability (failure time distributions are right-skewed).
+
+\PSsubsection{Kurtosis (4th Central Moment, Normalized)}
+
+\PSdisplay{\gamma_2 = \frac{E[(X-\mu)^4]}{\sigma^4} - 3}
+
+(Subtracting 3 makes Gaussian have kurtosis 0: ``excess kurtosis.'')
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}ccc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Kurtosis} & \PSth{Interpretation} & \PSth{Meaning} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\ensuremath{\gamma}\textsubscript{2} = 0 & Mesokurtic & Gaussian-like tails \\
+\ensuremath{\gamma}\textsubscript{2} \textgreater{} 0 & Leptokurtic & Heavier tails than Gaussian \\
+\ensuremath{\gamma}\textsubscript{2} \textless{} 0 & Platykurtic & Lighter tails than Gaussian \\
+\end{longtable}
+}
+
+\textbf{Engineering significance:} High kurtosis means more outliers — important for impulsive noise modeling.
+
+\PSsection{4.9}{Moment Generating Function (MGF)}
+
+\begin{PSbox}[unbreakable]{def}{Definition}
+
+\PSdisplay{M_X(t) = E[e^{tX}]}
+
+\textbf{Discrete:} M\textsubscript{X}(t) = \ensuremath{\Sigma} e\textsuperscript{tx} p\textsubscript{X}(x)
+
+\textbf{Continuous:} M\textsubscript{X}(t) = \ensuremath{\int} e\textsuperscript{tx} f\textsubscript{X}(x) dx
+
+\end{PSbox}
+
+\PSsubsection{Why ``Moment Generating''?}
+
+The n-th moment is obtained by differentiating n times at t = 0:
+
+\PSdisplay{E[X^n] = \frac{d^n M_X(t)}{dt^n}\bigg|_{t=0}}
+
+\begin{itemize}
+\tightlist
+\item
+  M\textsubscript{X}’(0) = E[X]
+\item
+  M\textsubscript{X}’’(0) = E[X\textsuperscript{2}]
+\item
+  Var(X) = M\textsubscript{X}’’(0) - [M\textsubscript{X}’(0)]\textsuperscript{2}
+\end{itemize}
+
+\PSsubsection{Properties}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Uniqueness:} If M\textsubscript{X}(t) = M\textsubscript{Y}(t) for all t in a neighborhood of 0, then X and Y have the same distribution.
+\item
+  \textbf{Sum of Independent RVs:} If X and Y are independent:\PSbr{}M\textsubscript{X+Y}(t) = M\textsubscript{X}(t) \ensuremath{\cdot} M\textsubscript{Y}(t)
+\item
+  \textbf{Linear transformation:} M\textsubscript{aX+b}(t) = e\textsuperscript{bt} \ensuremath{\cdot} M\textsubscript{X}(at)
+\end{enumerate}
+
+\PSsubsection{MGFs of Common Distributions}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}cc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{Distribution} & \PSth{MGF M\textsubscript{X}(t)} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Bernoulli(p) & 1 - p + pe\textsuperscript{t} \\
+Binomial(n,p) & (1 - p + pe\textsuperscript{t)}n \\
+Poisson(\ensuremath{\lambda}) & exp(\ensuremath{\lambda}(e\textsuperscript{t} - 1)) \\
+Exponential(\ensuremath{\lambda}) & \ensuremath{\lambda}/(\ensuremath{\lambda} - t), t \textless{} \ensuremath{\lambda} \\
+Gaussian(\ensuremath{\mu},\ensuremath{\sigma}\textsuperscript{2}) & exp(\ensuremath{\mu}t + \ensuremath{\sigma}\textsuperscript{2}t\textsuperscript{2}/2) \\
+\end{longtable}
+}
+
+\PSsubsection{Engineering Application: Sum of Independent Signals}
+
+If signal components X\textsubscript{1} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}) and X\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}) are independent:
+
+M\textsubscript{X\textsubscript{1}+X\textsubscript{2}}(t) = M\textsubscript{X\textsubscript{1}}(t) \ensuremath{\cdot} M\textsubscript{X\textsubscript{2}}(t)\PSbr{}= exp(\ensuremath{\mu}\textsubscript{1}t + \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}t\textsuperscript{2}/2) \ensuremath{\cdot} exp(\ensuremath{\mu}\textsubscript{2}t + \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}t\textsuperscript{2}/2)\PSbr{}= exp((\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2})t + (\ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})t\textsuperscript{2}/2)
+
+This is the MGF of N(\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}). Therefore X\textsubscript{1}+X\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}).
+
+\PSsection{4.10}{Engineering Applications of Moments}
+
+\PSsubsection{Application 1: Noise Power Characterization}
+
+A noise signal N(t) is sampled. The samples have mean \ensuremath{\mu}\textsubscript{N} and variance \ensuremath{\sigma}\textsubscript{N}\textsuperscript{2}.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{DC component (bias):} \ensuremath{\mu}\textsubscript{N} — should be zero for ideal noise
+\item
+  \textbf{AC noise power:} \ensuremath{\sigma}\textsubscript{N}\textsuperscript{2} — determines SNR
+\item
+  \textbf{Total power:} E[N\textsuperscript{2}] = \ensuremath{\mu}\textsubscript{N}\textsuperscript{2} + \ensuremath{\sigma}\textsubscript{N}\textsuperscript{2}
+\end{itemize}
+
+\textbf{SNR (Signal-to-Noise Ratio):}\PSdisplay{\text{SNR} = \frac{E[S^2]}{\sigma_N^2} = \frac{\text{Signal Power}}{\text{Noise Power}}}
+
+\PSsubsection{Application 2: Measurement Error}
+
+A sensor measures true value \ensuremath{\theta} with error E:
+
+\begin{itemize}
+\tightlist
+\item
+  Measurement: X = \ensuremath{\theta} + E
+\item
+  E[X] = \ensuremath{\theta} + E[E] — bias in measurement
+\item
+  Var(X) = Var(E) — measurement precision
+\end{itemize}
+
+\textbf{Accuracy:} \textbar{}E[E]\textbar{} (how close the average is to truth)\PSbr{}\textbf{Precision:} \ensuremath{\sigma}\textsubscript{E} (how repeatable measurements are)
+
+\PSsubsection{Application 3: Component Lifetime Statistics}
+
+Components have lifetime T \textasciitilde{} Exponential(\ensuremath{\lambda}):
+
+\begin{itemize}
+\tightlist
+\item
+  Mean Time To Failure: MTTF = E[T] = 1/\ensuremath{\lambda}
+\item
+  Standard Deviation: \ensuremath{\sigma}\textsubscript{T} = 1/\ensuremath{\lambda} = MTTF
+\item
+  For exponential: coefficient of variation CV = \ensuremath{\sigma}/\ensuremath{\mu} = 1 (always!)
+\end{itemize}
+
+\PSsubsection{Application 4: Communication Signal Amplitude}
+
+Received signal R = A + N where A = signal amplitude, N \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}):
+
+\begin{itemize}
+\tightlist
+\item
+  E[R] = A (signal amplitude preserved on average)
+\item
+  Var(R) = \ensuremath{\sigma}\textsuperscript{2} (noise power determines variance)
+\item
+  SNR = A\textsuperscript{2}/\ensuremath{\sigma}\textsuperscript{2}
+\end{itemize}
+
+\PSsection{4.11}{MATLAB Examples}
+
+\begin{PSbox}[unbreakable]{ex}{Example 1: Computing Moments from a Distribution}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% Moments of Common Distributions}
+
+\CommentTok{\% Exponential: failure time, lambda = 0.01 (per hour)}
+\VariableTok{lambda} \OperatorTok{=} \FloatTok{0.01}\OperatorTok{;}
+\VariableTok{beta} \OperatorTok{=} \FloatTok{1}\OperatorTok{/}\VariableTok{lambda}\OperatorTok{;}  \CommentTok{\% mean = 100 hours}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}=== Exponential Distribution (λ = \%.3f) ===\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{lambda}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean (MTTF) = \%.1f hours\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Variance = \%.1f hours²\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{beta}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Std Dev = \%.1f hours\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Coefficient of Variation = \%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{beta}\OperatorTok{/}\VariableTok{beta}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{\% Gaussian: noise voltage, sigma = 0.1V}
+\VariableTok{mu} \OperatorTok{=} \FloatTok{0}\OperatorTok{;} \VariableTok{sigma} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}\textbackslash{}n=== Gaussian Distribution (μ=\%.1f, σ=\%.2f V) ===\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mu}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean = \%.2f V\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mu}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Variance (noise power) = \%.4f V²\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{sigma}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}RMS noise = \%.3f V\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}E[X²] (total power) = \%.4f V²\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mu}\OperatorTok{\^{}}\FloatTok{2} \OperatorTok{+} \VariableTok{sigma}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example 2: Verifying Variance Properties}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% Variance of Sum of Independent RVs}
+\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
+
+\CommentTok{\% Two independent noise sources}
+\VariableTok{sigma1} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}   \CommentTok{\% RMS of noise 1}
+\VariableTok{sigma2} \OperatorTok{=} \FloatTok{0.2}\OperatorTok{;}   \CommentTok{\% RMS of noise 2}
+
+\VariableTok{X1} \OperatorTok{=} \VariableTok{sigma1} \OperatorTok{*} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
+\VariableTok{X2} \OperatorTok{=} \VariableTok{sigma2} \OperatorTok{*} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
+\VariableTok{Y} \OperatorTok{=} \VariableTok{X1} \OperatorTok{+} \VariableTok{X2}\OperatorTok{;}   \CommentTok{\% Combined noise}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var(X1) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X1}\NormalTok{)}\OperatorTok{,} \VariableTok{sigma1}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var(X2) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X2}\NormalTok{)}\OperatorTok{,} \VariableTok{sigma2}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var(X1+X2) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{Y}\NormalTok{)}\OperatorTok{,} \VariableTok{sigma1}\OperatorTok{\^{}}\FloatTok{2} \OperatorTok{+} \VariableTok{sigma2}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Std(X1+X2) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{std}\NormalTok{(}\VariableTok{Y}\NormalTok{)}\OperatorTok{,} \VariableTok{sqrt}\NormalTok{(}\VariableTok{sigma1}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{+}\VariableTok{sigma2}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{))}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}\textbackslash{}nNote: std devs do NOT add: \%.3f + \%.3f = \%.3f ≠ \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \OperatorTok{...}
+    \VariableTok{sigma1}\OperatorTok{,} \VariableTok{sigma2}\OperatorTok{,} \VariableTok{sigma1}\OperatorTok{+}\VariableTok{sigma2}\OperatorTok{,} \VariableTok{sqrt}\NormalTok{(}\VariableTok{sigma1}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{+}\VariableTok{sigma2}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{))}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example 3: Mean and Variance of Transformed RV}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% E[g(X)] using LOTUS: Power from Voltage}
+\CommentTok{\% X = voltage \textasciitilde{} N(0, 0.5V)}
+\CommentTok{\% P = X\^{}2 / R, with R = 50 ohms}
+
+\VariableTok{sigma} \OperatorTok{=} \FloatTok{0.5}\OperatorTok{;}    \CommentTok{\% noise voltage RMS}
+\VariableTok{R} \OperatorTok{=} \FloatTok{50}\OperatorTok{;}         \CommentTok{\% resistance}
+\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
+
+\VariableTok{X} \OperatorTok{=} \VariableTok{sigma} \OperatorTok{*} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
+\VariableTok{P} \OperatorTok{=} \VariableTok{X}\OperatorTok{.\^{}}\FloatTok{2} \OperatorTok{/} \VariableTok{R}\OperatorTok{;}   \CommentTok{\% instantaneous power}
+
+\CommentTok{\% Using LOTUS: E[X\^{}2/R] = E[X\^{}2]/R = sigma\^{}2/R}
+\VariableTok{E\_P\_theory} \OperatorTok{=} \VariableTok{sigma}\OperatorTok{\^{}}\FloatTok{2} \OperatorTok{/} \VariableTok{R}\OperatorTok{;}
+\VariableTok{E\_P\_sim} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{P}\NormalTok{)}\OperatorTok{;}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean power: Theory = \%.6f W, Sim = \%.6f W\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{E\_P\_theory}\OperatorTok{,} \VariableTok{E\_P\_sim}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean power = \%.3f mW\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{E\_P\_theory} \OperatorTok{*} \FloatTok{1000}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example 4: Higher Moments and Skewness}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% Skewness and Kurtosis Comparison}
+\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
+
+\CommentTok{\% Gaussian (symmetric)}
+\VariableTok{X\_gauss} \OperatorTok{=} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{\% Exponential (right{-}skewed)}
+\VariableTok{X\_exp} \OperatorTok{=} \VariableTok{exprnd}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
+
+\CommentTok{\% Uniform (symmetric, light tails)}
+\VariableTok{X\_unif} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Distribution    | Skewness | Kurtosis\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+{-}{-}{-}{-}{-}{-}{-}{-}{-}\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Gaussian        | \%+.3f   | \%+.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{skewness}\NormalTok{(}\VariableTok{X\_gauss}\NormalTok{)}\OperatorTok{,} \VariableTok{kurtosis}\NormalTok{(}\VariableTok{X\_gauss}\NormalTok{)}\OperatorTok{{-}}\FloatTok{3}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Exponential     | \%+.3f   | \%+.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{skewness}\NormalTok{(}\VariableTok{X\_exp}\NormalTok{)}\OperatorTok{,} \VariableTok{kurtosis}\NormalTok{(}\VariableTok{X\_exp}\NormalTok{)}\OperatorTok{{-}}\FloatTok{3}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Uniform         | \%+.3f   | \%+.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{skewness}\NormalTok{(}\VariableTok{X\_unif}\NormalTok{)}\OperatorTok{,} \VariableTok{kurtosis}\NormalTok{(}\VariableTok{X\_unif}\NormalTok{)}\OperatorTok{{-}}\FloatTok{3}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}\textbackslash{}nTheoretical:\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Gaussian:    skew=0, kurt=0\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Exponential: skew=2, kurt=6\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Uniform:     skew=0, kurt={-}1.2\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{Example 5: MGF Verification}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% Verify MGF: Compute moments by differentiation (numerical)}
+\CommentTok{\% For X \textasciitilde{} Exponential(lambda)}
+\VariableTok{lambda\_rate} \OperatorTok{=} \FloatTok{2}\OperatorTok{;}
+\VariableTok{beta\_scale} \OperatorTok{=} \FloatTok{1}\OperatorTok{/}\VariableTok{lambda\_rate}\OperatorTok{;}
+
+\CommentTok{\% MGF: M(t) = lambda/(lambda {-} t)}
+\CommentTok{\% M\textquotesingle{}(0) = E[X], M\textquotesingle{}\textquotesingle{}(0) = E[X\^{}2]}
+
+\VariableTok{t} \OperatorTok{=} \FloatTok{0}\OperatorTok{;}
+\VariableTok{dt} \OperatorTok{=} \FloatTok{1e{-}6}\OperatorTok{;}
+
+\CommentTok{\% Numerical derivatives}
+\VariableTok{M} \OperatorTok{=} \OperatorTok{@}\NormalTok{(}\VariableTok{t}\NormalTok{) }\VariableTok{lambda\_rate} \OperatorTok{./}\NormalTok{ (}\VariableTok{lambda\_rate} \OperatorTok{{-}} \VariableTok{t}\NormalTok{)}\OperatorTok{;}
+\VariableTok{M\_prime} \OperatorTok{=}\NormalTok{ (}\VariableTok{M}\NormalTok{(}\VariableTok{t}\OperatorTok{+}\VariableTok{dt}\NormalTok{) }\OperatorTok{{-}} \VariableTok{M}\NormalTok{(}\VariableTok{t}\OperatorTok{{-}}\VariableTok{dt}\NormalTok{)) }\OperatorTok{/}\NormalTok{ (}\FloatTok{2}\OperatorTok{*}\VariableTok{dt}\NormalTok{)}\OperatorTok{;}
+\VariableTok{M\_double\_prime} \OperatorTok{=}\NormalTok{ (}\VariableTok{M}\NormalTok{(}\VariableTok{t}\OperatorTok{+}\VariableTok{dt}\NormalTok{) }\OperatorTok{{-}} \FloatTok{2}\OperatorTok{*}\VariableTok{M}\NormalTok{(}\VariableTok{t}\NormalTok{) }\OperatorTok{+} \VariableTok{M}\NormalTok{(}\VariableTok{t}\OperatorTok{{-}}\VariableTok{dt}\NormalTok{)) }\OperatorTok{/} \VariableTok{dt}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{;}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}From MGF derivatives:\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}  E[X] = M\textquotesingle{}\textquotesingle{}(0) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{M\_prime}\OperatorTok{,} \FloatTok{1}\OperatorTok{/}\VariableTok{lambda\_rate}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}  E[X²] = M\textquotesingle{}\textquotesingle{}\textquotesingle{}\textquotesingle{}(0) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{M\_double\_prime}\OperatorTok{,} \FloatTok{2}\OperatorTok{/}\VariableTok{lambda\_rate}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}  Var(X) = E[X²] {-} (E[X])² = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \OperatorTok{...}
+    \VariableTok{M\_double\_prime} \OperatorTok{{-}} \VariableTok{M\_prime}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{,} \FloatTok{1}\OperatorTok{/}\VariableTok{lambda\_rate}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\PSsection{4.12}{Practice Problems}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 1: Basic Computation}
+
+A discrete RV X has PMF: P(X=-1) = 0.2, P(X=0) = 0.5, P(X=1) = 0.2, P(X=2) = 0.1.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Find E[X].
+\item
+  Find E[X\textsuperscript{2}].
+\item
+  Find Var(X).
+\item
+  Find E[3X + 2].
+\item
+  Find Var(3X + 2).
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  E[X] = (-1)(0.2) + (0)(0.5) + (1)(0.2) + (2)(0.1) = -0.2 + 0 + 0.2 + 0.2 = 0.2
+\item
+  E[X\textsuperscript{2}] = (1)(0.2) + (0)(0.5) + (1)(0.2) + (4)(0.1) = 0.2 + 0 + 0.2 + 0.4 = 0.8
+\item
+  Var(X) = E[X\textsuperscript{2}] - (E[X])\textsuperscript{2} = 0.8 - 0.04 = 0.76
+\item
+  E[3X + 2] = 3E[X] + 2 = 3(0.2) + 2 = 2.6
+\item
+  Var(3X + 2) = 9\ensuremath{\cdot}Var(X) = 9(0.76) = 6.84
+\end{enumerate}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 2: Signal and Noise}
+
+A received signal R = 2.5 + N, where N \textasciitilde{} N(0, 0.04).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Find E[R] and Var(R).
+\item
+  Find the SNR in dB.
+\item
+  Find P(R \textless{} 0) — probability the signal goes negative.
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  E[R] = 2.5, Var(R) = Var(N) = 0.04, \ensuremath{\sigma}\textsubscript{R} = 0.2
+\item
+  Signal power = 2.5\textsuperscript{2} = 6.25, Noise power = 0.04\PSbr{}SNR = 6.25/0.04 = 156.25 \ensuremath{\to} SNR\textsubscript{dB} = 10\ensuremath{\cdot}log\textsubscript{10}(156.25) = 21.94 dB
+\item
+  P(R \textless{} 0) = P(N \textless{} -2.5) = \ensuremath{\Phi}(-2.5/0.2) = \ensuremath{\Phi}(-12.5) \ensuremath{\approx} 0 (extremely unlikely)
+\end{enumerate}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 3: Averaging Measurements}
+
+A sensor makes n independent measurements of a constant voltage V = 3.3V.\PSbr{}Each measurement: X\textsubscript{i} = 3.3 + N\textsubscript{i} where N\textsubscript{i} \textasciitilde{} N(0, 0.01).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  What is E[\ensuremath{\bar{X}}] and Var(\ensuremath{\bar{X}}) for n = 1?
+\item
+  How many measurements n needed so that \ensuremath{\sigma}\textsubscript{X}̄ \textless{} 0.01V?
+\item
+  With n = 100, what is P(\textbar{}\ensuremath{\bar{X}} - 3.3\textbar{} \textgreater{} 0.02)?
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  E[\ensuremath{\bar{X}}] = 3.3, Var(\ensuremath{\bar{X}}) = 0.01/1 = 0.01, \ensuremath{\sigma} = 0.1V
+\item
+  \ensuremath{\sigma}\textsubscript{X}̄ = \ensuremath{\sigma}/\ensuremath{\surd}n \textless{} 0.01 \ensuremath{\to} \ensuremath{\surd}n \textgreater{} 10 \ensuremath{\to} n \textgreater{} 100 \ensuremath{\to} need n \ensuremath{\ge} 101
+\item
+  \ensuremath{\sigma}\textsubscript{X}̄ = 0.1/\ensuremath{\surd}100 = 0.01V\PSbr{}P(\textbar{}\ensuremath{\bar{X}} - 3.3\textbar{} \textgreater{} 0.02) = P(\textbar{}Z\textbar{} \textgreater{} 2) = 2(1-\ensuremath{\Phi}(2)) = 0.0455
+\end{enumerate}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 4: Component Lifetime}
+
+Components have lifetime T \textasciitilde{} Exp(\ensuremath{\lambda} = 0.002 per hour).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Find MTTF, \ensuremath{\sigma}\textsubscript{T}, and coefficient of variation.
+\item
+  Find P(T \textgreater{} 1000 hours).
+\item
+  Find E[T\textsuperscript{2}] and interpret.
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  MTTF = 1/\ensuremath{\lambda} = 500 hours, \ensuremath{\sigma}\textsubscript{T} = 500 hours, CV = \ensuremath{\sigma}/\ensuremath{\mu} = 1
+\item
+  P(T \textgreater{} 1000) = e\textsuperscript{-0.002\ensuremath{\times}1000} = e\textsuperscript{-2} = 0.1353
+\item
+  E[T\textsuperscript{2}] = Var(T) + (E[T])\textsuperscript{2} = 500\textsuperscript{2} + 500\textsuperscript{2} = 500000 hours\textsuperscript{2}\PSbr{}\ensuremath{\surd}E[T\textsuperscript{2}] = 707 hours (RMS lifetime)
+\end{enumerate}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{Problem 5: MGF Application}
+
+X has MGF M\textsubscript{X}(t) = (1/3)e\textsuperscript{t} + (2/3)e\textsuperscript{2t}.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  What type of RV is X? Find its PMF.
+\item
+  Find E[X] using the MGF.
+\item
+  Find Var(X) using the MGF.
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  X is discrete. Comparing with \ensuremath{\Sigma} p\textsubscript{X}(x)e\textsuperscript{tx}:\PSbr{}P(X=1) = 1/3, P(X=2) = 2/3
+\item
+  M’(t) = (1/3)e\textsuperscript{t} + (4/3)e\textsuperscript{2t}\PSbr{}E[X] = M’(0) = 1/3 + 4/3 = 5/3
+\item
+  M’``(t) = (1/3)e\textsuperscript{t} + (8/3)e\textsuperscript{2t}\PSbr{}E[X\textsuperscript{2}] = M''’(0) = 1/3 + 8/3 = 3\PSbr{}Var(X) = 3 - (5/3)\textsuperscript{2} = 3 - 25/9 = 2/9
+\end{enumerate}
+
+\end{PSbox}
+
+\PSsection{4.13}{Key Takeaways}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{E[X] = long-run average} — the center of the distribution, DC component
+\item
+  \textbf{Var(X) = spread/power} — for zero-mean signals, variance IS power
+\item
+  \textbf{\ensuremath{\sigma} has same units as X} — directly interpretable as RMS value
+\item
+  \textbf{Linearity of expectation} always holds; variance addition requires independence
+\item
+  \textbf{MGF uniquely identifies} a distribution and generates all moments
+\item
+  \textbf{In engineering:} mean \ensuremath{\to} signal level, variance \ensuremath{\to} noise power, std dev \ensuremath{\to} RMS noise
+\end{enumerate}
+
+\emph{Next Module: {Module 5 — Important Random-Variable Functions}}

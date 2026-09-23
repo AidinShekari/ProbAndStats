@@ -1,0 +1,380 @@
+\begin{PSbox}[unbreakable]{obj}{اهداف یادگیری}
+
+پس از تکمیل این ماژول، دانشجویان قادر خواهند بود:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  بازه‌های اطمینان را به‌درستی تفسیر کنند (تفسیر فراوانی‌گرا)
+\item
+  بازه‌های اطمینان برای میانگین بسازند (واریانس معلوم و نامعلوم)
+\item
+  توزیع \lr{t} را برای نمونه‌های کوچک به کار ببرند
+\item
+  بازه‌های اطمینان برای واریانس بسازند
+\item
+  اندازه نمونه لازم را تعیین کنند
+\item
+  از تصورهای نادرست رایج درباره بازه‌های اطمینان پرهیز کنند
+\end{enumerate}
+
+\end{PSbox}
+
+\PSsection{14.1}{مقدمه: چرا برآورد نقطه‌ای کافی نیست}
+
+یک برآورد نقطه‌ای (مثلاً \lr{\ensuremath{\bar{X}} = 3.47}) هیچ اطلاعاتی درباره \textbf{دقت} نمی‌دهد. باید عدم‌قطعیت را کمّی کنیم:
+
+«میانگین واقعی \PSnum{3.47} برآورد می‌شود، \textbf{با تقریبی} به اندازه‌ای.»
+
+یک \textbf{بازه اطمینان} بازه‌ای فراهم می‌کند که با سطح اطمینان معین، پارامتر واقعی را در بر می‌گیرد.
+
+\PSsection{14.2}{تفسیر درست بازه‌های اطمینان}
+
+\PSsubsection{\lr{\PSyes{}} تفسیر درست (فراوانی‌گرا)}
+
+\begin{PSquote}
+
+«اگر این آزمایش را بارها تکرار کنیم و هر بار یک بازه اطمینان 95\% محاسبه کنیم، آنگاه تقریباً 95\% از آن بازه‌ها شامل پارامتر واقعی \lr{\ensuremath{\mu}} خواهند بود.»
+
+\end{PSquote}
+
+این \textbf{رویه} نرخ موفقیت 95\% دارد. هر بازه مشخص یا شامل \lr{\ensuremath{\mu}} است یا نیست.
+
+\PSsubsection{\lr{\PSno{}} تفسیر نادرست}
+
+\begin{PSquote}
+
+{«احتمال 95\% وجود دارد که \lr{\ensuremath{\mu}} داخل این بازه خاص \PSnum{[2.1,} \PSnum{4.8]} باشد.»}
+
+\end{PSquote}
+
+\textbf{چرا نادرست است:} \lr{\ensuremath{\mu}} یک عدد ثابت (غیرتصادفی) است. یا در \PSnum{[2.1,} \PSnum{4.8]} است یا نیست \lr{—} هیچ احتمالی درباره آن وجود ندارد. \textbf{بازه} تصادفی است (از نمونه‌ای به نمونه دیگر تغییر می‌کند)، نه پارامتر.
+
+\PSsubsection{قیاس}
+
+بازه‌های اطمینان را مانند یک تور ماهیگیری در نظر بگیرید:
+
+\begin{itemize}
+\tightlist
+\item
+  پیش از پرتاب: شانس 95\% که تور شما ماهی را بگیرد (این رویه 95\% مواقع کار می‌کند)
+\item
+  پس از پرتاب: ماهی یا گرفته شده یا نشده \lr{—} دیگر احتمالی وجود ندارد
+\item
+  ماهی \lr{(\ensuremath{\mu})} حرکت نمی‌کند؛ تور شما (بازه اطمینان) حرکت می‌کند
+\end{itemize}
+
+\PSsection{14.3}{بازه اطمینان برای میانگین \lr{—} واریانس معلوم (بازه \lr{Z})}
+
+\PSsubsection{صورت‌بندی}
+
+داده: \lr{X\textsubscript{1}, …, X\textsubscript{n}} مستقل و هم‌توزیع از \lr{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})} با \lr{\ensuremath{\sigma}\textsuperscript{2}} \textbf{معلوم}.
+
+\PSsubsection{استخراج}
+
+\lr{\ensuremath{\bar{X}} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}/n)}، بنابراین \lr{Z = (\ensuremath{\bar{X}} - \ensuremath{\mu})/(\ensuremath{\sigma}/\ensuremath{\surd}n) \textasciitilde{} N(0,1)}
+
+\lr{P(-z\textsubscript{\ensuremath{\alpha}/2} \ensuremath{\le} Z \ensuremath{\le} z\textsubscript{\ensuremath{\alpha}/2}) = 1 - \ensuremath{\alpha}}
+
+با حل برای \lr{\ensuremath{\mu}}:\PSdisplay{P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha}
+
+\PSsubsection{فرمول}
+
+\PSdisplay{\PSmtext{CI: } \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}}
+
+\PSsubsection{مقادیر رایج \lr{z}}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}ccc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{سطح اطمینان} & \PSth{\lr{\ensuremath{\alpha}}} & \PSth{\lr{z\textsubscript{\ensuremath{\alpha}/2}}} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+90\% & \PSnum{0.10} & \PSnum{1.645} \\
+95\% & \PSnum{0.05} & \PSnum{1.960} \\
+99\% & \PSnum{0.01} & \PSnum{2.576} \\
+\end{longtable}
+}
+
+\begin{PSbox}[unbreakable]{ex}{مثال}
+
+اندازه‌گیری‌های نویز: \lr{n = 36}، \lr{\ensuremath{\bar{X}} = 0.52V}، \lr{\ensuremath{\sigma} = 0.12V} (معلوم از مشخصات تجهیز).
+
+بازه اطمینان \lr{95\%: 0.52 \ensuremath{\pm} 1.96 \ensuremath{\times} 0.12/\ensuremath{\surd}36 = 0.52 \ensuremath{\pm} 0.0392 = \textbf{\lr{[0.481, 0.559] V}}}
+
+\end{PSbox}
+
+\PSsection{14.4}{بازه اطمینان برای میانگین \lr{—} واریانس نامعلوم (بازه \lr{t})}
+
+\begin{PSbox}[unbreakable]{prob}{مسیله}
+
+معمولاً \lr{\ensuremath{\sigma}} نامعلوم است. آن را با \lr{S} برآورد می‌کنیم. اما \lr{\ensuremath{\bar{X}}/(S/\ensuremath{\surd}n)} از \lr{N(0,1)} پیروی نمی‌کند.
+
+\end{PSbox}
+
+\PSsubsection{توزیع \lr{t} استیودنت}
+
+\PSdisplay{T = \frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t(n-1)}
+
+توزیع \lr{t}:
+
+\begin{itemize}
+\tightlist
+\item
+  متقارن حول 0
+\item
+  دنباله‌های سنگین‌تر از \lr{N(0,1)} (عدم‌قطعیت بیشتر چون \lr{S} برآورد شده است)
+\item
+  درجات آزادی: \lr{\ensuremath{\nu} = n - 1}
+\item
+  وقتی \lr{\ensuremath{\nu} \ensuremath{\to} \ensuremath{\infty}: t(\ensuremath{\nu}) \ensuremath{\to} N(0,1)}
+\item
+  برای \lr{\ensuremath{\nu} \ensuremath{\ge} 30}: تقریباً \lr{t \ensuremath{\approx} z}
+\end{itemize}
+
+\PSsubsection{فرمول}
+
+\PSdisplay{\PSmtext{CI: } \bar{X} \pm t_{\alpha/2, n-1} \cdot \frac{S}{\sqrt{n}}}
+
+\begin{PSbox}[unbreakable]{ex}{مثال}
+
+تأخیر قطعه: \lr{n = 15}، \lr{\ensuremath{\bar{X}} = 2.34 ns}، \lr{S = 0.45 ns}.
+
+بازه اطمینان \lr{95\%: t\_\{0.025, 14\} = 2.145}
+
+\lr{CI: 2.34 \ensuremath{\pm} 2.145 \ensuremath{\times} 0.45/\ensuremath{\surd}15 = 2.34 \ensuremath{\pm} 0.249 = \textbf{\lr{[2.09, 2.59] ns}}}
+
+(پهن‌تر از بازه \lr{Z} به‌دلیل عدم‌قطعیت اضافی در \lr{S}.)
+
+\end{PSbox}
+
+\PSsection{14.5}{بازه اطمینان برای واریانس}
+
+\PSsubsection{صورت‌بندی}
+
+داده از \lr{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}. بازه اطمینان برای \lr{\ensuremath{\sigma}\textsuperscript{2}} مطلوب است.
+
+\PSsubsection{توزیع کلیدی}
+
+\PSdisplay{(n-1)S^2/\sigma^2 \sim \chi^2(n-1)}
+
+\PSsubsection{فرمول}
+
+\PSdisplay{\left[\frac{(n-1)S^2}{\chi^2_{\alpha/2, n-1}}, \quad \frac{(n-1)S^2}{\chi^2_{1-\alpha/2, n-1}}\right]}
+
+\begin{PSbox}[unbreakable]{ex}{مثال}
+
+توان نویز: \lr{n = 20}، \lr{S\textsuperscript{2} = 0.045 V\textsuperscript{2}}.
+
+بازه اطمینان 95\% برای \lr{\ensuremath{\sigma}\textsuperscript{2}: \ensuremath{\chi}\textsuperscript{2}\_\{0.025, 19\} = 32.852}، \lr{\ensuremath{\chi}\textsuperscript{2}\_\{0.975, 19\} = 8.907}
+
+\lr{CI: [(19)(0.045)/32.852}، \lr{(19)(0.045)/8.907] = [0.026, 0.096] V\textsuperscript{2}}
+
+بازه اطمینان 95\% برای \lr{\ensuremath{\sigma}: [\ensuremath{\surd}0.026, \ensuremath{\surd}0.096] = [0.161, 0.310] V}
+
+\end{PSbox}
+
+\PSsection{14.6}{بازه اطمینان برای نسبت‌ها}
+
+\PSsubsection{صورت‌بندی}
+
+\lr{n} آزمایش، \lr{\ensuremath{\hat{x}} = k/n} موفقیت. برآورد \lr{p} = نسبت واقعی.
+
+\PSsubsection{فرمول نمونه بزرگ (بازه والد)}
+
+\PSdisplay{\hat{p} \pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}}
+
+\begin{PSbox}[unbreakable]{ex}{مثال: نرخ خطای بیت}
+
+\PSnum{100,000} بیت ارسال شد، 53 خطا مشاهده شد. \lr{\ensuremath{\hat{p}} = 53/100000 = 5.3\ensuremath{\times}10\textsuperscript{-4}}.
+
+بازه اطمینان \lr{95\%: 5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.96\ensuremath{\surd}(5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\times} 0.9995 / 100000) = 5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.43\ensuremath{\times}10\textsuperscript{-4}}
+
+\lr{CI: \textbf{\lr{[3.9\ensuremath{\times}10\textsuperscript{-4}, 6.7\ensuremath{\times}10\textsuperscript{-4}]}}}
+
+\end{PSbox}
+
+\PSsection{14.7}{عوامل مؤثر بر پهنای بازه اطمینان}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[c]{@{}ccc@{}}
+\toprule\noalign{}
+\rowcolor{PSnavy}\PSth{عامل} & \PSth{اثر بر پهنا} & \PSth{توضیح} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\lr{\ensuremath{\uparrow}} اندازه نمونه \lr{n} & باریک‌تر & داده بیشتر \lr{\ensuremath{\to}} دقت بیشتر \\
+\lr{\ensuremath{\uparrow}} سطح اطمینان & پهن‌تر & اطمینان بیشتر \lr{\ensuremath{\to}} تور پهن‌تر \\
+\lr{\ensuremath{\uparrow}} تغییرپذیری \lr{\ensuremath{\sigma}} & پهن‌تر & نویز بیشتر \lr{\ensuremath{\to}} دشوارتر برای تعیین دقیق \lr{\ensuremath{\mu}} \\
+\end{longtable}
+}
+
+\PSsubsection{توازن}
+
+\begin{itemize}
+\tightlist
+\item
+  بازه اطمینان باریک (دقیق) مطلوب \lr{\ensuremath{\to}} داده بیشتر لازم است یا باید اطمینان کمتری را بپذیرید
+\item
+  اطمینان بالا مطلوب \lr{\ensuremath{\to}} باید بازه پهن‌تری را بپذیرید یا داده بیشتری جمع کنید
+\item
+  هم باریک و هم اطمینان بالا مطلوب \lr{\ensuremath{\to}} به داده \textbf{بسیار زیاد} نیاز است
+\end{itemize}
+
+\PSsection{14.8}{تعیین اندازه نمونه}
+
+\PSsubsection{پرسش: چند اندازه‌گیری لازم دارم؟}
+
+برای پهنای بازه اطمینان \lr{\ensuremath{\le} 2E} (حاشیه خطای \lr{E}):
+
+\PSdisplay{n \geq \left(\frac{z_{\alpha/2} \cdot \sigma}{E}\right)^2}
+
+\begin{PSbox}[unbreakable]{ex}{مثال}
+
+می‌خواهیم میانگین تأخیر را با اطمینان 95\% و در محدوده \lr{\ensuremath{\pm}0.5ms} برآورد کنیم. انتظار \lr{\ensuremath{\sigma} \ensuremath{\approx} 3ms}.
+
+\lr{n \ensuremath{\ge} (1.96 \ensuremath{\times} 3 / 0.5)\textsuperscript{2} = (11.76)\textsuperscript{2} = 138.3 \ensuremath{\to}} به \textbf{\lr{n = 139} اندازه‌گیری} نیاز است
+
+\end{PSbox}
+
+\PSsection{14.9}{نمایش‌های \lr{MATLAB}}
+
+\begin{PSbox}[breakable]{ex}{مثال 1: نمایش پوشش بازه اطمینان}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% Demonstrate: \textasciitilde{}95\% of 95\% CIs contain the true mean}
+\VariableTok{mu\_true} \OperatorTok{=} \FloatTok{5}\OperatorTok{;}  \VariableTok{sigma} \OperatorTok{=} \FloatTok{2}\OperatorTok{;}  \VariableTok{n} \OperatorTok{=} \FloatTok{25}\OperatorTok{;}
+\VariableTok{N\_experiments} \OperatorTok{=} \FloatTok{1000}\OperatorTok{;}
+\VariableTok{alpha} \OperatorTok{=} \FloatTok{0.05}\OperatorTok{;}
+\VariableTok{z\_crit} \OperatorTok{=} \VariableTok{norminv}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{alpha}\OperatorTok{/}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+
+\VariableTok{covers} \OperatorTok{=} \FloatTok{0}\OperatorTok{;}
+\VariableTok{figure}\OperatorTok{;} \VariableTok{hold} \VariableTok{on}\OperatorTok{;}
+\KeywordTok{for} \VariableTok{i} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\VariableTok{N\_experiments}
+    \VariableTok{data} \OperatorTok{=} \VariableTok{mu\_true} \OperatorTok{+} \VariableTok{sigma}\OperatorTok{*}\VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{n}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{x\_bar} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{margin} \OperatorTok{=} \VariableTok{z\_crit} \OperatorTok{*} \VariableTok{sigma} \OperatorTok{/} \VariableTok{sqrt}\NormalTok{(}\VariableTok{n}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{ci\_low} \OperatorTok{=} \VariableTok{x\_bar} \OperatorTok{{-}} \VariableTok{margin}\OperatorTok{;}
+    \VariableTok{ci\_high} \OperatorTok{=} \VariableTok{x\_bar} \OperatorTok{+} \VariableTok{margin}\OperatorTok{;}
+    
+    \KeywordTok{if} \VariableTok{ci\_low} \OperatorTok{\textless{}=} \VariableTok{mu\_true} \OperatorTok{\&\&} \VariableTok{mu\_true} \OperatorTok{\textless{}=} \VariableTok{ci\_high}
+        \VariableTok{covers} \OperatorTok{=} \VariableTok{covers} \OperatorTok{+} \FloatTok{1}\OperatorTok{;}
+        \VariableTok{color} \OperatorTok{=} \SpecialStringTok{\textquotesingle{}b\textquotesingle{}}\OperatorTok{;}
+    \KeywordTok{else}
+        \VariableTok{color} \OperatorTok{=} \SpecialStringTok{\textquotesingle{}r\textquotesingle{}}\OperatorTok{;}
+    \KeywordTok{end}
+    
+    \KeywordTok{if} \VariableTok{i} \OperatorTok{\textless{}=} \FloatTok{100}  \CommentTok{\% Plot first 100}
+        \VariableTok{plot}\NormalTok{([}\VariableTok{ci\_low} \VariableTok{ci\_high}\NormalTok{]}\OperatorTok{,}\NormalTok{ [}\VariableTok{i} \VariableTok{i}\NormalTok{]}\OperatorTok{,} \VariableTok{color}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{0.5}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{end}
+\KeywordTok{end}
+\VariableTok{plot}\NormalTok{([}\VariableTok{mu\_true} \VariableTok{mu\_true}\NormalTok{]}\OperatorTok{,}\NormalTok{ [}\FloatTok{0} \FloatTok{101}\NormalTok{]}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}k{-}{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
+\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}μ\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Experiment \#\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}95\%\% CI Coverage: \%.1f\%\% of \%d intervals contain μ\textquotesingle{}}\OperatorTok{,} \OperatorTok{...}
+    \FloatTok{100}\OperatorTok{*}\VariableTok{covers}\OperatorTok{/}\VariableTok{N\_experiments}\OperatorTok{,} \VariableTok{N\_experiments}\NormalTok{))}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Coverage: \%.1f\%\% (theory: 95\%\%)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \FloatTok{100}\OperatorTok{*}\VariableTok{covers}\OperatorTok{/}\VariableTok{N\_experiments}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{مثال 2: بازه \lr{t} در عمل}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% t{-}Confidence Interval: Unknown Variance}
+\VariableTok{data} \OperatorTok{=}\NormalTok{ [}\FloatTok{2.3}\OperatorTok{,} \FloatTok{2.7}\OperatorTok{,} \FloatTok{2.1}\OperatorTok{,} \FloatTok{2.8}\OperatorTok{,} \FloatTok{2.5}\OperatorTok{,} \FloatTok{2.9}\OperatorTok{,} \FloatTok{2.4}\OperatorTok{,} \FloatTok{2.6}\OperatorTok{,} \FloatTok{2.2}\OperatorTok{,} \FloatTok{2.7}\NormalTok{]}\OperatorTok{;}
+\VariableTok{n} \OperatorTok{=} \VariableTok{length}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+\VariableTok{x\_bar} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+\VariableTok{s} \OperatorTok{=} \VariableTok{std}\NormalTok{(}\VariableTok{data}\NormalTok{)}\OperatorTok{;}
+\VariableTok{alpha} \OperatorTok{=} \FloatTok{0.05}\OperatorTok{;}
+
+\VariableTok{t\_crit} \OperatorTok{=} \VariableTok{tinv}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{alpha}\OperatorTok{/}\FloatTok{2}\OperatorTok{,} \VariableTok{n}\OperatorTok{{-}}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
+\VariableTok{margin} \OperatorTok{=} \VariableTok{t\_crit} \OperatorTok{*} \VariableTok{s} \OperatorTok{/} \VariableTok{sqrt}\NormalTok{(}\VariableTok{n}\NormalTok{)}\OperatorTok{;}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Sample mean: \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{x\_bar}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Sample std:  \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{s}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}t\_crit (df=\%d): \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{n}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{,} \VariableTok{t\_crit}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}95\%\% CI: [\%.3f, \%.3f]\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{x\_bar}\OperatorTok{{-}}\VariableTok{margin}\OperatorTok{,} \VariableTok{x\_bar}\OperatorTok{+}\VariableTok{margin}\NormalTok{)}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{ex}{مثال 3: محاسبه اندازه نمونه}
+
+\tcbset{PScodemode/.style={unbreakable}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\%\% How many samples do we need?}
+\VariableTok{sigma} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}           \CommentTok{\% Expected std dev (from pilot study)}
+\VariableTok{E\_values} \OperatorTok{=}\NormalTok{ [}\FloatTok{0.05}\OperatorTok{,} \FloatTok{0.02}\OperatorTok{,} \FloatTok{0.01}\OperatorTok{,} \FloatTok{0.005}\NormalTok{]}\OperatorTok{;}  \CommentTok{\% Desired margins}
+\VariableTok{confidence} \OperatorTok{=} \FloatTok{0.95}\OperatorTok{;}
+\VariableTok{z} \OperatorTok{=} \VariableTok{norminv}\NormalTok{(}\FloatTok{1} \OperatorTok{{-}}\NormalTok{ (}\FloatTok{1}\OperatorTok{{-}}\VariableTok{confidence}\NormalTok{)}\OperatorTok{/}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Desired Margin | Required n\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}+{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
+\KeywordTok{for} \VariableTok{E} \OperatorTok{=} \VariableTok{E\_values}
+    \VariableTok{n\_req} \OperatorTok{=} \VariableTok{ceil}\NormalTok{((}\VariableTok{z}\OperatorTok{*}\VariableTok{sigma}\OperatorTok{/}\VariableTok{E}\NormalTok{)}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
+    \VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}  ±\%.3f      |    \%d\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{E}\OperatorTok{,} \VariableTok{n\_req}\NormalTok{)}\OperatorTok{;}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+
+\end{PSbox}
+
+\PSsection{14.10}{مسایل تمرینی}
+
+\begin{PSbox}[unbreakable]{prob}{مسیله 1}
+
+یک حسگر ولتاژ را اندازه‌گیری می‌کند. از 50 اندازه‌گیری: \lr{\ensuremath{\bar{X}} = 3.32V}، \lr{S = 0.15V}.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  بازه اطمینان 95\% برای \lr{\ensuremath{\mu}} بسازید. \lr{(b)} بازه اطمینان 99\% برای \lr{\ensuremath{\mu}} بسازید. \lr{(c)} کدام پهن‌تر است و چرا؟
+\end{enumerate}
+
+\PSsolution{} 
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  \lr{t\textsubscript{0.025,49} \ensuremath{\approx} 2.010. CI: 3.32 \ensuremath{\pm} 2.010(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.043 = [3.277, 3.363]}
+\item
+  \lr{t\textsubscript{0.005,49} \ensuremath{\approx} 2.680. CI: 3.32 \ensuremath{\pm} 2.680(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.057 = [3.263, 3.377]}
+\item
+  بازه اطمینان 99\% پهن‌تر است \lr{—} اطمینان بالاتر بازه پهن‌تری می‌طلبد.
+\end{enumerate}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{مسیله 2}
+
+از 25 اندازه‌گیری توان نویز: \lr{S\textsuperscript{2} = 0.048 V\textsuperscript{2}}. بازه اطمینان 95\% برای \lr{\ensuremath{\sigma}\textsuperscript{2}} بسازید.
+
+\PSsolution{} \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.025,24} = 39.364}، \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.975,24} = 12.401}\PSbr{}\lr{CI: [24(0.048)/39.364}، \lr{24(0.048)/12.401] = [0.029, 0.093] V\textsuperscript{2}}
+
+\end{PSbox}
+
+\begin{PSbox}[unbreakable]{prob}{مسیله 3}
+
+برای برآورد \lr{BER} در محدوده \lr{\ensuremath{\pm}20\%} مقدار واقعی با اطمینان 95\%، اگر \lr{BER} مورد انتظار \lr{\ensuremath{\approx} 10\textsuperscript{-3}} باشد، چند اندازه‌گیری \lr{BER} لازم است؟
+
+\PSsolution{} برای نسبت: \lr{n \ensuremath{\ge} z\textsuperscript{2}p(1-p)/E\textsuperscript{2}} که در آن \lr{E = 0.2p = 2\ensuremath{\times}10\textsuperscript{-4}}.\PSbr{}\lr{n \ensuremath{\ge} (1.96)\textsuperscript{2}(10\textsuperscript{-3})(0.999)/(2\ensuremath{\times}10\textsuperscript{-4})\textsuperscript{2} = 3.84 \ensuremath{\times} 10\textsuperscript{-3} / (4\ensuremath{\times}10\textsuperscript{-8}) \ensuremath{\approx} 96,000} بیت.\PSbr{}باید تقریباً \PSnum{96,000} بیت ارسال شود (یا حدود 96 خطا مشاهده شود).
+
+\emph{ماژول بعدی: {ماژول \lr{15} \lr{—} آزمون فرض}}\PSbr{}
+
+\end{PSbox}
