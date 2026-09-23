@@ -55,6 +55,8 @@
 \clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
 
 % ---------- lists ----------
+% Persian item labels: الف، ب، ج، د، ه … (xepersian's \alph starts with آ)
+\newcommand{\PSalph}[1]{\ifcase\value{#1}\or الف\or ب\or ج\or د\or ه\or و\or ز\or ح\or ط\or ی\else\arabic{#1}\fi}
 \setlist{itemsep=2pt,topsep=4pt,parsep=0pt}
 \setlist[itemize]{label={\color{PSteal}\small\ensuremath{\blacktriangleright}}}
 \setlist[itemize,2]{label={\color{PSgold}\ensuremath{\bullet}}}

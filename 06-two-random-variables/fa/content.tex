@@ -6,7 +6,7 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \lr{PMF}، \lr{PDF} و \lr{CDF} مشترک را تعریف و محاسبه کنند
+  \lr{\mbox{PMF}}، \lr{\mbox{PDF}} و \lr{\mbox{CDF}} مشترک را تعریف و محاسبه کنند
 \item
   توزیع‌های حاشیه‌ای را از توزیع‌های مشترک استخراج کنند
 \item
@@ -16,7 +16,7 @@
 \item
   امیدهای ریاضی شرطی را محاسبه کنند
 \item
-  توزیع‌های مشترک را در \lr{MATLAB} مصورسازی کنند
+  توزیع‌های مشترک را در \lr{\mbox{MATLAB}} مصورسازی کنند
 \end{enumerate}
 
 \end{PSbox}
@@ -34,16 +34,16 @@
 \item
   دما و مقاومت یک حسگر
 \item
-  کانال \lr{I} و کانال \lr{Q} یک سیگنال مخابراتی
+  کانال \lr{\mbox{I}} و کانال \lr{\mbox{Q}} یک سیگنال مخابراتی
 \end{itemize}
 
 درک \textbf{رفتار مشترک} چیزهایی را به ما می‌گوید که توزیع‌های حاشیه‌ای نمی‌توانند \lr{—} مانند همبستگی، وابستگی و رفتار شرطی.
 
-\PSsection{6.2}{\lr{PMF} مشترک (حالت گسسته)}
+\PSsection{6.2}{\lr{\mbox{PMF}} مشترک (حالت گسسته)}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-برای متغیرهای تصادفی گسسته \lr{X}، \lr{Y}:\PSdisplay{p_{X,Y}(x,y) = P(X = x, Y = y)}
+برای متغیرهای تصادفی گسسته \lr{\mbox{X}}، \lr{\mbox{Y}}:\PSdisplay{p_{X,Y}(x,y) = P(X = x, Y = y)}
 
 \end{PSbox}
 
@@ -53,35 +53,35 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \lr{p\textsubscript{X,Y}(x,y) \ensuremath{\ge} 0}
+  \lr{\mbox{p\textsubscript{X,Y}(x,y) \ensuremath{\ge} 0}}
 \item
   \lr{\ensuremath{\Sigma}\textsubscript{x} \ensuremath{\Sigma}\textsubscript{y} p\textsubscript{X,Y}(x,y) = 1}
 \end{enumerate}
 
 \PSsubsection{مصورسازی: جدول احتمال}
 
-\textbf{مثال:} \lr{X} = تعداد ارسال‌های مجدد (\PSnum{0,1,2})، \lr{Y} = دسته تأخیر تأیید (\lr{1}=سریع، \lr{2}=کند)
+\textbf{مثال:} \lr{\mbox{X}} = تعداد ارسال‌های مجدد \lr{\mbox{(0,1,2)}}، \lr{\mbox{Y}} = دسته تأخیر تأیید (\lr{\mbox{1}}=سریع، \lr{\mbox{2}}=کند)
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cccc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}& \PSth{\lr{Y=1}} & \PSth{\lr{Y=2}} & \PSth{\lr{p\textsubscript{X}(x)}} \\
+\rowcolor{PSnavy}& \PSth{\lr{\mbox{Y=1}}} & \PSth{\lr{\mbox{Y=2}}} & \PSth{\lr{\mbox{p\textsubscript{X}(x)}}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{X=0} & \PSnum{0.30} & \PSnum{0.10} & \PSnum{0.40} \\
-\lr{X=1} & \PSnum{0.15} & \PSnum{0.20} & \PSnum{0.35} \\
-\lr{X=2} & \PSnum{0.05} & \PSnum{0.20} & \PSnum{0.25} \\
-\lr{p\textsubscript{Y}(y)} & \PSnum{0.50} & \PSnum{0.50} & \PSnum{1.00} \\
+\lr{\mbox{X=0}} & \PSnum{0.30} & \PSnum{0.10} & \PSnum{0.40} \\
+\lr{\mbox{X=1}} & \PSnum{0.15} & \PSnum{0.20} & \PSnum{0.35} \\
+\lr{\mbox{X=2}} & \PSnum{0.05} & \PSnum{0.20} & \PSnum{0.25} \\
+\lr{\mbox{p\textsubscript{Y}(y)}} & \PSnum{0.50} & \PSnum{0.50} & \PSnum{1.00} \\
 \end{longtable}
 }
 
-\PSsection{6.3}{\lr{PDF} مشترک (حالت پیوسته)}
+\PSsection{6.3}{\lr{\mbox{PDF}} مشترک (حالت پیوسته)}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-برای متغیرهای تصادفی پیوسته \lr{X}، \lr{Y}، \lr{PDF} مشترک \lr{f\textsubscript{X,Y}(x,y)} در رابطه زیر صدق می‌کند:\PSdisplay{P((X,Y) \in A) = \iint_A f_{X,Y}(x,y) \, dx \, dy}
+برای متغیرهای تصادفی پیوسته \lr{\mbox{X}}، \lr{\mbox{Y}}، \lr{\mbox{PDF}} مشترک \lr{\mbox{f\textsubscript{X,Y}(x,y)}} در رابطه زیر صدق می‌کند:\PSdisplay{P((X,Y) \in A) = \iint_A f_{X,Y}(x,y) \, dx \, dy}
 
 \end{PSbox}
 
@@ -91,24 +91,24 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \lr{f\textsubscript{X,Y}(x,y) \ensuremath{\ge} 0}
+  \lr{\mbox{f\textsubscript{X,Y}(x,y) \ensuremath{\ge} 0}}
 \item
   \lr{\ensuremath{\int}\ensuremath{\int} f\textsubscript{X,Y}(x,y) dx dy = 1}
 \end{enumerate}
 
 \PSsubsection{مصورسازی}
 
-\lr{PDF} مشترک یک \textbf{رویه} روی صفحه \lr{(x,y)} است. احتمال = حجم زیر رویه روی یک ناحیه.
+\lr{\mbox{PDF}} مشترک یک \textbf{رویه} روی صفحه \lr{\mbox{(x,y)}} است. احتمال = حجم زیر رویه روی یک ناحیه.
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: گاوسی دوبعدی}
 
-دو ولتاژ نویز همبسته \lr{(X, Y)} با همبستگی \lr{\ensuremath{\rho}}:
+دو ولتاژ نویز همبسته \lr{\mbox{(X, Y)}} با همبستگی \lr{\mbox{\ensuremath{\rho}}}:
 
 \PSdisplay{f_{X,Y}(x,y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)}\left[\frac{x^2}{\sigma_X^2} - \frac{2\rho xy}{\sigma_X\sigma_Y} + \frac{y^2}{\sigma_Y^2}\right]\right)}
 
 \end{PSbox}
 
-\PSsection{6.4}{\lr{CDF} مشترک}
+\PSsection{6.4}{\lr{\mbox{CDF}} مشترک}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
@@ -122,7 +122,7 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \lr{F\textsubscript{X,Y}(-\ensuremath{\infty}, y) = 0}، \lr{F\textsubscript{X,Y}(x, -\ensuremath{\infty}) = 0}
+  \lr{\mbox{F\textsubscript{X,Y}(-\ensuremath{\infty}, y) = 0}}، \lr{\mbox{F\textsubscript{X,Y}(x, -\ensuremath{\infty}) = 0}}
 \item
   \lr{F\textsubscript{X,Y}(\ensuremath{\infty}, \ensuremath{\infty}) = 1}
 \item
@@ -141,20 +141,20 @@
 
 \PSsubsection{تفسیر بصری}
 
-\lr{PDF} حاشیه‌ای \lr{f\textsubscript{X}(x)} همان \textbf{تصویر} (انتگرال) رویه مشترک روی محور \lr{x} است. به‌همین‌ترتیب \lr{f\textsubscript{Y}(y)} روی محور \lr{y} تصویر می‌شود.
+\lr{\mbox{PDF}} حاشیه‌ای \lr{\mbox{f\textsubscript{X}(x)}} همان \textbf{تصویر} (انتگرال) رویه مشترک روی محور \lr{\mbox{x}} است. به‌همین‌ترتیب \lr{\mbox{f\textsubscript{Y}(y)}} روی محور \lr{\mbox{y}} تصویر می‌شود.
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی}
 
-\lr{PDF} مشترک: \lr{f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{\lr{(-x)e}}(-2y)}، \lr{x \ensuremath{\ge} 0}، \lr{y \ensuremath{\ge} 0}
+\lr{\mbox{PDF}} مشترک: \lr{f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{-x}e\textsuperscript{-2y}}، \lr{\mbox{x \ensuremath{\ge} 0}}، \lr{\mbox{y \ensuremath{\ge} 0}}
 
 حاشیه‌ای‌ها:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{\lr{(-x)e}}(-2y) dy = 2e\textsuperscript{-x} \ensuremath{\cdot} [1/2] = e\textsuperscript{-x} \ensuremath{\to} X \textasciitilde{} Exp(1)}
+  \lr{f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{-x}e\textsuperscript{-2y} dy = 2e\textsuperscript{-x} \ensuremath{\cdot} [1/2] = e\textsuperscript{-x} \ensuremath{\to} X \textasciitilde{} Exp(1)}
 \item
-  \lr{f\textsubscript{Y}(y) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{\lr{(-x)e}}(-2y) dx = 2e\textsuperscript{-2y} \ensuremath{\cdot} [1] = 2e\textsuperscript{-2y} \ensuremath{\to} Y \textasciitilde{} Exp(2)}
+  \lr{f\textsubscript{Y}(y) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{-x}e\textsuperscript{-2y} dx = 2e\textsuperscript{-2y} \ensuremath{\cdot} [1] = 2e\textsuperscript{-2y} \ensuremath{\to} Y \textasciitilde{} Exp(2)}
 \end{itemize}
 
 \end{PSbox}
@@ -171,23 +171,23 @@
 
 \PSsubsection{تفسیر}
 
-توزیع شرطی، \lr{X} را هنگامی توصیف می‌کند که \lr{Y = y} را \textbf{می‌دانیم}. این یک «برش» از توزیع مشترک در مقدار ثابت \lr{y} است که به‌گونه‌ای نرمال شده که انتگرال آن برابر 1 شود.
+توزیع شرطی، \lr{\mbox{X}} را هنگامی توصیف می‌کند که \lr{\mbox{Y = y}} را \textbf{می‌دانیم}. این یک «برش» از توزیع مشترک در مقدار ثابت \lr{\mbox{y}} است که به‌گونه‌ای نرمال شده که انتگرال آن برابر 1 شود.
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: سیگنال به‌شرط وضعیت کانال}
 
-توان دریافتی \lr{Y} به‌شرط وضعیت کانال \lr{X}:
+توان دریافتی \lr{\mbox{Y}} به‌شرط وضعیت کانال \lr{\mbox{X}}:
 
 \begin{itemize}
 \tightlist
 \item
-  اگر کانال خوب باشد \lr{(X=1): Y \textasciitilde{} N(10, 1)}
+  اگر کانال خوب باشد \lr{\mbox{(X=1)}}: \lr{\mbox{Y \textasciitilde{} N(10, 1)}}
 \item
-  اگر کانال ضعیف باشد \lr{(X=0): Y \textasciitilde{} N(2, 4)}
+  اگر کانال ضعیف باشد \lr{\mbox{(X=0)}}: \lr{\mbox{Y \textasciitilde{} N(2, 4)}}
 \item
-  \lr{P(X=1) = 0.7}، \lr{P(X=0) = 0.3}
+  \lr{\mbox{P(X=1) = 0.7}}، \lr{\mbox{P(X=0) = 0.3}}
 \end{itemize}
 
-\lr{PDF}‌های شرطی رفتار گیرنده در هر وضعیت را توصیف می‌کنند.
+\lr{\mbox{PDF}}‌های شرطی رفتار گیرنده در هر وضعیت را توصیف می‌کنند.
 
 \end{PSbox}
 
@@ -195,11 +195,11 @@
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-\lr{X} و \lr{Y} مستقل هستند اگر و تنها اگر:
+\lr{\mbox{X}} و \lr{\mbox{Y}} مستقل هستند اگر و تنها اگر:
 
 \PSdisplay{f_{X,Y}(x,y) = f_X(x) \cdot f_Y(y) \quad \PSmtext{for all } x, y}
 
-(یا به‌طور معادل برای \lr{PMF}‌ها: \lr{p\textsubscript{X,Y}(x,y) = p\textsubscript{X}(x)\ensuremath{\cdot}p\textsubscript{Y}(y)})
+(یا به‌طور معادل برای \lr{\mbox{PMF}}‌ها: \lr{p\textsubscript{X,Y}(x,y) = p\textsubscript{X}(x)\ensuremath{\cdot}p\textsubscript{Y}(y)})
 
 \end{PSbox}
 
@@ -208,28 +208,28 @@
 \begin{itemize}
 \tightlist
 \item
-  \lr{f\textsubscript{X\textbar{}Y}(x\textbar{}y) = f\textsubscript{X}(x)} (دانستن \lr{Y} مقدار \lr{X} را تغییر نمی‌دهد)
+  \lr{f\textsubscript{X\textbar{}Y}(x\textbar{}y) = f\textsubscript{X}(x)} (دانستن \lr{\mbox{Y}} مقدار \lr{\mbox{X}} را تغییر نمی‌دهد)
 \item
-  \lr{E[XY] = E[X]E[Y]}
+  \lr{\mbox{E[XY] = E[X]E[Y]}}
 \item
-  \lr{Var(X + Y) = Var(X) + Var(Y)}
+  \lr{\mbox{Var(X + Y) = Var(X) + Var(Y)}}
 \end{itemize}
 
 \PSsubsection{آزمون استقلال}
 
-بررسی کنید: آیا توزیع مشترک به حاصل‌ضرب یک تابع فقط از \lr{x} و یک تابع فقط از \lr{y} تجزیه می‌شود؟
+بررسی کنید: آیا توزیع مشترک به حاصل‌ضرب یک تابع فقط از \lr{\mbox{x}} و یک تابع فقط از \lr{\mbox{y}} تجزیه می‌شود؟
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{\lr{(-x)\ensuremath{\cdot}e}}(-2y) = [e\textsuperscript{-x}]\ensuremath{\cdot}[2e\textsuperscript{-2y}] \PSyes{}} مستقل!
+  \lr{f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{-x}\ensuremath{\cdot}e\textsuperscript{-2y} = [e\textsuperscript{-x}]\ensuremath{\cdot}[2e\textsuperscript{-2y}] \PSyes{}} مستقل!
 \item
-  \lr{f\textsubscript{X,Y}(x,y) = x + y} برای \lr{0\ensuremath{\le}x,y\ensuremath{\le}1 \ensuremath{\to}} تجزیه نمی‌شود \lr{\ensuremath{\to}} مستقل نیست
+  \lr{\mbox{f\textsubscript{X,Y}(x,y) = x + y}} برای \lr{\mbox{0\ensuremath{\le}x,y\ensuremath{\le}1 \ensuremath{\to}}} تجزیه نمی‌شود \lr{\mbox{\ensuremath{\to}}} مستقل نیست
 \end{itemize}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: سیگنال و نویز مستقل}
 
-سیگنال ارسالی \lr{S} و نویز کانال \lr{N} بر اساس فرض فیزیکی مستقل هستند:\PSbr{}\lr{f\textsubscript{S,N}(s,n) = f\textsubscript{S}(s)\ensuremath{\cdot}f\textsubscript{N}(n)}
+سیگنال ارسالی \lr{\mbox{S}} و نویز کانال \lr{\mbox{N}} بر اساس فرض فیزیکی مستقل هستند:\PSbr{}\lr{f\textsubscript{S,N}(s,n) = f\textsubscript{S}(s)\ensuremath{\cdot}f\textsubscript{N}(n)}
 
 این فرض استقلال برای طراحی سیستم مخابراتی بنیادی است.
 
@@ -245,11 +245,11 @@
 
 \PSsubsection{تفسیر}
 
-\lr{E[X\textbar{}Y=y]} \textbf{بهترین پیش‌بینی} \lr{X} است به‌شرط این‌که \lr{Y = y} را مشاهده کرده‌ایم (به معنای میانگین مربعات).
+\lr{\mbox{E[X\textbar{}Y=y]}} \textbf{بهترین پیش‌بینی} \lr{\mbox{X}} است به‌شرط این‌که \lr{\mbox{Y = y}} را مشاهده کرده‌ایم (به معنای میانگین مربعات).
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: مقاومت وابسته به دما}
 
-مقدار یک مقاومت \lr{R} به دما \lr{T} وابسته است. اگر \lr{R\textbar{}T \textasciitilde{} N(1000 + 0.5T, 4)}:
+مقدار یک مقاومت \lr{\mbox{R}} به دما \lr{\mbox{T}} وابسته است. اگر \lr{\mbox{R\textbar{}T \textasciitilde{} N(1000 + 0.5T, 4)}}:
 
 \lr{E[R\textbar{}T=50\ensuremath{^{\circ}}C] = 1000 + 0.5(50) = 1025\ensuremath{\Omega}}
 
@@ -257,9 +257,9 @@
 
 \end{PSbox}
 
-\PSsection{6.9}{مثال‌های \lr{MATLAB}}
+\PSsection{6.9}{مثال‌های \lr{\mbox{MATLAB}}}
 
-\begin{PSbox}[unbreakable]{ex}{مثال 1: مصورسازی \lr{PMF} مشترک}
+\begin{PSbox}[unbreakable]{ex}{مثال 1: مصورسازی \lr{\mbox{PMF}} مشترک}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -373,24 +373,24 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1}
 
-\lr{PDF} مشترک: \lr{f\textsubscript{X,Y}(x,y) = 6(1-y)} برای \lr{0 \ensuremath{\le} x \ensuremath{\le} y \ensuremath{\le} 1} و در جای دیگر صفر.
+\lr{\mbox{PDF}} مشترک: \lr{\mbox{f\textsubscript{X,Y}(x,y) = 6(1-y)}} برای \lr{\mbox{0 \ensuremath{\le} x \ensuremath{\le} y \ensuremath{\le} 1}} و در جای دیگر صفر.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  نرمال‌سازی را بررسی کنید. \lr{(b)} حاشیه‌ای‌ها را بیابید. \lr{(c)} آیا \lr{X} و \lr{Y} مستقل هستند؟ \lr{(d) P(X \textless{} 0.5, Y \textless{} 0.5)} را بیابید.
+  نرمال‌سازی را بررسی کنید. (ب) حاشیه‌ای‌ها را بیابید. (ج) آیا \lr{\mbox{X}} و \lr{\mbox{Y}} مستقل هستند؟ (د) \lr{\mbox{P(X \textless{} 0.5, Y \textless{} 0.5)}} را بیابید.
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
   \lr{\ensuremath{\int}\textsubscript{0}\textsuperscript{1} \ensuremath{\int}\textsubscript{0}\textsuperscript{y} 6(1-y) dx dy = \ensuremath{\int}\textsubscript{0}\textsuperscript{1} 6y(1-y) dy = 6[y\textsuperscript{2}/2 - y\textsuperscript{3}/3]\textsubscript{0}\textsuperscript{1} = 6(1/2 - 1/3) = 1 \PSyes{}}
 \item
-  \lr{f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{x}\textsuperscript{1} 6(1-y) dy = 6[(1-y\textsuperscript{2}/2) - (y)]\textsubscript{x}\textsuperscript{1} = 3(1-x)\textsuperscript{2}}؛ \lr{f\textsubscript{Y}(y) = 6y(1-y)}
+  \lr{f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{x}\textsuperscript{1} 6(1-y) dy = 6[(1-y\textsuperscript{2}/2) - (y)]\textsubscript{x}\textsuperscript{1} = 3(1-x)\textsuperscript{2}}؛ \lr{\mbox{f\textsubscript{Y}(y) = 6y(1-y)}}
 \item
   \lr{f\textsubscript{X,Y} \ensuremath{\neq} f\textsubscript{X} \ensuremath{\cdot} f\textsubscript{Y} \ensuremath{\to}} مستقل نیستند (همچنین تکیه‌گاه مثلثی است، نه مستطیلی)
 \item
@@ -401,29 +401,29 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2}
 
-دو حسگر یک سیگنال را با نویز مستقل اندازه‌گیری می‌کنند. \lr{X = S + N\textsubscript{1}}، \lr{Y = S + N\textsubscript{2}} که در آن \lr{S=5V}، \lr{N\textsubscript{1}\textasciitilde{}N(0,1)}، \lr{N\textsubscript{2}\textasciitilde{}N(0,4)}. آیا \lr{X} و \lr{Y} مستقل هستند؟ \lr{E[X]}، \lr{E[Y]} را بیابید و توضیح دهید چرا \lr{Cov(X,Y) \ensuremath{\neq} 0}.
+دو حسگر یک سیگنال را با نویز مستقل اندازه‌گیری می‌کنند. \lr{\mbox{X = S + N\textsubscript{1}}}، \lr{\mbox{Y = S + N\textsubscript{2}}} که در آن \lr{\mbox{S=5V}}، \lr{\mbox{N\textsubscript{1}\textasciitilde{}N(0,1)}}، \lr{\mbox{N\textsubscript{2}\textasciitilde{}N(0,4)}}. آیا \lr{\mbox{X}} و \lr{\mbox{Y}} مستقل هستند؟ \lr{\mbox{E[X]}}، \lr{\mbox{E[Y]}} را بیابید و توضیح دهید چرا \lr{\mbox{Cov(X,Y) \ensuremath{\neq} 0}}.
 
-\PSsolution{} \lr{X} و \lr{Y} مستقل نیستند زیرا در \lr{S} مشترک‌اند (هرچند نویز مستقل است). \lr{E[X] = E[Y] = 5. Cov(X,Y) = Cov(S+N\textsubscript{1}, S+N\textsubscript{2}) = Var(S) + Cov(S,N\textsubscript{1}) + Cov(N\textsubscript{2},S) + Cov(N\textsubscript{1},N\textsubscript{2})}. چون \lr{S} ثابت است، \lr{Var(S)=0}، بنابراین اگر \lr{S} تصادفی بود، آن‌ها همبسته می‌شدند. با \lr{S} ثابت، \lr{X} و \lr{Y} در این حالت در واقع مستقل هستند. اگر \lr{S} تصادفی با \lr{Var(S) = \ensuremath{\sigma}\textsubscript{S}\textsuperscript{2}} باشد، آنگاه \lr{Cov(X,Y) = \ensuremath{\sigma}\textsubscript{S}\textsuperscript{2}}.
+\PSsolution{} \lr{\mbox{X}} و \lr{\mbox{Y}} مستقل نیستند زیرا در \lr{\mbox{S}} مشترک‌اند (هرچند نویز مستقل است). \lr{\mbox{E[X] = E[Y] = 5}}. \lr{Cov(X,Y) = Cov(S+N\textsubscript{1}, S+N\textsubscript{2}) = Var(S) + Cov(S,N\textsubscript{1}) + Cov(N\textsubscript{2},S) + Cov(N\textsubscript{1},N\textsubscript{2})}. چون \lr{\mbox{S}} ثابت است، \lr{\mbox{Var(S)=0}}، بنابراین اگر \lr{\mbox{S}} تصادفی بود، آن‌ها همبسته می‌شدند. با \lr{\mbox{S}} ثابت، \lr{\mbox{X}} و \lr{\mbox{Y}} در این حالت در واقع مستقل هستند. اگر \lr{\mbox{S}} تصادفی با \lr{Var(S) = \ensuremath{\sigma}\textsubscript{S}\textsuperscript{2}} باشد، آنگاه \lr{Cov(X,Y) = \ensuremath{\sigma}\textsubscript{S}\textsuperscript{2}}.
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3}
 
-با توجه به \lr{PMF} مشترک در جدول بخش \PSnum{6.2}، موارد زیر را بیابید: \lr{(a) P(X\ensuremath{\le}1, Y=2)}، \lr{(b) f\_\{X\textbar{}Y\}(x\textbar{}Y=1)}، \lr{(c) E[X\textbar{}Y=1]}.
+با توجه به \lr{\mbox{PMF}} مشترک در جدول بخش \PSnum{6.2}، موارد زیر را بیابید: (الف) \lr{\mbox{P(X\ensuremath{\le}1, Y=2)}}، (ب) \lr{\mbox{f\textsubscript{X\textbar{}Y}(x\textbar{}Y=1)}}، (ج) \lr{\mbox{E[X\textbar{}Y=1]}}.
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
   \lr{P(X\ensuremath{\le}1, Y=2) = p(0,2) + p(1,2) = 0.10 + 0.20 = 0.30}
 \item
-  \lr{p\textsubscript{X\textbar{}Y}(x\textbar{}1) = p(x,1)/p\textsubscript{Y}(1): p(0\textbar{}1)=0.30/0.50=0.60}، \lr{p(1\textbar{}1)=0.15/0.50=0.30}، \lr{p(2\textbar{}1)=0.05/0.50=0.10}
+  \lr{p\textsubscript{X\textbar{}Y}(x\textbar{}1) = p(x,1)/p\textsubscript{Y}(1)}: \lr{\mbox{p(0\textbar{}1)=0.30/0.50=0.60}}، \lr{\mbox{p(1\textbar{}1)=0.15/0.50=0.30}}، \lr{\mbox{p(2\textbar{}1)=0.05/0.50=0.10}}
 \item
-  \lr{E[X\textbar{}Y=1] = 0(0.60) + 1(0.30) + 2(0.10) = 0.50}
+  \lr{\mbox{E[X\textbar{}Y=1] = 0(0.60) + 1(0.30) + 2(0.10) = 0.50}}
 \end{enumerate}
 
-\emph{ماژول بعدی: {ماژول 7 \lr{—} توابع دو متغیر تصادفی}}\PSbr{}
+\emph{ماژول بعدی: {ماژول 7 \lr{—} توابع دو متغیر تصادفی}}
 
 \end{PSbox}

@@ -6,7 +6,7 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  توزیع‌های مشترک را به \lr{N} متغیر تصادفی تعمیم دهند
+  توزیع‌های مشترک را به \lr{\mbox{N}} متغیر تصادفی تعمیم دهند
 \item
   بردارهای تصادفی را تعریف کنند و با آن‌ها کار کنند
 \item
@@ -19,29 +19,29 @@
 
 \end{PSbox}
 
-\PSsection{10.1}{مقدمه: از 2 به \lr{N} متغیر}
+\PSsection{10.1}{مقدمه: از 2 به \lr{\mbox{N}} متغیر}
 
 سیستم‌های واقعی اغلب شامل چندین کمیت نامعین به‌طور همزمان هستند:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{آرایه حسگر:} \lr{N} حسگر که هر یک یک اندازه‌گیری نویزی تولید می‌کند
+  \textbf{آرایه حسگر:} \lr{\mbox{N}} حسگر که هر یک یک اندازه‌گیری نویزی تولید می‌کند
 \item
-  \textbf{سیستم \lr{MIMO}:} ضرایب کانال \lr{M\ensuremath{\times}N}
+  \textbf{سیستم \lr{\mbox{MIMO}}:} ضرایب کانال \lr{\mbox{M\ensuremath{\times}N}}
 \item
-  \textbf{برآورد پارامتر:} \lr{p} پارامتر نامعلوم
+  \textbf{برآورد پارامتر:} \lr{\mbox{p}} پارامتر نامعلوم
 \item
-  \textbf{نمونه‌های سیگنال:} \lr{N} نمونه نویز متوالی
+  \textbf{نمونه‌های سیگنال:} \lr{\mbox{N}} نمونه نویز متوالی
 \end{itemize}
 
-به چارچوبی برای بردارهای تصادفی \textbf{\lr{N}-بعدی} نیاز داریم.
+به چارچوبی برای بردارهای تصادفی \textbf{\lr{\mbox{N}}-بعدی} نیاز داریم.
 
-\PSsection{10.2}{توزیع‌های مشترک برای \lr{N} متغیر تصادفی}
+\PSsection{10.2}{توزیع‌های مشترک برای \lr{\mbox{N}} متغیر تصادفی}
 
-\PSsubsection{\lr{PDF} مشترک}
+\PSsubsection{\lr{\mbox{PDF}} مشترک}
 
-برای \lr{X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n}}:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) \geq 0, \quad \int\cdots\int f_{X_1,...,X_n} \, dx_1 \cdots dx_n = 1}
+برای \lr{\mbox{X\textsubscript{1}}}، \lr{\mbox{X\textsubscript{2}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}}:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) \geq 0, \quad \int\cdots\int f_{X_1,...,X_n} \, dx_1 \cdots dx_n = 1}
 
 \PSsubsection{توزیع‌های حاشیه‌ای}
 
@@ -53,7 +53,7 @@
 
 \PSsubsection{استقلال متقابل}
 
-\lr{X\textsubscript{1}, …, X\textsubscript{n}} به‌طور متقابل مستقل هستند اگر:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) = \prod_{i=1}^n f_{X_i}(x_i)}
+\lr{\mbox{X\textsubscript{1}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} به‌طور متقابل مستقل هستند اگر:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) = \prod_{i=1}^n f_{X_i}(x_i)}
 
 \PSsection{10.3}{بردارهای تصادفی}
 
@@ -75,9 +75,9 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-خروجی آرایه حسگر & \lr{X\textsubscript{1},…,X\textsubscript{n}} = قرایت‌های حسگر & پردازش آرایه \\
-کانال \lr{MIMO} & \lr{h\textsubscript{1},…,h\textsubscript{n}} = بهره‌های کانال & مخابرات بی‌سیم \\
-بردار نویز & \lr{N\textsubscript{1},…,N\textsubscript{n}} = نمونه‌های نویز & پردازش سیگنال \\
+خروجی آرایه حسگر & \lr{\mbox{X\textsubscript{1},…,X\textsubscript{n}}} = قرایت‌های حسگر & پردازش آرایه \\
+کانال \lr{\mbox{MIMO}} & \lr{\mbox{h\textsubscript{1},…,h\textsubscript{n}}} = بهره‌های کانال & مخابرات بی‌سیم \\
+بردار نویز & \lr{\mbox{N\textsubscript{1},…,N\textsubscript{n}}} = نمونه‌های نویز & پردازش سیگنال \\
 بردار حالت & مکان، سرعت، شتاب & فیلتر کالمن \\
 بردار ویژگی & اندازه‌گیری‌های استخراج‌شده & بازشناسی الگو \\
 \end{longtable}
@@ -96,7 +96,7 @@
 \begin{itemize}
 \tightlist
 \item
-  \lr{E[AX + b] = AE[X] + b = A\ensuremath{\mu} + b}
+  \lr{\mbox{E[AX + b] = AE[X] + b = A\ensuremath{\mu} + b}}
 \item
   خطی‌بودن به بردارها و ماتریس‌ها تعمیم می‌یابد
 \end{itemize}
@@ -107,7 +107,7 @@
 
 \PSdisplay{\boldsymbol{\Sigma} = E[(\mathbf{X} - \boldsymbol{\mu})(\mathbf{X} - \boldsymbol{\mu})^T]}
 
-درایه \lr{(i,j): \ensuremath{\Sigma}\textsubscript{ij} = Cov(X\textsubscript{i}, X\textsubscript{j})}
+درایه \lr{\mbox{(i,j)}}: \lr{\ensuremath{\Sigma}\textsubscript{ij} = Cov(X\textsubscript{i}, X\textsubscript{j})}
 
 \PSdisplay{\boldsymbol{\Sigma} = \begin{bmatrix} \sigma_1^2 & \PSmtext{Cov}(X_1,X_2) & \cdots & \PSmtext{Cov}(X_1,X_n) \\ \PSmtext{Cov}(X_2,X_1) & \sigma_2^2 & \cdots & \PSmtext{Cov}(X_2,X_n) \\ \vdots & & \ddots & \vdots \\ \PSmtext{Cov}(X_n,X_1) & \cdots & \cdots & \sigma_n^2 \end{bmatrix}}
 
@@ -121,13 +121,13 @@
 \item
   \textbf{متقارن:} \lr{\ensuremath{\Sigma} = \ensuremath{\Sigma}\textsuperscript{T}}
 \item
-  \textbf{نیم‌معین مثبت:} \lr{v\textsuperscript{T}\ensuremath{\Sigma}v \ensuremath{\ge} 0} برای تمام \lr{v}
+  \textbf{نیم‌معین مثبت:} \lr{\mbox{v\textsuperscript{T}\ensuremath{\Sigma}v \ensuremath{\ge} 0}} برای تمام \lr{\mbox{v}}
 \item
   \textbf{قطر = واریانس‌ها:} \lr{\ensuremath{\Sigma}\textsubscript{ii} = Var(X\textsubscript{i})}
 \item
   \textbf{غیرقطری = کوواریانس‌ها:} \lr{\ensuremath{\Sigma}\textsubscript{ij} = Cov(X\textsubscript{i}, X\textsubscript{j})}
 \item
-  \textbf{مؤلفه‌های مستقل \lr{\ensuremath{\to} \ensuremath{\Sigma}} قطری}
+  \textbf{مؤلفه‌های مستقل \lr{\mbox{\ensuremath{\to} \ensuremath{\Sigma}}} قطری}
 \end{enumerate}
 
 \PSsubsection{فرمول جایگزین}
@@ -138,11 +138,11 @@
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-\lr{X \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\Sigma})} دارای \lr{PDF} زیر است:
+\lr{X \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\Sigma})} دارای \lr{\mbox{PDF}} زیر است:
 
 \PSdisplay{f_\mathbf{X}(\mathbf{x}) = \frac{1}{(2\pi)^{n/2}|\boldsymbol{\Sigma}|^{1/2}} \exp\left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1}(\mathbf{x}-\boldsymbol{\mu})\right)}
 
-که در آن \lr{\textbar{}}\lr{\ensuremath{\Sigma}}\lr{\textbar{}} = دترمینان \lr{\ensuremath{\Sigma}}.
+که در آن \lr{\mbox{\textbar{}\ensuremath{\Sigma}\textbar{}}} = دترمینان \lr{\mbox{\ensuremath{\Sigma}}}.
 
 \end{PSbox}
 
@@ -160,7 +160,7 @@
 \item
   \textbf{ناهمبسته = مستقل} (ویژه گاوسی!)
 \item
-  \textbf{کاملاً مشخص‌شده} با \lr{\ensuremath{\mu}} و \lr{\ensuremath{\Sigma}} (فقط 2 پارامتر برای هر متغیر به‌علاوه همبستگی‌ها لازم است)
+  \textbf{کاملاً مشخص‌شده} با \lr{\mbox{\ensuremath{\mu}}} و \lr{\mbox{\ensuremath{\Sigma}}} (فقط 2 پارامتر برای هر متغیر به‌علاوه همبستگی‌ها لازم است)
 \end{enumerate}
 
 \PSsubsection{چرا این‌قدر مهم است؟}
@@ -168,7 +168,7 @@
 \begin{itemize}
 \tightlist
 \item
-  قضیه حد مرکزی: جمع‌های بسیاری از متغیرهای تصادفی \lr{\ensuremath{\to}} گاوسی چندمتغیره
+  قضیه حد مرکزی: جمع‌های بسیاری از متغیرهای تصادفی \lr{\mbox{\ensuremath{\to}}} گاوسی چندمتغیره
 \item
   بردارهای نویز حرارتی گاوسی چندمتغیره هستند
 \item
@@ -179,43 +179,43 @@
 
 \PSsubsection{حالت دوبعدی (گاوسی دوبعدی)}
 
-برای \lr{n=2} با \lr{\ensuremath{\mu} = [0,0]\textsuperscript{T}}، \lr{\ensuremath{\sigma}\textsubscript{1} = \ensuremath{\sigma}\textsubscript{2} = 1}:
+برای \lr{\mbox{n=2}} با \lr{\mbox{\ensuremath{\mu} = [0,0]\textsuperscript{T}}}، \lr{\ensuremath{\sigma}\textsubscript{1} = \ensuremath{\sigma}\textsubscript{2} = 1}:
 
 \PSdisplay{f(x,y) = \frac{1}{2\pi\sqrt{1-\rho^2}} \exp\left(-\frac{x^2 - 2\rho xy + y^2}{2(1-\rho^2)}\right)}
 
-خطوط تراز \textbf{بیضی} هستند (در حالت \lr{\ensuremath{\rho} \ensuremath{\neq} 0} کج شده‌اند).
+خطوط تراز \textbf{بیضی} هستند (در حالت \lr{\mbox{\ensuremath{\rho} \ensuremath{\neq} 0}} کج شده‌اند).
 
 \PSsection{10.7}{تبدیل‌های خطی بردارهای تصادفی}
 
-\PSsubsection{تبدیل \lr{Y = AX + b}}
+\PSsubsection{تبدیل \lr{\mbox{Y = AX + b}}}
 
-اگر \lr{X} یک بردار تصادفی با میانگین \lr{\ensuremath{\mu}\textsubscript{X}} و کوواریانس \lr{\ensuremath{\Sigma}\textsubscript{X}} باشد:
+اگر \lr{\mbox{X}} یک بردار تصادفی با میانگین \lr{\mbox{\ensuremath{\mu}\textsubscript{X}}} و کوواریانس \lr{\mbox{\ensuremath{\Sigma}\textsubscript{X}}} باشد:
 
 \PSdisplay{E[\mathbf{Y}] = A\boldsymbol{\mu}_X + \mathbf{b}}\PSdisplay{\boldsymbol{\Sigma}_Y = A\boldsymbol{\Sigma}_X A^T}
 
 \PSsubsection{کاربردهای مهندسی}
 
-\textbf{شکل‌دهی پرتو \lr{(Beamforming)}:} خروجی \lr{y = w\textsuperscript{T}X} (بردار وزن اعمال‌شده به آرایه حسگر)
+\textbf{شکل‌دهی پرتو \lr{\mbox{(Beamforming)}}:} خروجی \lr{\mbox{y = w\textsuperscript{T}X}} (بردار وزن اعمال‌شده به آرایه حسگر)
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{E[y] = w\textsuperscript{T}\ensuremath{\mu}}
+  \lr{\mbox{E[y] = w\textsuperscript{T}\ensuremath{\mu}}}
 \item
-  \lr{Var(y) = w\textsuperscript{T}\ensuremath{\Sigma}w}
+  \lr{\mbox{Var(y) = w\textsuperscript{T}\ensuremath{\Sigma}w}}
 \end{itemize}
 
-\textbf{سفیدسازی:} ماتریس \lr{W} را بیابید که در آن \lr{W\ensuremath{\Sigma}W\textsuperscript{T} = I} (داده را ناهمبسته می‌کند)
+\textbf{سفیدسازی:} ماتریس \lr{\mbox{W}} را بیابید که در آن \lr{\mbox{W\ensuremath{\Sigma}W\textsuperscript{T} = I}} (داده را ناهمبسته می‌کند)
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{W = \ensuremath{\Sigma}\textsuperscript{-1/2}}
+  \lr{\mbox{W = \ensuremath{\Sigma}\textsuperscript{-1/2}}}
 \end{itemize}
 
-\textbf{تحلیل مؤلفه‌های اصلی:} چرخش برای قطری‌کردن \lr{\ensuremath{\Sigma}}
+\textbf{تحلیل مؤلفه‌های اصلی:} چرخش برای قطری‌کردن \lr{\mbox{\ensuremath{\Sigma}}}
 
-\PSsection{10.8}{مثال‌های \lr{MATLAB}}
+\PSsection{10.8}{مثال‌های \lr{\mbox{MATLAB}}}
 
 \begin{PSbox}[unbreakable]{ex}{مثال 1: تولید گاوسی چندمتغیره}
 
@@ -318,43 +318,43 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1}
 
-بردار تصادفی \lr{X = [X\textsubscript{1}, X\textsubscript{2}, X\textsubscript{3}]\textsuperscript{T}} با \lr{\ensuremath{\mu} = [1, 0, -1]\textsuperscript{T}} و ماتریس کوواریانس \lr{\ensuremath{\Sigma} = [4 1 0; 1 2 -1; 0 -1 3]}.
+بردار تصادفی \lr{X = [X\textsubscript{1}, X\textsubscript{2}, X\textsubscript{3}]\textsuperscript{T}} با \lr{\mbox{\ensuremath{\mu} = [1, 0, -1]\textsuperscript{T}}} و ماتریس کوواریانس \lr{\mbox{\ensuremath{\Sigma} = [4 1 0; 1 2 -1; 0 -1 3]}}.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{Var(X\textsubscript{1} + X\textsubscript{2} + X\textsubscript{3})} را بیابید. \lr{(b) Cov(X\textsubscript{1}, X\textsubscript{2}+X\textsubscript{3})} را بیابید. \lr{(c)} آیا \lr{X\textsubscript{1}} و \lr{X\textsubscript{3}} ناهمبسته هستند؟
+  \lr{Var(X\textsubscript{1} + X\textsubscript{2} + X\textsubscript{3})} را بیابید. (ب) \lr{Cov(X\textsubscript{1}, X\textsubscript{2}+X\textsubscript{3})} را بیابید. (ج) آیا \lr{\mbox{X\textsubscript{1}}} و \lr{\mbox{X\textsubscript{3}}} ناهمبسته هستند؟
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{Var(X\textsubscript{1}+X\textsubscript{2}+X\textsubscript{3}) = 1\textsuperscript{T}\ensuremath{\Sigma}1 = 4+2+3 + 2(1) + 2(0) + 2(-1) = 9 + 0 = 9}\PSbr{}توجه: = \lr{\ensuremath{\Sigma}\textsubscript{ij}} تمام درایه‌ها = \lr{4+1+0+1+2+(-1)+0+(-1)+3 = 9}
+  \lr{Var(X\textsubscript{1}+X\textsubscript{2}+X\textsubscript{3}) = 1\textsuperscript{T}\ensuremath{\Sigma}1 = 4+2+3 + 2(1) + 2(0) + 2(-1) = 9 + 0 = 9}\PSbr{}توجه: = \lr{\mbox{\ensuremath{\Sigma}\textsubscript{ij}}} تمام درایه‌ها = \lr{\mbox{4+1+0+1+2+(-1)+0+(-1)+3 = 9}}
 \item
   \lr{Cov(X\textsubscript{1}, X\textsubscript{2}+X\textsubscript{3}) = Cov(X\textsubscript{1},X\textsubscript{2}) + Cov(X\textsubscript{1},X\textsubscript{3}) = 1 + 0 = 1}
 \item
-  \lr{Cov(X\textsubscript{1},X\textsubscript{3}) = 0}، بنابراین بله، \lr{X\textsubscript{1}} و \lr{X\textsubscript{3}} ناهمبسته هستند.
+  \lr{\mbox{Cov(X\textsubscript{1},X\textsubscript{3}) = 0}}، بنابراین بله، \lr{\mbox{X\textsubscript{1}}} و \lr{\mbox{X\textsubscript{3}}} ناهمبسته هستند.
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2}
 
-\lr{X \textasciitilde{} N(0, \ensuremath{\Sigma})} با \lr{\ensuremath{\Sigma} = [1 \ensuremath{\rho}; \ensuremath{\rho} 1]}. توزیع شرطی \lr{X\textsubscript{1}\textbar{}X\textsubscript{2}=x\textsubscript{2}} را بیابید.
+\lr{\mbox{X \textasciitilde{} N(0, \ensuremath{\Sigma})}} با \lr{\ensuremath{\Sigma} = [1 \ensuremath{\rho}; \ensuremath{\rho} 1]}. توزیع شرطی \lr{X\textsubscript{1}\textbar{}X\textsubscript{2}=x\textsubscript{2}} را بیابید.
 
-\PSsolution{} برای گاوسی دوبعدی:\PSbr{}\lr{X\textsubscript{1}\textbar{}X\textsubscript{2}=x\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1} + \ensuremath{\rho}(\ensuremath{\sigma}\textsubscript{1}/\ensuremath{\sigma}\textsubscript{2})(x\textsubscript{2}-\ensuremath{\mu}\textsubscript{2}), \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}(1-\ensuremath{\rho}\textsuperscript{2}))}\PSbr{}= \lr{N(\ensuremath{\rho}x\textsubscript{2}, 1-\ensuremath{\rho}\textsuperscript{2})}
+\PSsolution{} برای گاوسی دوبعدی:\PSbr{}\lr{X\textsubscript{1}\textbar{}X\textsubscript{2}=x\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1} + \ensuremath{\rho}(\ensuremath{\sigma}\textsubscript{1}/\ensuremath{\sigma}\textsubscript{2})(x\textsubscript{2}-\ensuremath{\mu}\textsubscript{2}), \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}(1-\ensuremath{\rho}\textsuperscript{2}))}\PSbr{}\lr{= N(\ensuremath{\rho}x\textsubscript{2}, 1-\ensuremath{\rho}\textsuperscript{2})}
 
-میانگین شرطی تابعی خطی از \lr{x\textsubscript{2}} است و واریانس شرطی با ضریب \lr{(1-\ensuremath{\rho}\textsuperscript{2})} کاهش می‌یابد.
+میانگین شرطی تابعی خطی از \lr{\mbox{x\textsubscript{2}}} است و واریانس شرطی با ضریب \lr{\mbox{(1-\ensuremath{\rho}\textsuperscript{2})}} کاهش می‌یابد.
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3}
 
-کد \lr{MATLAB} را برای تولید یک بردار گاوسی سه‌بعدی با \lr{\ensuremath{\mu}} و \lr{\ensuremath{\Sigma}} معلوم، محاسبه کوواریانس نمونه و بررسی آن بنویسید.
+کد \lr{\mbox{MATLAB}} را برای تولید یک بردار گاوسی سه‌بعدی با \lr{\mbox{\ensuremath{\mu}}} و \lr{\mbox{\ensuremath{\Sigma}}} معلوم، محاسبه کوواریانس نمونه و بررسی آن بنویسید.
 
 \PSsolution{} 
 
@@ -371,6 +371,6 @@
 \end{Highlighting}
 \end{Shaded}
 
-\emph{ماژول بعدی: {ماژول 11 \lr{—} قضیه حد مرکزی}}\PSbr{}
+\emph{ماژول بعدی: {ماژول 11 \lr{—} قضیه حد مرکزی}}
 
 \end{PSbox}

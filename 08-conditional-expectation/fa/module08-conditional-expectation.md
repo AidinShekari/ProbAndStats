@@ -247,7 +247,7 @@ title('Conditional Expectation');
 - نوع A (احتمال 0.7): E[delay|A] = 5ms، Var(delay|A) = 2
 - نوع B (احتمال 0.3): E[delay|B] = 20ms، Var(delay|B) = 25
 
-موارد زیر را بیابید: (a) E[delay]، (b) Var(delay).
+موارد زیر را بیابید: (الف) E[delay]، (ب) Var(delay).
 
 **حل:**
 (a) E[D] = 0.7(5) + 0.3(20) = 3.5 + 6 = 9.5 ms

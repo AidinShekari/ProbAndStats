@@ -23,23 +23,23 @@
 
 \PSsection{16.1}{مخابرات}
 
-\PSsubsection{\PSnum{16.1.1} برآورد \lr{BER} و بازه‌های اطمینان}
+\PSsubsection{\PSnum{16.1.1} برآورد \lr{\mbox{BER}} و بازه‌های اطمینان}
 
 \textbf{مسیله:} برآورد نرخ خطای بیت یک لینک مخابراتی.
 
-\textbf{مدل:} هر بیت یک آزمایش برنولی با احتمال خطای \lr{p} است (همان \lr{BER}).
+\textbf{مدل:} هر بیت یک آزمایش برنولی با احتمال خطای \lr{\mbox{p}} است (همان \lr{\mbox{BER}}).
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{n} بیت ارسال‌شده، \lr{k} خطا مشاهده‌شده
+  \lr{\mbox{n}} بیت ارسال‌شده، \lr{\mbox{k}} خطا مشاهده‌شده
 \item
-  \lr{\ensuremath{\hat{p}} = k/n} (برآوردگر \lr{MLE} برای \lr{BER})
+  \lr{\mbox{\ensuremath{\hat{p}} = k/n}} (برآوردگر \lr{\mbox{MLE}} برای \lr{\mbox{BER}})
 \item
-  بازه اطمینان \lr{95\%: \ensuremath{\hat{p}} \ensuremath{\pm} 1.96\ensuremath{\surd}(\ensuremath{\hat{p}}(1-\ensuremath{\hat{p}})/n)}
+  بازه اطمینان 95\%: \lr{\ensuremath{\hat{p}} \ensuremath{\pm} 1.96\ensuremath{\surd}(\ensuremath{\hat{p}}(1-\ensuremath{\hat{p}})/n)}
 \end{itemize}
 
-\textbf{\lr{MATLAB}: شبیه‌سازی \lr{BER} و بازه اطمینان}
+\textbf{\lr{\mbox{MATLAB}}: شبیه‌سازی \lr{\mbox{BER}} و بازه اطمینان}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -67,30 +67,30 @@
 \end{Highlighting}
 \end{Shaded}
 
-\PSsubsection{\PSnum{16.1.2} مدل‌سازی نویز \lr{AWGN}}
+\PSsubsection{\PSnum{16.1.2} مدل‌سازی نویز \lr{\mbox{AWGN}}}
 
-نویز گاوسی سفید جمع‌شونده \lr{(AWGN)} مدل نویز بنیادی است:
+نویز گاوسی سفید جمع‌شونده \lr{\mbox{(AWGN)}} مدل نویز بنیادی است:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{توزیع:} \lr{N(0, N\textsubscript{0}/2)} در هر بُعد
+  \textbf{توزیع:} \lr{\mbox{N(0, N\textsubscript{0}/2)}} در هر بُعد
 \item
-  \textbf{چرا گاوسی؟} \lr{CLT} \lr{—} نویز حرارتی جمع سهم‌های بسیاری از الکترون‌ها است
+  \textbf{چرا گاوسی؟} \lr{\mbox{CLT}} \lr{—} نویز حرارتی جمع سهم‌های بسیاری از الکترون‌ها است
 \item
-  \textbf{مشخصه‌سازی:} کاملاً با چگالی طیفی توان \lr{N\textsubscript{0}} یا واریانس \lr{\ensuremath{\sigma}\textsuperscript{2} = N\textsubscript{0}B} توصیف می‌شود (\lr{B} = پهنای‌باند)
+  \textbf{مشخصه‌سازی:} کاملاً با چگالی طیفی توان \lr{\mbox{N\textsubscript{0}}} یا واریانس \lr{\ensuremath{\sigma}\textsuperscript{2} = N\textsubscript{0}B} توصیف می‌شود (\lr{\mbox{B}} = پهنای‌باند)
 \end{itemize}
 
 \PSsubsection{\PSnum{16.1.3} کانال محوشدگی رایلی}
 
-\textbf{مدل:} ضریب کانال \lr{h = h\textsubscript{I} + j\ensuremath{\cdot}h\textsubscript{Q}} که در آن \lr{h\textsubscript{I}, h\textsubscript{Q} \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2})} و مستقل هستند.
+\textbf{مدل:} ضریب کانال \lr{h = h\textsubscript{I} + j\ensuremath{\cdot}h\textsubscript{Q}} که در آن \lr{\mbox{h\textsubscript{I}}}، \lr{h\textsubscript{Q} \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2})} و مستقل هستند.
 
 \begin{itemize}
 \tightlist
 \item
-  پوش \lr{\textbar{}}\lr{h\textbar{} \textasciitilde{} Rayleigh(\ensuremath{\sigma})}
+  پوش \lr{\textbar{}h\textbar{} \textasciitilde{} Rayleigh(\ensuremath{\sigma})}
 \item
-  توان \lr{\textbar{}}\lr{h\textbar{}\textsuperscript{2} \textasciitilde{} Exponential(1/(2\ensuremath{\sigma}\textsuperscript{2}))}
+  توان \lr{\textbar{}h\textbar{}\textsuperscript{2} \textasciitilde{} Exponential(1/(2\ensuremath{\sigma}\textsuperscript{2}))}
 \item
   \textbf{احتمال قطع:} \lr{P(\textbar{}h\textbar{}\textsuperscript{2} \textless{} \ensuremath{\gamma}\textsubscript{th}) = 1 - exp(-\ensuremath{\gamma}\textsubscript{th}/(2\ensuremath{\sigma}\textsuperscript{2}))}
 \end{itemize}
@@ -121,33 +121,33 @@
 
 \PSsubsection{\PSnum{16.1.4} محوشدگی رایسی}
 
-هنگامی که مؤلفه خط دید \lr{(LOS)} وجود دارد:
+هنگامی که مؤلفه خط دید \lr{\mbox{(LOS)}} وجود دارد:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{h = h\textsubscript{LOS} + h\textsubscript{scatter}}
+  \lr{\mbox{h = h\textsubscript{LOS} + h\textsubscript{scatter}}}
 \item
-  \lr{\textbar{}}\lr{h\textbar{} \textasciitilde{} Rician(\ensuremath{\nu}, \ensuremath{\sigma})} که در آن \lr{K = \ensuremath{\nu}\textsuperscript{2}/(2\ensuremath{\sigma}\textsuperscript{2})} ضریب \lr{K} است
+  \lr{\textbar{}h\textbar{} \textasciitilde{} Rician(\ensuremath{\nu}, \ensuremath{\sigma})} که در آن \lr{K = \ensuremath{\nu}\textsuperscript{2}/(2\ensuremath{\sigma}\textsuperscript{2})} ضریب \lr{\mbox{K}} است
 \end{itemize}
 
-ضریب \lr{K: K = 0} (رایلی) \lr{\ensuremath{\to} K = \ensuremath{\infty}} (بدون محوشدگی، \lr{AWGN})
+ضریب \lr{\mbox{K}}: \lr{\mbox{K = 0}} (رایلی) \lr{\mbox{\ensuremath{\to} K = \ensuremath{\infty}}} (بدون محوشدگی، \lr{\mbox{AWGN}})
 
-\PSsubsection{\PSnum{16.1.5} آماره‌های \lr{SNR}}
+\PSsubsection{\PSnum{16.1.5} آماره‌های \lr{\mbox{SNR}}}
 
-\textbf{\lr{SNR} لحظه‌ای:} \lr{\ensuremath{\gamma} = \textbar{}h\textbar{}\textsuperscript{2} \ensuremath{\times} (E\textsubscript{s}/N\textsubscript{0})}
+\textbf{\lr{\mbox{SNR}} لحظه‌ای:} \lr{\ensuremath{\gamma} = \textbar{}h\textbar{}\textsuperscript{2} \ensuremath{\times} (E\textsubscript{s}/N\textsubscript{0})}
 
-برای رایلی: \lr{\ensuremath{\gamma} \textasciitilde{} Exponential(\ensuremath{\bar{\gamma}})} که در آن \lr{\ensuremath{\bar{\gamma}} = SNR} میانگین
+برای رایلی: \lr{\ensuremath{\gamma} \textasciitilde{} Exponential(\ensuremath{\bar{\gamma}})} که در آن \lr{\mbox{\ensuremath{\bar{\gamma}} = SNR}} میانگین
 
-\textbf{میانگین \lr{BER} در محوشدگی:}\PSdisplay{\bar{P}_e = \int_0^\infty P_e(\gamma) \cdot f_\gamma(\gamma) \, d\gamma}
+\textbf{میانگین \lr{\mbox{BER}} در محوشدگی:}\PSdisplay{\bar{P}_e = \int_0^\infty P_e(\gamma) \cdot f_\gamma(\gamma) \, d\gamma}
 
-برای \lr{BPSK} در کانال رایلی: \lr{\ensuremath{\bar{P}}\textsubscript{e} = (1/2)(1 - \ensuremath{\surd}(\ensuremath{\bar{\gamma}}/(1+\ensuremath{\bar{\gamma}})))}
+برای \lr{\mbox{BPSK}} در کانال رایلی: \lr{\ensuremath{\bar{P}}\textsubscript{e} = (1/2)(1 - \ensuremath{\surd}(\ensuremath{\bar{\gamma}}/(1+\ensuremath{\bar{\gamma}})))}
 
 \PSsection{16.2}{پردازش سیگنال}
 
 \PSsubsection{\PSnum{16.2.1} مشخصه‌سازی نویز اندازه‌گیری}
 
-\textbf{مسیله:} مشخصه‌سازی نویز در سیگنال اندازه‌گیری‌شده \lr{x(t) = s(t) + n(t)}.
+\textbf{مسیله:} مشخصه‌سازی نویز در سیگنال اندازه‌گیری‌شده \lr{\mbox{x(t) = s(t) + n(t)}}.
 
 \textbf{رویکرد:}
 
@@ -157,11 +157,11 @@
 \item
   نمونه‌های فقط‌نویز (در غیاب سیگنال) را جمع کنید
 \item
-  آماره‌های نویز را برآورد کنید: \lr{\ensuremath{\hat{\mu}}\textsubscript{n}}، \lr{\ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{n}}
+  آماره‌های نویز را برآورد کنید: \lr{\mbox{\ensuremath{\hat{\mu}}\textsubscript{n}}}، \lr{\ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{n}}
 \item
-  گاوسی‌بودن را آزمون کنید (هیستوگرام، نمودار \lr{QQ})
+  گاوسی‌بودن را آزمون کنید (هیستوگرام، نمودار \lr{\mbox{QQ}})
 \item
-  \lr{SNR} را محاسبه کنید: \lr{SNR = P\textsubscript{signal} / \ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{n}}
+  \lr{\mbox{SNR}} را محاسبه کنید: \lr{SNR = P\textsubscript{signal} / \ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{n}}
 \end{enumerate}
 
 \tcbset{PScodemode/.style={unbreakable}}
@@ -200,7 +200,7 @@
 
 \textbf{مسیله:} آشکارسازی یک سیگنال معلوم در نویز.
 
-\textbf{روش:} سیگنال دریافتی را با الگوی معلوم همبسته کنید. تحت \lr{H\textsubscript{0}} (فقط نویز)، خروجی همبسته‌ساز توزیع معلومی دارد \lr{\ensuremath{\to}} آستانه را تعیین کنید.
+\textbf{روش:} سیگنال دریافتی را با الگوی معلوم همبسته کنید. تحت \lr{\mbox{H\textsubscript{0}}} (فقط نویز)، خروجی همبسته‌ساز توزیع معلومی دارد \lr{\mbox{\ensuremath{\to}}} آستانه را تعیین کنید.
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -235,19 +235,19 @@
 
 \PSsubsection{\PSnum{16.3.1} مدل‌سازی رواداری قطعه}
 
-\textbf{مسیله:} مقاومت‌ها مقدار نامی \lr{R\textsubscript{0}} با رواداری ساخت دارند.
+\textbf{مسیله:} مقاومت‌ها مقدار نامی \lr{\mbox{R\textsubscript{0}}} با رواداری ساخت دارند.
 
-\textbf{مدل:} \lr{R \textasciitilde{} N(R\textsubscript{0}, \ensuremath{\sigma}\textsubscript{R}\textsuperscript{2})} که در آن \lr{\ensuremath{\sigma}\textsubscript{R}} به رده رواداری بستگی دارد.
+\textbf{مدل:} \lr{R \textasciitilde{} N(R\textsubscript{0}, \ensuremath{\sigma}\textsubscript{R}\textsuperscript{2})} که در آن \lr{\mbox{\ensuremath{\sigma}\textsubscript{R}}} به رده رواداری بستگی دارد.
 
-برای رواداری \lr{\ensuremath{\pm}5\%} (\PSnum{99.7\%} در محدوده): \lr{3\ensuremath{\sigma} = 0.05R\textsubscript{0} \ensuremath{\to} \ensuremath{\sigma} = 0.0167R\textsubscript{0}}
+برای رواداری \lr{\mbox{\ensuremath{\pm}5\%}} (\PSnum{99.7\%} در محدوده): \lr{3\ensuremath{\sigma} = 0.05R\textsubscript{0} \ensuremath{\to} \ensuremath{\sigma} = 0.0167R\textsubscript{0}}
 
 \PSsubsection{\PSnum{16.3.2} تحلیل مدار با مونت‌کارلو}
 
-\textbf{مسیله:} یک تقسیم‌کننده ولتاژ از \lr{R\textsubscript{1}} و \lr{R\textsubscript{2}} استفاده می‌کند. توزیع ولتاژ خروجی چیست؟
+\textbf{مسیله:} یک تقسیم‌کننده ولتاژ از \lr{\mbox{R\textsubscript{1}}} و \lr{\mbox{R\textsubscript{2}}} استفاده می‌کند. توزیع ولتاژ خروجی چیست؟
 
 \lr{V\textsubscript{out} = V\textsubscript{in} \ensuremath{\times} R\textsubscript{2}/(R\textsubscript{1} + R\textsubscript{2})}
 
-با تصادفی‌بودن \lr{R\textsubscript{1}} و \lr{R\textsubscript{2}: V\textsubscript{out}} یک متغیر تصادفی است!
+با تصادفی‌بودن \lr{\mbox{R\textsubscript{1}}} و \lr{\mbox{R\textsubscript{2}}}: \lr{\mbox{V\textsubscript{out}}} یک متغیر تصادفی است!
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -279,11 +279,11 @@
 
 \PSsubsection{\PSnum{16.3.3} انتشار عدم‌قطعیت اندازه‌گیری}
 
-اگر \lr{Z = f(X, Y)} و \lr{X}، \lr{Y} عدم‌قطعیت‌های کوچک داشته باشند:
+اگر \lr{\mbox{Z = f(X, Y)}} و \lr{\mbox{X}}، \lr{\mbox{Y}} عدم‌قطعیت‌های کوچک داشته باشند:
 
 \PSdisplay{\sigma_Z^2 \approx \left(\frac{\partial f}{\partial X}\right)^2 \sigma_X^2 + \left(\frac{\partial f}{\partial Y}\right)^2 \sigma_Y^2}
 
-\textbf{مثال:} توان \lr{P = V\textsuperscript{2}/R. \ensuremath{\sigma}\textsubscript{P}\textsuperscript{2} \ensuremath{\approx} (2V/R)\textsuperscript{2}\ensuremath{\sigma}\textsubscript{V}\textsuperscript{2} + (V\textsuperscript{2}/R\textsuperscript{2})\textsuperscript{2}\ensuremath{\sigma}\textsubscript{R}\textsuperscript{2}}
+\textbf{مثال:} توان \lr{\mbox{P = V\textsuperscript{2}/R}}. \lr{\ensuremath{\sigma}\textsubscript{P}\textsuperscript{2} \ensuremath{\approx} (2V/R)\textsuperscript{2}\ensuremath{\sigma}\textsubscript{V}\textsuperscript{2} + (V\textsuperscript{2}/R\textsuperscript{2})\textsuperscript{2}\ensuremath{\sigma}\textsubscript{R}\textsuperscript{2}}
 
 \PSsection{16.4}{سیستم‌های قدرت}
 
@@ -291,7 +291,7 @@
 
 \textbf{مسیله:} بار اوج نامعین است. مدل: \lr{L \textasciitilde{} N(\ensuremath{\mu}\textsubscript{L}, \ensuremath{\sigma}\textsubscript{L}\textsuperscript{2})}
 
-پرسش طراحی: چه ظرفیت \lr{C} تضمین می‌کند \lr{P(\rl{بار} \textgreater{} \rl{ظرفیت}) \textless{} 0.01}؟
+پرسش طراحی: چه ظرفیت \lr{\mbox{C}} تضمین می‌کند \lr{P(\rl{بار} \textgreater{} \rl{ظرفیت}) \textless{} 0.01}؟
 
 \lr{C = \ensuremath{\mu}\textsubscript{L} + 2.326\ensuremath{\sigma}\textsubscript{L}} (برای احتمال تخطی 1\%)
 
@@ -345,16 +345,16 @@
 
 \textbf{مسیله:} یک سیستم کنترل از قرایت‌های نویزی حسگر استفاده می‌کند.
 
-اندازه‌گیری: \lr{y(k) = x(k) + n(k)} که در آن \lr{n \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}\textsubscript{n})}
+اندازه‌گیری: \lr{\mbox{y(k) = x(k) + n(k)}} که در آن \lr{n \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}\textsubscript{n})}
 
-کنترل‌کننده روی \lr{y(k)} عمل می‌کند \lr{\ensuremath{\to}} خطای ردیابی شامل سهم نویز می‌شود.
+کنترل‌کننده روی \lr{\mbox{y(k)}} عمل می‌کند \lr{\mbox{\ensuremath{\to}}} خطای ردیابی شامل سهم نویز می‌شود.
 
 \textbf{رویکردهای حل:}
 
 \begin{itemize}
 \tightlist
 \item
-  میانگین‌گیری (فیلتر پایین‌گذر): نویز را به اندازه \lr{\ensuremath{\surd}n} کاهش می‌دهد
+  میانگین‌گیری (فیلتر پایین‌گذر): نویز را به اندازه \lr{\mbox{\ensuremath{\surd}n}} کاهش می‌دهد
 \item
   فیلتر کالمن: تلفیق بهینه پیش‌بینی مدل و اندازه‌گیری
 \end{itemize}
@@ -388,9 +388,9 @@
 
 \PSsubsection{\PSnum{16.5.2} عدم‌قطعیت پارامتر}
 
-مدل سیستم: \lr{G(s) = K/(\ensuremath{\tau}s + 1)} که در آن \lr{K} و \lr{\ensuremath{\tau}} نامعین هستند.
+مدل سیستم: \lr{\mbox{G(s) = K/(\ensuremath{\tau}s + 1)}} که در آن \lr{\mbox{K}} و \lr{\mbox{\ensuremath{\tau}}} نامعین هستند.
 
-رویکرد مونت‌کارلو: \lr{K} و \lr{\ensuremath{\tau}} را از توزیع‌هایشان نمونه‌گیری کنید، پاسخ سیستم را بارها شبیه‌سازی کنید و آماره‌های خروجی را محاسبه کنید.
+رویکرد مونت‌کارلو: \lr{\mbox{K}} و \lr{\mbox{\ensuremath{\tau}}} را از توزیع‌هایشان نمونه‌گیری کنید، پاسخ سیستم را بارها شبیه‌سازی کنید و آماره‌های خروجی را محاسبه کنید.
 
 \PSsection{16.6}{ارتباط با یادگیری ماشین / هوش مصنوعی}
 
@@ -403,7 +403,7 @@
 \item
   داده آزمون = نمونه مستقل برای اعتبارسنجی
 \item
-  فرض \lr{i.i.d}. زیربنای بیشتر نظریه یادگیری ماشین است
+  فرض \lr{\mbox{i.i.d}}. زیربنای بیشتر نظریه یادگیری ماشین است
 \end{itemize}
 
 \PSsubsection{\PSnum{16.6.2} برآورد به‌عنوان بنیاد یادگیری ماشین}
@@ -411,9 +411,9 @@
 \begin{itemize}
 \tightlist
 \item
-  رگرسیون خطی = \lr{MLE} تحت فرض نویز گاوسی
+  رگرسیون خطی = \lr{\mbox{MLE}} تحت فرض نویز گاوسی
 \item
-  آموزش شبکه عصبی = \lr{MLE} (یا \lr{MAP}) برای پارامترهای مدل
+  آموزش شبکه عصبی = \lr{\mbox{MLE}} (یا \lr{\mbox{MAP}}) برای پارامترهای مدل
 \item
   کمینه‌سازی تابع هزینه = اصل بیشینه درست‌نمایی
 \end{itemize}
@@ -423,7 +423,7 @@
 \begin{itemize}
 \tightlist
 \item
-  مدل‌های مولد: یادگیری مستقیم \lr{P(X)}
+  مدل‌های مولد: یادگیری مستقیم \lr{\mbox{P(X)}}
 \item
   مدل‌های مخلوط گاوسی: جمع وزنی گاوسی‌ها
 \item
@@ -434,7 +434,7 @@
 
 \PSdisplay{\PSmtext{Test Error} = \PSmtext{Bias}^2 + \PSmtext{Variance} + \PSmtext{Irreducible Noise}}
 
-این دقیقاً همان تجزیه \lr{MSE} از نظریه برآورد است (ماژول 13)!
+این دقیقاً همان تجزیه \lr{\mbox{MSE}} از نظریه برآورد است (ماژول 13)!
 
 \begin{itemize}
 \tightlist
@@ -453,12 +453,12 @@
 \item
   بازه‌های اطمینان برای پیش‌بینی‌های مدل
 \item
-  شبکه‌های عصبی بیزی: توزیع پسین روی وزن‌ها \lr{\ensuremath{\to}} عدم‌قطعیت پیش‌بینی
+  شبکه‌های عصبی بیزی: توزیع پسین روی وزن‌ها \lr{\mbox{\ensuremath{\to}}} عدم‌قطعیت پیش‌بینی
 \item
   کالیبراسیون: احتمال‌های پیش‌بینی‌شده باید با فراوانی‌های مشاهده‌شده همخوانی داشته باشند
 \end{itemize}
 
-\PSsection{16.7}{پروژه جامع \lr{MATLAB}: تحلیل سیستم مخابراتی}
+\PSsection{16.7}{پروژه جامع \lr{\mbox{MATLAB}}: تحلیل سیستم مخابراتی}
 
 \tcbset{PScodemode/.style={breakable}}
 
@@ -540,18 +540,18 @@
 1. احتمال & احتمال‌های رویداد، تشخیص عیب \\
 2. متغیرهای تصادفی & مدل‌سازی کمیت‌های نامعین \\
 3. توزیع‌ها & انتخاب مدل‌های نویز/محوشدگی/خرابی \\
-4. گشتاورها & توان سیگنال، توان نویز، \lr{SNR} \\
-5. تبدیل‌ها & تبدیل به \lr{dB}، توان از ولتاژ \\
+4. گشتاورها & توان سیگنال، توان نویز، \lr{\mbox{SNR}} \\
+5. تبدیل‌ها & تبدیل به \lr{\mbox{dB}}، توان از ولتاژ \\
 \PSnum{6-7.} مشترک/توابع & سیگنال+نویز، ترکیب‌های سیستم \\
 8. شرطی & عملکرد در وضعیت‌های مختلف \\
-9. همبستگی & کانال‌های \lr{MIMO}، آرایه‌های حسگر \\
+9. همبستگی & کانال‌های \lr{\mbox{MIMO}}، آرایه‌های حسگر \\
 10. چند متغیر تصادفی & پردازش برداری، شکل‌دهی پرتو \\
-\lr{11. CLT} & چرا نویز گاوسی است، میانگین‌گیری \\
+11. \lr{\mbox{CLT}} & چرا نویز گاوسی است، میانگین‌گیری \\
 12. آمار & برآورد پارامترهای سیستم \\
-13. برآورد & \lr{MLE} برای پارامترهای کانال/نویز \\
+13. برآورد & \lr{\mbox{MLE}} برای پارامترهای کانال/نویز \\
 14. اطمینان & کمّی‌سازی عدم‌قطعیت اندازه‌گیری \\
 15. فرض & کنترل کیفیت، مقایسه عملکرد \\
 \end{longtable}
 }
 
-\emph{پایان ماژول‌های درس. برای راهنماهای تصمیم، مرجع \lr{MATLAB} و برگه فرمول به {مطالب تکمیلی} مراجعه کنید.}\PSbr{}
+\emph{پایان ماژول‌های درس. برای راهنماهای تصمیم، مرجع \lr{\mbox{MATLAB}} و برگه فرمول به {مطالب تکمیلی} مراجعه کنید.}

@@ -145,16 +145,16 @@ The marginal PDF f\textsubscript{X}(x) is the \textbf{projection} (integral) of 
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example}
 
-Joint PDF: f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{(-x)e}(-2y), x \ensuremath{\ge} 0, y \ensuremath{\ge} 0
+Joint PDF: f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{-x}e\textsuperscript{-2y}, x \ensuremath{\ge} 0, y \ensuremath{\ge} 0
 
 Marginals:
 
 \begin{itemize}
 \tightlist
 \item
-  f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{(-x)e}(-2y) dy = 2e\textsuperscript{-x} \ensuremath{\cdot} [1/2] = e\textsuperscript{-x} \ensuremath{\to} X \textasciitilde{} Exp(1)
+  f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{-x}e\textsuperscript{-2y} dy = 2e\textsuperscript{-x} \ensuremath{\cdot} [1/2] = e\textsuperscript{-x} \ensuremath{\to} X \textasciitilde{} Exp(1)
 \item
-  f\textsubscript{Y}(y) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{(-x)e}(-2y) dx = 2e\textsuperscript{-2y} \ensuremath{\cdot} [1] = 2e\textsuperscript{-2y} \ensuremath{\to} Y \textasciitilde{} Exp(2)
+  f\textsubscript{Y}(y) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{-x}e\textsuperscript{-2y} dx = 2e\textsuperscript{-2y} \ensuremath{\cdot} [1] = 2e\textsuperscript{-2y} \ensuremath{\to} Y \textasciitilde{} Exp(2)
 \end{itemize}
 
 \end{PSbox}
@@ -222,7 +222,7 @@ Check: Does the joint factor into a product of a function of x alone and y alone
 \begin{itemize}
 \tightlist
 \item
-  f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{(-x)\ensuremath{\cdot}e}(-2y) = [e\textsuperscript{-x}]\ensuremath{\cdot}[2e\textsuperscript{-2y}] \PSyes{} Independent!
+  f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{-x}\ensuremath{\cdot}e\textsuperscript{-2y} = [e\textsuperscript{-x}]\ensuremath{\cdot}[2e\textsuperscript{-2y}] \PSyes{} Independent!
 \item
   f\textsubscript{X,Y}(x,y) = x + y for 0\ensuremath{\le}x,y\ensuremath{\le}1 \ensuremath{\to} cannot factor \ensuremath{\to} NOT independent
 \end{itemize}

@@ -12,9 +12,9 @@
 \item
   توضیح دهند چرا توزیع‌های گاوسی این‌قدر در مهندسی فراوان‌اند
 \item
-  از \lr{CLT} برای تقریب‌زنی استفاده کنند
+  از \lr{\mbox{CLT}} برای تقریب‌زنی استفاده کنند
 \item
-  \lr{CLT} را به‌صورت بصری با شبیه‌سازی‌های مونت‌کارلوی \lr{MATLAB} نشان دهند
+  \lr{\mbox{CLT}} را به‌صورت بصری با شبیه‌سازی‌های مونت‌کارلوی \lr{\mbox{MATLAB}} نشان دهند
 \end{enumerate}
 
 \end{PSbox}
@@ -29,17 +29,17 @@
   نویز حرارتی، خطاهای اندازه‌گیری، رواداری‌های ساخت، تداخل تجمعی، نوسان‌های سهام
 \end{itemize}
 
-\textbf{دلیل:} همه این کمیت‌ها جمع‌ها (یا میانگین‌ها)ی بسیاری از اثرهای تصادفی کوچک و مستقل هستند. \lr{CLT} همگرایی به گاوسی را صرف‌نظر از توزیع زیربنایی تضمین می‌کند.
+\textbf{دلیل:} همه این کمیت‌ها جمع‌ها (یا میانگین‌ها)ی بسیاری از اثرهای تصادفی کوچک و مستقل هستند. \lr{\mbox{CLT}} همگرایی به گاوسی را صرف‌نظر از توزیع زیربنایی تضمین می‌کند.
 
-\PSsection{11.2}{قانون اعداد بزرگ \lr{(LLN)}}
+\PSsection{11.2}{قانون اعداد بزرگ \lr{\mbox{(LLN)}}}
 
 \PSsubsection{قانون ضعیف اعداد بزرگ}
 
-برای \lr{X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n}} مستقل و هم‌توزیع \lr{(i.i.d.)} با میانگین \lr{\ensuremath{\mu}} و واریانس متناهی \lr{\ensuremath{\sigma}\textsuperscript{2}}:
+برای \lr{\mbox{X\textsubscript{1}}}، \lr{\mbox{X\textsubscript{2}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} مستقل و هم‌توزیع \lr{\mbox{(i.i.d.)}} با میانگین \lr{\mbox{\ensuremath{\mu}}} و واریانس متناهی \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}}:
 
 \PSdisplay{\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{P} \mu \quad \PSmtext{as } n \to \infty}
 
-(«همگرایی در احتمال»: \lr{P(\textbar{}\ensuremath{\bar{X}}\textsubscript{n} - \ensuremath{\mu}\textbar{} \textgreater{} \ensuremath{\varepsilon}) \ensuremath{\to} 0} برای هر \lr{\ensuremath{\varepsilon} \textgreater{} 0})
+(«همگرایی در احتمال»: \lr{P(\textbar{}\ensuremath{\bar{X}}\textsubscript{n} - \ensuremath{\mu}\textbar{} \textgreater{} \ensuremath{\varepsilon}) \ensuremath{\to} 0} برای هر \lr{\mbox{\ensuremath{\varepsilon} \textgreater{} 0}})
 
 \PSsubsection{قانون قوی اعداد بزرگ}
 
@@ -56,7 +56,7 @@
 \item
   برآورد میانگین‌ها از داده را توجیه می‌کند
 \item
-  بنیاد شبیه‌سازی مونت‌کارلو (شبیه‌سازی بارها \lr{\ensuremath{\to}} میانگین همگرا می‌شود)
+  بنیاد شبیه‌سازی مونت‌کارلو (شبیه‌سازی بارها \lr{\mbox{\ensuremath{\to}}} میانگین همگرا می‌شود)
 \item
   این گزاره را توجیه می‌کند: «اگر به‌قدر کافی اندازه‌گیری کنم، میانگین من به مقدار واقعی نزدیک خواهد بود»
 \end{itemize}
@@ -65,19 +65,19 @@
 
 بر اساس چبیشف: \lr{P(\textbar{}\ensuremath{\bar{X}}\textsubscript{n} - \ensuremath{\mu}\textbar{} \textgreater{} \ensuremath{\varepsilon}) \ensuremath{\le} \ensuremath{\sigma}\textsuperscript{2}/(n\ensuremath{\varepsilon}\textsuperscript{2})}
 
-برای اطمینان 95\% از این‌که خطا \lr{\textless{}} \lr{\ensuremath{\varepsilon}} باشد: به \lr{n \ensuremath{\ge} \ensuremath{\sigma}\textsuperscript{2}/(0.05 \ensuremath{\cdot} \ensuremath{\varepsilon}\textsuperscript{2})} نیاز است
+برای اطمینان 95\% از این‌که خطا \lr{\textless{}} \lr{\mbox{\ensuremath{\varepsilon}}} باشد: به \lr{n \ensuremath{\ge} \ensuremath{\sigma}\textsuperscript{2}/(0.05 \ensuremath{\cdot} \ensuremath{\varepsilon}\textsuperscript{2})} نیاز است
 
-\PSsection{11.3}{قضیه حد مرکزی \lr{(CLT)}}
+\PSsection{11.3}{قضیه حد مرکزی \lr{\mbox{(CLT)}}}
 
 \PSsubsection{بیان صوری}
 
-برای \lr{X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n}} مستقل و هم‌توزیع \lr{(i.i.d.)} با میانگین \lr{\ensuremath{\mu}} و واریانس متناهی \lr{\ensuremath{\sigma}\textsuperscript{2}}:
+برای \lr{\mbox{X\textsubscript{1}}}، \lr{\mbox{X\textsubscript{2}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} مستقل و هم‌توزیع \lr{\mbox{(i.i.d.)}} با میانگین \lr{\mbox{\ensuremath{\mu}}} و واریانس متناهی \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}}:
 
 \PSdisplay{Z_n = \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} = \frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} N(0,1)}
 
 \PSsubsection{شکل عملی}
 
-برای \lr{n} بزرگ:\PSdisplay{\bar{X}_n \approx N\left(\mu, \frac{\sigma^2}{n}\right)}
+برای \lr{\mbox{n}} بزرگ:\PSdisplay{\bar{X}_n \approx N\left(\mu, \frac{\sigma^2}{n}\right)}
 
 \PSdisplay{S_n = \sum_{i=1}^n X_i \approx N(n\mu, n\sigma^2)}
 
@@ -87,85 +87,85 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \lr{X\textsubscript{1}, …, X\textsubscript{n}} مستقل هستند
+  \lr{\mbox{X\textsubscript{1}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} مستقل هستند
 \item
-  هم‌توزیع هستند (با \lr{CLT} لیپانوف/لینده‌برگ می‌توان این شرط را سست کرد)
+  هم‌توزیع هستند (با \lr{\mbox{CLT}} لیپانوف/لینده‌برگ می‌توان این شرط را سست کرد)
 \item
-  میانگین متناهی \lr{\ensuremath{\mu}} و واریانس متناهی \lr{\ensuremath{\sigma}\textsuperscript{2}}
+  میانگین متناهی \lr{\mbox{\ensuremath{\mu}}} و واریانس متناهی \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}}
 \item
-  \lr{n} «به‌قدر کافی بزرگ» است (قاعده سرانگشتی: \lr{n \ensuremath{\ge} 30}، اما به شکل توزیع بستگی دارد)
+  \lr{\mbox{n}} «به‌قدر کافی بزرگ» است (قاعده سرانگشتی: \lr{\mbox{n \ensuremath{\ge} 30}}، اما به شکل توزیع بستگی دارد)
 \end{enumerate}
 
-\PSsubsection{آنچه \lr{CLT} نیاز ندارد}
+\PSsubsection{آنچه \lr{\mbox{CLT}} نیاز ندارد}
 
 \begin{itemize}
 \tightlist
 \item
-  نیاز ندارد \lr{X\textsubscript{i}} گاوسی باشد
+  نیاز ندارد \lr{\mbox{X\textsubscript{i}}} گاوسی باشد
 \item
-  نیاز ندارد \lr{X\textsubscript{i}} پیوسته باشد
+  نیاز ندارد \lr{\mbox{X\textsubscript{i}}} پیوسته باشد
 \item
   نیاز ندارد هیچ توزیع خاصی داشته باشد
 \end{itemize}
 
 \PSsection{11.4}{نرخ همگرایی}
 
-\lr{CLT} با چه سرعتی «اثر می‌گذارد»؟
+\lr{\mbox{CLT}} با چه سرعتی «اثر می‌گذارد»؟
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{توزیع اصلی} & \PSth{\lr{n} لازم برای تقریب خوب} \\
+\rowcolor{PSnavy}\PSth{توزیع اصلی} & \PSth{\lr{\mbox{n}} لازم برای تقریب خوب} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-متقارن (یکنواخت) & \lr{n \ensuremath{\approx} 5-10} \\
-کمی چوله & \lr{n \ensuremath{\approx} 20-30} \\
-به‌شدت چوله (نمایی) & \lr{n \ensuremath{\approx} 30-50} \\
-به‌غایت چوله & \lr{n \ensuremath{\approx} 50-100}+ \\
+متقارن (یکنواخت) & \lr{\mbox{n \ensuremath{\approx} 5-10}} \\
+کمی چوله & \lr{\mbox{n \ensuremath{\approx} 20-30}} \\
+به‌شدت چوله (نمایی) & \lr{\mbox{n \ensuremath{\approx} 30-50}} \\
+به‌غایت چوله & \lr{\mbox{n \ensuremath{\approx} 50-100+}} \\
 \end{longtable}
 }
 
-\textbf{قاعده:} توزیع‌های متقارن‌تر \lr{\ensuremath{\to}} همگرایی سریع‌تر.
+\textbf{قاعده:} توزیع‌های متقارن‌تر \lr{\mbox{\ensuremath{\to}}} همگرایی سریع‌تر.
 
 \PSsection{11.5}{نمایش بصری}
 
-\PSsubsection{جمع متغیرهای تصادفی یکنواخت \lr{\ensuremath{\to}} گاوسی}
+\PSsubsection{جمع متغیرهای تصادفی یکنواخت \lr{\mbox{\ensuremath{\to}}} گاوسی}
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{n=1}: یکنواخت (مسطح)
+  \lr{\mbox{n=1}}: یکنواخت (مسطح)
 \item
-  \lr{n=2}: مثلثی
+  \lr{\mbox{n=2}}: مثلثی
 \item
-  \lr{n=3}: شروع به زنگوله‌ای‌شدن می‌کند
+  \lr{\mbox{n=3}}: شروع به زنگوله‌ای‌شدن می‌کند
 \item
-  \lr{n=5}: تقریباً گاوسی
+  \lr{\mbox{n=5}}: تقریباً گاوسی
 \item
-  \lr{n=12}: عملاً از گاوسی قابل تفکیک نیست
+  \lr{\mbox{n=12}}: عملاً از گاوسی قابل تفکیک نیست
 \end{itemize}
 
-\PSsubsection{جمع متغیرهای تصادفی نمایی \lr{\ensuremath{\to}} گاوسی}
+\PSsubsection{جمع متغیرهای تصادفی نمایی \lr{\mbox{\ensuremath{\to}}} گاوسی}
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{n=1}: نمایی (به‌شدت چوله به راست)
+  \lr{\mbox{n=1}}: نمایی (به‌شدت چوله به راست)
 \item
-  \lr{n=3}: همچنان چوله اما کمتر \lr{(Gamma(3))}
+  \lr{\mbox{n=3}}: همچنان چوله اما کمتر \lr{\mbox{(Gamma(3))}}
 \item
-  \lr{n=10}: تقریباً متقارن، زنگوله‌ای
+  \lr{\mbox{n=10}}: تقریباً متقارن، زنگوله‌ای
 \item
-  \lr{n=30}: اساساً گاوسی
+  \lr{\mbox{n=30}}: اساساً گاوسی
 \end{itemize}
 
-\PSsubsection{دوجمله‌ای \lr{\ensuremath{\to}} تقریب نرمال}
+\PSsubsection{دوجمله‌ای \lr{\mbox{\ensuremath{\to}}} تقریب نرمال}
 
-\lr{Binomial(n, p) \ensuremath{\approx} N(np, np(1-p))} برای \lr{n} بزرگ
+\lr{\mbox{Binomial(n, p) \ensuremath{\approx} N(np, np(1-p))}} برای \lr{\mbox{n}} بزرگ
 
-این همان \lr{CLT} اعمال‌شده به جمع آزمایش‌های برنولی است!
+این همان \lr{\mbox{CLT}} اعمال‌شده به جمع آزمایش‌های برنولی است!
 
 \begin{itemize}
 \tightlist
@@ -177,23 +177,23 @@
 
 \PSsubsection{چرا نویز حرارتی گاوسی است}
 
-نویز حرارتی = اثر تجمعی میلیاردها الکترون که به‌طور تصادفی حرکت می‌کنند. سهم هر الکترون ناچیز و مستقل است \lr{\ensuremath{\to} CLT} اعمال می‌شود \lr{\ensuremath{\to}} نویز گاوسی است.
+نویز حرارتی = اثر تجمعی میلیاردها الکترون که به‌طور تصادفی حرکت می‌کنند. سهم هر الکترون ناچیز و مستقل است \lr{\mbox{\ensuremath{\to} CLT}} اعمال می‌شود \lr{\mbox{\ensuremath{\to}}} نویز گاوسی است.
 
 \PSsubsection{چرا تداخل تجمعی گاوسی است}
 
-در یک شبکه سلولی، تداخل کل = جمع سیگنال‌های بسیاری از کاربران مستقل. \lr{CLT \ensuremath{\to}} تداخل \lr{\ensuremath{\approx}} گاوسی (برای کاربران زیاد).
+در یک شبکه سلولی، تداخل کل = جمع سیگنال‌های بسیاری از کاربران مستقل. \lr{\mbox{CLT \ensuremath{\to}}} تداخل \lr{\mbox{\ensuremath{\approx}}} گاوسی (برای کاربران زیاد).
 
 \PSsubsection{چرا خطاهای اندازه‌گیری گاوسی هستند}
 
-خطای کل = جمع بسیاری از منابع خطای کوچک و مستقل (کالیبراسیون، کوانتیزاسیون، گرمایی، لرزش و \lr{…}) \lr{\ensuremath{\to} CLT \ensuremath{\to}} خطا \lr{\ensuremath{\approx}} گاوسی.
+خطای کل = جمع بسیاری از منابع خطای کوچک و مستقل (کالیبراسیون، کوانتیزاسیون، گرمایی، لرزش و \lr{…}) \lr{\mbox{\ensuremath{\to} CLT \ensuremath{\to}}} خطا \lr{\mbox{\ensuremath{\approx}}} گاوسی.
 
 \PSsubsection{چرا تغییرات ساخت گاوسی هستند}
 
-مقدار مقاومت = مقدار نامی + جمع بسیاری از تغییرات کوچک فرایند (دوپینگ، حکاکی، دما و \lr{…}) \lr{\ensuremath{\to} CLT \ensuremath{\to}} مقدار \lr{\ensuremath{\approx}} گاوسی حول مقدار نامی.
+مقدار مقاومت = مقدار نامی + جمع بسیاری از تغییرات کوچک فرایند (دوپینگ، حکاکی، دما و \lr{…}) \lr{\mbox{\ensuremath{\to} CLT \ensuremath{\to}}} مقدار \lr{\mbox{\ensuremath{\approx}}} گاوسی حول مقدار نامی.
 
-\PSsection{11.7}{نمایش‌های مونت‌کارلوی \lr{MATLAB}}
+\PSsection{11.7}{نمایش‌های مونت‌کارلوی \lr{\mbox{MATLAB}}}
 
-\begin{PSbox}[unbreakable]{ex}{مثال \lr{1: CLT} با توزیع یکنواخت}
+\begin{PSbox}[unbreakable]{ex}{مثال 1: \lr{\mbox{CLT}} با توزیع یکنواخت}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -230,7 +230,7 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال \lr{2: CLT} با توزیع نمایی}
+\begin{PSbox}[unbreakable]{ex}{مثال 2: \lr{\mbox{CLT}} با توزیع نمایی}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -291,7 +291,7 @@
 
 \end{PSbox}
 
-\PSsubsection{مثال 4: نمایش کامل \lr{CLT} با مونت‌کارلو}
+\PSsubsection{مثال 4: نمایش کامل \lr{\mbox{CLT}} با مونت‌کارلو}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -335,17 +335,17 @@
 \end{Highlighting}
 \end{Shaded}
 
-\PSsection{11.8}{تقریب‌زنی با استفاده از \lr{CLT}}
+\PSsection{11.8}{تقریب‌زنی با استفاده از \lr{\mbox{CLT}}}
 
 \PSsubsection{رویه کلی}
 
-برای تقریب \lr{P(S\textsubscript{n} \ensuremath{\le} x)} که در آن \lr{S\textsubscript{n} = X\textsubscript{1} + … + X\textsubscript{n}}:
+برای تقریب \lr{\mbox{P(S\textsubscript{n} \ensuremath{\le} x)}} که در آن \lr{S\textsubscript{n} = X\textsubscript{1} + … + X\textsubscript{n}}:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \lr{\ensuremath{\mu} = E[X\textsubscript{i}]}، \lr{\ensuremath{\sigma}\textsuperscript{2} = Var(X\textsubscript{i})} را محاسبه کنید
+  \lr{\mbox{\ensuremath{\mu} = E[X\textsubscript{i}]}}، \lr{\ensuremath{\sigma}\textsuperscript{2} = Var(X\textsubscript{i})} را محاسبه کنید
 \item
   \lr{S\textsubscript{n} \ensuremath{\approx} N(n\ensuremath{\mu}, n\ensuremath{\sigma}\textsuperscript{2})}
 \item
@@ -366,7 +366,7 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال: خطاهای بسته}
 
-1000 بسته، احتمال خطای هر یک \lr{0.02. X} = مجموع خطاها.\PSbr{}دقیق: \lr{X \textasciitilde{} Binomial(1000, 0.02)}\PSbr{}تقریب \lr{CLT: X \ensuremath{\approx} N(20, 19.6)}
+1000 بسته، احتمال خطای هر یک \PSnum{0.02}. \lr{\mbox{X}} = مجموع خطاها.\PSbr{}دقیق: \lr{\mbox{X \textasciitilde{} Binomial(1000, 0.02)}}\PSbr{}تقریب \lr{\mbox{CLT}}: \lr{\mbox{X \ensuremath{\approx} N(20, 19.6)}}
 
 \lr{P(X \textgreater{} 30) \ensuremath{\approx} 1 - \ensuremath{\Phi}((30.5 - 20)/\ensuremath{\surd}19.6) = 1 - \ensuremath{\Phi}(2.37) = 0.0089}
 
@@ -376,22 +376,22 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1}
 
-یک کارخانه پیچ تولید می‌کند. طول \lr{X} \lr{\textasciitilde{}} توزیعی با \lr{\ensuremath{\mu} = 10cm} و \lr{\ensuremath{\sigma} = 0.2cm}. یک دسته 100 پیچی اندازه‌گیری می‌شود.
+یک کارخانه پیچ تولید می‌کند. طول \lr{\mbox{X}} \lr{\textasciitilde{}} توزیعی با \lr{\mbox{\ensuremath{\mu} = 10cm}} و \lr{\mbox{\ensuremath{\sigma} = 0.2cm}}. یک دسته 100 پیچی اندازه‌گیری می‌شود.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  توزیع تقریبی \lr{\ensuremath{\bar{X}}} چیست؟ \lr{(b) P(\ensuremath{\bar{X}} \textgreater{} 10.05)}؟ \lr{(c) P(9.96 \textless{} \ensuremath{\bar{X}} \textless{} 10.04)}؟
+  توزیع تقریبی \lr{\mbox{\ensuremath{\bar{X}}}} چیست؟ (ب) \lr{\mbox{P(\ensuremath{\bar{X}} \textgreater{} 10.05)}}؟ (ج) \lr{\mbox{P(9.96 \textless{} \ensuremath{\bar{X}} \textless{} 10.04)}}؟
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{\ensuremath{\bar{X}} \textasciitilde{} N(10, 0.04/100) = N(10, 0.0004)}، \lr{\ensuremath{\sigma}\textsubscript{X}̄ = 0.02}
+  \lr{\ensuremath{\bar{X}} \textasciitilde{} N(10, 0.04/100) = N(10, 0.0004)}، \lr{\mbox{\ensuremath{\sigma}\textsubscript{X}̄ = 0.02}}
 \item
   \lr{P(\ensuremath{\bar{X}} \textgreater{} 10.05) = P(Z \textgreater{} 2.5) = 0.0062}
 \item
@@ -402,15 +402,15 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2}
 
-یک لینک مخابراتی 10000 بیت با \lr{BER = 0.001} دارد. با استفاده از \lr{CLT} مقدار \lr{P(\rl{بیش از 15 خطا})} را تقریب بزنید.
+یک لینک مخابراتی 10000 بیت با \lr{\mbox{BER = 0.001}} دارد. با استفاده از \lr{\mbox{CLT}} مقدار \lr{\mbox{P(\rl{بیش از 15 خطا})}} را تقریب بزنید.
 
-\PSsolution{} \lr{X \textasciitilde{} Binomial(10000, 0.001). \ensuremath{\mu}=10}، \lr{\ensuremath{\sigma}\textsuperscript{2}=9.99}.\PSbr{}\lr{P(X \textgreater{} 15) \ensuremath{\approx} 1 - \ensuremath{\Phi}((15.5-10)/\ensuremath{\surd}9.99) = 1 - \ensuremath{\Phi}(1.74) = 0.0409}
+\PSsolution{} \lr{\mbox{X \textasciitilde{} Binomial(10000, 0.001)}}. \lr{\mbox{\ensuremath{\mu}=10}}، \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}=9.99}}.\PSbr{}\lr{P(X \textgreater{} 15) \ensuremath{\approx} 1 - \ensuremath{\Phi}((15.5-10)/\ensuremath{\surd}9.99) = 1 - \ensuremath{\Phi}(1.74) = 0.0409}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3}
 
-کد \lr{MATLAB} را برای بررسی \lr{CLT} برای توزیع کای‌دو(1) (بسیار چوله) بنویسید و همگرایی را برای \lr{n=2,5,10,50} نشان دهید.
+کد \lr{\mbox{MATLAB}} را برای بررسی \lr{\mbox{CLT}} برای توزیع کای‌دو(1) (بسیار چوله) بنویسید و همگرایی را برای \lr{\mbox{n=2,5,10,50}} نشان دهید.
 
 \PSsolution{} 
 
@@ -432,6 +432,6 @@
 \end{Highlighting}
 \end{Shaded}
 
-\emph{ماژول بعدی: {ماژول 12 \lr{—} مقدمه‌ای بر آمار}}\PSbr{}
+\emph{ماژول بعدی: {ماژول 12 \lr{—} مقدمه‌ای بر آمار}}
 
 \end{PSbox}

@@ -14,7 +14,7 @@
 \item
   گشتاورهای مراتب بالاتر را محاسبه و تفسیر کنند
 \item
-  از تابع مولد گشتاور \lr{(MGF)} استفاده کنند
+  از تابع مولد گشتاور \lr{\mbox{(MGF)}} استفاده کنند
 \item
   گشتاورهای آماری را به کمیت‌های فیزیکی مهندسی مرتبط کنند
 \end{enumerate}
@@ -30,13 +30,13 @@
 \begin{itemize}
 \tightlist
 \item
-  \textbf{پردازش سیگنال:} توان میانگین چقدر است؟ \lr{\ensuremath{\to}} میانگین \lr{X\textsuperscript{2}}
+  \textbf{پردازش سیگنال:} توان میانگین چقدر است؟ \lr{\mbox{\ensuremath{\to}}} میانگین \lr{\mbox{X\textsuperscript{2}}}
 \item
-  \textbf{کنترل کیفیت:} قطعات چقدر تغییر می‌کنند؟ \lr{\ensuremath{\to}} واریانس
+  \textbf{کنترل کیفیت:} قطعات چقدر تغییر می‌کنند؟ \lr{\mbox{\ensuremath{\to}}} واریانس
 \item
-  \textbf{مخابرات:} توان نویز چقدر است؟ \lr{\ensuremath{\to} E[N\textsuperscript{2}]}
+  \textbf{مخابرات:} توان نویز چقدر است؟ \lr{\mbox{\ensuremath{\to} E[N\textsuperscript{2}]}}
 \item
-  \textbf{قابلیت اطمینان:} عمر میانگین چقدر است؟ \lr{\ensuremath{\to}} میانگین
+  \textbf{قابلیت اطمینان:} عمر میانگین چقدر است؟ \lr{\mbox{\ensuremath{\to}}} میانگین
 \end{itemize}
 
 گشتاورها (میانگین، واریانس و \lr{…}) خلاصه‌های ضروری و \textbf{مرتبط با مهندسی} از یک توزیع هستند.
@@ -59,7 +59,7 @@
 
 \PSsubsection{تفسیر مهندسی}
 
-مقدار امید ریاضی همان \textbf{میانگین درازمدت} است: اگر آزمایش را بارها تکرار کنید و نتایج را میانگین بگیرید، مقدار تقریبی \lr{E[X]} به دست می‌آید.
+مقدار امید ریاضی همان \textbf{میانگین درازمدت} است: اگر آزمایش را بارها تکرار کنید و نتایج را میانگین بگیرید، مقدار تقریبی \lr{\mbox{E[X]}} به دست می‌آید.
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
@@ -69,11 +69,11 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-ولتاژ نویز \lr{E[N]} & بایاس/آفست \lr{DC} در نویز \\
-دامنه سیگنال \lr{E[A]} & سطح میانگین سیگنال \\
-عمر قطعه \lr{E[T]} & میانگین زمان تا خرابی \lr{(MTTF)} \\
-تأخیر بسته \lr{E[D]} & تأخیر میانگین \\
-خطاهای بیت \lr{E[X]} & تعداد خطای میانگین \\
+ولتاژ نویز \lr{\mbox{E[N]}} & بایاس/آفست \lr{\mbox{DC}} در نویز \\
+دامنه سیگنال \lr{\mbox{E[A]}} & سطح میانگین سیگنال \\
+عمر قطعه \lr{\mbox{E[T]}} & میانگین زمان تا خرابی \lr{\mbox{(MTTF)}} \\
+تأخیر بسته \lr{\mbox{E[D]}} & تأخیر میانگین \\
+خطاهای بیت \lr{\mbox{E[X]}} & تعداد خطای میانگین \\
 \end{longtable}
 }
 
@@ -84,7 +84,7 @@
 \begin{itemize}
 \tightlist
 \item
-  \lr{E[N] = 0} (بدون مؤلفه \lr{DC})
+  \lr{\mbox{E[N] = 0}} (بدون مؤلفه \lr{\mbox{DC}})
 \item
   توان میانگین = \lr{E[N\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2}} (این همان واریانس است!)
 \end{itemize}
@@ -93,15 +93,15 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال: تعداد مورد انتظار ارسال مجدد}
 
-پروتکل \lr{ARQ}: هر انتقال با احتمال \lr{p = 0.8} موفق است.\PSbr{}تعداد تلاش‌ها \lr{X \textasciitilde{} Geometric(0.8)}.\PSbr{}\lr{E[X] = 1/p = 1/0.8 = 1.25} تلاش به‌طور میانگین.
+پروتکل \lr{\mbox{ARQ}}: هر انتقال با احتمال \lr{\mbox{p = 0.8}} موفق است.\PSbr{}تعداد تلاش‌ها \lr{\mbox{X \textasciitilde{} Geometric(0.8)}}.\PSbr{}\lr{\mbox{E[X] = 1/p = 1/0.8 = 1.25}} تلاش به‌طور میانگین.
 
 \end{PSbox}
 
-\PSsection{4.3}{مقدار امید ریاضی یک تابع: \lr{E[g(X)]}}
+\PSsection{4.3}{مقدار امید ریاضی یک تابع: \lr{\mbox{E[g(X)]}}}
 
-\begin{PSbox}[unbreakable]{thm}{قضیه \lr{LOTUS} (قانون آماردان ناخودآگاه)}
+\begin{PSbox}[unbreakable]{thm}{قضیه \lr{\mbox{LOTUS}} (قانون آماردان ناخودآگاه)}
 
-برای یافتن \lr{E[g(X)]}، نیازی به توزیع \lr{Y = g(X)} ندارید:
+برای یافتن \lr{\mbox{E[g(X)]}}، نیازی به توزیع \lr{\mbox{Y = g(X)}} ندارید:
 
 \textbf{گسسته:}\PSdisplay{E[g(X)] = \sum_{x} g(x) \cdot p_X(x)}
 
@@ -114,27 +114,27 @@
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{تابع \lr{g(X)}} & \PSth{معنای مهندسی} \\
+\rowcolor{PSnavy}\PSth{تابع \lr{\mbox{g(X)}}} & \PSth{معنای مهندسی} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{g(X) = X\textsuperscript{2}} & مقدار میانگین مربع (توان) \\
-\lr{g(X) = (X - \ensuremath{\mu})\textsuperscript{2}} & واریانس (توان \lr{AC}) \\
-\lr{g(X)} = & \lr{X} \\
-\lr{g(X) = e\textsuperscript{j\ensuremath{\omega}X}} & تابع مشخصه \\
+\lr{\mbox{g(X) = X\textsuperscript{2}}} & مقدار میانگین مربع (توان) \\
+\lr{\mbox{g(X) = (X - \ensuremath{\mu})\textsuperscript{2}}} & واریانس (توان \lr{\mbox{AC}}) \\
+\lr{\mbox{g(X) =}} & \lr{\mbox{X}} \\
+\lr{\mbox{g(X) = e\textsuperscript{j\ensuremath{\omega}X}}} & تابع مشخصه \\
 \end{longtable}
 }
 
 \begin{PSbox}[unbreakable]{ex}{مثال: توان میانگین یک سیگنال}
 
-سیگنال \lr{X} دارای \lr{PDF f\textsubscript{X}(x)} است. توان \lr{P = X\textsuperscript{2}}.
+سیگنال \lr{\mbox{X}} دارای \lr{\mbox{PDF f\textsubscript{X}(x)}} است. توان \lr{\mbox{P = X\textsuperscript{2}}}.
 
 \lr{E[P] = E[X\textsuperscript{2}] = \ensuremath{\int} x\textsuperscript{2} f\textsubscript{X}(x) dx}
 
-برای \lr{X \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}): E[X\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2}} (توان نویز برابر واریانس است).
+برای \lr{X \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2})}: \lr{E[X\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2}} (توان نویز برابر واریانس است).
 
-برای \lr{X \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}): E[X\textsuperscript{2}] = \ensuremath{\mu}\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{2}} (توان کل = توان \lr{DC} + توان \lr{AC}).
+برای \lr{X \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}: \lr{E[X\textsuperscript{2}] = \ensuremath{\mu}\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{2}} (توان کل = توان \lr{\mbox{DC}} + توان \lr{\mbox{AC}}).
 
 \end{PSbox}
 
@@ -150,7 +150,7 @@
 
 \PSsubsection{استخراج فرمول محاسباتی}
 
-\lr{Var(X) = E[(X - \ensuremath{\mu})\textsuperscript{2}]}\PSbr{}= \lr{E[X\textsuperscript{2} - 2\ensuremath{\mu}X + \ensuremath{\mu}\textsuperscript{2}]}\PSbr{}= \lr{E[X\textsuperscript{2}] - 2\ensuremath{\mu}E[X] + \ensuremath{\mu}\textsuperscript{2}}\PSbr{}= \lr{E[X\textsuperscript{2}] - 2\ensuremath{\mu}\textsuperscript{2} + \ensuremath{\mu}\textsuperscript{2}}\PSbr{}= \lr{E[X\textsuperscript{2}] - \ensuremath{\mu}\textsuperscript{2}}
+\lr{\mbox{Var(X) = E[(X - \ensuremath{\mu})\textsuperscript{2}]}}\PSbr{}\lr{= E[X\textsuperscript{2} - 2\ensuremath{\mu}X + \ensuremath{\mu}\textsuperscript{2}]}\PSbr{}\lr{= E[X\textsuperscript{2}] - 2\ensuremath{\mu}E[X] + \ensuremath{\mu}\textsuperscript{2}}\PSbr{}\lr{= E[X\textsuperscript{2}] - 2\ensuremath{\mu}\textsuperscript{2} + \ensuremath{\mu}\textsuperscript{2}}\PSbr{}\lr{= E[X\textsuperscript{2}] - \ensuremath{\mu}\textsuperscript{2}}
 
 \PSsubsection{تفسیر مهندسی}
 
@@ -167,31 +167,31 @@
 سیگنال نویز & توان نویز (برای نویز با میانگین صفر) \\
 ساخت و تولید & میزان انحراف قطعات از مقدار نامی \\
 اندازه‌گیری‌ها & دقت اندازه‌گیری (کوچک‌تر = دقیق‌تر) \\
-سیگنال & مؤلفه توان \lr{AC} \\
+سیگنال & مؤلفه توان \lr{\mbox{AC}} \\
 عمر & عمر چقدر قابل پیش‌بینی است؟ \\
 \end{longtable}
 }
 
 \PSsubsection{نکته کلیدی: واریانس = توان در مهندسی}
 
-برای یک سیگنال با میانگین صفر \lr{X}:
+برای یک سیگنال با میانگین صفر \lr{\mbox{X}}:
 
 \begin{itemize}
 \tightlist
 \item
   \lr{E[X\textsuperscript{2}] = Var(X) = \ensuremath{\sigma}\textsuperscript{2}} = \textbf{توان کل}
 \item
-  برای \lr{X \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2})}: توان نویز = \lr{\ensuremath{\sigma}\textsuperscript{2} = Var(X)}
+  برای \lr{X \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2})}: توان نویز = \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2} = Var(X)}}
 \end{itemize}
 
-برای یک سیگنال با آفست \lr{DC (\ensuremath{\mu} \ensuremath{\neq} 0)}:
+برای یک سیگنال با آفست \lr{\mbox{DC (\ensuremath{\mu} \ensuremath{\neq} 0)}}:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{E[X\textsuperscript{2}] = \ensuremath{\mu}\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{2}} = \textbf{توان کل = توان \lr{DC} + توان \lr{AC}}
+  \lr{E[X\textsuperscript{2}] = \ensuremath{\mu}\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{2}} = \textbf{توان کل = توان \lr{\mbox{DC}} + توان \lr{\mbox{AC}}}
 \item
-  \lr{Var(X) = \ensuremath{\sigma}\textsuperscript{2}} = \textbf{فقط توان \lr{AC}}
+  \lr{\mbox{Var(X) = \ensuremath{\sigma}\textsuperscript{2}}} = \textbf{فقط توان \lr{\mbox{AC}}}
 \end{itemize}
 
 \PSsection{4.5}{انحراف معیار}
@@ -204,7 +204,7 @@
 
 \PSsubsection{اهمیت مهندسی}
 
-انحراف معیار \textbf{همان یکای} \lr{X} را دارد و بنابراین مستقیماً قابل تفسیر است:
+انحراف معیار \textbf{همان یکای} \lr{\mbox{X}} را دارد و بنابراین مستقیماً قابل تفسیر است:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}ccc@{}}
@@ -214,14 +214,14 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-نویز ولتاژ & ولت & ولتاژ نویز مؤثر \lr{(RMS)} \\
-جیتر زمان‌بندی & ثانیه & جیتر مؤثر \lr{(RMS)} \\
-خطای فاصله & متر & خطای موقعیت مؤثر \lr{(RMS)} \\
-دما & \lr{\ensuremath{^{\circ}}C} & نوسان دمای مؤثر \lr{(RMS)} \\
+نویز ولتاژ & ولت & ولتاژ نویز مؤثر \lr{\mbox{(RMS)}} \\
+جیتر زمان‌بندی & ثانیه & جیتر مؤثر \lr{\mbox{(RMS)}} \\
+خطای فاصله & متر & خطای موقعیت مؤثر \lr{\mbox{(RMS)}} \\
+دما & \lr{\mbox{\ensuremath{^{\circ}}C}} & نوسان دمای مؤثر \lr{\mbox{(RMS)}} \\
 \end{longtable}
 }
 
-انحراف معیار برای سیگنال‌های با میانگین صفر همان مقدار \textbf{مؤثر \lr{(RMS)}} است.
+انحراف معیار برای سیگنال‌های با میانگین صفر همان مقدار \textbf{مؤثر \lr{\mbox{(RMS)}}} است.
 
 \PSsection{4.6}{ویژگی‌های امید ریاضی}
 
@@ -235,23 +235,23 @@
 
 \PSsubsection{یکنوایی}
 
-اگر همواره \lr{X \ensuremath{\ge} 0} باشد، آنگاه \lr{E[X] \ensuremath{\ge} 0}.
+اگر همواره \lr{\mbox{X \ensuremath{\ge} 0}} باشد، آنگاه \lr{\mbox{E[X] \ensuremath{\ge} 0}}.
 
-اگر همواره \lr{X \ensuremath{\ge} Y} باشد، آنگاه \lr{E[X] \ensuremath{\ge} E[Y]}.
+اگر همواره \lr{\mbox{X \ensuremath{\ge} Y}} باشد، آنگاه \lr{\mbox{E[X] \ensuremath{\ge} E[Y]}}.
 
 \PSsubsection{برای متغیرهای تصادفی مستقل}
 
-اگر \lr{X} و \lr{Y} مستقل باشند:\PSdisplay{E[XY] = E[X] \cdot E[Y]}
+اگر \lr{\mbox{X}} و \lr{\mbox{Y}} مستقل باشند:\PSdisplay{E[XY] = E[X] \cdot E[Y]}
 
 \begin{PSquote}
 
-\lr{\PSwarn{}} این رابطه برای متغیرهای وابسته برقرار نیست!
+\lr{\mbox{\PSwarn{}}} این رابطه برای متغیرهای وابسته برقرار نیست!
 
 \end{PSquote}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: نویز کل}
 
-یک سیگنال دریافتی: \lr{R = S + N\textsubscript{1} + N\textsubscript{2}} (سیگنال به‌همراه دو منبع نویز)
+یک سیگنال دریافتی: \lr{\mbox{R = S + N\textsubscript{1} + N\textsubscript{2}}} (سیگنال به‌همراه دو منبع نویز)
 
 \lr{E[R] = E[S] + E[N\textsubscript{1}] + E[N\textsubscript{2}] = E[S] + 0 + 0 = E[S]}
 
@@ -268,20 +268,20 @@
 \begin{itemize}
 \tightlist
 \item
-  افزودن ثابت \lr{b} واریانس را تغییر نمی‌دهد (انتقال، پراکندگی را تغییر نمی‌دهد)
+  افزودن ثابت \lr{\mbox{b}} واریانس را تغییر نمی‌دهد (انتقال، پراکندگی را تغییر نمی‌دهد)
 \item
-  مقیاس‌بندی با \lr{a}، واریانس را در \lr{a\textsuperscript{2}} ضرب می‌کند
+  مقیاس‌بندی با \lr{\mbox{a}}، واریانس را در \lr{\mbox{a\textsuperscript{2}}} ضرب می‌کند
 \end{itemize}
 
 \PSsubsection{جمع متغیرهای تصادفی مستقل}
 
-اگر \lr{X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n}} \textbf{مستقل} باشند:
+اگر \lr{\mbox{X\textsubscript{1}}}، \lr{\mbox{X\textsubscript{2}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} \textbf{مستقل} باشند:
 
 \PSdisplay{\PSmtext{Var}(X_1 + X_2 + \cdots + X_n) = \PSmtext{Var}(X_1) + \PSmtext{Var}(X_2) + \cdots + \PSmtext{Var}(X_n)}
 
 \begin{PSquote}
 
-\lr{\PSwarn{}} واریانس‌ها فقط برای متغیرهای مستقل جمع می‌شوند!
+\lr{\mbox{\PSwarn{}}} واریانس‌ها فقط برای متغیرهای مستقل جمع می‌شوند!
 
 \end{PSquote}
 
@@ -289,40 +289,40 @@
 
 دو منبع نویز مستقل (\lr{\ensuremath{\sigma}\textsubscript{1}\textsuperscript{2} = 0.01 V\textsuperscript{2}}، \lr{\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2} = 0.04 V\textsuperscript{2}}):
 
-توان نویز کل = \lr{\ensuremath{\sigma}\textsubscript{1}\textsuperscript{2} + \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2} = 0.05 V\textsuperscript{2}}\PSbr{}نویز مؤثر کل = \lr{\ensuremath{\surd}0.05 = 0.224 V}
+توان نویز کل = \lr{\ensuremath{\sigma}\textsubscript{1}\textsuperscript{2} + \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2} = 0.05 V\textsuperscript{2}}\PSbr{}نویز مؤثر کل = \lr{\mbox{\ensuremath{\surd}0.05 = 0.224 V}}
 
-توجه: مقادیر مؤثر \lr{(RMS)} مستقیماً جمع نمی‌شوند! \lr{(0.1 + 0.2 \ensuremath{\neq} 0.224)}
+توجه: مقادیر مؤثر \lr{\mbox{(RMS)}} مستقیماً جمع نمی‌شوند! \lr{\mbox{(0.1 + 0.2 \ensuremath{\neq} 0.224)}}
 
 \end{PSbox}
 
 \PSsubsection{واریانس میانگین نمونه}
 
-برای \lr{n} مشاهده مستقل و هم‌توزیع \lr{(i.i.d.) X\textsubscript{1}, …, X\textsubscript{n}} با واریانس \lr{\ensuremath{\sigma}\textsuperscript{2}}:
+برای \lr{\mbox{n}} مشاهده مستقل و هم‌توزیع \lr{\mbox{(i.i.d.) X\textsubscript{1}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} با واریانس \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}}:
 
 \PSdisplay{\PSmtext{Var}(\bar{X}) = \PSmtext{Var}\left(\frac{1}{n}\sum X_i\right) = \frac{\sigma^2}{n}}
 
-اندازه‌گیری‌های بیشتر \lr{\ensuremath{\to}} عدم‌قطعیت کمتر در میانگین.
+اندازه‌گیری‌های بیشتر \lr{\mbox{\ensuremath{\to}}} عدم‌قطعیت کمتر در میانگین.
 
 \PSsection{4.8}{گشتاورهای مراتب بالاتر}
 
-\PSsubsection{گشتاور مرتبه \lr{n}}
+\PSsubsection{گشتاور مرتبه \lr{\mbox{n}}}
 
 \PSdisplay{\mu_n' = E[X^n] = \int_{-\infty}^{\infty} x^n f_X(x) \, dx}
 
-\PSsubsection{گشتاور مرکزی مرتبه \lr{n}}
+\PSsubsection{گشتاور مرکزی مرتبه \lr{\mbox{n}}}
 
 \PSdisplay{\mu_n = E[(X - \mu)^n]}
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\ensuremath{\mu}\textsubscript{1} = 0} (همیشه)
+  \lr{\mbox{\ensuremath{\mu}\textsubscript{1} = 0}} (همیشه)
 \item
-  \lr{\ensuremath{\mu}\textsubscript{2} = Var(X)}
+  \lr{\mbox{\ensuremath{\mu}\textsubscript{2} = Var(X)}}
 \item
-  \lr{\ensuremath{\mu}\textsubscript{3}} به \textbf{چولگی} مربوط است
+  \lr{\mbox{\ensuremath{\mu}\textsubscript{3}}} به \textbf{چولگی} مربوط است
 \item
-  \lr{\ensuremath{\mu}\textsubscript{4}} به \textbf{کشیدگی} مربوط است
+  \lr{\mbox{\ensuremath{\mu}\textsubscript{4}}} به \textbf{کشیدگی} مربوط است
 \end{itemize}
 
 \PSsubsection{چولگی (گشتاور مرکزی سوم، نرمال‌شده)}
@@ -337,9 +337,9 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{\ensuremath{\gamma}\textsubscript{1} = 0} & متقارن & گاوسی \\
-\lr{\ensuremath{\gamma}\textsubscript{1} \textgreater{} 0} & چوله به راست (دنباله بلند در راست) & نمایی \\
-\lr{\ensuremath{\gamma}\textsubscript{1} \textless{} 0} & چوله به چپ (دنباله بلند در چپ) & نمایی منفی‌شده \\
+\lr{\mbox{\ensuremath{\gamma}\textsubscript{1} = 0}} & متقارن & گاوسی \\
+\lr{\mbox{\ensuremath{\gamma}\textsubscript{1} \textgreater{} 0}} & چوله به راست (دنباله بلند در راست) & نمایی \\
+\lr{\mbox{\ensuremath{\gamma}\textsubscript{1} \textless{} 0}} & چوله به چپ (دنباله بلند در چپ) & نمایی منفی‌شده \\
 \end{longtable}
 }
 
@@ -359,15 +359,15 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{\ensuremath{\gamma}\textsubscript{2} = 0} & مزوکورتیک & دنباله‌هایی شبیه گاوسی \\
-\lr{\ensuremath{\gamma}\textsubscript{2} \textgreater{} 0} & لپتوکورتیک & دنباله‌های سنگین‌تر از گاوسی \\
-\lr{\ensuremath{\gamma}\textsubscript{2} \textless{} 0} & پلاتی‌کورتیک & دنباله‌های سبک‌تر از گاوسی \\
+\lr{\mbox{\ensuremath{\gamma}\textsubscript{2} = 0}} & مزوکورتیک & دنباله‌هایی شبیه گاوسی \\
+\lr{\mbox{\ensuremath{\gamma}\textsubscript{2} \textgreater{} 0}} & لپتوکورتیک & دنباله‌های سنگین‌تر از گاوسی \\
+\lr{\mbox{\ensuremath{\gamma}\textsubscript{2} \textless{} 0}} & پلاتی‌کورتیک & دنباله‌های سبک‌تر از گاوسی \\
 \end{longtable}
 }
 
 \textbf{اهمیت مهندسی:} کشیدگی زیاد به معنای مقادیر پرت بیشتر است \lr{—} برای مدل‌سازی نویز تکانشی مهم است.
 
-\PSsection{4.9}{تابع مولد گشتاور \lr{(MGF)}}
+\PSsection{4.9}{تابع مولد گشتاور \lr{\mbox{(MGF)}}}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
@@ -381,16 +381,16 @@
 
 \PSsubsection{چرا «مولد گشتاور»؟}
 
-گشتاور مرتبه \lr{n} با \lr{n} بار مشتق‌گیری در \lr{t = 0} به دست می‌آید:
+گشتاور مرتبه \lr{\mbox{n}} با \lr{\mbox{n}} بار مشتق‌گیری در \lr{\mbox{t = 0}} به دست می‌آید:
 
 \PSdisplay{E[X^n] = \frac{d^n M_X(t)}{dt^n}\bigg|_{t=0}}
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{M\textsubscript{X}’(0) = E[X]}
+  \lr{\mbox{M\textsubscript{X}’(0) = E[X]}}
 \item
-  \lr{M\textsubscript{X}’’(0) = E[X\textsuperscript{2}]}
+  \lr{\mbox{M\textsubscript{X}’’(0) = E[X\textsuperscript{2}]}}
 \item
   \lr{Var(X) = M\textsubscript{X}’’(0) - [M\textsubscript{X}’(0)]\textsuperscript{2}}
 \end{itemize}
@@ -400,27 +400,27 @@
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{یگانگی:} اگر \lr{M\textsubscript{X}(t) = M\textsubscript{Y}(t)} برای تمام \lr{t} در همسایگی 0 برقرار باشد، آنگاه \lr{X} و \lr{Y} توزیع یکسانی دارند.
+  \textbf{یگانگی:} اگر \lr{\mbox{M\textsubscript{X}(t) = M\textsubscript{Y}(t)}} برای تمام \lr{\mbox{t}} در همسایگی 0 برقرار باشد، آنگاه \lr{\mbox{X}} و \lr{\mbox{Y}} توزیع یکسانی دارند.
 \item
-  \textbf{جمع متغیرهای تصادفی مستقل:} اگر \lr{X} و \lr{Y} مستقل باشند:\PSbr{}\lr{M\textsubscript{X+Y}(t) = M\textsubscript{X}(t) \ensuremath{\cdot} M\textsubscript{Y}(t)}
+  \textbf{جمع متغیرهای تصادفی مستقل:} اگر \lr{\mbox{X}} و \lr{\mbox{Y}} مستقل باشند:\PSbr{}\lr{M\textsubscript{X+Y}(t) = M\textsubscript{X}(t) \ensuremath{\cdot} M\textsubscript{Y}(t)}
 \item
   \textbf{تبدیل خطی:} \lr{M\textsubscript{aX+b}(t) = e\textsuperscript{bt} \ensuremath{\cdot} M\textsubscript{X}(at)}
 \end{enumerate}
 
-\PSsubsection{\lr{MGF} توزیع‌های رایج}
+\PSsubsection{\lr{\mbox{MGF}} توزیع‌های رایج}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{توزیع} & \PSth{\lr{MGF} یعنی \lr{M\textsubscript{X}(t)}} \\
+\rowcolor{PSnavy}\PSth{توزیع} & \PSth{\lr{\mbox{MGF}} یعنی \lr{\mbox{M\textsubscript{X}(t)}}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{Bernoulli(p)} & \lr{1 - p + pe\textsuperscript{t}} \\
-\lr{Binomial(n,p)} & (\lr{1 - p + pe\textsuperscript{\lr{t})}n} \\
-\lr{Poisson(\ensuremath{\lambda})} & \lr{exp(\ensuremath{\lambda}(e\textsuperscript{t} - 1))} \\
-\lr{Exponential(\ensuremath{\lambda})} & \lr{\ensuremath{\lambda}/(\ensuremath{\lambda} - t), t \textless{} \ensuremath{\lambda}} \\
+\lr{\mbox{Bernoulli(p)}} & \lr{\mbox{1 - p + pe\textsuperscript{t}}} \\
+\lr{\mbox{Binomial(n,p)}} & \lr{\mbox{(1 - p + pe\textsuperscript{t})\textsuperscript{n}}} \\
+\lr{\mbox{Poisson(\ensuremath{\lambda})}} & \lr{\mbox{exp(\ensuremath{\lambda}(e\textsuperscript{t} - 1))}} \\
+\lr{\mbox{Exponential(\ensuremath{\lambda})}} & \lr{\mbox{\ensuremath{\lambda}/(\ensuremath{\lambda} - t)}}، \lr{\mbox{t \textless{} \ensuremath{\lambda}}} \\
 \lr{Gaussian(\ensuremath{\mu},\ensuremath{\sigma}\textsuperscript{2})} & \lr{exp(\ensuremath{\mu}t + \ensuremath{\sigma}\textsuperscript{2}t\textsuperscript{2}/2)} \\
 \end{longtable}
 }
@@ -429,73 +429,73 @@
 
 اگر مؤلفه‌های سیگنال \lr{X\textsubscript{1} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2})} و \lr{X\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})} مستقل باشند:
 
-\lr{M\textsubscript{X\textsubscript{1}+X\textsubscript{2}}(t) = M\textsubscript{X\textsubscript{1}}(t) \ensuremath{\cdot} M\textsubscript{X\textsubscript{2}}(t)}\PSbr{}= \lr{exp(\ensuremath{\mu}\textsubscript{1}t + \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}t\textsuperscript{2}/2) \ensuremath{\cdot} exp(\ensuremath{\mu}\textsubscript{2}t + \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}t\textsuperscript{2}/2)}\PSbr{}= \lr{exp((\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2})t + (\ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})t\textsuperscript{2}/2)}
+\lr{M\textsubscript{X\textsubscript{1}+X\textsubscript{2}}(t) = M\textsubscript{X\textsubscript{1}}(t) \ensuremath{\cdot} M\textsubscript{X\textsubscript{2}}(t)}\PSbr{}\lr{= exp(\ensuremath{\mu}\textsubscript{1}t + \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}t\textsuperscript{2}/2) \ensuremath{\cdot} exp(\ensuremath{\mu}\textsubscript{2}t + \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}t\textsuperscript{2}/2)}\PSbr{}\lr{= exp((\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2})t + (\ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})t\textsuperscript{2}/2)}
 
-این همان \lr{MGF} توزیع \lr{N(\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})} است. بنابراین \lr{X\textsubscript{1}+X\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})}.
+این همان \lr{\mbox{MGF}} توزیع \lr{N(\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})} است. بنابراین \lr{X\textsubscript{1}+X\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})}.
 
 \PSsection{4.10}{کاربردهای مهندسی گشتاورها}
 
 \PSsubsection{کاربرد 1: مشخصه‌سازی توان نویز}
 
-یک سیگنال نویز \lr{N(t)} نمونه‌برداری می‌شود. نمونه‌ها میانگین \lr{\ensuremath{\mu}\textsubscript{N}} و واریانس \lr{\ensuremath{\sigma}\textsubscript{N}\textsuperscript{2}} دارند.
+یک سیگنال نویز \lr{\mbox{N(t)}} نمونه‌برداری می‌شود. نمونه‌ها میانگین \lr{\mbox{\ensuremath{\mu}\textsubscript{N}}} و واریانس \lr{\mbox{\ensuremath{\sigma}\textsubscript{N}\textsuperscript{2}}} دارند.
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{مؤلفه \lr{DC} (بایاس):} \lr{\ensuremath{\mu}\textsubscript{N}} \lr{—} برای نویز ایده‌آل باید صفر باشد
+  \textbf{مؤلفه \lr{\mbox{DC}} (بایاس):} \lr{\mbox{\ensuremath{\mu}\textsubscript{N}}} \lr{—} برای نویز ایده‌آل باید صفر باشد
 \item
-  \textbf{توان نویز \lr{AC}:} \lr{\ensuremath{\sigma}\textsubscript{N}\textsuperscript{2}} \lr{—} تعیین‌کننده \lr{SNR}
+  \textbf{توان نویز \lr{\mbox{AC}}:} \lr{\mbox{\ensuremath{\sigma}\textsubscript{N}\textsuperscript{2}}} \lr{—} تعیین‌کننده \lr{\mbox{SNR}}
 \item
   \textbf{توان کل:} \lr{E[N\textsuperscript{2}] = \ensuremath{\mu}\textsubscript{N}\textsuperscript{2} + \ensuremath{\sigma}\textsubscript{N}\textsuperscript{2}}
 \end{itemize}
 
-\textbf{\lr{SNR} (نسبت سیگنال به نویز):}\PSdisplay{\PSmtext{SNR} = \frac{E[S^2]}{\sigma_N^2} = \frac{\PSmtext{Signal Power}}{\PSmtext{Noise Power}}}
+\textbf{\lr{\mbox{SNR}} (نسبت سیگنال به نویز):}\PSdisplay{\PSmtext{SNR} = \frac{E[S^2]}{\sigma_N^2} = \frac{\PSmtext{Signal Power}}{\PSmtext{Noise Power}}}
 
 \PSsubsection{کاربرد 2: خطای اندازه‌گیری}
 
-یک حسگر مقدار واقعی \lr{\ensuremath{\theta}} را با خطای \lr{E} اندازه‌گیری می‌کند:
+یک حسگر مقدار واقعی \lr{\mbox{\ensuremath{\theta}}} را با خطای \lr{\mbox{E}} اندازه‌گیری می‌کند:
 
 \begin{itemize}
 \tightlist
 \item
-  اندازه‌گیری: \lr{X = \ensuremath{\theta} + E}
+  اندازه‌گیری: \lr{\mbox{X = \ensuremath{\theta} + E}}
 \item
-  \lr{E[X] = \ensuremath{\theta} + E[E]} \lr{—} بایاس در اندازه‌گیری
+  \lr{\mbox{E[X] = \ensuremath{\theta} + E[E]}} \lr{—} بایاس در اندازه‌گیری
 \item
-  \lr{Var(X) = Var(E)} \lr{—} دقت اندازه‌گیری
+  \lr{\mbox{Var(X) = Var(E)}} \lr{—} دقت اندازه‌گیری
 \end{itemize}
 
-\textbf{صحّت:} \lr{\textbar{}}\lr{E[E]}\lr{\textbar{}} (میانگین چقدر به مقدار واقعی نزدیک است)\PSbr{}\textbf{دقت (تکرارپذیری):} \lr{\ensuremath{\sigma}\textsubscript{E}} (اندازه‌گیری‌ها چقدر تکرارپذیر هستند)
+\textbf{صحّت:} \lr{\mbox{\textbar{}E[E]\textbar{}}} (میانگین چقدر به مقدار واقعی نزدیک است)\PSbr{}\textbf{دقت (تکرارپذیری):} \lr{\mbox{\ensuremath{\sigma}\textsubscript{E}}} (اندازه‌گیری‌ها چقدر تکرارپذیر هستند)
 
 \PSsubsection{کاربرد 3: آماره‌های عمر قطعه}
 
-قطعات عمر \lr{T \textasciitilde{} Exponential(\ensuremath{\lambda})} دارند:
+قطعات عمر \lr{\mbox{T \textasciitilde{} Exponential(\ensuremath{\lambda})}} دارند:
 
 \begin{itemize}
 \tightlist
 \item
-  میانگین زمان تا خرابی: \lr{MTTF = E[T] = 1/\ensuremath{\lambda}}
+  میانگین زمان تا خرابی: \lr{\mbox{MTTF = E[T] = 1/\ensuremath{\lambda}}}
 \item
   انحراف معیار: \lr{\ensuremath{\sigma}\textsubscript{T} = 1/\ensuremath{\lambda} = MTTF}
 \item
-  برای نمایی: ضریب تغییرات \lr{CV = \ensuremath{\sigma}/\ensuremath{\mu} = 1} (همیشه!)
+  برای نمایی: ضریب تغییرات \lr{\mbox{CV = \ensuremath{\sigma}/\ensuremath{\mu} = 1}} (همیشه!)
 \end{itemize}
 
 \PSsubsection{کاربرد 4: دامنه سیگنال مخابراتی}
 
-سیگنال دریافتی \lr{R = A + N} که در آن \lr{A} = دامنه سیگنال و \lr{N \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2})}:
+سیگنال دریافتی \lr{\mbox{R = A + N}} که در آن \lr{\mbox{A}} = دامنه سیگنال و \lr{N \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2})}:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{E[R] = A} (دامنه سیگنال به‌طور میانگین حفظ می‌شود)
+  \lr{\mbox{E[R] = A}} (دامنه سیگنال به‌طور میانگین حفظ می‌شود)
 \item
-  \lr{Var(R) = \ensuremath{\sigma}\textsuperscript{2}} (توان نویز واریانس را تعیین می‌کند)
+  \lr{\mbox{Var(R) = \ensuremath{\sigma}\textsuperscript{2}}} (توان نویز واریانس را تعیین می‌کند)
 \item
   \lr{SNR = A\textsuperscript{2}/\ensuremath{\sigma}\textsuperscript{2}}
 \end{itemize}
 
-\PSsection{4.11}{مثال‌های \lr{MATLAB}}
+\PSsection{4.11}{مثال‌های \lr{\mbox{MATLAB}}}
 
 \begin{PSbox}[unbreakable]{ex}{مثال 1: محاسبه گشتاورها از یک توزیع}
 
@@ -615,7 +615,7 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال 5: بررسی \lr{MGF}}
+\begin{PSbox}[unbreakable]{ex}{مثال 5: بررسی \lr{\mbox{MGF}}}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -651,27 +651,27 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1: محاسبه پایه}
 
-یک متغیر تصادفی گسسته \lr{X} دارای \lr{PMF} زیر است: \lr{P(X=-1) = 0.2}، \lr{P(X=0) = 0.5}، \lr{P(X=1) = 0.2}، \lr{P(X=2) = 0.1}.
+یک متغیر تصادفی گسسته \lr{\mbox{X}} دارای \lr{\mbox{PMF}} زیر است: \lr{\mbox{P(X=-1) = 0.2}}، \lr{\mbox{P(X=0) = 0.5}}، \lr{\mbox{P(X=1) = 0.2}}، \lr{\mbox{P(X=2) = 0.1}}.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{E[X]} را بیابید.
+  \lr{\mbox{E[X]}} را بیابید.
 \item
-  \lr{E[X\textsuperscript{2}]} را بیابید.
+  \lr{\mbox{E[X\textsuperscript{2}]}} را بیابید.
 \item
-  \lr{Var(X)} را بیابید.
+  \lr{\mbox{Var(X)}} را بیابید.
 \item
-  \lr{E[3X + 2]} را بیابید.
+  \lr{\mbox{E[3X + 2]}} را بیابید.
 \item
-  \lr{Var(3X + 2)} را بیابید.
+  \lr{\mbox{Var(3X + 2)}} را بیابید.
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \item
   \lr{E[X] = (-1)(0.2) + (0)(0.5) + (1)(0.2) + (2)(0.1) = -0.2 + 0 + 0.2 + 0.2 = 0.2}
 \item
@@ -679,36 +679,36 @@
 \item
   \lr{Var(X) = E[X\textsuperscript{2}] - (E[X])\textsuperscript{2} = 0.8 - 0.04 = 0.76}
 \item
-  \lr{E[3X + 2] = 3E[X] + 2 = 3(0.2) + 2 = 2.6}
+  \lr{\mbox{E[3X + 2] = 3E[X] + 2 = 3(0.2) + 2 = 2.6}}
 \item
-  \lr{Var(3X + 2) = 9\ensuremath{\cdot}Var(X) = 9(0.76) = 6.84}
+  \lr{\mbox{Var(3X + 2) = 9\ensuremath{\cdot}Var(X) = 9(0.76) = 6.84}}
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2: سیگنال و نویز}
 
-یک سیگنال دریافتی \lr{R = 2.5 + N} که در آن \lr{N \textasciitilde{} N(0, 0.04)}.
+یک سیگنال دریافتی \lr{\mbox{R = 2.5 + N}} که در آن \lr{\mbox{N \textasciitilde{} N(0, 0.04)}}.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{E[R]} و \lr{Var(R)} را بیابید.
+  \lr{\mbox{E[R]}} و \lr{\mbox{Var(R)}} را بیابید.
 \item
-  \lr{SNR} را بر حسب \lr{dB} بیابید.
+  \lr{\mbox{SNR}} را بر حسب \lr{\mbox{dB}} بیابید.
 \item
-  \lr{P(R \textless{} 0)} را بیابید \lr{—} احتمال این‌که سیگنال منفی شود.
+  \lr{\mbox{P(R \textless{} 0)}} را بیابید \lr{—} احتمال این‌که سیگنال منفی شود.
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \item
-  \lr{E[R] = 2.5}، \lr{Var(R) = Var(N) = 0.04}، \lr{\ensuremath{\sigma}\textsubscript{R} = 0.2}
+  \lr{\mbox{E[R] = 2.5}}، \lr{\mbox{Var(R) = Var(N) = 0.04}}، \lr{\mbox{\ensuremath{\sigma}\textsubscript{R} = 0.2}}
 \item
-  توان سیگنال = \lr{2.5\textsuperscript{2} = 6.25}، توان نویز = \PSnum{0.04}\PSbr{}\lr{SNR = 6.25/0.04 = 156.25 \ensuremath{\to} SNR\textsubscript{dB} = 10\ensuremath{\cdot}log\textsubscript{10}(156.25) = 21.94 dB}
+  توان سیگنال = \lr{\mbox{2.5\textsuperscript{2} = 6.25}}، توان نویز = \lr{\mbox{0.04}}\PSbr{}\lr{SNR = 6.25/0.04 = 156.25 \ensuremath{\to} SNR\textsubscript{dB} = 10\ensuremath{\cdot}log\textsubscript{10}(156.25) = 21.94 dB}
 \item
   \lr{P(R \textless{} 0) = P(N \textless{} -2.5) = \ensuremath{\Phi}(-2.5/0.2) = \ensuremath{\Phi}(-12.5) \ensuremath{\approx} 0} (بسیار نامحتمل)
 \end{enumerate}
@@ -717,27 +717,27 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3: میانگین‌گیری از اندازه‌گیری‌ها}
 
-یک حسگر \lr{n} اندازه‌گیری مستقل از یک ولتاژ ثابت \lr{V = 3.3V} انجام می‌دهد.\PSbr{}هر اندازه‌گیری: \lr{X\textsubscript{i} = 3.3 + N\textsubscript{i}} که در آن \lr{N\textsubscript{i} \textasciitilde{} N(0, 0.01)}.
+یک حسگر \lr{\mbox{n}} اندازه‌گیری مستقل از یک ولتاژ ثابت \lr{\mbox{V = 3.3V}} انجام می‌دهد.\PSbr{}هر اندازه‌گیری: \lr{\mbox{X\textsubscript{i} = 3.3 + N\textsubscript{i}}} که در آن \lr{\mbox{N\textsubscript{i} \textasciitilde{} N(0, 0.01)}}.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  برای \lr{n = 1} مقدار \lr{E[\ensuremath{\bar{X}}]} و \lr{Var(\ensuremath{\bar{X}})} چقدر است؟
+  برای \lr{\mbox{n = 1}} مقدار \lr{\mbox{E[\ensuremath{\bar{X}}]}} و \lr{\mbox{Var(\ensuremath{\bar{X}})}} چقدر است؟
 \item
-  چه تعداد اندازه‌گیری \lr{n} لازم است تا \lr{\ensuremath{\sigma}\textsubscript{X}̄ \textless{} 0.01V} شود؟
+  چه تعداد اندازه‌گیری \lr{\mbox{n}} لازم است تا \lr{\mbox{\ensuremath{\sigma}\textsubscript{X}̄ \textless{} 0.01V}} شود؟
 \item
-  با \lr{n = 100}، مقدار \lr{P(\textbar{}\ensuremath{\bar{X}} - 3.3\textbar{} \textgreater{} 0.02)} چقدر است؟
+  با \lr{\mbox{n = 100}}، مقدار \lr{P(\textbar{}\ensuremath{\bar{X}} - 3.3\textbar{} \textgreater{} 0.02)} چقدر است؟
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \item
-  \lr{E[\ensuremath{\bar{X}}] = 3.3}، \lr{Var(\ensuremath{\bar{X}}) = 0.01/1 = 0.01}، \lr{\ensuremath{\sigma} = 0.1V}
+  \lr{\mbox{E[\ensuremath{\bar{X}}] = 3.3}}، \lr{\mbox{Var(\ensuremath{\bar{X}}) = 0.01/1 = 0.01}}، \lr{\mbox{\ensuremath{\sigma} = 0.1V}}
 \item
-  \lr{\ensuremath{\sigma}\textsubscript{X}̄ = \ensuremath{\sigma}/\ensuremath{\surd}n \textless{} 0.01 \ensuremath{\to} \ensuremath{\surd}n \textgreater{} 10 \ensuremath{\to} n \textgreater{} 100 \ensuremath{\to}} به \lr{n \ensuremath{\ge} 101} نیاز است
+  \lr{\ensuremath{\sigma}\textsubscript{X}̄ = \ensuremath{\sigma}/\ensuremath{\surd}n \textless{} 0.01 \ensuremath{\to} \ensuremath{\surd}n \textgreater{} 10 \ensuremath{\to} n \textgreater{} 100 \ensuremath{\to}} به \lr{\mbox{n \ensuremath{\ge} 101}} نیاز است
 \item
   \lr{\ensuremath{\sigma}\textsubscript{X}̄ = 0.1/\ensuremath{\surd}100 = 0.01V}\PSbr{}\lr{P(\textbar{}\ensuremath{\bar{X}} - 3.3\textbar{} \textgreater{} 0.02) = P(\textbar{}Z\textbar{} \textgreater{} 2) = 2(1-\ensuremath{\Phi}(2)) = 0.0455}
 \end{enumerate}
@@ -749,55 +749,55 @@
 قطعات عمر \lr{T \textasciitilde{} Exp(\ensuremath{\lambda} = 0.002 \rl{در هر ساعت})} دارند.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{MTTF}، \lr{\ensuremath{\sigma}\textsubscript{T}} و ضریب تغییرات را بیابید.
+  \lr{\mbox{MTTF}}، \lr{\mbox{\ensuremath{\sigma}\textsubscript{T}}} و ضریب تغییرات را بیابید.
 \item
-  \lr{P(T \textgreater{} 1000 \rl{ساعت})} را بیابید.
+  \lr{\mbox{P(T \textgreater{} 1000 \rl{ساعت})}} را بیابید.
 \item
-  \lr{E[T\textsuperscript{2}]} را بیابید و تفسیر کنید.
+  \lr{\mbox{E[T\textsuperscript{2}]}} را بیابید و تفسیر کنید.
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \item
-  \lr{MTTF = 1/\ensuremath{\lambda} = 500} ساعت، \lr{\ensuremath{\sigma}\textsubscript{T} = 500} ساعت، \lr{CV = \ensuremath{\sigma}/\ensuremath{\mu} = 1}
+  \lr{\mbox{MTTF = 1/\ensuremath{\lambda} = 500}} ساعت، \lr{\mbox{\ensuremath{\sigma}\textsubscript{T} = 500}} ساعت، \lr{\mbox{CV = \ensuremath{\sigma}/\ensuremath{\mu} = 1}}
 \item
   \lr{P(T \textgreater{} 1000) = e\textsuperscript{-0.002\ensuremath{\times}1000} = e\textsuperscript{-2} = 0.1353}
 \item
-  \lr{E[T\textsuperscript{2}] = Var(T) + (E[T])\textsuperscript{2} = 500\textsuperscript{2} + 500\textsuperscript{2} = 500000 hours\textsuperscript{2}}\PSbr{}\lr{\ensuremath{\surd}E[T\textsuperscript{2}] = 707} ساعت (عمر مؤثر)
+  \lr{E[T\textsuperscript{2}] = Var(T) + (E[T])\textsuperscript{2} = 500\textsuperscript{2} + 500\textsuperscript{2} = 500000 hours\textsuperscript{2}}\PSbr{}\lr{\mbox{\ensuremath{\surd}E[T\textsuperscript{2}] = 707}} ساعت (عمر مؤثر)
 \end{enumerate}
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{prob}{مسیله 5: کاربرد \lr{MGF}}
+\begin{PSbox}[unbreakable]{prob}{مسیله 5: کاربرد \lr{\mbox{MGF}}}
 
-\lr{X} دارای \lr{MGF} زیر است: \lr{M\textsubscript{X}(t) = (1/3)e\textsuperscript{t} + (2/3)e\textsuperscript{2t}}.
+\lr{\mbox{X}} دارای \lr{\mbox{MGF}} زیر است: \lr{M\textsubscript{X}(t) = (1/3)e\textsuperscript{t} + (2/3)e\textsuperscript{2t}}.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{X} چه نوع متغیر تصادفی است؟ \lr{PMF} آن را بیابید.
+  \lr{\mbox{X}} چه نوع متغیر تصادفی است؟ \lr{\mbox{PMF}} آن را بیابید.
 \item
-  با استفاده از \lr{MGF} مقدار \lr{E[X]} را بیابید.
+  با استفاده از \lr{\mbox{MGF}} مقدار \lr{\mbox{E[X]}} را بیابید.
 \item
-  با استفاده از \lr{MGF} مقدار \lr{Var(X)} را بیابید.
+  با استفاده از \lr{\mbox{MGF}} مقدار \lr{\mbox{Var(X)}} را بیابید.
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \item
-  \lr{X} گسسته است. با مقایسه با \lr{\ensuremath{\Sigma} p\textsubscript{X}(x)e\textsuperscript{tx}}:\PSbr{}\lr{P(X=1) = 1/3}، \lr{P(X=2) = 2/3}
+  \lr{\mbox{X}} گسسته است. با مقایسه با \lr{\ensuremath{\Sigma} p\textsubscript{X}(x)e\textsuperscript{tx}}:\PSbr{}\lr{\mbox{P(X=1) = 1/3}}، \lr{\mbox{P(X=2) = 2/3}}
 \item
-  \lr{M’(t) = (1/3)e\textsuperscript{t} + (4/3)e\textsuperscript{2t}}\PSbr{}\lr{E[X] = M’(0) = 1/3 + 4/3 = 5/3}
+  \lr{M’(t) = (1/3)e\textsuperscript{t} + (4/3)e\textsuperscript{2t}}\PSbr{}\lr{\mbox{E[X] = M’(0) = 1/3 + 4/3 = 5/3}}
 \item
-  \lr{M’«\lr{(t) = (1/3)e\textsuperscript{t} + (8/3)e\textsuperscript{2t}}\PSbr{}\lr{E[X\textsuperscript{2}] = M}»’(0) = 1/3 + 8/3 = 3}\PSbr{}\lr{Var(X) = 3 - (5/3)\textsuperscript{2} = 3 - 25/9 = 2/9}
+  \lr{M’«\lr{(t) = (1/3)e\textsuperscript{t} + (8/3)e\textsuperscript{2t}}\PSbr{}\lr{\mbox{E[X\textsuperscript{2}] = M}}»’(0) = 1/3 + 8/3 = 3}\PSbr{}\lr{\mbox{Var(X) = 3 - (5/3)\textsuperscript{2} = 3 - 25/9 = 2/9}}
 \end{enumerate}
 
 \end{PSbox}
@@ -808,17 +808,17 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{\lr{E[X]} = میانگین درازمدت} \lr{—} مرکز توزیع، مؤلفه \lr{DC}
+  \textbf{\lr{\mbox{E[X]}} = میانگین درازمدت} \lr{—} مرکز توزیع، مؤلفه \lr{\mbox{DC}}
 \item
-  \textbf{\lr{Var(X)} = پراکندگی/توان} \lr{—} برای سیگنال‌های با میانگین صفر، واریانس همان توان است
+  \textbf{\lr{\mbox{Var(X)}} = پراکندگی/توان} \lr{—} برای سیگنال‌های با میانگین صفر، واریانس همان توان است
 \item
-  \textbf{\lr{\ensuremath{\sigma}} همان یکای \lr{X} را دارد} \lr{—} مستقیماً به‌عنوان مقدار مؤثر \lr{(RMS)} قابل تفسیر است
+  \textbf{\lr{\mbox{\ensuremath{\sigma}}} همان یکای \lr{\mbox{X}} را دارد} \lr{—} مستقیماً به‌عنوان مقدار مؤثر \lr{\mbox{(RMS)}} قابل تفسیر است
 \item
   \textbf{خطی‌بودن امید ریاضی} همواره برقرار است؛ جمع واریانس‌ها نیازمند استقلال است
 \item
-  \textbf{\lr{MGF} به‌طور یکتا} یک توزیع را مشخص می‌کند و تمام گشتاورها را تولید می‌کند
+  \textbf{\lr{\mbox{MGF}} به‌طور یکتا} یک توزیع را مشخص می‌کند و تمام گشتاورها را تولید می‌کند
 \item
-  \textbf{در مهندسی:} میانگین \lr{\ensuremath{\to}} سطح سیگنال، واریانس \lr{\ensuremath{\to}} توان نویز، انحراف معیار \lr{\ensuremath{\to}} نویز مؤثر
+  \textbf{در مهندسی:} میانگین \lr{\mbox{\ensuremath{\to}}} سطح سیگنال، واریانس \lr{\mbox{\ensuremath{\to}}} توان نویز، انحراف معیار \lr{\mbox{\ensuremath{\to}}} نویز مؤثر
 \end{enumerate}
 
-\emph{ماژول بعدی: {ماژول 5 \lr{—} توابع مهم متغیر تصادفی}}\PSbr{}
+\emph{ماژول بعدی: {ماژول 5 \lr{—} توابع مهم متغیر تصادفی}}

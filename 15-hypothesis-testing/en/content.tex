@@ -228,7 +228,7 @@ Used when deviation in \textbf{either} direction is important.
 \begin{itemize}
 \tightlist
 \item
-  Reject if \textbar{}T\textbar{} \textgreater{} t\_\{\ensuremath{\alpha}/2, n-1\}
+  Reject if \textbar{}T\textbar{} \textgreater{} t\textsubscript{\ensuremath{\alpha}/2, n-1}
 \item
   p-value = 2\ensuremath{\cdot}P(T \textgreater{} \textbar{}t\textsubscript{obs}\textbar{})
 \end{itemize}
@@ -240,9 +240,9 @@ Used when only one direction of deviation matters.
 \begin{itemize}
 \tightlist
 \item
-  H\textsubscript{1}: \ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0}: Reject if T \textgreater{} t\_\{\ensuremath{\alpha}, n-1\}
+  H\textsubscript{1}: \ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0}: Reject if T \textgreater{} t\textsubscript{\ensuremath{\alpha}, n-1}
 \item
-  H\textsubscript{1}: \ensuremath{\mu} \textless{} \ensuremath{\mu}\textsubscript{0}: Reject if T \textless{} -t\_\{\ensuremath{\alpha}, n-1\}
+  H\textsubscript{1}: \ensuremath{\mu} \textless{} \ensuremath{\mu}\textsubscript{0}: Reject if T \textless{} -t\textsubscript{\ensuremath{\alpha}, n-1}
 \end{itemize}
 
 \PSsubsection{When to Use Which}
@@ -303,9 +303,9 @@ Under H\textsubscript{0}: \ensuremath{\chi}\textsuperscript{2} \textasciitilde{}
 \begin{itemize}
 \tightlist
 \item
-  H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}: Reject if \ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\_\{\ensuremath{\alpha}, n-1\}
+  H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}: Reject if \ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{\ensuremath{\alpha}, n-1}
 \item
-  H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \ensuremath{\neq} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}: Reject if \ensuremath{\chi}\textsuperscript{2} \textless{} \ensuremath{\chi}\textsuperscript{2}\_\{1-\ensuremath{\alpha}/2, n-1\} or \ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\_\{\ensuremath{\alpha}/2, n-1\}
+  H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \ensuremath{\neq} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}: Reject if \ensuremath{\chi}\textsuperscript{2} \textless{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{1-\ensuremath{\alpha}/2, n-1} or \ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{\ensuremath{\alpha}/2, n-1}
 \end{itemize}
 
 \PSsection{15.10}{Step-by-Step Hypothesis Testing Procedure}
@@ -339,7 +339,7 @@ H\textsubscript{0}: \ensuremath{\mu} = 0 (no bias), H\textsubscript{1}: \ensurem
 
 T = (0.012 - 0)/(0.03/\ensuremath{\surd}20) = 0.012/0.00671 = 1.789
 
-t\_\{0.025, 19\} = 2.093. Since \textbar{}T\textbar{} = 1.789 \textless{} 2.093 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
+t\textsubscript{0.025, 19} = 2.093. Since \textbar{}T\textbar{} = 1.789 \textless{} 2.093 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
 
 p-value = 2\ensuremath{\cdot}P(t(19) \textgreater{} 1.789) \ensuremath{\approx} 0.090. Not significant at 5\% level.
 
@@ -355,7 +355,7 @@ H\textsubscript{0}: \ensuremath{\mu} = 100, H\textsubscript{1}: \ensuremath{\mu}
 
 T = (101.2 - 100)/(3.5/\ensuremath{\surd}30) = 1.2/0.639 = 1.878
 
-t\_\{0.025, 29\} = 2.045. \textbar{}T\textbar{} = 1.878 \textless{} 2.045 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
+t\textsubscript{0.025, 29} = 2.045. \textbar{}T\textbar{} = 1.878 \textless{} 2.045 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
 
 \end{PSbox}
 
@@ -383,7 +383,7 @@ H\textsubscript{0}: \ensuremath{\sigma}\textsuperscript{2} = 0.04, H\textsubscri
 
 \ensuremath{\chi}\textsuperscript{2} = (24)(0.058)/0.04 = 34.8
 
-\ensuremath{\chi}\textsuperscript{2}\_\{0.05, 24\} = 36.415. Since 34.8 \textless{} 36.415 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
+\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.05, 24} = 36.415. Since 34.8 \textless{} 36.415 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
 
 \end{PSbox}
 

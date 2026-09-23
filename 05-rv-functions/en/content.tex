@@ -390,7 +390,7 @@ Noise voltage X \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}) w
 \item
   E[P] = E[X\textsuperscript{2}]/R = \ensuremath{\sigma}\textsuperscript{2}/R = 4/50 = 0.08W
 \item
-  P = X\textsuperscript{2}/50. Let W = X\textsuperscript{2} \textasciitilde{} \ensuremath{\sigma}\textsuperscript{2}\ensuremath{\cdot}\ensuremath{\chi}\textsuperscript{2}(1). Then P = W/50. f\textsubscript{P}(p) = 50\ensuremath{\cdot}f\textsubscript{W}(50p) = (50/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\cdot}(50p/\ensuremath{\sigma}\textsuperscript{2})\textsuperscript{(-1/2)\ensuremath{\cdot}e}(-50p/(2\ensuremath{\sigma}\textsuperscript{2})) for p \textgreater{} 0.
+  P = X\textsuperscript{2}/50. Let W = X\textsuperscript{2} \textasciitilde{} \ensuremath{\sigma}\textsuperscript{2}\ensuremath{\cdot}\ensuremath{\chi}\textsuperscript{2}(1). Then P = W/50. f\textsubscript{P}(p) = 50\ensuremath{\cdot}f\textsubscript{W}(50p) = (50/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\cdot}(50p/\ensuremath{\sigma}\textsuperscript{2})\textsuperscript{-1/2}\ensuremath{\cdot}e\textsuperscript{-50p/(2\ensuremath{\sigma}\textsuperscript{2})} for p \textgreater{} 0.
 \item
   Use MATLAB: \PScode{1 - chi2cdf(0.2*50/4, 1)} = 1 - chi2cdf(2.5, 1) \ensuremath{\approx} 0.114
 \end{enumerate}

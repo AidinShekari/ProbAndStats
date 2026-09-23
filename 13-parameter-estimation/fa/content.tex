@@ -8,29 +8,29 @@
 \item
   میان برآوردگر (قاعده) و برآورد (عدد) تمایز قایل شوند
 \item
-  ویژگی‌های برآوردگر را ارزیابی کنند: اریبی، سازگاری، کارایی، \lr{MSE}
+  ویژگی‌های برآوردگر را ارزیابی کنند: اریبی، سازگاری، کارایی، \lr{\mbox{MSE}}
 \item
   روش گشتاورها را به کار ببرند
 \item
-  برآورد بیشینه درست‌نمایی \lr{(MLE)} را به کار ببرند
+  برآورد بیشینه درست‌نمایی \lr{\mbox{(MLE)}} را به کار ببرند
 \item
-  برآوردگرها را با استفاده از \lr{MSE} و توازن اریبی-واریانس مقایسه کنند
+  برآوردگرها را با استفاده از \lr{\mbox{MSE}} و توازن اریبی-واریانس مقایسه کنند
 \end{enumerate}
 
 \end{PSbox}
 
 \PSsection{13.1}{مقدمه}
 
-داده \lr{X\textsubscript{1}, …, X\textsubscript{n}} را از توزیعی با پارامتر نامعلوم \lr{\ensuremath{\theta}} مشاهده می‌کنیم. \textbf{برآورد پارامتر} روشی برای استنباط \lr{\ensuremath{\theta}} از داده به ما می‌دهد.
+داده \lr{\mbox{X\textsubscript{1}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} را از توزیعی با پارامتر نامعلوم \lr{\mbox{\ensuremath{\theta}}} مشاهده می‌کنیم. \textbf{برآورد پارامتر} روشی برای استنباط \lr{\mbox{\ensuremath{\theta}}} از داده به ما می‌دهد.
 
 مثال‌های مهندسی:
 
 \begin{itemize}
 \tightlist
 \item
-  برآورد واریانس نویز \lr{\ensuremath{\sigma}\textsuperscript{2}} از نمونه‌های ثبت‌شده
+  برآورد واریانس نویز \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}} از نمونه‌های ثبت‌شده
 \item
-  برآورد نرخ خرابی \lr{\ensuremath{\lambda}} از عمر قطعات
+  برآورد نرخ خرابی \lr{\mbox{\ensuremath{\lambda}}} از عمر قطعات
 \item
   برآورد بهره کانال از قدرت سیگنال دریافتی
 \item
@@ -53,8 +53,8 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{برآوردگر} \lr{\ensuremath{\hat{\theta}}} & متغیر تصادفی (تابع داده) & قاعده اعمال‌شده به داده & \lr{\ensuremath{\hat{\theta}} = \ensuremath{\bar{X}} = (1/n)\ensuremath{\Sigma}X\textsubscript{i}} \\
-\textbf{برآورد} & عدد & مقدار حاصل از یک نمونه مشخص & \lr{\ensuremath{\hat{\theta}} = 3.47} (از یک مجموعه داده) \\
+\textbf{برآوردگر} \lr{\mbox{\ensuremath{\hat{\theta}}}} & متغیر تصادفی (تابع داده) & قاعده اعمال‌شده به داده & \lr{\ensuremath{\hat{\theta}} = \ensuremath{\bar{X}} = (1/n)\ensuremath{\Sigma}X\textsubscript{i}} \\
+\textbf{برآورد} & عدد & مقدار حاصل از یک نمونه مشخص & \lr{\mbox{\ensuremath{\hat{\theta}} = 3.47}} (از یک مجموعه داده) \\
 \end{longtable}
 }
 
@@ -73,7 +73,7 @@
 \begin{itemize}
 \tightlist
 \item
-  \textbf{نااریب:} \lr{B(\ensuremath{\hat{\theta}}) = 0}، یعنی \lr{E[\ensuremath{\hat{\theta}}] = \ensuremath{\theta}} (به‌طور میانگین درست)
+  \textbf{نااریب:} \lr{\mbox{B(\ensuremath{\hat{\theta}}) = 0}}، یعنی \lr{\mbox{E[\ensuremath{\hat{\theta}}] = \ensuremath{\theta}}} (به‌طور میانگین درست)
 \item
   \textbf{اریب:} \lr{E[\ensuremath{\hat{\theta}}] \ensuremath{\neq} \ensuremath{\theta}} (خطای نظام‌مند)
 \end{itemize}
@@ -83,40 +83,40 @@
 \begin{itemize}
 \tightlist
 \item
-  \lr{\ensuremath{\bar{X}}} برای \lr{\ensuremath{\mu}} نااریب است: \lr{E[\ensuremath{\bar{X}}] = \ensuremath{\mu} \PSyes{}}
+  \lr{\mbox{\ensuremath{\bar{X}}}} برای \lr{\mbox{\ensuremath{\mu}}} نااریب است: \lr{\mbox{E[\ensuremath{\bar{X}}] = \ensuremath{\mu} \PSyes{}}}
 \item
-  \lr{S\textsuperscript{2}} (با \lr{n-1}) برای \lr{\ensuremath{\sigma}\textsuperscript{2}} نااریب است: \lr{E[S\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2} \PSyes{}}
+  \lr{\mbox{S\textsuperscript{2}}} (با \lr{\mbox{n-1}}) برای \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}} نااریب است: \lr{E[S\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2} \PSyes{}}
 \item
-  \lr{S} (انحراف معیار نمونه) برای \lr{\ensuremath{\sigma}} اریب است: \lr{E[S] \ensuremath{\neq} \ensuremath{\sigma}} (اریبی اندک به سمت پایین)
+  \lr{\mbox{S}} (انحراف معیار نمونه) برای \lr{\mbox{\ensuremath{\sigma}}} اریب است: \lr{\mbox{E[S] \ensuremath{\neq} \ensuremath{\sigma}}} (اریبی اندک به سمت پایین)
 \end{itemize}
 
 \PSsubsection{سازگاری}
 
-\lr{\ensuremath{\hat{\theta}}\textsubscript{n}} \textbf{سازگار} است اگر \lr{\ensuremath{\hat{\theta}}\textsubscript{n} \ensuremath{\to} \ensuremath{\theta}} در احتمال وقتی \lr{n \ensuremath{\to} \ensuremath{\infty}}.
+\lr{\mbox{\ensuremath{\hat{\theta}}\textsubscript{n}}} \textbf{سازگار} است اگر \lr{\ensuremath{\hat{\theta}}\textsubscript{n} \ensuremath{\to} \ensuremath{\theta}} در احتمال وقتی \lr{\mbox{n \ensuremath{\to} \ensuremath{\infty}}}.
 
 معنای عملی: با داده کافی، برآوردگر به‌طور دلخواه به مقدار واقعی نزدیک می‌شود.
 
-شرط کافی: اگر اریبی \lr{\ensuremath{\to} 0} و واریانس \lr{\ensuremath{\to} 0} وقتی \lr{n \ensuremath{\to} \ensuremath{\infty}}، آنگاه سازگار است.
+شرط کافی: اگر اریبی \lr{\mbox{\ensuremath{\to} 0}} و واریانس \lr{\mbox{\ensuremath{\to} 0}} وقتی \lr{\mbox{n \ensuremath{\to} \ensuremath{\infty}}}، آنگاه سازگار است.
 
 \PSsubsection{کارایی}
 
 در میان تمام برآوردگرهای نااریب، برآوردگر \textbf{کارا} کمترین واریانس را دارد.
 
-\textbf{کران پایین کرامر-رایو} \lr{(CRLB)} کمترین واریانس ممکن را می‌دهد:\PSdisplay{\PSmtext{Var}(\hat{\theta}) \geq \frac{1}{nI(\theta)}}
+\textbf{کران پایین کرامر-رایو} \lr{\mbox{(CRLB)}} کمترین واریانس ممکن را می‌دهد:\PSdisplay{\PSmtext{Var}(\hat{\theta}) \geq \frac{1}{nI(\theta)}}
 
-که در آن \lr{I(\ensuremath{\theta})} = اطلاعات فیشر = \lr{-E[\ensuremath{\partial}\textsuperscript{2}ln f(X;\ensuremath{\theta})/\ensuremath{\partial}\ensuremath{\theta}\textsuperscript{2}]}.
+که در آن \lr{\mbox{I(\ensuremath{\theta})}} = اطلاعات فیشر = \lr{-E[\ensuremath{\partial}\textsuperscript{2}ln f(X;\ensuremath{\theta})/\ensuremath{\partial}\ensuremath{\theta}\textsuperscript{2}]}.
 
-برآوردگری که به \lr{CRLB} برسد \textbf{کارا} یا \textbf{کم‌واریانس نااریب \lr{(MVU)}} نامیده می‌شود.
+برآوردگری که به \lr{\mbox{CRLB}} برسد \textbf{کارا} یا \textbf{کم‌واریانس نااریب \lr{\mbox{(MVU)}}} نامیده می‌شود.
 
-\PSsubsection{میانگین مربعات خطا \lr{(MSE)}}
+\PSsubsection{میانگین مربعات خطا \lr{\mbox{(MSE)}}}
 
 \PSdisplay{\PSmtext{MSE}(\hat{\theta}) = E[(\hat{\theta} - \theta)^2] = \PSmtext{Var}(\hat{\theta}) + [B(\hat{\theta})]^2}
 
-\textbf{\lr{MSE} = واریانس + اریبی\lr{\textsuperscript{2}}}
+\textbf{\lr{\mbox{MSE}} = واریانس + اریبی\lr{\mbox{\textsuperscript{2}}}}
 
-این همان \textbf{توازن اریبی-واریانس} است: گاهی یک برآوردگر کمی اریب با واریانس بسیار کمتر، \lr{MSE} کوچک‌تری از یک برآوردگر نااریب دارد.
+این همان \textbf{توازن اریبی-واریانس} است: گاهی یک برآوردگر کمی اریب با واریانس بسیار کمتر، \lr{\mbox{MSE}} کوچک‌تری از یک برآوردگر نااریب دارد.
 
-\PSsection{13.4}{روش گشتاورها \lr{(MoM)}}
+\PSsection{13.4}{روش گشتاورها \lr{\mbox{(MoM)}}}
 
 \PSsubsection{اصل}
 
@@ -125,9 +125,9 @@
 \begin{itemize}
 \tightlist
 \item
-  گشتاور مرتبه \lr{k} جامعه: \lr{\ensuremath{\mu}’\textsubscript{k} = E[X\textsuperscript{k}]}
+  گشتاور مرتبه \lr{\mbox{k}} جامعه: \lr{\ensuremath{\mu}’\textsubscript{k} = E[X\textsuperscript{k}]}
 \item
-  گشتاور مرتبه \lr{k} نمونه: \lr{m’\textsubscript{k} = (1/n)\ensuremath{\Sigma}X\textsubscript{i}\textsuperscript{k}}
+  گشتاور مرتبه \lr{\mbox{k}} نمونه: \lr{m’\textsubscript{k} = (1/n)\ensuremath{\Sigma}X\textsubscript{i}\textsuperscript{k}}
 \end{itemize}
 
 \PSsubsection{رویه}
@@ -145,29 +145,29 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال: توزیع نمایی}
 
-داده از \lr{Exp(\ensuremath{\lambda})}. گشتاور جامعه: \lr{E[X] = 1/\ensuremath{\lambda}}.\PSbr{}برابر قرار دهید: \lr{(1/n)\ensuremath{\Sigma}X\textsubscript{i} = 1/\ensuremath{\hat{\lambda}} \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MoM} = 1/\ensuremath{\bar{X}}}
+داده از \lr{\mbox{Exp(\ensuremath{\lambda})}}. گشتاور جامعه: \lr{\mbox{E[X] = 1/\ensuremath{\lambda}}}.\PSbr{}برابر قرار دهید: \lr{(1/n)\ensuremath{\Sigma}X\textsubscript{i} = 1/\ensuremath{\hat{\lambda}} \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MoM} = 1/\ensuremath{\bar{X}}}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{مثال: توزیع گاوسی}
 
-داده از \lr{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}:
+داده از \lr{\mbox{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}}:
 
 \begin{itemize}
 \tightlist
 \item
-  گشتاور اول: \lr{\ensuremath{\hat{\mu}} = \ensuremath{\bar{X}}}
+  گشتاور اول: \lr{\mbox{\ensuremath{\hat{\mu}} = \ensuremath{\bar{X}}}}
 \item
-  گشتاور مرکزی دوم: \lr{\ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i} - \ensuremath{\bar{X}})\textsuperscript{2}} (توجه: اریب، از \lr{n} استفاده می‌کند نه \lr{n-1})
+  گشتاور مرکزی دوم: \lr{\ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i} - \ensuremath{\bar{X}})\textsuperscript{2}} (توجه: اریب، از \lr{\mbox{n}} استفاده می‌کند نه \lr{\mbox{n-1}})
 \end{itemize}
 
 \end{PSbox}
 
 \PSsubsection{مزایا/معایب}
 
-\lr{\PSyes{}} ساده، همیشه قابل اعمال، جواب‌های فرم بسته اغلب در دسترس\PSbr{}\lr{\PSno{}} همیشه کارا نیست، می‌تواند برآوردهای اریب تولید کند، ممکن است مقادیر نامعتبر پارامتر بدهد
+\lr{\mbox{\PSyes{}}} ساده، همیشه قابل اعمال، جواب‌های فرم بسته اغلب در دسترس\PSbr{}\lr{\mbox{\PSno{}}} همیشه کارا نیست، می‌تواند برآوردهای اریب تولید کند، ممکن است مقادیر نامعتبر پارامتر بدهد
 
-\PSsection{13.5}{برآورد بیشینه درست‌نمایی \lr{(MLE)}}
+\PSsection{13.5}{برآورد بیشینه درست‌نمایی \lr{\mbox{(MLE)}}}
 
 \PSsubsection{اصل}
 
@@ -175,7 +175,7 @@
 
 \PSsubsection{تابع درست‌نمایی}
 
-با داده \lr{x\textsubscript{1}, …, x\textsubscript{n}} از \lr{f(x; \ensuremath{\theta})}:
+با داده \lr{\mbox{x\textsubscript{1}}}، \lr{…}، \lr{\mbox{x\textsubscript{n}}} از \lr{\mbox{f(x; \ensuremath{\theta})}}:
 
 \PSdisplay{L(\theta) = \prod_{i=1}^n f(x_i; \theta)}
 
@@ -183,22 +183,22 @@
 
 \PSdisplay{\ell(\theta) = \ln L(\theta) = \sum_{i=1}^n \ln f(x_i; \theta)}
 
-\PSsubsection{رویه \lr{MLE}}
+\PSsubsection{رویه \lr{\mbox{MLE}}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  لگاریتم درست‌نمایی \lr{\ensuremath{\ell}(\ensuremath{\theta})} را بنویسید
+  لگاریتم درست‌نمایی \lr{\mbox{\ensuremath{\ell}(\ensuremath{\theta})}} را بنویسید
 \item
-  مشتق بگیرید: \lr{d\ensuremath{\ell}/d\ensuremath{\theta} = 0}
+  مشتق بگیرید: \lr{\mbox{d\ensuremath{\ell}/d\ensuremath{\theta} = 0}}
 \item
-  برای \lr{\ensuremath{\hat{\theta}}\textsubscript{MLE}} حل کنید
+  برای \lr{\mbox{\ensuremath{\hat{\theta}}\textsubscript{MLE}}} حل کنید
 \item
   بررسی کنید که بیشینه است \lr{(d\textsuperscript{2}\ensuremath{\ell}/d\ensuremath{\theta}\textsuperscript{2} \textless{} 0)}
 \end{enumerate}
 
-\PSsubsection{ویژگی‌های \lr{MLE}}
+\PSsubsection{ویژگی‌های \lr{\mbox{MLE}}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -206,16 +206,16 @@
 \item
   \textbf{سازگار} (به مقدار واقعی همگرا می‌شود)
 \item
-  \textbf{به‌طور مجانبی نااریب} (اریبی \lr{\ensuremath{\to} 0} وقتی \lr{n \ensuremath{\to} \ensuremath{\infty}})
+  \textbf{به‌طور مجانبی نااریب} (اریبی \lr{\mbox{\ensuremath{\to} 0}} وقتی \lr{\mbox{n \ensuremath{\to} \ensuremath{\infty}}})
 \item
-  \textbf{به‌طور مجانبی کارا} (برای \lr{n} بزرگ به \lr{CRLB} می‌رسد)
+  \textbf{به‌طور مجانبی کارا} (برای \lr{\mbox{n}} بزرگ به \lr{\mbox{CRLB}} می‌رسد)
 \item
-  \textbf{ناوردا:} اگر \lr{\ensuremath{\hat{\theta}}} برآوردگر \lr{MLE} برای \lr{\ensuremath{\theta}} باشد، آنگاه \lr{g(\ensuremath{\hat{\theta}})} برآوردگر \lr{MLE} برای \lr{g(\ensuremath{\theta})} است
+  \textbf{ناوردا:} اگر \lr{\mbox{\ensuremath{\hat{\theta}}}} برآوردگر \lr{\mbox{MLE}} برای \lr{\mbox{\ensuremath{\theta}}} باشد، آنگاه \lr{\mbox{g(\ensuremath{\hat{\theta}})}} برآوردگر \lr{\mbox{MLE}} برای \lr{\mbox{g(\ensuremath{\theta})}} است
 \end{enumerate}
 
-\begin{PSbox}[unbreakable]{ex}{مثال: \lr{MLE} برای میانگین گاوسی}
+\begin{PSbox}[unbreakable]{ex}{مثال: \lr{\mbox{MLE}} برای میانگین گاوسی}
 
-داده \lr{X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})} با \lr{\ensuremath{\sigma}\textsuperscript{2}} معلوم.
+داده \lr{\mbox{X\textsubscript{1}}}، \lr{…}، \lr{X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})} با \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}} معلوم.
 
 \lr{\ensuremath{\ell}(\ensuremath{\mu}) = -(n/2)ln(2\ensuremath{\pi}\ensuremath{\sigma}\textsuperscript{2}) - (1/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}}
 
@@ -223,9 +223,9 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال: \lr{MLE} برای نرخ نمایی}
+\begin{PSbox}[unbreakable]{ex}{مثال: \lr{\mbox{MLE}} برای نرخ نمایی}
 
-داده \lr{X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} Exp(\ensuremath{\lambda})}.
+داده \lr{\mbox{X\textsubscript{1}}}، \lr{…}، \lr{X\textsubscript{n} \textasciitilde{} Exp(\ensuremath{\lambda})}.
 
 \lr{\ensuremath{\ell}(\ensuremath{\lambda}) = n\ensuremath{\cdot}ln(\ensuremath{\lambda}) - \ensuremath{\lambda}\ensuremath{\cdot}\ensuremath{\Sigma}x\textsubscript{i}}
 
@@ -233,9 +233,9 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال: \lr{MLE} برای واریانس گاوسی}
+\begin{PSbox}[unbreakable]{ex}{مثال: \lr{\mbox{MLE}} برای واریانس گاوسی}
 
-داده \lr{X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}، \lr{\ensuremath{\mu}} معلوم.
+داده \lr{\mbox{X\textsubscript{1}}}، \lr{…}، \lr{X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}، \lr{\mbox{\ensuremath{\mu}}} معلوم.
 
 \lr{\ensuremath{\ell}(\ensuremath{\sigma}\textsuperscript{2}) = -(n/2)ln(2\ensuremath{\pi}\ensuremath{\sigma}\textsuperscript{2}) - (1/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}}
 
@@ -243,7 +243,7 @@
 
 \lr{\ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}}
 
-توجه: با \lr{\ensuremath{\mu}} نامعلوم، \lr{\ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2}} \lr{—} اریب! (از \lr{n} استفاده می‌کند، نه \lr{n-1})
+توجه: با \lr{\mbox{\ensuremath{\mu}}} نامعلوم، \lr{\ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2}} \lr{—} اریب! (از \lr{\mbox{n}} استفاده می‌کند، نه \lr{\mbox{n-1}})
 
 \end{PSbox}
 
@@ -251,51 +251,51 @@
 
 \PSsubsection{برآورد واریانس نویز}
 
-\textbf{مسیله:} \lr{n} نمونه نویز اندازه‌گیری کنید. توان نویز \lr{\ensuremath{\sigma}\textsuperscript{2}} را برآورد کنید.
+\textbf{مسیله:} \lr{\mbox{n}} نمونه نویز اندازه‌گیری کنید. توان نویز \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}} را برآورد کنید.
 
-\textbf{داده:} \lr{x\textsubscript{1}, …, x\textsubscript{n}} (نمونه‌های ولتاژ نویز، با فرض میانگین صفر)
+\textbf{داده:} \lr{\mbox{x\textsubscript{1}}}، \lr{…}، \lr{\mbox{x\textsubscript{n}}} (نمونه‌های ولتاژ نویز، با فرض میانگین صفر)
 
-\lr{\textbf{\lr{MLE}:} \ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2}} (اریب با ضریب \lr{(n-1)/n})\PSbr{}\textbf{نااریب:} \lr{S\textsuperscript{2} = (1/(n-1))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2}} یا اگر \lr{\ensuremath{\mu}=0} معلوم باشد: \lr{(1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2}} در واقع برای \lr{E[X\textsuperscript{2}]=\ensuremath{\sigma}\textsuperscript{2}} نااریب است
+\lr{\textbf{\lr{\mbox{MLE:}}} \ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2}} (اریب با ضریب \lr{\mbox{(n-1)/n}})\PSbr{}\textbf{نااریب:} \lr{S\textsuperscript{2} = (1/(n-1))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2}} یا اگر \lr{\mbox{\ensuremath{\mu}=0}} معلوم باشد: \lr{(1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2}} در واقع برای \lr{E[X\textsuperscript{2}]=\ensuremath{\sigma}\textsuperscript{2}} نااریب است
 
 \PSsubsection{برآورد نرخ خرابی}
 
-\textbf{مسیله:} 20 قطعه تا خرابی آزمایش می‌شوند. عمرها: \lr{t\textsubscript{1}, …, t\textsubscript{20}}.
+\textbf{مسیله:} 20 قطعه تا خرابی آزمایش می‌شوند. عمرها: \lr{\mbox{t\textsubscript{1}}}، \lr{…}، \lr{\mbox{t\textsubscript{20}}}.
 
-\textbf{مدل:} \lr{T \textasciitilde{} Exp(\ensuremath{\lambda})}، پارامتر \lr{\ensuremath{\lambda}} (نرخ خرابی).
+\textbf{مدل:} \lr{\mbox{T \textasciitilde{} Exp(\ensuremath{\lambda})}}، پارامتر \lr{\mbox{\ensuremath{\lambda}}} (نرخ خرابی).
 
-\lr{\textbf{\lr{MLE}:} \ensuremath{\hat{\lambda}} = 20/\ensuremath{\Sigma}t\textsubscript{i} = 1/\ensuremath{\bar{T}}}
+\lr{\textbf{\lr{\mbox{MLE:}}} \ensuremath{\hat{\lambda}} = 20/\ensuremath{\Sigma}t\textsubscript{i} = 1/\ensuremath{\bar{T}}}
 
-اگر \lr{\ensuremath{\bar{T}} = 500} ساعت باشد: \lr{\ensuremath{\hat{\lambda}} = 1/500 = 0.002} خرابی در ساعت.
+اگر \lr{\mbox{\ensuremath{\bar{T}} = 500}} ساعت باشد: \lr{\mbox{\ensuremath{\hat{\lambda}} = 1/500 = 0.002}} خرابی در ساعت.
 
 \PSsubsection{برآورد پارامتر کانال}
 
-\textbf{مسیله:} کانال محوشدگی رایلی. نمونه‌های توان مشاهده‌شده: \lr{p\textsubscript{1}, …, p\textsubscript{n}}.
+\textbf{مسیله:} کانال محوشدگی رایلی. نمونه‌های توان مشاهده‌شده: \lr{\mbox{p\textsubscript{1}}}، \lr{…}، \lr{\mbox{p\textsubscript{n}}}.
 
-\textbf{مدل:} توان \lr{P \textasciitilde{} Exp(1/\ensuremath{\Omega})}، که در آن \lr{\ensuremath{\Omega} = E[P]} = توان میانگین.
+\textbf{مدل:} توان \lr{\mbox{P \textasciitilde{} Exp(1/\ensuremath{\Omega})}}، که در آن \lr{\mbox{\ensuremath{\Omega} = E[P]}} = توان میانگین.
 
-\lr{\textbf{\lr{MLE}:} \ensuremath{\hat{\Omega}} = \ensuremath{\bar{P}} = (1/n)\ensuremath{\Sigma}p\textsubscript{i}}
+\lr{\textbf{\lr{\mbox{MLE:}}} \ensuremath{\hat{\Omega}} = \ensuremath{\bar{P}} = (1/n)\ensuremath{\Sigma}p\textsubscript{i}}
 
 \PSsection{13.7}{مقایسه برآوردگرها}
 
 \PSsubsection{توازن اریبی-واریانس}
 
-دو برآوردگر برای \lr{\ensuremath{\sigma}\textsuperscript{2}}:
+دو برآوردگر برای \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}}:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\ensuremath{\hat{\theta}}\textsubscript{1} = S\textsuperscript{2}} (نااریب، واریانس = \lr{2\ensuremath{\sigma}\textsuperscript{4}/(n-1)})
+  \lr{\ensuremath{\hat{\theta}}\textsubscript{1} = S\textsuperscript{2}} (نااریب، واریانس = \lr{\mbox{2\ensuremath{\sigma}\textsuperscript{4}/(n-1)}})
 \item
-  \lr{\ensuremath{\hat{\theta}}\textsubscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i}-\ensuremath{\bar{X}})\textsuperscript{2}} (اریب با \lr{-\ensuremath{\sigma}\textsuperscript{2}/n}، واریانس = \lr{2\ensuremath{\sigma}\textsuperscript{4}(n-1)/n\textsuperscript{2}})
+  \lr{\ensuremath{\hat{\theta}}\textsubscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i}-\ensuremath{\bar{X}})\textsuperscript{2}} (اریب با \lr{\mbox{-\ensuremath{\sigma}\textsuperscript{2}/n}}، واریانس = \lr{2\ensuremath{\sigma}\textsuperscript{4}(n-1)/n\textsuperscript{2}})
 \end{itemize}
 
 \lr{MSE(\ensuremath{\hat{\theta}}\textsubscript{1}) = 2\ensuremath{\sigma}\textsuperscript{4}/(n-1)}\PSbr{}\lr{MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) = 2\ensuremath{\sigma}\textsuperscript{4}(n-1)/n\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{4}/n\textsuperscript{2} = \ensuremath{\sigma}\textsuperscript{4}(2n-1)/n\textsuperscript{2}}
 
-برای هر \lr{n \ensuremath{\ge} 2: MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) \textless{} MSE(\ensuremath{\hat{\theta}}\textsubscript{1})}! برآوردگر اریب \lr{MLE} در واقع خطای کل کوچک‌تری دارد.
+برای هر \lr{\mbox{n \ensuremath{\ge} 2}}: \lr{MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) \textless{} MSE(\ensuremath{\hat{\theta}}\textsubscript{1})}! برآوردگر اریب \lr{\mbox{MLE}} در واقع خطای کل کوچک‌تری دارد.
 
-\PSsection{13.8}{مثال‌های \lr{MATLAB}}
+\PSsection{13.8}{مثال‌های \lr{\mbox{MATLAB}}}
 
-\begin{PSbox}[unbreakable]{ex}{مثال \lr{1: MLE} برای توزیع نمایی}
+\begin{PSbox}[unbreakable]{ex}{مثال 1: \lr{\mbox{MLE}} برای توزیع نمایی}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -331,7 +331,7 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال \lr{2: MLE} در برابر روش گشتاورها}
+\begin{PSbox}[unbreakable]{ex}{مثال 2: \lr{\mbox{MLE}} در برابر روش گشتاورها}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -364,7 +364,7 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال \lr{3: MLE} برای پارامترهای گاوسی}
+\begin{PSbox}[unbreakable]{ex}{مثال 3: \lr{\mbox{MLE}} برای پارامترهای گاوسی}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -397,26 +397,26 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1}
 
-داده از \lr{N(\ensuremath{\mu}, 9): \ensuremath{\bar{x}} = 4.2}، \lr{n = 25}.
+داده از \lr{\mbox{N(\ensuremath{\mu}, 9)}}: \lr{\mbox{\ensuremath{\bar{x}} = 4.2}}، \lr{\mbox{n = 25}}.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{MLE} مربوط به \lr{\ensuremath{\mu}} را بنویسید. \lr{(b) Var(\ensuremath{\hat{\mu}})} چقدر است؟ \lr{(c)} آیا \lr{\ensuremath{\bar{X}}} برای \lr{\ensuremath{\mu}} کارا است؟
+  \lr{\mbox{MLE}} مربوط به \lr{\mbox{\ensuremath{\mu}}} را بنویسید. (ب) \lr{\mbox{Var(\ensuremath{\hat{\mu}})}} چقدر است؟ (ج) آیا \lr{\mbox{\ensuremath{\bar{X}}}} برای \lr{\mbox{\ensuremath{\mu}}} کارا است؟
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
   \lr{\ensuremath{\hat{\mu}}\textsubscript{MLE} = \ensuremath{\bar{X}} = 4.2}
 \item
   \lr{Var(\ensuremath{\bar{X}}) = \ensuremath{\sigma}\textsuperscript{2}/n = 9/25 = 0.36}
 \item
-  \lr{CRLB} برای \lr{N(\ensuremath{\mu},\ensuremath{\sigma}\textsuperscript{2}): 1/(n\ensuremath{\cdot}I(\ensuremath{\mu})) = \ensuremath{\sigma}\textsuperscript{2}/n = 0.36. \ensuremath{\bar{X}}} به \lr{CRLB} می‌رسد \lr{\ensuremath{\to}} بله، کارا است.
+  \lr{\mbox{CRLB}} برای \lr{\mbox{N(\ensuremath{\mu},\ensuremath{\sigma}\textsuperscript{2})}}: \lr{1/(n\ensuremath{\cdot}I(\ensuremath{\mu})) = \ensuremath{\sigma}\textsuperscript{2}/n = 0.36}. \lr{\mbox{\ensuremath{\bar{X}}}} به \lr{\mbox{CRLB}} می‌رسد \lr{\mbox{\ensuremath{\to}}} بله، کارا است.
 \end{enumerate}
 
 \end{PSbox}
@@ -426,19 +426,19 @@
 عمر قطعات (ساعت): 120، 350، 200، 480، 90، 560، 310، 175، 420، 280.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  با فرض \lr{Exp(\ensuremath{\lambda})} مقدار \lr{\ensuremath{\lambda}} (نرخ خرابی) را با \lr{MLE} برآورد کنید. \lr{(b) MTTF} را برآورد کنید.
+  با فرض \lr{\mbox{Exp(\ensuremath{\lambda})}} مقدار \lr{\mbox{\ensuremath{\lambda}}} (نرخ خرابی) را با \lr{\mbox{MLE}} برآورد کنید. (ب) \lr{\mbox{MTTF}} را برآورد کنید.
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{\ensuremath{\bar{X}} = (120+350+200+480+90+560+310+175+420+280)/10 = 298.5}.\PSbr{}\lr{\ensuremath{\hat{\lambda}} = 1/298.5 = 0.00335} خرابی در ساعت.
+  \lr{\ensuremath{\bar{X}} = (120+350+200+480+90+560+310+175+420+280)/10 = 298.5.}\PSbr{}\lr{\mbox{\ensuremath{\hat{\lambda}} = 1/298.5 = 0.00335}} خرابی در ساعت.
 \item
   \lr{MTTF = 1/\ensuremath{\hat{\lambda}} = \ensuremath{\bar{X}} = 298.5} ساعت.
 \end{enumerate}
@@ -447,10 +447,10 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3}
 
-برای داده \lr{Poisson(\ensuremath{\lambda}): x\textsubscript{1},…,x\textsubscript{n}. MLE} مربوط به \lr{\ensuremath{\lambda}} را استخراج کنید.
+برای داده \lr{\mbox{Poisson(\ensuremath{\lambda})}}: \lr{\mbox{x\textsubscript{1},…,x\textsubscript{n}}}. \lr{\mbox{MLE}} مربوط به \lr{\mbox{\ensuremath{\lambda}}} را استخراج کنید.
 
-\PSsolution{} \lr{\ensuremath{\ell}(\ensuremath{\lambda}) = \ensuremath{\Sigma}[x\textsubscript{i} ln(\ensuremath{\lambda}) - \ensuremath{\lambda} - ln(x\textsubscript{i}!)] = (\ensuremath{\Sigma}x\textsubscript{i})ln(\ensuremath{\lambda}) - n\ensuremath{\lambda} - \ensuremath{\Sigma}ln(x\textsubscript{i}!)}\PSbr{}\lr{d\ensuremath{\ell}/d\ensuremath{\lambda} = (\ensuremath{\Sigma}x\textsubscript{i})/\ensuremath{\lambda} - n = 0 \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}x\textsubscript{i} = \ensuremath{\bar{X}}}.\PSbr{}\lr{MLE} برای نرخ پواسون همان میانگین نمونه است.
+\PSsolution{} \lr{\ensuremath{\ell}(\ensuremath{\lambda}) = \ensuremath{\Sigma}[x\textsubscript{i} ln(\ensuremath{\lambda}) - \ensuremath{\lambda} - ln(x\textsubscript{i}!)] = (\ensuremath{\Sigma}x\textsubscript{i})ln(\ensuremath{\lambda}) - n\ensuremath{\lambda} - \ensuremath{\Sigma}ln(x\textsubscript{i}!)}\PSbr{}\lr{d\ensuremath{\ell}/d\ensuremath{\lambda} = (\ensuremath{\Sigma}x\textsubscript{i})/\ensuremath{\lambda} - n = 0 \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}x\textsubscript{i} = \ensuremath{\bar{X}}.}\PSbr{}\lr{\mbox{MLE}} برای نرخ پواسون همان میانگین نمونه است.
 
-\emph{ماژول بعدی: {ماژول 14 \lr{—} بازه‌های اطمینان}}\PSbr{}
+\emph{ماژول بعدی: {ماژول 14 \lr{—} بازه‌های اطمینان}}
 
 \end{PSbox}

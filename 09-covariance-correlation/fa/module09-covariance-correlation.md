@@ -300,7 +300,7 @@ title('Estimated R'); xlabel('Sensor'); ylabel('Sensor');
 
 ### مسئله 1
 برای X و Y داریم: E[X]=2، E[Y]=3، Var(X)=4، Var(Y)=9، E[XY]=8.
-(a) Cov(X,Y) را بیابید. (b) ρ را بیابید. (c) Var(X+Y) را بیابید. (d) Var(2X-3Y) را بیابید.
+(a) Cov(X,Y) را بیابید. (ب) ρ را بیابید. (ج) Var(X+Y) را بیابید. (د) Var(2X-3Y) را بیابید.
 
 **حل:**
 (a) Cov(X,Y) = E[XY] - E[X]E[Y] = 8 - 2(3) = 2

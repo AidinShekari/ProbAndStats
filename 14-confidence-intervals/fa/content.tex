@@ -10,7 +10,7 @@
 \item
   بازه‌های اطمینان برای میانگین بسازند (واریانس معلوم و نامعلوم)
 \item
-  توزیع \lr{t} را برای نمونه‌های کوچک به کار ببرند
+  توزیع \lr{\mbox{t}} را برای نمونه‌های کوچک به کار ببرند
 \item
   بازه‌های اطمینان برای واریانس بسازند
 \item
@@ -23,7 +23,7 @@
 
 \PSsection{14.1}{مقدمه: چرا برآورد نقطه‌ای کافی نیست}
 
-یک برآورد نقطه‌ای (مثلاً \lr{\ensuremath{\bar{X}} = 3.47}) هیچ اطلاعاتی درباره \textbf{دقت} نمی‌دهد. باید عدم‌قطعیت را کمّی کنیم:
+یک برآورد نقطه‌ای (مثلاً \lr{\mbox{\ensuremath{\bar{X}} = 3.47}}) هیچ اطلاعاتی درباره \textbf{دقت} نمی‌دهد. باید عدم‌قطعیت را کمّی کنیم:
 
 «میانگین واقعی \PSnum{3.47} برآورد می‌شود، \textbf{با تقریبی} به اندازه‌ای.»
 
@@ -31,25 +31,25 @@
 
 \PSsection{14.2}{تفسیر درست بازه‌های اطمینان}
 
-\PSsubsection{\lr{\PSyes{}} تفسیر درست (فراوانی‌گرا)}
+\PSsubsection{\lr{\mbox{\PSyes{}}} تفسیر درست (فراوانی‌گرا)}
 
 \begin{PSquote}
 
-«اگر این آزمایش را بارها تکرار کنیم و هر بار یک بازه اطمینان 95\% محاسبه کنیم، آنگاه تقریباً 95\% از آن بازه‌ها شامل پارامتر واقعی \lr{\ensuremath{\mu}} خواهند بود.»
+«اگر این آزمایش را بارها تکرار کنیم و هر بار یک بازه اطمینان 95\% محاسبه کنیم، آنگاه تقریباً 95\% از آن بازه‌ها شامل پارامتر واقعی \lr{\mbox{\ensuremath{\mu}}} خواهند بود.»
 
 \end{PSquote}
 
-این \textbf{رویه} نرخ موفقیت 95\% دارد. هر بازه مشخص یا شامل \lr{\ensuremath{\mu}} است یا نیست.
+این \textbf{رویه} نرخ موفقیت 95\% دارد. هر بازه مشخص یا شامل \lr{\mbox{\ensuremath{\mu}}} است یا نیست.
 
-\PSsubsection{\lr{\PSno{}} تفسیر نادرست}
+\PSsubsection{\lr{\mbox{\PSno{}}} تفسیر نادرست}
 
 \begin{PSquote}
 
-{«احتمال 95\% وجود دارد که \lr{\ensuremath{\mu}} داخل این بازه خاص \PSnum{[2.1,} \PSnum{4.8]} باشد.»}
+{«احتمال 95\% وجود دارد که \lr{\mbox{\ensuremath{\mu}}} داخل این بازه خاص \lr{\mbox{[2.1, 4.8]}} باشد.»}
 
 \end{PSquote}
 
-\textbf{چرا نادرست است:} \lr{\ensuremath{\mu}} یک عدد ثابت (غیرتصادفی) است. یا در \PSnum{[2.1,} \PSnum{4.8]} است یا نیست \lr{—} هیچ احتمالی درباره آن وجود ندارد. \textbf{بازه} تصادفی است (از نمونه‌ای به نمونه دیگر تغییر می‌کند)، نه پارامتر.
+\textbf{چرا نادرست است:} \lr{\mbox{\ensuremath{\mu}}} یک عدد ثابت (غیرتصادفی) است. یا در \lr{\mbox{[2.1, 4.8]}} است یا نیست \lr{—} هیچ احتمالی درباره آن وجود ندارد. \textbf{بازه} تصادفی است (از نمونه‌ای به نمونه دیگر تغییر می‌کند)، نه پارامتر.
 
 \PSsubsection{قیاس}
 
@@ -62,14 +62,14 @@
 \item
   پس از پرتاب: ماهی یا گرفته شده یا نشده \lr{—} دیگر احتمالی وجود ندارد
 \item
-  ماهی \lr{(\ensuremath{\mu})} حرکت نمی‌کند؛ تور شما (بازه اطمینان) حرکت می‌کند
+  ماهی \lr{\mbox{(\ensuremath{\mu})}} حرکت نمی‌کند؛ تور شما (بازه اطمینان) حرکت می‌کند
 \end{itemize}
 
-\PSsection{14.3}{بازه اطمینان برای میانگین \lr{—} واریانس معلوم (بازه \lr{Z})}
+\PSsection{14.3}{بازه اطمینان برای میانگین \lr{—} واریانس معلوم (بازه \lr{\mbox{Z}})}
 
 \PSsubsection{صورت‌بندی}
 
-داده: \lr{X\textsubscript{1}, …, X\textsubscript{n}} مستقل و هم‌توزیع از \lr{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})} با \lr{\ensuremath{\sigma}\textsuperscript{2}} \textbf{معلوم}.
+داده: \lr{\mbox{X\textsubscript{1}}}، \lr{…}، \lr{\mbox{X\textsubscript{n}}} مستقل و هم‌توزیع از \lr{\mbox{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}} با \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}} \textbf{معلوم}.
 
 \PSsubsection{استخراج}
 
@@ -77,18 +77,18 @@
 
 \lr{P(-z\textsubscript{\ensuremath{\alpha}/2} \ensuremath{\le} Z \ensuremath{\le} z\textsubscript{\ensuremath{\alpha}/2}) = 1 - \ensuremath{\alpha}}
 
-با حل برای \lr{\ensuremath{\mu}}:\PSdisplay{P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha}
+با حل برای \lr{\mbox{\ensuremath{\mu}}}:\PSdisplay{P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha}
 
 \PSsubsection{فرمول}
 
 \PSdisplay{\PSmtext{CI: } \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}}
 
-\PSsubsection{مقادیر رایج \lr{z}}
+\PSsubsection{مقادیر رایج \lr{\mbox{z}}}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}ccc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{سطح اطمینان} & \PSth{\lr{\ensuremath{\alpha}}} & \PSth{\lr{z\textsubscript{\ensuremath{\alpha}/2}}} \\
+\rowcolor{PSnavy}\PSth{سطح اطمینان} & \PSth{\lr{\mbox{\ensuremath{\alpha}}}} & \PSth{\lr{\mbox{z\textsubscript{\ensuremath{\alpha}/2}}}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -101,38 +101,38 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال}
 
-اندازه‌گیری‌های نویز: \lr{n = 36}، \lr{\ensuremath{\bar{X}} = 0.52V}، \lr{\ensuremath{\sigma} = 0.12V} (معلوم از مشخصات تجهیز).
+اندازه‌گیری‌های نویز: \lr{\mbox{n = 36}}، \lr{\mbox{\ensuremath{\bar{X}} = 0.52V}}، \lr{\mbox{\ensuremath{\sigma} = 0.12V}} (معلوم از مشخصات تجهیز).
 
-بازه اطمینان \lr{95\%: 0.52 \ensuremath{\pm} 1.96 \ensuremath{\times} 0.12/\ensuremath{\surd}36 = 0.52 \ensuremath{\pm} 0.0392 = \textbf{\lr{[0.481, 0.559] V}}}
+بازه اطمینان 95\%: \lr{0.52 \ensuremath{\pm} 1.96 \ensuremath{\times} 0.12/\ensuremath{\surd}36 = 0.52 \ensuremath{\pm} 0.0392 = \textbf{\lr{\mbox{[0.481, 0.559] V}}}}
 
 \end{PSbox}
 
-\PSsection{14.4}{بازه اطمینان برای میانگین \lr{—} واریانس نامعلوم (بازه \lr{t})}
+\PSsection{14.4}{بازه اطمینان برای میانگین \lr{—} واریانس نامعلوم (بازه \lr{\mbox{t}})}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله}
 
-معمولاً \lr{\ensuremath{\sigma}} نامعلوم است. آن را با \lr{S} برآورد می‌کنیم. اما \lr{\ensuremath{\bar{X}}/(S/\ensuremath{\surd}n)} از \lr{N(0,1)} پیروی نمی‌کند.
+معمولاً \lr{\mbox{\ensuremath{\sigma}}} نامعلوم است. آن را با \lr{\mbox{S}} برآورد می‌کنیم. اما \lr{\mbox{\ensuremath{\bar{X}}/(S/\ensuremath{\surd}n)}} از \lr{\mbox{N(0,1)}} پیروی نمی‌کند.
 
 \end{PSbox}
 
-\PSsubsection{توزیع \lr{t} استیودنت}
+\PSsubsection{توزیع \lr{\mbox{t}} استیودنت}
 
 \PSdisplay{T = \frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t(n-1)}
 
-توزیع \lr{t}:
+توزیع \lr{\mbox{t}}:
 
 \begin{itemize}
 \tightlist
 \item
   متقارن حول 0
 \item
-  دنباله‌های سنگین‌تر از \lr{N(0,1)} (عدم‌قطعیت بیشتر چون \lr{S} برآورد شده است)
+  دنباله‌های سنگین‌تر از \lr{\mbox{N(0,1)}} (عدم‌قطعیت بیشتر چون \lr{\mbox{S}} برآورد شده است)
 \item
-  درجات آزادی: \lr{\ensuremath{\nu} = n - 1}
+  درجات آزادی: \lr{\mbox{\ensuremath{\nu} = n - 1}}
 \item
-  وقتی \lr{\ensuremath{\nu} \ensuremath{\to} \ensuremath{\infty}: t(\ensuremath{\nu}) \ensuremath{\to} N(0,1)}
+  وقتی \lr{\mbox{\ensuremath{\nu} \ensuremath{\to} \ensuremath{\infty}}}: \lr{\mbox{t(\ensuremath{\nu}) \ensuremath{\to} N(0,1)}}
 \item
-  برای \lr{\ensuremath{\nu} \ensuremath{\ge} 30}: تقریباً \lr{t \ensuremath{\approx} z}
+  برای \lr{\mbox{\ensuremath{\nu} \ensuremath{\ge} 30}}: تقریباً \lr{\mbox{t \ensuremath{\approx} z}}
 \end{itemize}
 
 \PSsubsection{فرمول}
@@ -141,13 +141,13 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال}
 
-تأخیر قطعه: \lr{n = 15}، \lr{\ensuremath{\bar{X}} = 2.34 ns}، \lr{S = 0.45 ns}.
+تأخیر قطعه: \lr{\mbox{n = 15}}، \lr{\mbox{\ensuremath{\bar{X}} = 2.34 ns}}، \lr{\mbox{S = 0.45 ns}}.
 
-بازه اطمینان \lr{95\%: t\_\{0.025, 14\} = 2.145}
+بازه اطمینان 95\%: \lr{\mbox{t\textsubscript{0.025, 14} = 2.145}}
 
-\lr{CI: 2.34 \ensuremath{\pm} 2.145 \ensuremath{\times} 0.45/\ensuremath{\surd}15 = 2.34 \ensuremath{\pm} 0.249 = \textbf{\lr{[2.09, 2.59] ns}}}
+\lr{\mbox{CI}}: \lr{2.34 \ensuremath{\pm} 2.145 \ensuremath{\times} 0.45/\ensuremath{\surd}15 = 2.34 \ensuremath{\pm} 0.249 = \textbf{\lr{\mbox{[2.09, 2.59] ns}}}}
 
-(پهن‌تر از بازه \lr{Z} به‌دلیل عدم‌قطعیت اضافی در \lr{S}.)
+(پهن‌تر از بازه \lr{\mbox{Z}} به‌دلیل عدم‌قطعیت اضافی در \lr{\mbox{S}}.)
 
 \end{PSbox}
 
@@ -155,7 +155,7 @@
 
 \PSsubsection{صورت‌بندی}
 
-داده از \lr{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}. بازه اطمینان برای \lr{\ensuremath{\sigma}\textsuperscript{2}} مطلوب است.
+داده از \lr{\mbox{N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2})}}. بازه اطمینان برای \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}} مطلوب است.
 
 \PSsubsection{توزیع کلیدی}
 
@@ -167,13 +167,13 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال}
 
-توان نویز: \lr{n = 20}، \lr{S\textsuperscript{2} = 0.045 V\textsuperscript{2}}.
+توان نویز: \lr{\mbox{n = 20}}، \lr{\mbox{S\textsuperscript{2} = 0.045 V\textsuperscript{2}}}.
 
-بازه اطمینان 95\% برای \lr{\ensuremath{\sigma}\textsuperscript{2}: \ensuremath{\chi}\textsuperscript{2}\_\{0.025, 19\} = 32.852}، \lr{\ensuremath{\chi}\textsuperscript{2}\_\{0.975, 19\} = 8.907}
+بازه اطمینان 95\% برای \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}}: \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.025, 19} = 32.852}، \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.975, 19} = 8.907}
 
-\lr{CI}: [\lr{(19)(0.045)/32.852}، \lr{(19)(0.045)/8.907}] = \lr{[0.026, 0.096] V\textsuperscript{2}}
+\lr{\mbox{CI}}: [\lr{\mbox{(19)(0.045)/32.852}}، \lr{\mbox{(19)(0.045)/8.907}}] = \lr{\mbox{[0.026, 0.096] V\textsuperscript{2}}}
 
-بازه اطمینان 95\% برای \lr{\ensuremath{\sigma}: [\ensuremath{\surd}0.026, \ensuremath{\surd}0.096] = [0.161, 0.310] V}
+بازه اطمینان 95\% برای \lr{\mbox{\ensuremath{\sigma}}}: \lr{[\ensuremath{\surd}0.026, \ensuremath{\surd}0.096] = [0.161, 0.310] V}
 
 \end{PSbox}
 
@@ -181,7 +181,7 @@
 
 \PSsubsection{صورت‌بندی}
 
-\lr{n} آزمایش، \lr{\ensuremath{\hat{x}} = k/n} موفقیت. برآورد \lr{p} = نسبت واقعی.
+\lr{\mbox{n}} آزمایش، \lr{\mbox{\ensuremath{\hat{x}} = k/n}} موفقیت. برآورد \lr{\mbox{p}} = نسبت واقعی.
 
 \PSsubsection{فرمول نمونه بزرگ (بازه والد)}
 
@@ -191,9 +191,9 @@
 
 \PSnum{100,000} بیت ارسال شد، 53 خطا مشاهده شد. \lr{\ensuremath{\hat{p}} = 53/100000 = 5.3\ensuremath{\times}10\textsuperscript{-4}}.
 
-بازه اطمینان \lr{95\%: 5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.96\ensuremath{\surd}(5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\times} 0.9995 / 100000) = 5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.43\ensuremath{\times}10\textsuperscript{-4}}
+بازه اطمینان 95\%: \lr{5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.96\ensuremath{\surd}(5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\times} 0.9995 / 100000) = 5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.43\ensuremath{\times}10\textsuperscript{-4}}
 
-\lr{CI: \textbf{\lr{[3.9\ensuremath{\times}10\textsuperscript{-4}, 6.7\ensuremath{\times}10\textsuperscript{-4}]}}}
+\lr{\mbox{CI}}: \lr{\textbf{\lr{[3.9\ensuremath{\times}10\textsuperscript{-4}, 6.7\ensuremath{\times}10\textsuperscript{-4}]}}}
 
 \end{PSbox}
 
@@ -207,9 +207,9 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{\ensuremath{\uparrow}} اندازه نمونه \lr{n} & باریک‌تر & داده بیشتر \lr{\ensuremath{\to}} دقت بیشتر \\
-\lr{\ensuremath{\uparrow}} سطح اطمینان & پهن‌تر & اطمینان بیشتر \lr{\ensuremath{\to}} تور پهن‌تر \\
-\lr{\ensuremath{\uparrow}} تغییرپذیری \lr{\ensuremath{\sigma}} & پهن‌تر & نویز بیشتر \lr{\ensuremath{\to}} دشوارتر برای تعیین دقیق \lr{\ensuremath{\mu}} \\
+\lr{\mbox{\ensuremath{\uparrow}}} اندازه نمونه \lr{\mbox{n}} & باریک‌تر & داده بیشتر \lr{\mbox{\ensuremath{\to}}} دقت بیشتر \\
+\lr{\mbox{\ensuremath{\uparrow}}} سطح اطمینان & پهن‌تر & اطمینان بیشتر \lr{\mbox{\ensuremath{\to}}} تور پهن‌تر \\
+\lr{\mbox{\ensuremath{\uparrow}}} تغییرپذیری \lr{\mbox{\ensuremath{\sigma}}} & پهن‌تر & نویز بیشتر \lr{\mbox{\ensuremath{\to}}} دشوارتر برای تعیین دقیق \lr{\mbox{\ensuremath{\mu}}} \\
 \end{longtable}
 }
 
@@ -218,30 +218,30 @@
 \begin{itemize}
 \tightlist
 \item
-  بازه اطمینان باریک (دقیق) مطلوب \lr{\ensuremath{\to}} داده بیشتر لازم است یا باید اطمینان کمتری را بپذیرید
+  بازه اطمینان باریک (دقیق) مطلوب \lr{\mbox{\ensuremath{\to}}} داده بیشتر لازم است یا باید اطمینان کمتری را بپذیرید
 \item
-  اطمینان بالا مطلوب \lr{\ensuremath{\to}} باید بازه پهن‌تری را بپذیرید یا داده بیشتری جمع کنید
+  اطمینان بالا مطلوب \lr{\mbox{\ensuremath{\to}}} باید بازه پهن‌تری را بپذیرید یا داده بیشتری جمع کنید
 \item
-  هم باریک و هم اطمینان بالا مطلوب \lr{\ensuremath{\to}} به داده \textbf{بسیار زیاد} نیاز است
+  هم باریک و هم اطمینان بالا مطلوب \lr{\mbox{\ensuremath{\to}}} به داده \textbf{بسیار زیاد} نیاز است
 \end{itemize}
 
 \PSsection{14.8}{تعیین اندازه نمونه}
 
 \PSsubsection{پرسش: چند اندازه‌گیری لازم دارم؟}
 
-برای پهنای بازه اطمینان \lr{\ensuremath{\le} 2E} (حاشیه خطای \lr{E}):
+برای پهنای بازه اطمینان \lr{\mbox{\ensuremath{\le} 2E}} (حاشیه خطای \lr{\mbox{E}}):
 
 \PSdisplay{n \geq \left(\frac{z_{\alpha/2} \cdot \sigma}{E}\right)^2}
 
 \begin{PSbox}[unbreakable]{ex}{مثال}
 
-می‌خواهیم میانگین تأخیر را با اطمینان 95\% و در محدوده \lr{\ensuremath{\pm}0.5ms} برآورد کنیم. انتظار \lr{\ensuremath{\sigma} \ensuremath{\approx} 3ms}.
+می‌خواهیم میانگین تأخیر را با اطمینان 95\% و در محدوده \lr{\mbox{\ensuremath{\pm}0.5ms}} برآورد کنیم. انتظار \lr{\mbox{\ensuremath{\sigma} \ensuremath{\approx} 3ms}}.
 
-\lr{n \ensuremath{\ge} (1.96 \ensuremath{\times} 3 / 0.5)\textsuperscript{2} = (11.76)\textsuperscript{2} = 138.3 \ensuremath{\to}} به \textbf{\lr{n = 139} اندازه‌گیری} نیاز است
+\lr{n \ensuremath{\ge} (1.96 \ensuremath{\times} 3 / 0.5)\textsuperscript{2} = (11.76)\textsuperscript{2} = 138.3 \ensuremath{\to}} به \textbf{\lr{\mbox{n = 139}} اندازه‌گیری} نیاز است
 
 \end{PSbox}
 
-\PSsection{14.9}{نمایش‌های \lr{MATLAB}}
+\PSsection{14.9}{نمایش‌های \lr{\mbox{MATLAB}}}
 
 \begin{PSbox}[breakable]{ex}{مثال 1: نمایش پوشش بازه اطمینان}
 
@@ -285,7 +285,7 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال 2: بازه \lr{t} در عمل}
+\begin{PSbox}[unbreakable]{ex}{مثال 2: بازه \lr{\mbox{t}} در عمل}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -337,24 +337,24 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1}
 
-یک حسگر ولتاژ را اندازه‌گیری می‌کند. از 50 اندازه‌گیری: \lr{\ensuremath{\bar{X}} = 3.32V}، \lr{S = 0.15V}.
+یک حسگر ولتاژ را اندازه‌گیری می‌کند. از 50 اندازه‌گیری: \lr{\mbox{\ensuremath{\bar{X}} = 3.32V}}، \lr{\mbox{S = 0.15V}}.
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  بازه اطمینان 95\% برای \lr{\ensuremath{\mu}} بسازید. \lr{(b)} بازه اطمینان 99\% برای \lr{\ensuremath{\mu}} بسازید. \lr{(c)} کدام پهن‌تر است و چرا؟
+  بازه اطمینان 95\% برای \lr{\mbox{\ensuremath{\mu}}} بسازید. (ب) بازه اطمینان 99\% برای \lr{\mbox{\ensuremath{\mu}}} بسازید. (ج) کدام پهن‌تر است و چرا؟
 \end{enumerate}
 
 \PSsolution{} 
 
 \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
+\def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{t\textsubscript{0.025,49} \ensuremath{\approx} 2.010. CI: 3.32 \ensuremath{\pm} 2.010(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.043 = [3.277, 3.363]}
+  \lr{\mbox{t\textsubscript{0.025,49} \ensuremath{\approx} 2.010}}. \lr{\mbox{CI}}: \lr{3.32 \ensuremath{\pm} 2.010(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.043 = [3.277, 3.363]}
 \item
-  \lr{t\textsubscript{0.005,49} \ensuremath{\approx} 2.680. CI: 3.32 \ensuremath{\pm} 2.680(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.057 = [3.263, 3.377]}
+  \lr{\mbox{t\textsubscript{0.005,49} \ensuremath{\approx} 2.680}}. \lr{\mbox{CI}}: \lr{3.32 \ensuremath{\pm} 2.680(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.057 = [3.263, 3.377]}
 \item
   بازه اطمینان 99\% پهن‌تر است \lr{—} اطمینان بالاتر بازه پهن‌تری می‌طلبد.
 \end{enumerate}
@@ -363,18 +363,18 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2}
 
-از 25 اندازه‌گیری توان نویز: \lr{S\textsuperscript{2} = 0.048 V\textsuperscript{2}}. بازه اطمینان 95\% برای \lr{\ensuremath{\sigma}\textsuperscript{2}} بسازید.
+از 25 اندازه‌گیری توان نویز: \lr{\mbox{S\textsuperscript{2} = 0.048 V\textsuperscript{2}}}. بازه اطمینان 95\% برای \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2}}} بسازید.
 
-\PSsolution{} \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.025,24} = 39.364}، \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.975,24} = 12.401}\PSbr{}\lr{CI}: [\lr{24(0.048)/39.364}، \lr{24(0.048)/12.401}] = \lr{[0.029, 0.093] V\textsuperscript{2}}
+\PSsolution{} \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.025,24} = 39.364}، \lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.975,24} = 12.401}\PSbr{}\lr{\mbox{CI}}: [\lr{\mbox{24(0.048)/39.364}}، \lr{\mbox{24(0.048)/12.401}}] = \lr{\mbox{[0.029, 0.093] V\textsuperscript{2}}}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3}
 
-برای برآورد \lr{BER} در محدوده \lr{\ensuremath{\pm}20\%} مقدار واقعی با اطمینان 95\%، اگر \lr{BER} مورد انتظار \lr{\ensuremath{\approx} 10\textsuperscript{-3}} باشد، چند اندازه‌گیری \lr{BER} لازم است؟
+برای برآورد \lr{\mbox{BER}} در محدوده \lr{\mbox{\ensuremath{\pm}20\%}} مقدار واقعی با اطمینان 95\%، اگر \lr{\mbox{BER}} مورد انتظار \lr{\mbox{\ensuremath{\approx} 10\textsuperscript{-3}}} باشد، چند اندازه‌گیری \lr{\mbox{BER}} لازم است؟
 
-\PSsolution{} برای نسبت: \lr{n \ensuremath{\ge} z\textsuperscript{2}p(1-p)/E\textsuperscript{2}} که در آن \lr{E = 0.2p = 2\ensuremath{\times}10\textsuperscript{-4}}.\PSbr{}\lr{n \ensuremath{\ge} (1.96)\textsuperscript{2}(10\textsuperscript{-3})(0.999)/(2\ensuremath{\times}10\textsuperscript{-4})\textsuperscript{2} = 3.84 \ensuremath{\times} 10\textsuperscript{-3} / (4\ensuremath{\times}10\textsuperscript{-8}) \ensuremath{\approx} 96,000} بیت.\PSbr{}باید تقریباً \PSnum{96,000} بیت ارسال شود (یا حدود 96 خطا مشاهده شود).
+\PSsolution{} برای نسبت: \lr{n \ensuremath{\ge} z\textsuperscript{2}p(1-p)/E\textsuperscript{2}} که در آن \lr{\mbox{E = 0.2p = 2\ensuremath{\times}10\textsuperscript{-4}}}.\PSbr{}\lr{n \ensuremath{\ge} (1.96)\textsuperscript{2}(10\textsuperscript{-3})(0.999)/(2\ensuremath{\times}10\textsuperscript{-4})\textsuperscript{2} = 3.84 \ensuremath{\times} 10\textsuperscript{-3} / (4\ensuremath{\times}10\textsuperscript{-8}) \ensuremath{\approx} 96,000} بیت.\PSbr{}باید تقریباً \PSnum{96,000} بیت ارسال شود (یا حدود 96 خطا مشاهده شود).
 
-\emph{ماژول بعدی: {ماژول 15 \lr{—} آزمون فرض}}\PSbr{}
+\emph{ماژول بعدی: {ماژول 15 \lr{—} آزمون فرض}}
 
 \end{PSbox}
