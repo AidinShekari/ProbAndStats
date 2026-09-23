@@ -129,7 +129,7 @@ Free-space path loss at known distance & Actual received power with fading \\
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-The \textbf{sample space} S (or \ensuremath{\Omega}) is the set of all possible outcomes of a random experiment.
+The \textbf{sample space} $S$ (or $\Omega$) is the set of all possible outcomes of a random experiment.
 
 \end{PSbox}
 
@@ -140,11 +140,11 @@ The \textbf{sample space} S (or \ensuremath{\Omega}) is the set of all possible 
 \begin{itemize}
 \tightlist
 \item
-  Transmit one bit: S = \{0, 1\} (received correctly or in error)
+  Transmit one bit: $S = \{0,\, 1\}$ (received correctly or in error)
 \item
-  Number of errors in a packet of n bits: S = \{0, 1, 2, …, n\}
+  Number of errors in a packet of $n$ bits: $S = \{0,\, 1,\, 2,\, \ldots,\, n\}$
 \item
-  Number of arrivals at a server: S = \{0, 1, 2, 3, …\}
+  Number of arrivals at a server: $S = \{0,\, 1,\, 2,\, 3,\, \ldots \}$
 \end{itemize}
 
 \textbf{Continuous (Uncountable):}
@@ -152,11 +152,11 @@ The \textbf{sample space} S (or \ensuremath{\Omega}) is the set of all possible 
 \begin{itemize}
 \tightlist
 \item
-  Measured voltage: S = \ensuremath{\mathbb{R}} (or a practical range like [0, 5] V)
+  Measured voltage: $S = \mathbb{R}$ (or a practical range like $[0,\, 5] V$)
 \item
-  Time until component failure: S = [0, \ensuremath{\infty})
+  Time until component failure: $S = [0,\, \infty)$
 \item
-  Phase of received signal: S = [0, 2\ensuremath{\pi})
+  Phase of received signal: $S = [0,\, 2\pi)$
 \end{itemize}
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Communication System}
@@ -180,13 +180,13 @@ An \textbf{event} is a subset of the sample space. An event \textbf{occurs} if t
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Simple event}: Contains exactly one outcome. E = \{(0,1)\}
+  \textbf{Simple event}: Contains exactly one outcome. $E = \{(0,\,1)\}$
 \item
-  \textbf{Compound event}: Contains multiple outcomes. E = \{(0,1), (1,0)\} (any error)
+  \textbf{Compound event}: Contains multiple outcomes. $E = \{(0,\,1),\, (1,\,0)\}$ (any error)
 \item
-  \textbf{Certain event}: The entire sample space S (always occurs)
+  \textbf{Certain event}: The entire sample space $S$ (always occurs)
 \item
-  \textbf{Impossible event}: The empty set \ensuremath{\emptyset} (never occurs)
+  \textbf{Impossible event}: The empty set $\emptyset$ (never occurs)
 \end{itemize}
 
 \PSsubsection{Set Operations on Events}
@@ -203,11 +203,11 @@ An \textbf{event} is a subset of the sample space. An event \textbf{occurs} if t
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Union & A \ensuremath{\cup} B & A or B (or both) occurs & Either failure mode A or B triggers alarm \\
-Intersection & A \ensuremath{\cap} B & Both A and B occur & Both sensors detect the signal \\
-Complement & A\textsuperscript{c} or Ā & A does not occur & Component does NOT fail \\
-Difference & A - B = A \ensuremath{\cap} B\textsuperscript{c} & A occurs but not B & Sensor A triggers but sensor B doesn’t \\
-Mutually exclusive & A \ensuremath{\cap} B = \ensuremath{\emptyset} & A and B cannot both occur & Component can’t be both working and failed \\
+Union & $A \cup B$ & A or $B$ (or both) occurs & Either failure mode A or $B$ triggers alarm \\
+Intersection & $A \cap B$ & Both A and $B$ occur & Both sensors detect the signal \\
+Complement & $A^{c}$ or Ā & A does not occur & Component does NOT fail \\
+Difference & $A - B = A \cap B^{c}$ & A occurs but not $B$ & Sensor A triggers but sensor $B$ doesn’t \\
+Mutually exclusive & $A \cap B = \emptyset$ & A and $B$ cannot both occur & Component can’t be both working and failed \\
 \end{longtable}
 }
 
@@ -220,9 +220,9 @@ A circuit board inspection checks for three types of defects:
 \item
   A = solder bridge defect
 \item
-  B = missing component
+  $B$ = missing component
 \item
-  C = wrong component value
+  $C$ = wrong component value
 \end{itemize}
 
 Events:
@@ -230,11 +230,11 @@ Events:
 \begin{itemize}
 \tightlist
 \item
-  A \ensuremath{\cup} B \ensuremath{\cup} C = ``board has at least one defect''
+  $A \cup B \cup C$ = ``board has at least one defect''
 \item
-  A \ensuremath{\cap} B = ``board has both a solder bridge AND a missing component''
+  $A \cap B$ = ``board has both a solder bridge AND a missing component''
 \item
-  (A \ensuremath{\cup} B \ensuremath{\cup} C)\textsuperscript{c} = ``board is defect-free''
+  $(A \cup B \cup C)^{c}$ = ``board is defect-free''
 \end{itemize}
 
 \end{PSbox}
@@ -243,31 +243,31 @@ Events:
 
 \PSsubsection{Kolmogorov’s Axioms}
 
-For a sample space S with events defined on it, a probability function P satisfies:
+For a sample space $S$ with events defined on it, a probability function $P$ satisfies:
 
 \textbf{Axiom 1 (Non-negativity):}\PSdisplay{P(A) \geq 0 \quad \text{for any event } A}
 
 \textbf{Axiom 2 (Normalization):}\PSdisplay{P(S) = 1}
 
-\textbf{Axiom 3 (Countable Additivity):}\PSbr{}For mutually exclusive events A\textsubscript{1}, A\textsubscript{2}, A\textsubscript{3}, …:\PSdisplay{P(A_1 \cup A_2 \cup A_3 \cup \cdots) = P(A_1) + P(A_2) + P(A_3) + \cdots}
+\textbf{Axiom 3 (Countable Additivity):}\PSbr{}For mutually exclusive events $A_{1},\, A_{2},\, A_{3}$, …:\PSdisplay{P(A_1 \cup A_2 \cup A_3 \cup \cdots) = P(A_1) + P(A_2) + P(A_3) + \cdots}
 
 \PSsubsection{Properties Derived from Axioms}
 
 \textbf{Property 1: Complement Rule}\PSdisplay{P(A^c) = 1 - P(A)}
 
-\emph{Proof:} S = A \ensuremath{\cup} A\textsuperscript{c} and A \ensuremath{\cap} A\textsuperscript{c} = \ensuremath{\emptyset}, so P(S) = P(A) + P(A\textsuperscript{c}) = 1.
+\emph{Proof:} $S = A \cup A^{c}$ and $A \cap A^{c} = \emptyset$, so $P(S) = P(A) + P(A^{c}) = 1$.
 
-\emph{Engineering meaning:} P(component works) = 1 - P(component fails)
+\emph{Engineering meaning:} $P(\text{component works}) = 1 - P(\text{component fails})$
 
 \textbf{Property 2: Impossible Event}\PSdisplay{P(\emptyset) = 0}
 
-\textbf{Property 3: Monotonicity}\PSbr{}If A \ensuremath{\subseteq} B, then P(A) \ensuremath{\le} P(B)
+\textbf{Property 3: Monotonicity}\PSbr{}If $A \subseteq B$, then $P(A) \le P(B)$
 
 \textbf{Property 4: Bound}\PSdisplay{0 \leq P(A) \leq 1}
 
 \textbf{Property 5: Inclusion-Exclusion (Two Events)}\PSdisplay{P(A \cup B) = P(A) + P(B) - P(A \cap B)}
 
-\emph{Engineering meaning:} When computing the probability of ``failure A OR failure B,'' we must subtract the overlap where both fail simultaneously.
+\emph{Engineering meaning:} When computing the probability of ``failure $A$ OR failure $B$,'' we must subtract the overlap where both fail simultaneously.
 
 \PSsection{1.6}{Probability Rules}
 
@@ -275,7 +275,7 @@ For a sample space S with events defined on it, a probability function P satisfi
 
 For any two events:\PSdisplay{P(A \cup B) = P(A) + P(B) - P(A \cap B)}
 
-For mutually exclusive events (A \ensuremath{\cap} B = \ensuremath{\emptyset}):\PSdisplay{P(A \cup B) = P(A) + P(B)}
+For mutually exclusive events $(A \cap B = \emptyset)$:\PSdisplay{P(A \cup B) = P(A) + P(B)}
 
 \PSsubsection{Complement Rule}
 
@@ -285,7 +285,7 @@ This is often the easiest way to compute probabilities:
 
 \begin{PSquote}
 
-P(at least one error in 100 bits) = 1 - P(zero errors in 100 bits)
+$P(\text{at least one error in 100}\,\mathrm{bits}) = 1 - P(\text{zero errors in 100}\,\mathrm{bits})$
 
 \end{PSquote}
 
@@ -300,16 +300,16 @@ A data center has three independent network links. Each link fails with probabil
 \begin{itemize}
 \tightlist
 \item
-  A = link 1 fails, B = link 2 fails, C = link 3 fails
+  A = link 1 fails, $B$ = link 2 fails, $C$ = link 3 fails
 \item
-  P(at least one fails) = P(A \ensuremath{\cup} B \ensuremath{\cup} C)
+  $P(\text{at least one fails}) = P(A \cup B \cup C)$
 \item
   Using inclusion-exclusion:
 \end{itemize}
 
-P(A \ensuremath{\cup} B \ensuremath{\cup} C) = 3(0.05) - 3(0.05)\textsuperscript{2} + (0.05)\textsuperscript{3} = 0.15 - 0.0075 + 0.000125 = 0.142625
+$P(A \cup B \cup C) = 3(0.05) - 3(0.05)^{2} + (0.05)^{3} = 0.15 - 0.0075 + 0.000125 = 0.142625$
 
-Alternatively: P(at least one fails) = 1 - P(none fail) = 1 - (0.95)\textsuperscript{3} = 0.142625 \PSyes{}
+Alternatively: $P(\text{at least one fails}) = 1 - P(\text{none fail}) = 1 - (0.95)^{3} = 0.142625$ \PSyes{}
 
 \end{PSbox}
 
@@ -317,7 +317,7 @@ Alternatively: P(at least one fails) = 1 - P(none fail) = 1 - (0.95)\textsupersc
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-The \textbf{conditional probability} of event A given that event B has occurred:
+The \textbf{conditional probability} of event A given that event $B$ has occurred:
 
 \PSdisplay{P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad P(B) > 0}
 
@@ -325,7 +325,7 @@ The \textbf{conditional probability} of event A given that event B has occurred:
 
 \PSsubsection{Interpretation}
 
-Conditional probability \textbf{updates} our knowledge. Once we know B occurred, the effective sample space shrinks from S to B, and we ask: ``Within B, how likely is A?''
+Conditional probability \textbf{updates} our knowledge. Once we know $B$ occurred, the effective sample space shrinks from $S$ to $B$, and we ask: ``Within $B$, how likely is $A$?''
 
 \PSsubsection{Key Distinction}
 
@@ -340,13 +340,13 @@ Conditional probability \textbf{updates} our knowledge. Once we know B occurred,
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Probability of A & P(A) & Likelihood of A with no additional information \\
-Conditional probability & P(A\textbar{}B) & Likelihood of A \textbf{given} that B has occurred \\
-Joint probability & P(A \ensuremath{\cap} B) & Likelihood that \textbf{both} A and B occur \\
+Probability of $A$ & $P(A)$ & Likelihood of A with no additional information \\
+Conditional probability & $P(A \mid B)$ & Likelihood of $A$ \textbf{given} that $B$ has occurred \\
+Joint probability & $P(A \cap B)$ & Likelihood that \textbf{both} A and $B$ occur \\
 \end{longtable}
 }
 
-These are related: P(A \ensuremath{\cap} B) = P(A\textbar{}B) \ensuremath{\cdot} P(B) = P(B\textbar{}A) \ensuremath{\cdot} P(A)
+These are related: $P(A \cap B) = P(A \mid B) \cdot P(B) = P(B \mid A) \cdot P(A)$
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Detection Theory}
 
@@ -355,11 +355,11 @@ A radar system detects aircraft:
 \begin{itemize}
 \tightlist
 \item
-  H\textsubscript{1} = aircraft is present (target)
+  $H_{1}$ = aircraft is present (target)
 \item
-  H\textsubscript{0} = aircraft is absent (no target)
+  $H_{0}$ = aircraft is absent (no target)
 \item
-  D = detector says ``target present''
+  $D$ = detector says ``target present''
 \end{itemize}
 
 Important conditional probabilities:
@@ -367,16 +367,16 @@ Important conditional probabilities:
 \begin{itemize}
 \tightlist
 \item
-  P(D \textbar{} H\textsubscript{1}) = \textbf{probability of detection} (sensitivity)
+  $P(D \mid H_{1})$ = \textbf{probability of detection} (sensitivity)
 \item
-  P(D \textbar{} H\textsubscript{0}) = \textbf{probability of false alarm}
+  $P(D \mid H_{0})$ = \textbf{probability of false alarm}
 \item
-  P(D\textsuperscript{c} \textbar{} H\textsubscript{1}) = \textbf{probability of miss} = 1 - P(D \textbar{} H\textsubscript{1})
+  $P(D^{c} \mid H_{1})$ = \textbf{probability of miss} $= 1 - P(D \mid H_{1})$
 \end{itemize}
 
-Suppose: P(H\textsubscript{1}) = 0.01, P(D\textbar{}H\textsubscript{1}) = 0.95, P(D\textbar{}H\textsubscript{0}) = 0.02
+Suppose: $P(H_{1}) = 0.01,\, P(D \mid H_{1}) = 0.95,\, P(D \mid H_{0}) = 0.02$
 
-What is P(target actually present \textbar{} detector says present)?
+What is $P(\text{target actually present}\ \mid \text{detector says present})$?
 
 This requires \textbf{Bayes’ theorem} (Section 1.9).
 
@@ -384,18 +384,18 @@ This requires \textbf{Bayes’ theorem} (Section 1.9).
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Communication Channel}
 
-A binary symmetric channel has crossover probability p = 0.01:
+A binary symmetric channel has crossover probability $p = 0.01$:
 
 \begin{itemize}
 \tightlist
 \item
-  P(receive 1 \textbar{} sent 0) = p = 0.01
+  $P(\text{receive 1}\ \mid \text{sent 0}) = p = 0.01$
 \item
-  P(receive 0 \textbar{} sent 1) = p = 0.01
+  $P(\text{receive 0}\ \mid \text{sent 1}) = p = 0.01$
 \item
-  P(receive 0 \textbar{} sent 0) = 1 - p = 0.99
+  $P(\text{receive 0}\ \mid \text{sent 0}) = 1 - p = 0.99$
 \item
-  P(receive 1 \textbar{} sent 1) = 1 - p = 0.99
+  $P(\text{receive 1}\ \mid \text{sent 1}) = 1 - p = 0.99$
 \end{itemize}
 
 If bits are equally likely to be 0 or 1:
@@ -403,9 +403,9 @@ If bits are equally likely to be 0 or 1:
 \begin{itemize}
 \tightlist
 \item
-  P(sent 0 \ensuremath{\cap} receive 1) = P(receive 1 \textbar{} sent 0) \ensuremath{\cdot} P(sent 0) = 0.01 \ensuremath{\times} 0.5 = 0.005
+  $P(\text{sent 0}\ \cap \text{receive 1}) = P(\text{receive 1}\ \mid \text{sent 0}) \cdot P(\text{sent 0}) = 0.01 \times 0.5 = 0.005$
 \item
-  P(error) = P(sent 0 \ensuremath{\cap} receive 1) + P(sent 1 \ensuremath{\cap} receive 0) = 0.005 + 0.005 = 0.01
+  $P(\text{error}) = P(\text{sent 0}\ \cap \text{receive 1}) + P(\text{sent 1}\ \cap \text{receive 0}) = 0.005 + 0.005 = 0.01$
 \end{itemize}
 
 \end{PSbox}
@@ -418,11 +418,11 @@ Conditional probability is itself a valid probability measure:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  P(A\textbar{}B) \ensuremath{\ge} 0
+  $P(A \mid B) \ge 0$
 \item
-  P(S\textbar{}B) = 1
+  $P(S \mid B) = 1$
 \item
-  P(A\textsubscript{1} \ensuremath{\cup} A\textsubscript{2}\textbar{}B) = P(A\textsubscript{1}\textbar{}B) + P(A\textsubscript{2}\textbar{}B) if A\textsubscript{1} \ensuremath{\cap} A\textsubscript{2} = \ensuremath{\emptyset}
+  $P(A_{1} \cup A_{2} \mid B) = P(A_{1} \mid B) + P(A_{2} \mid B)$ if $A_{1} \cap A_{2} = \emptyset$
 \end{enumerate}
 
 \PSsubsection{Multiplication Rule (Chain Rule)}
@@ -435,11 +435,11 @@ For three events:\PSdisplay{P(A \cap B \cap C) = P(A) \cdot P(B|A) \cdot P(C|A \
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-Events A and B are \textbf{statistically independent} if:
+Events A and $B$ are \textbf{statistically independent} if:
 
 \PSdisplay{P(A \cap B) = P(A) \cdot P(B)}
 
-Equivalently: P(A\textbar{}B) = P(A) — knowing B occurred gives no information about A.
+Equivalently: $P(A \mid B) = P(A)$ — knowing $B$ occurred gives no information about $A$.
 
 \end{PSbox}
 
@@ -459,18 +459,18 @@ Independence means \textbf{one event provides no information about the other}. T
 
 \PSsubsection{Pairwise vs. Mutual Independence}
 
-For three events A, B, C:
+For three events $A,\, B,\, C$:
 
 \textbf{Pairwise independence} (all three pairs):
 
 \begin{itemize}
 \tightlist
 \item
-  P(A \ensuremath{\cap} B) = P(A)P(B)
+  $P(A \cap B) = P(A)P(B)$
 \item
-  P(A \ensuremath{\cap} C) = P(A)P(C)
+  $P(A \cap C) = P(A)P(C)$
 \item
-  P(B \ensuremath{\cap} C) = P(B)P(C)
+  $P(B \cap C) = P(B)P(C)$
 \end{itemize}
 
 \textbf{Mutual independence} (all combinations):
@@ -480,7 +480,7 @@ For three events A, B, C:
 \item
   All pairwise conditions above, AND
 \item
-  P(A \ensuremath{\cap} B \ensuremath{\cap} C) = P(A)P(B)P(C)
+  $P(A \cap B \cap C) = P(A)P(B)P(C)$
 \end{itemize}
 
 \begin{PSquote}
@@ -493,9 +493,9 @@ For three events A, B, C:
 
 A system has three independent modules, each with failure probability 0.1.
 
-P(all three fail) = P(A)P(B)P(C) = (0.1)\textsuperscript{3} = 0.001
+$P(\text{all three fail}) = P(A)P(B)P(C) = (0.1)^{3} = 0.001$
 
-P(system works) = P(at least one works) = 1 - P(all fail) = 1 - 0.001 = 0.999
+$P(\text{system works}) = P(\text{at least one works}) = 1 - P(\text{all fail}) = 1 - 0.001 = 0.999$
 
 This calculation is ONLY valid because failures are independent.
 
@@ -509,9 +509,9 @@ To verify independence from data:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Compute P(A), P(B), and P(A \ensuremath{\cap} B) empirically
+  Compute $P(A),\, P(B)$, and $P(A \cap B)$ empirically
 \item
-  Check if P(A \ensuremath{\cap} B) \ensuremath{\approx} P(A) \ensuremath{\cdot} P(B)
+  Check if $P(A \cap B) \approx P(A) \cdot P(B)$
 \end{enumerate}
 
 If not approximately equal, the events are \textbf{dependent}.
@@ -524,16 +524,16 @@ If not approximately equal, the events are \textbf{dependent}.
 
 \end{PSquote}
 
-This is \textbf{FALSE}. If A \ensuremath{\cap} B = \ensuremath{\emptyset} and P(A) \textgreater{} 0, P(B) \textgreater{} 0, then:
+This is \textbf{FALSE}. If $A \cap B = \emptyset$ and $P(A) > 0,\, P(B) > 0$, then:
 
 \begin{itemize}
 \tightlist
 \item
-  P(A \ensuremath{\cap} B) = 0
+  $P(A \cap B) = 0$
 \item
-  P(A)P(B) \textgreater{} 0
+  $P(A)P(B) > 0$
 \item
-  Therefore P(A \ensuremath{\cap} B) \ensuremath{\neq} P(A)P(B)
+  Therefore $P(A \cap B) \ne P(A)P(B)$
 \end{itemize}
 
 Mutually exclusive events are actually \textbf{maximally dependent} — if one occurs, the other cannot.
@@ -548,7 +548,7 @@ From the definition of conditional probability:
 
 \PSsubsection{Full Statement}
 
-If B\textsubscript{1}, B\textsubscript{2}, …, B\textsubscript{n} partition the sample space (mutually exclusive and exhaustive):
+If $B_{1},\, B_{2},\, \ldots,\, B_{n}$ partition the sample space (mutually exclusive and exhaustive):
 
 \PSdisplay{P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^{n} P(A|B_j) \cdot P(B_j)}}
 
@@ -565,10 +565,10 @@ If B\textsubscript{1}, B\textsubscript{2}, …, B\textsubscript{n} partition the
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-P(B\textsubscript{i}) & Prior probability & What we believed before observing data \\
-P(A\textbar{}B\textsubscript{i}) & Likelihood & How likely is the observation given each hypothesis \\
-P(B\textsubscript{i}\textbar{}A) & Posterior probability & Updated belief after observing data \\
-P(A) & Evidence & Total probability of the observation \\
+$P(B_{i})$ & Prior probability & What we believed before observing data \\
+$P(A \mid B_{i})$ & Likelihood & How likely is the observation given each hypothesis \\
+$P(B_{i} \mid A)$ & Posterior probability & Updated belief after observing data \\
+$P(A)$ & Evidence & Total probability of the observation \\
 \end{longtable}
 }
 
@@ -579,32 +579,32 @@ A circuit board can have a fault in one of three subsystems:
 \begin{itemize}
 \tightlist
 \item
-  B\textsubscript{1} = power supply fault, P(B\textsubscript{1}) = 0.3
+  $B_{1}$ = power supply fault, $P(B_{1}) = 0.3$
 \item
-  B\textsubscript{2} = processor fault, P(B\textsubscript{2}) = 0.5
+  $B_{2}$ = processor fault, $P(B_{2}) = 0.5$
 \item
-  B\textsubscript{3} = memory fault, P(B\textsubscript{3}) = 0.2
+  $B_{3}$ = memory fault, $P(B_{3}) = 0.2$
 \end{itemize}
 
-A diagnostic test produces symptom A (overheating):
+A diagnostic test produces symptom $A$ (overheating):
 
 \begin{itemize}
 \tightlist
 \item
-  P(A\textbar{}B\textsubscript{1}) = 0.8 (power supply faults usually cause overheating)
+  $P(A \mid B_{1}) = 0.8$ (power supply faults usually cause overheating)
 \item
-  P(A\textbar{}B\textsubscript{2}) = 0.3 (processor faults sometimes cause overheating)
+  $P(A \mid B_{2}) = 0.3$ (processor faults sometimes cause overheating)
 \item
-  P(A\textbar{}B\textsubscript{3}) = 0.1 (memory faults rarely cause overheating)
+  $P(A \mid B_{3}) = 0.1$ (memory faults rarely cause overheating)
 \end{itemize}
 
 \textbf{Question:} Given that overheating is observed, what is the most likely fault?
 
 \PSsolution{} 
 
-P(A) = P(A\textbar{}B\textsubscript{1})P(B\textsubscript{1}) + P(A\textbar{}B\textsubscript{2})P(B\textsubscript{2}) + P(A\textbar{}B\textsubscript{3})P(B\textsubscript{3})\PSbr{}= (0.8)(0.3) + (0.3)(0.5) + (0.1)(0.2)\PSbr{}= 0.24 + 0.15 + 0.02 = 0.41
+$P(A) = P(A \mid B_{1})P(B_{1}) + P(A \mid B_{2})P(B_{2}) + P(A \mid B_{3})P(B_{3})$\PSbr{}$= (0.8)(0.3) + (0.3)(0.5) + (0.1)(0.2)$\PSbr{}$= 0.24 + 0.15 + 0.02 = 0.41$
 
-P(B\textsubscript{1}\textbar{}A) = (0.8)(0.3) / 0.41 = 0.585 (most likely!)\PSbr{}P(B\textsubscript{2}\textbar{}A) = (0.3)(0.5) / 0.41 = 0.366\PSbr{}P(B\textsubscript{3}\textbar{}A) = (0.1)(0.2) / 0.41 = 0.049
+$P(B_{1} \mid A) = \frac{(0.8)(0.3)}{0.41} = 0.585$ (most likely!)\PSbr{}$\displaystyle P(B_{2} \mid A) = \frac{(0.3)(0.5)}{0.41} = 0.366$\PSbr{}$\displaystyle P(B_{3} \mid A) = \frac{(0.1)(0.2)}{0.41} = 0.049$
 
 \textbf{Engineering Decision:} Investigate the power supply first.
 
@@ -617,12 +617,12 @@ Returning to the radar example from Section 1.7:
 \begin{itemize}
 \tightlist
 \item
-  P(H\textsubscript{1}) = 0.01, P(D\textbar{}H\textsubscript{1}) = 0.95, P(D\textbar{}H\textsubscript{0}) = 0.02
+  $P(H_{1}) = 0.01,\, P(D \mid H_{1}) = 0.95,\, P(D \mid H_{0}) = 0.02$
 \end{itemize}
 
-P(D) = P(D\textbar{}H\textsubscript{1})P(H\textsubscript{1}) + P(D\textbar{}H\textsubscript{0})P(H\textsubscript{0}) = (0.95)(0.01) + (0.02)(0.99) = 0.0095 + 0.0198 = 0.0293
+$P(D) = P(D \mid H_{1})P(H_{1}) + P(D \mid H_{0})P(H_{0}) = (0.95)(0.01) + (0.02)(0.99) = 0.0095 + 0.0198 = 0.0293$
 
-P(H\textsubscript{1}\textbar{}D) = (0.95)(0.01) / 0.0293 = 0.324
+$\displaystyle P(H_{1} \mid D) = \frac{(0.95)(0.01)}{0.0293} = 0.324$
 
 \textbf{Interpretation:} Even with a good detector (95\% detection, 2\% false alarm), when targets are rare (1\%), most detections are false alarms! Only 32.4\% of alarms correspond to real targets.
 
@@ -634,7 +634,7 @@ P(H\textsubscript{1}\textbar{}D) = (0.95)(0.01) / 0.0293 = 0.324
 
 \PSsubsection{Statement}
 
-If B\textsubscript{1}, B\textsubscript{2}, …, B\textsubscript{n} form a \textbf{partition} of S (mutually exclusive, exhaustive):
+If $B_{1},\, B_{2},\, \ldots,\, B_{n}$ form a \textbf{partition} of $S$ (mutually exclusive, exhaustive):
 
 \PSdisplay{P(A) = \sum_{i=1}^{n} P(A|B_i) \cdot P(B_i)}
 
@@ -656,7 +656,7 @@ A packet can be routed through three different paths:
   Path 3: chosen 20\% of the time, error probability 0.10
 \end{itemize}
 
-P(packet error) = P(error\textbar{}path 1)P(path 1) + P(error\textbar{}path 2)P(path 2) + P(error\textbar{}path 3)P(path 3)\PSbr{}= (0.01)(0.50) + (0.05)(0.30) + (0.10)(0.20)\PSbr{}= 0.005 + 0.015 + 0.020 = 0.040
+$P(\text{packet error}) = P(\text{error}\ \mid \text{path 1})P(\text{path 1}) + P(\text{error}\ \mid \text{path 2})P(\text{path 2}) + P(\text{error}\ \mid \text{path 3})P(\text{path 3})$\PSbr{}$= (0.01)(0.50) + (0.05)(0.30) + (0.10)(0.20)$\PSbr{}$= 0.005 + 0.015 + 0.020 = 0.040$
 
 \textbf{Overall error rate: 4\%}
 
@@ -671,16 +671,16 @@ A company sources capacitors from two suppliers:
 \item
   Supplier A: provides 60\% of capacitors, defect rate 2\%
 \item
-  Supplier B: provides 40\% of capacitors, defect rate 5\%
+  Supplier $B$: provides 40\% of capacitors, defect rate 5\%
 \end{itemize}
 
-P(defective) = P(defective\textbar{}A)P(A) + P(defective\textbar{}B)P(B)\PSbr{}= (0.02)(0.60) + (0.05)(0.40)\PSbr{}= 0.012 + 0.020 = 0.032
+$P(\text{defective}) = P(\text{defective}\ \mid A)P(A) + P(\text{defective}\ \mid B)P(B)$\PSbr{}$= (0.02)(0.60) + (0.05)(0.40)$\PSbr{}$= 0.012 + 0.020 = 0.032$
 
 If a defective capacitor is found, which supplier likely produced it?
 
-P(A\textbar{}defective) = (0.02)(0.60) / 0.032 = 0.375\PSbr{}P(B\textbar{}defective) = (0.05)(0.40) / 0.032 = 0.625
+$\displaystyle P(A \mid \text{defective}) = \frac{(0.02)(0.60)}{0.032} = 0.375$\PSbr{}$\displaystyle P(B \mid \text{defective}) = \frac{(0.05)(0.40)}{0.032} = 0.625$
 
-Despite providing fewer units, Supplier B is more likely responsible for a given defect.
+Despite providing fewer units, Supplier $B$ is more likely responsible for a given defect.
 
 \end{PSbox}
 
@@ -880,9 +880,9 @@ Despite providing fewer units, Supplier B is more likely responsible for a given
 \bottomrule\noalign{}
 \endlastfoot
 \textbf{Event} & A subset of the sample space & A specific outcome or set of outcomes we care about \\
-\textbf{Probability} & P(A) = measure of likelihood & Long-run relative frequency of occurrence \\
-\textbf{Conditional Probability} & P(A\textbar{}B) = updated probability given B & How knowledge of one event changes another’s likelihood \\
-\textbf{Independence} & P(A\ensuremath{\cap}B) = P(A)P(B) & Knowing one event tells nothing about the other \\
+\textbf{Probability} & $P(A)$ = measure of likelihood & Long-run relative frequency of occurrence \\
+\textbf{Conditional Probability} & $P(A \mid B)$ = updated probability given $B$ & How knowledge of one event changes another’s likelihood \\
+\textbf{Independence} & $P(A \cap B) = P(A)P(B)$ & Knowing one event tells nothing about the other \\
 \end{longtable}
 }
 
@@ -908,26 +908,26 @@ A system has two independent processors. Processor 1 fails with probability 0.02
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  P(system fails) = P(both fail) = (0.02)(0.03) = 0.0006
+  $P(\text{system fails}) = P(\text{both fail}) = (0.02)(0.03) = 0.0006$
 \item
-  P(at least one fails) = 1 - P(none fail) = 1 - (0.98)(0.97) = 1 - 0.9506 = 0.0494
+  $P(\text{at least one fails}) = 1 - P(\text{none fail}) = 1 - (0.98)(0.97) = 1 - 0.9506 = 0.0494$
 \item
-  System working = NOT(both fail) = at least one works.\PSbr{}P(P1 failed \textbar{} system works) = P(P1 failed \ensuremath{\cap} P2 works) / P(system works)\PSbr{}= (0.02)(0.97) / (1 - 0.0006) = 0.0194 / 0.9994 \ensuremath{\approx} 0.0194
+  System working = NOT(both fail) = at least one works.\PSbr{}$\displaystyle P(P1\ \text{failed}\ \mid \text{system works}) = \frac{P(P1\ \text{failed}\ \cap P2\ \text{works})}{P(\text{system works})}$\PSbr{}$\displaystyle = \frac{(0.02)(0.97)}{1 - 0.0006} = \frac{0.0194}{0.9994} \approx 0.0194$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 2: Sensor Detection}
 
-A fire detection system has: P(fire) = 0.001, P(alarm \textbar{} fire) = 0.98, P(alarm \textbar{} no fire) = 0.01.
+A fire detection system has: $P(\text{fire}) = 0.001,\, P(\text{alarm}\ \mid \text{fire}) = 0.98,\, P(\text{alarm}\ \mid \text{no fire}) = 0.01$.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  What is P(alarm)?
+  What is $P(\text{alarm})$?
 \item
-  If the alarm sounds, what is P(fire \textbar{} alarm)?
+  If the alarm sounds, what is $P(\text{fire}\ \mid \text{alarm})$?
 \item
   Comment on the result.
 \end{enumerate}
@@ -937,11 +937,11 @@ A fire detection system has: P(fire) = 0.001, P(alarm \textbar{} fire) = 0.98, P
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  P(alarm) = P(alarm\textbar{}fire)P(fire) + P(alarm\textbar{}no fire)P(no fire)\PSbr{}= (0.98)(0.001) + (0.01)(0.999) = 0.000980 + 0.009990 = 0.010970
+  $P(\text{alarm}) = P(\text{alarm}\ \mid \text{fire})P(\text{fire}) + P(\text{alarm}\ \mid \text{no fire})P(\text{no fire})$\PSbr{}$= (0.98)(0.001) + (0.01)(0.999) = 0.000980 + 0.009990 = 0.010970$
 \item
-  P(fire\textbar{}alarm) = P(alarm\textbar{}fire)P(fire) / P(alarm)\PSbr{}= (0.98)(0.001) / 0.01097 = 0.0894
+  $\displaystyle P(\text{fire}\ \mid \text{alarm}) = \frac{P(\text{alarm}\ \mid \text{fire})P(\text{fire})}{P(\text{alarm})}$\PSbr{}$\displaystyle = \frac{(0.98)(0.001)}{0.01097} = 0.0894$
 \item
-  Only \textasciitilde{}9\% of alarms correspond to real fires! This is the base rate fallacy. Even with an excellent detector, rare events produce many false alarms.
+  Only $\sim 9\%$ of alarms correspond to real fires! This is the base rate fallacy. Even with an excellent detector, rare events produce many false alarms.
 \end{enumerate}
 
 \end{PSbox}
@@ -954,11 +954,11 @@ A packet of 8 bits is transmitted. Each bit has independent error probability 0.
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  What is P(no errors in the packet)?
+  What is $P(\text{no errors in the packet})$?
 \item
-  What is P(exactly one error)?
+  What is $P(\text{exactly one error})$?
 \item
-  What is P(at least one error)?
+  What is $P(\text{at least one error})$?
 \item
   Write MATLAB code to verify by simulation.
 \end{enumerate}
@@ -968,11 +968,11 @@ A packet of 8 bits is transmitted. Each bit has independent error probability 0.
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  P(no errors) = (0.95)\textsuperscript{8} = 0.6634
+  $P(\text{no errors}) = (0.95)^{8} = 0.6634$
 \item
-  P(exactly one error) = C(8,1)(0.05)\textsuperscript{1}(0.95)\textsuperscript{7} = 8 \ensuremath{\times} 0.05 \ensuremath{\times} 0.6983 = 0.2793
+  $P(\text{exactly one error}) = C(8,\,1)(0.05)^{1}(0.95)^{7} = 8 \times 0.05 \times 0.6983 = 0.2793$
 \item
-  P(at least one error) = 1 - P(no errors) = 1 - 0.6634 = 0.3366
+  $P(\text{at least one error}) = 1 - P(\text{no errors}) = 1 - 0.6634 = 0.3366$
 \item
   MATLAB verification:
 \end{enumerate}
@@ -998,11 +998,11 @@ A wireless system operates in three modes:
 \begin{itemize}
 \tightlist
 \item
-  Mode 1 (good channel): 60\% of time, P(outage) = 0.01
+  Mode 1 (good channel): 60\% of time, $P(\text{outage}) = 0.01$
 \item
-  Mode 2 (moderate channel): 30\% of time, P(outage) = 0.10
+  Mode 2 (moderate channel): 30\% of time, $P(\text{outage}) = 0.10$
 \item
-  Mode 3 (poor channel): 10\% of time, P(outage) = 0.50
+  Mode 3 (poor channel): 10\% of time, $P(\text{outage}) = 0.50$
 \end{itemize}
 
 \begin{enumerate}
@@ -1019,26 +1019,26 @@ A wireless system operates in three modes:
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  P(outage) = (0.01)(0.60) + (0.10)(0.30) + (0.50)(0.10) = 0.006 + 0.030 + 0.050 = 0.086
+  $P(\text{outage}) = (0.01)(0.60) + (0.10)(0.30) + (0.50)(0.10) = 0.006 + 0.030 + 0.050 = 0.086$
 \item
-  P(Mode 3 \textbar{} outage) = (0.50)(0.10) / 0.086 = 0.581
+  $\displaystyle P(\text{Mode 3}\ \mid \text{outage}) = \frac{(0.50)(0.10)}{0.086} = 0.581$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 5: Independence Analysis}
 
-Two sensors monitor a process. Sensor A has false alarm probability 0.05. Sensor B has false alarm probability 0.03.
+Two sensors monitor a process. Sensor A has false alarm probability 0.05. Sensor $B$ has false alarm probability 0.03.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  If sensors are independent, what is P(both give false alarm)?
+  If sensors are independent, what is $P(\text{both give false alarm})$?
 \item
-  If sensors share a noise source and P(both false alarm) = 0.01, are they independent?
+  If sensors share a noise source and $P(\text{both false alarm}) = 0.01$, are they independent?
 \item
-  What is P(A false alarm \textbar{} B false alarm) in case (b)?
+  What is $P(A\ \text{false alarm}\ \mid B\ \text{false alarm})$ in case (b)?
 \end{enumerate}
 
 \PSsolution{} 
@@ -1046,14 +1046,14 @@ Two sensors monitor a process. Sensor A has false alarm probability 0.05. Sensor
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  If independent: P(both) = (0.05)(0.03) = 0.0015
+  If independent: $P(\text{both}) = (0.05)(0.03) = 0.0015$
 \item
-  If P(both) = 0.01 \ensuremath{\neq} 0.0015, they are NOT independent. The shared noise source creates dependence.
+  If $P(\text{both}) = 0.01 \ne 0.0015$, they are NOT independent. The shared noise source creates dependence.
 \item
-  P(A\textbar{}B) = P(A\ensuremath{\cap}B) / P(B) = 0.01 / 0.03 = 0.333
+  $\displaystyle P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{0.01}{0.03} = 0.333$
 \end{enumerate}
 
-This is much higher than P(A) = 0.05, confirming strong dependence.
+This is much higher than $P(A) = 0.05$, confirming strong dependence.
 
 \end{PSbox}
 

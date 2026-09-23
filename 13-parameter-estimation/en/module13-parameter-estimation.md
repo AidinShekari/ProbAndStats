@@ -13,11 +13,11 @@ After completing this module, students will be able to:
 
 ## 13.1 Introduction
 
-We observe data X₁, ..., Xₙ from a distribution with unknown parameter θ. **Parameter estimation** gives us a method to infer θ from data.
+We observe data $X_{1},\, \ldots,\, X_{n}$ from a distribution with unknown parameter $\theta$. **Parameter estimation** gives us a method to infer $\theta$ from data.
 
 Engineering examples:
-- Estimate noise variance σ² from recorded samples
-- Estimate failure rate λ from component lifetimes
+- Estimate noise variance $\sigma^{2}$ from recorded samples
+- Estimate failure rate $\lambda$ from component lifetimes
 - Estimate channel gain from received signal strength
 - Estimate mean signal level from measurements
 
@@ -29,8 +29,8 @@ Engineering examples:
 
 | Term | Type | Definition | Example |
 |------|------|-----------|---------|
-| **Estimator** θ̂ | Random variable (function of data) | The RULE applied to data | θ̂ = X̄ = (1/n)ΣXᵢ |
-| **Estimate** | Number | The VALUE from a specific sample | θ̂ = 3.47 (from one dataset) |
+| **Estimator** $\hat{\theta}$ | Random variable (function of data) | The RULE applied to data | $\hat{\theta} = \bar{X} = \frac{1}{n}\sum X_{i}$ |
+| **Estimate** | Number | The VALUE from a specific sample | $\hat{\theta} = 3.47$ (from one dataset) |
 
 ### Key Insight
 
@@ -47,21 +47,21 @@ The **estimate** is one realization of that random variable.
 
 $$B(\hat{\theta}) = E[\hat{\theta}] - \theta$$
 
-- **Unbiased:** B(θ̂) = 0, i.e., E[θ̂] = θ (on average, correct)
-- **Biased:** E[θ̂] ≠ θ (systematic error)
+- **Unbiased:** $B(\hat{\theta}) = 0$, i.e., $E[\hat{\theta}] = \theta$ (on average, correct)
+- **Biased:** $E[\hat{\theta}] \ne \theta$ (systematic error)
 
 Examples:
-- X̄ is unbiased for μ: E[X̄] = μ ✓
-- S² (with n-1) is unbiased for σ²: E[S²] = σ² ✓
-- S (sample std dev) is biased for σ: E[S] ≠ σ (slight downward bias)
+- $\bar{X}$ is unbiased for $\mu$: $E[\bar{X}] = \mu$ ✓
+- $S^{2}$ (with $n-1$) is unbiased for $\sigma^{2}$: $E[S^{2}] = \sigma^{2}$ ✓
+- $S$ (sample std dev) is biased for $\sigma$: $E[S] \ne \sigma$ (slight downward bias)
 
 ### Consistency
 
-θ̂ₙ is **consistent** if θ̂ₙ → θ in probability as n → ∞.
+$\hat{\theta}_{n}$ is **consistent** if $\hat{\theta}_{n} \to \theta$ in probability as $n \to \infty$.
 
 Practical meaning: with enough data, the estimator gets arbitrarily close to the truth.
 
-Sufficient condition: If bias → 0 and variance → 0 as n → ∞, then consistent.
+Sufficient condition: If bias → 0 and variance → 0 as $n \to \infty$, then consistent.
 
 ### Efficiency
 
@@ -70,7 +70,7 @@ Among all unbiased estimators, the **efficient** one has the smallest variance.
 The **Cramér-Rao Lower Bound** (CRLB) gives the minimum possible variance:
 $$\text{Var}(\hat{\theta}) \geq \frac{1}{nI(\theta)}$$
 
-where I(θ) = Fisher information = -E[∂²ln f(X;θ)/∂θ²].
+where $I(\theta)$ = Fisher information $= -E\left[\frac{\partial^{2}\ln f(X; \theta)}{\partial \theta^{2}}\right]$.
 
 An estimator achieving the CRLB is called **efficient** or **minimum variance unbiased (MVU)**.
 
@@ -78,7 +78,7 @@ An estimator achieving the CRLB is called **efficient** or **minimum variance un
 
 $$\text{MSE}(\hat{\theta}) = E[(\hat{\theta} - \theta)^2] = \text{Var}(\hat{\theta}) + [B(\hat{\theta})]^2$$
 
-**MSE = Variance + Bias²**
+**$\operatorname{MSE} = \operatorname{Variance} + \operatorname{Bias}^{2}$**
 
 This is the **bias-variance tradeoff**: sometimes a slightly biased estimator with much lower variance has smaller MSE than an unbiased one.
 
@@ -90,8 +90,8 @@ This is the **bias-variance tradeoff**: sometimes a slightly biased estimator wi
 
 Set population moments equal to sample moments, then solve for parameters.
 
-- k-th population moment: μ'ₖ = E[Xᵏ]
-- k-th sample moment: m'ₖ = (1/n)ΣXᵢᵏ
+- $k-\mathrm{th}$ population moment: $\mu 'k = E[X^{k}]$
+- $k-\mathrm{th}$ sample moment: $m'k = \frac{1}{n}\sum X_{i}^{k}$
 
 ### Procedure
 
@@ -101,14 +101,14 @@ Set population moments equal to sample moments, then solve for parameters.
 
 ### Example: Exponential Distribution
 
-Data from Exp(λ). Population moment: E[X] = 1/λ.
-Set equal: (1/n)ΣXᵢ = 1/λ̂ → λ̂_MoM = 1/X̄
+Data from $\mathrm{Exp}(\lambda)$. Population moment: $E[X] = \frac{1}{\lambda}$.
+Set equal: $\frac{1}{n}\sum X_{i} = \frac{1}{\hat{\lambda}} \to \hat{\lambda}_{\mathrm{MoM}} = \frac{1}{\bar{X}}$
 
 ### Example: Gaussian Distribution
 
-Data from N(μ, σ²):
-- 1st moment: μ̂ = X̄
-- 2nd central moment: σ̂² = (1/n)Σ(Xᵢ - X̄)² (note: biased, uses n not n-1)
+Data from $N(\mu,\, \sigma^{2})$:
+- 1st moment: $\hat{\mu} = \bar{X}$
+- 2nd central moment: $\hat{\sigma}^{2} = \frac{1}{n}\sum (X_{i} - \bar{X})^{2}$ (note: biased, uses $n$ not $n-1$)
 
 ### Advantages/Disadvantages
 
@@ -125,7 +125,7 @@ Choose the parameter value that makes the observed data **most probable**.
 
 ### Likelihood Function
 
-Given data x₁, ..., xₙ from f(x; θ):
+Given data $x_{1},\, \ldots,\, x_{n}$ from $f(x; \theta)$:
 
 $$L(\theta) = \prod_{i=1}^n f(x_i; \theta)$$
 
@@ -135,45 +135,45 @@ $$\ell(\theta) = \ln L(\theta) = \sum_{i=1}^n \ln f(x_i; \theta)$$
 
 ### MLE Procedure
 
-1. Write the log-likelihood ℓ(θ)
-2. Differentiate: dℓ/dθ = 0
-3. Solve for θ̂_MLE
-4. Verify it's a maximum (d²ℓ/dθ² < 0)
+1. Write the log-likelihood $\ell (\theta)$
+2. Differentiate: $\frac{d\ell}{d\theta} = 0$
+3. Solve for $\hat{\theta}_{\mathrm{MLE}}$
+4. Verify it's a maximum $\left(\frac{d^{2}\ell}{d\theta^{2}} < 0\right)$
 
 ### Properties of MLE
 
 1. **Consistent** (converges to true value)
-2. **Asymptotically unbiased** (bias → 0 as n → ∞)
-3. **Asymptotically efficient** (achieves CRLB for large n)
-4. **Invariant:** If θ̂ is MLE of θ, then g(θ̂) is MLE of g(θ)
+2. **Asymptotically unbiased** (bias → 0 as $n \to \infty$)
+3. **Asymptotically efficient** (achieves CRLB for large $n$)
+4. **Invariant:** If $\hat{\theta}$ is MLE of $\theta$, then $g(\hat{\theta})$ is MLE of $g(\theta)$
 
 ### Example: MLE for Gaussian Mean
 
-Data X₁, ..., Xₙ ~ N(μ, σ²) with σ² known.
+Data $X_{1},\, \ldots,\, X_{n} \sim N(\mu,\, \sigma^{2})$ with $\sigma^{2}$ known.
 
-ℓ(μ) = -(n/2)ln(2πσ²) - (1/(2σ²))Σ(xᵢ - μ)²
+$\ell (\mu) = -\frac{n}{2}\ln (2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}}\sum (x_{i} - \mu)^{2}$
 
-dℓ/dμ = (1/σ²)Σ(xᵢ - μ) = 0 → μ̂_MLE = X̄
+$\frac{d\ell}{d\mu} = \frac{1}{\sigma^{2}}\sum (x_{i} - \mu) = 0 \to \hat{\mu}_{\mathrm{MLE}} = \bar{X}$
 
 ### Example: MLE for Exponential Rate
 
-Data X₁, ..., Xₙ ~ Exp(λ).
+Data $X_{1},\, \ldots,\, X_{n} \sim \mathrm{Exp}(\lambda)$.
 
-ℓ(λ) = n·ln(λ) - λ·Σxᵢ
+$\ell (\lambda) = n \cdot \ln (\lambda) - \lambda \cdot \sum x_{i}$
 
-dℓ/dλ = n/λ - Σxᵢ = 0 → λ̂_MLE = n/Σxᵢ = 1/X̄
+$\frac{d\ell}{d\lambda} = \frac{n}{\lambda} - \sum x_{i} = 0 \to \hat{\lambda}_{\mathrm{MLE}} = \frac{n}{\sum x_{i}} = \frac{1}{\bar{X}}$
 
 ### Example: MLE for Gaussian Variance
 
-Data X₁, ..., Xₙ ~ N(μ, σ²), μ known.
+Data $X_{1},\, \ldots,\, X_{n} \sim N(\mu,\, \sigma^{2}),\, \mu$ known.
 
-ℓ(σ²) = -(n/2)ln(2πσ²) - (1/(2σ²))Σ(xᵢ - μ)²
+$\ell (\sigma^{2}) = -\frac{n}{2}\ln (2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}}\sum (x_{i} - \mu)^{2}$
 
-dℓ/d(σ²) = -n/(2σ²) + (1/(2σ⁴))Σ(xᵢ - μ)² = 0
+$\frac{d\ell}{d(\sigma^{2})} = -\frac{n}{2\sigma^{2}} + \frac{1}{2\sigma^{4}}\sum (x_{i} - \mu)^{2} = 0$
 
-σ̂²_MLE = (1/n)Σ(xᵢ - μ)²
+$\hat{\sigma}^{2}_{\mathrm{MLE}} = \frac{1}{n}\sum (x_{i} - \mu)^{2}$
 
-Note: With μ unknown, σ̂²_MLE = (1/n)Σ(xᵢ - x̄)² — biased! (Uses n, not n-1)
+Note: With $\mu$ unknown, $\hat{\sigma}^{2}_{\mathrm{MLE}} = \frac{1}{n}\sum (x_{i} - \bar{x})^{2}$ — biased! (Uses $n$, not $n-1$)
 
 ---
 
@@ -181,30 +181,30 @@ Note: With μ unknown, σ̂²_MLE = (1/n)Σ(xᵢ - x̄)² — biased! (Uses n, n
 
 ### Estimating Noise Variance
 
-**Problem:** Measure n samples of noise. Estimate noise power σ².
+**Problem:** Measure $n$ samples of noise. Estimate noise power $\sigma^{2}$.
 
-**Data:** x₁, ..., xₙ (noise voltage samples, assumed zero-mean)
+**Data:** $x_{1},\, \ldots,\, x_{n}$ (noise voltage samples, assumed zero-mean)
 
-**MLE:** σ̂² = (1/n)Σxᵢ² (biased by factor (n-1)/n)
-**Unbiased:** S² = (1/(n-1))Σ(xᵢ - x̄)² or if μ=0 known: (1/n)Σxᵢ² is actually unbiased for E[X²]=σ²
+**MLE:** $\hat{\sigma}^{2} = \frac{1}{n}\sum x_{i}^{2}$ (biased by factor $\frac{n-1}{n}$)
+**Unbiased:** $S^{2} = \frac{1}{n-1}\sum (x_{i} - \bar{x})^{2}$ or if $\mu = 0$ known: $\frac{1}{n}\sum x_{i}^{2}$ is actually unbiased for $E[X^{2}] = \sigma^{2}$
 
 ### Estimating Failure Rate
 
-**Problem:** 20 components tested until failure. Lifetimes: t₁, ..., t₂₀.
+**Problem:** 20 components tested until failure. Lifetimes: $t_{1},\, \ldots,\, t_{20}$.
 
-**Model:** T ~ Exp(λ), parameter λ (failure rate).
+**Model:** $T \sim \mathrm{Exp}(\lambda)$, parameter $\lambda$ (failure rate).
 
-**MLE:** λ̂ = 20/Σtᵢ = 1/T̄
+**MLE:** $\hat{\lambda} = \frac{20}{\sum t_{i}} = \frac{1}{\bar{T}}$
 
-If T̄ = 500 hours: λ̂ = 1/500 = 0.002 failures/hour.
+If $\bar{T} = 500$ hours: $\hat{\lambda} = \frac{1}{500} = 0.002$ failures/hour.
 
 ### Estimating Channel Parameter
 
-**Problem:** Rayleigh fading channel. Observed power samples: p₁, ..., pₙ.
+**Problem:** Rayleigh fading channel. Observed power samples: $p_{1},\, \ldots,\, p_{n}$.
 
-**Model:** Power P ~ Exp(1/Ω), where Ω = E[P] = average power.
+**Model:** Power $P \sim \mathrm{Exp}\left(\frac{1}{\Omega}\right)$, where $\Omega = E[P]$ = average power.
 
-**MLE:** Ω̂ = P̄ = (1/n)Σpᵢ
+**MLE:** $\hat{\Omega} = \bar{P} = \frac{1}{n}\sum p_{i}$
 
 ---
 
@@ -212,14 +212,14 @@ If T̄ = 500 hours: λ̂ = 1/500 = 0.002 failures/hour.
 
 ### Bias-Variance Tradeoff
 
-Two estimators for σ²:
-- θ̂₁ = S² (unbiased, variance = 2σ⁴/(n-1))
-- θ̂₂ = (1/n)Σ(Xᵢ-X̄)² (biased by -σ²/n, variance = 2σ⁴(n-1)/n²)
+Two estimators for $\sigma^{2}$:
+- $\hat{\theta}_{1} = S^{2}$ (unbiased, variance $= \frac{2\sigma^{4}}{n-1}$)
+- $\hat{\theta}_{2} = \frac{1}{n}\sum (X_{i}-\bar{X})^{2}$ (biased by $-\frac{\sigma^{2}}{n}$, variance $= \frac{2\sigma^{4}(n-1)}{n^{2}}$)
 
-MSE(θ̂₁) = 2σ⁴/(n-1)
-MSE(θ̂₂) = 2σ⁴(n-1)/n² + σ⁴/n² = σ⁴(2n-1)/n²
+$\operatorname{MSE}(\hat{\theta}_{1}) = \frac{2\sigma^{4}}{n-1}$
+$\operatorname{MSE}(\hat{\theta}_{2}) = \frac{2\sigma^{4}(n-1)}{n^{2}} + \frac{\sigma^{4}}{n^{2}} = \frac{\sigma^{4}(2n-1)}{n^{2}}$
 
-For any n ≥ 2: MSE(θ̂₂) < MSE(θ̂₁)! The biased MLE actually has smaller total error.
+For any $n \ge 2$: $\operatorname{MSE}(\hat{\theta}_{2}) < \operatorname{MSE}(\hat{\theta}_{1})$! The biased MLE actually has smaller total error.
 
 ---
 
@@ -310,28 +310,28 @@ fprintf('σ²_unbiased: E=%.3f (true=%.1f)\n', mean(sigma2_unbiased), sigma2_tru
 ## 13.9 Practice Problems
 
 ### Problem 1
-Data from N(μ, 9): x̄ = 4.2, n = 25.
-(a) Give the MLE of μ. (b) What is Var(μ̂)? (c) Is X̄ efficient for μ?
+Data from $N(\mu,\, 9)$: $\bar{x} = 4.2,\, n = 25$.
+(a) Give the MLE of $\mu$. (b) What is $\operatorname{Var}(\hat{\mu})$? (c) Is $\bar{X}$ efficient for $\mu$?
 
 **Solution:**
-(a) μ̂_MLE = X̄ = 4.2
-(b) Var(X̄) = σ²/n = 9/25 = 0.36
-(c) CRLB for N(μ,σ²): 1/(n·I(μ)) = σ²/n = 0.36. X̄ achieves CRLB → yes, efficient.
+(a) $\hat{\mu}_{\mathrm{MLE}} = \bar{X} = 4.2$
+(b) $\operatorname{Var}(\bar{X}) = \frac{\sigma^{2}}{n} = \frac{9}{25} = 0.36$
+(c) CRLB for $N(\mu,\,\sigma^{2})$: $\frac{1}{n \cdot I(\mu)} = \frac{\sigma^{2}}{n} = 0.36$. $\bar{X}$ achieves $\mathrm{CRLB}$ → yes, efficient.
 
 ### Problem 2
 Component lifetimes (hours): 120, 350, 200, 480, 90, 560, 310, 175, 420, 280.
-(a) Estimate λ (failure rate) by MLE assuming Exp(λ). (b) Estimate MTTF.
+(a) Estimate $\lambda$ (failure rate) by MLE assuming $\mathrm{Exp}(\lambda)$. (b) Estimate MTTF.
 
 **Solution:**
-(a) X̄ = (120+350+200+480+90+560+310+175+420+280)/10 = 298.5.
-λ̂ = 1/298.5 = 0.00335 failures/hour.
-(b) MTTF = 1/λ̂ = X̄ = 298.5 hours.
+(a) $\bar{X} = \frac{120+350+200+480+90+560+310+175+420+280}{10} = 298.5$.
+$\hat{\lambda} = \frac{1}{298.5} = 0.00335$ failures/hour.
+(b) $\mathrm{MTTF} = \frac{1}{\hat{\lambda}} = \bar{X} = 298.5$ hours.
 
 ### Problem 3
-For Poisson(λ) data: x₁,...,xₙ. Derive the MLE of λ.
+For $\mathrm{Poisson}(\lambda)$ data: $x_{1},\,\ldots,\,x_{n}$. Derive the MLE of $\lambda$.
 
-**Solution:** ℓ(λ) = Σ[xᵢ ln(λ) - λ - ln(xᵢ!)] = (Σxᵢ)ln(λ) - nλ - Σln(xᵢ!)
-dℓ/dλ = (Σxᵢ)/λ - n = 0 → λ̂_MLE = (1/n)Σxᵢ = X̄.
+**Solution:** $\ell (\lambda) = \sum [x_{i} \ln (\lambda) - \lambda - \ln (x_{i}!)] = \left(\sum x_{i}\right)\ln (\lambda) - n\lambda - \sum \ln (x_{i}!)$
+$\frac{d\ell}{d\lambda} = \frac{\sum x_{i}}{\lambda} - n = 0 \to \hat{\lambda}_{\mathrm{MLE}} = \frac{1}{n}\sum x_{i} = \bar{X}$.
 The MLE for Poisson rate is the sample mean.
 
 ---

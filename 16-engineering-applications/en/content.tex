@@ -27,16 +27,16 @@ This capstone module integrates ALL previous modules into real Electrical Engine
 
 \textbf{Problem:} Estimate the Bit Error Rate of a communication link.
 
-\textbf{Model:} Each bit is a Bernoulli trial with error probability p (the BER).
+\textbf{Model:} Each bit is a Bernoulli trial with error probability $p$ (the BER).
 
 \begin{itemize}
 \tightlist
 \item
-  n bits transmitted, k errors observed
+  $n$ bits transmitted, $k$ errors observed
 \item
-  \ensuremath{\hat{p}} = k/n (MLE of BER)
+  $\hat{p} = \frac{k}{n}$ (MLE of BER)
 \item
-  95\% CI: \ensuremath{\hat{p}} \ensuremath{\pm} 1.96\ensuremath{\surd}(\ensuremath{\hat{p}}(1-\ensuremath{\hat{p}})/n)
+  95\% CI: $\hat{p} \pm 1.96\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
 \end{itemize}
 
 \textbf{MATLAB: BER Simulation and CI}
@@ -74,25 +74,25 @@ Additive White Gaussian Noise is the fundamental noise model:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Distribution:} N(0, N\textsubscript{0}/2) per dimension
+  \textbf{Distribution:} $N\left(0,\, \frac{N_{0}}{2}\right)$ per dimension
 \item
   \textbf{Why Gaussian?} CLT — thermal noise is sum of many electron contributions
 \item
-  \textbf{Characterization:} Fully described by power spectral density N\textsubscript{0} or variance \ensuremath{\sigma}\textsuperscript{2} = N\textsubscript{0}B (B = bandwidth)
+  \textbf{Characterization:} Fully described by power spectral density $N_{0}$ or variance $\sigma^{2} = N_{0}B$ (B = bandwidth)
 \end{itemize}
 
 \PSsubsection{16.1.3 Rayleigh Fading Channel}
 
-\textbf{Model:} Channel coefficient h = h\textsubscript{I} + j\ensuremath{\cdot}h\textsubscript{Q} where h\textsubscript{I}, h\textsubscript{Q} \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}) independent.
+\textbf{Model:} Channel coefficient $h = h_{I} + j \cdot h_{Q}$ where $h_{I},\, h_{Q} \sim N(0,\, \sigma^{2})$ independent.
 
 \begin{itemize}
 \tightlist
 \item
-  Envelope \textbar{}h\textbar{} \textasciitilde{} Rayleigh(\ensuremath{\sigma})
+  Envelope $\lvert h\rvert \sim \mathrm{Rayleigh}(\sigma)$
 \item
-  Power \textbar{}h\textbar{}\textsuperscript{2} \textasciitilde{} Exponential(1/(2\ensuremath{\sigma}\textsuperscript{2}))
+  Power $\lvert h\rvert^{2} \sim \mathrm{Exponential}\left(\frac{1}{2\sigma^{2}}\right)$
 \item
-  \textbf{Outage probability:} P(\textbar{}h\textbar{}\textsuperscript{2} \textless{} \ensuremath{\gamma}\textsubscript{th}) = 1 - exp(-\ensuremath{\gamma}\textsubscript{th}/(2\ensuremath{\sigma}\textsuperscript{2}))
+  \textbf{Outage probability:} $P(\lvert h\rvert^{2} < \gamma_{\mathrm{th}}) = 1 - \exp \left(-\frac{\gamma_{\mathrm{th}}}{2\sigma^{2}}\right)$
 \end{itemize}
 
 \tcbset{PScodemode/.style={unbreakable}}
@@ -126,28 +126,28 @@ When a line-of-sight (LOS) component exists:
 \begin{itemize}
 \tightlist
 \item
-  h = h\textsubscript{LOS} + h\textsubscript{scatter}
+  $h = h_{\mathrm{LOS}} + h_{\mathrm{scatter}}$
 \item
-  \textbar{}h\textbar{} \textasciitilde{} Rician(\ensuremath{\nu}, \ensuremath{\sigma}) where K = \ensuremath{\nu}\textsuperscript{2}/(2\ensuremath{\sigma}\textsuperscript{2}) is the K-factor
+  $\lvert h\rvert \sim \mathrm{Rician}(\nu,\, \sigma)$ where $K = \frac{\nu^{2}}{2\sigma^{2}}$ is the K-factor
 \end{itemize}
 
-K-factor: K = 0 (Rayleigh) \ensuremath{\to} K = \ensuremath{\infty} (no fading, AWGN)
+K-factor: $K = 0$ (Rayleigh) $\to K = \infty$ (no fading, AWGN)
 
 \PSsubsection{16.1.5 SNR Statistics}
 
-\textbf{Instantaneous SNR:} \ensuremath{\gamma} = \textbar{}h\textbar{}\textsuperscript{2} \ensuremath{\times} (E\textsubscript{s}/N\textsubscript{0})
+\textbf{Instantaneous SNR:} $\gamma = \lvert h\rvert^{2} \times \frac{E_{s}}{N_{0}}$
 
-For Rayleigh: \ensuremath{\gamma} \textasciitilde{} Exponential(\ensuremath{\bar{\gamma}}) where \ensuremath{\bar{\gamma}} = average SNR
+For Rayleigh: $\gamma \sim \mathrm{Exponential}(\bar{\gamma})$ where $\bar{\gamma}$ = average SNR
 
 \textbf{Average BER over fading:}\PSdisplay{\bar{P}_e = \int_0^\infty P_e(\gamma) \cdot f_\gamma(\gamma) \, d\gamma}
 
-For BPSK over Rayleigh: \ensuremath{\bar{P}}\textsubscript{e} = (1/2)(1 - \ensuremath{\surd}(\ensuremath{\bar{\gamma}}/(1+\ensuremath{\bar{\gamma}})))
+For BPSK over Rayleigh: $\bar{P}_{e} = \frac{1}{2}\left(1 - \sqrt{\frac{\bar{\gamma}}{1+\bar{\gamma}}}\right)$
 
 \PSsection{16.2}{Signal Processing}
 
 \PSsubsection{16.2.1 Measurement Noise Characterization}
 
-\textbf{Problem:} Characterize noise in measured signal x(t) = s(t) + n(t).
+\textbf{Problem:} Characterize noise in measured signal $x(t) = s(t) + n(t)$.
 
 \textbf{Approach:}
 
@@ -157,11 +157,11 @@ For BPSK over Rayleigh: \ensuremath{\bar{P}}\textsubscript{e} = (1/2)(1 - \ensur
 \item
   Collect noise-only samples (signal absent)
 \item
-  Estimate noise statistics: \ensuremath{\hat{\mu}}\textsubscript{n}, \ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{n}
+  Estimate noise statistics: $\hat{\mu}_{n},\, \hat{\sigma}^{2}_{n}$
 \item
   Test for Gaussianity (histogram, QQ-plot)
 \item
-  Compute SNR: SNR = P\textsubscript{signal} / \ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{n}
+  Compute SNR: $\mathrm{SNR} = \frac{P_{\mathrm{signal}}}{\hat{\sigma}^{2}_{n}}$
 \end{enumerate}
 
 \tcbset{PScodemode/.style={unbreakable}}
@@ -200,7 +200,7 @@ For BPSK over Rayleigh: \ensuremath{\bar{P}}\textsubscript{e} = (1/2)(1 - \ensur
 
 \textbf{Problem:} Detect a known signal in noise.
 
-\textbf{Method:} Correlate received signal with known template. Under H\textsubscript{0} (noise only), the correlator output has known distribution \ensuremath{\to} set threshold.
+\textbf{Method:} Correlate received signal with known template. Under $H_{0}$ (noise only), the correlator output has known distribution \ensuremath{\to} set threshold.
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -235,19 +235,19 @@ For BPSK over Rayleigh: \ensuremath{\bar{P}}\textsubscript{e} = (1/2)(1 - \ensur
 
 \PSsubsection{16.3.1 Component Tolerance Modeling}
 
-\textbf{Problem:} Resistors have nominal value R\textsubscript{0} with manufacturing tolerance.
+\textbf{Problem:} Resistors have nominal value $R_{0}$ with manufacturing tolerance.
 
-\textbf{Model:} R \textasciitilde{} N(R\textsubscript{0}, \ensuremath{\sigma}\textsubscript{R}\textsuperscript{2}) where \ensuremath{\sigma}\textsubscript{R} depends on tolerance class.
+\textbf{Model:} $R \sim N(R_{0},\, \sigma_{R}^{2})$ where $\sigma_{R}$ depends on tolerance class.
 
-For \ensuremath{\pm}5\% tolerance (99.7\% within bounds): 3\ensuremath{\sigma} = 0.05R\textsubscript{0} \ensuremath{\to} \ensuremath{\sigma} = 0.0167R\textsubscript{0}
+For $\pm 5\%$ tolerance (99.7\% within bounds): $3\sigma = 0.05R_{0} \to \sigma = 0.0167R_{0}$
 
 \PSsubsection{16.3.2 Monte Carlo Circuit Analysis}
 
-\textbf{Problem:} A voltage divider uses R\textsubscript{1} and R\textsubscript{2}. What is the distribution of output voltage?
+\textbf{Problem:} A voltage divider uses $R_{1}$ and $R_{2}$. What is the distribution of output voltage?
 
-V\textsubscript{out} = V\textsubscript{in} \ensuremath{\times} R\textsubscript{2}/(R\textsubscript{1} + R\textsubscript{2})
+$\displaystyle V_{\mathrm{out}} = V_{\mathrm{in}} \times \frac{R_{2}}{R_{1} + R_{2}}$
 
-With R\textsubscript{1}, R\textsubscript{2} random: V\textsubscript{out} is a random variable!
+With $R_{1},\, R_{2}$ random: $V_{\mathrm{out}}$ is a random variable!
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -279,31 +279,31 @@ With R\textsubscript{1}, R\textsubscript{2} random: V\textsubscript{out} is a ra
 
 \PSsubsection{16.3.3 Measurement Uncertainty Propagation}
 
-If Z = f(X, Y) and X, Y have small uncertainties:
+If $Z = f(X,\, Y)$ and $X,\, Y$ have small uncertainties:
 
 \PSdisplay{\sigma_Z^2 \approx \left(\frac{\partial f}{\partial X}\right)^2 \sigma_X^2 + \left(\frac{\partial f}{\partial Y}\right)^2 \sigma_Y^2}
 
-\textbf{Example:} Power P = V\textsuperscript{2}/R. \ensuremath{\sigma}\textsubscript{P}\textsuperscript{2} \ensuremath{\approx} (2V/R)\textsuperscript{2}\ensuremath{\sigma}\textsubscript{V}\textsuperscript{2} + (V\textsuperscript{2}/R\textsuperscript{2})\textsuperscript{2}\ensuremath{\sigma}\textsubscript{R}\textsuperscript{2}
+\textbf{Example:} Power $P = \frac{V^{2}}{R}$. $\sigma_{P}^{2} \approx \frac{2\,\mathrm{V}}{R}^{2}\sigma_{V}^{2} + \frac{V^{2}}{R^{2}}^{2}\sigma_{R}^{2}$
 
 \PSsection{16.4}{Power Systems}
 
 \PSsubsection{16.4.1 Load Uncertainty}
 
-\textbf{Problem:} Peak load is uncertain. Model: L \textasciitilde{} N(\ensuremath{\mu}\textsubscript{L}, \ensuremath{\sigma}\textsubscript{L}\textsuperscript{2})
+\textbf{Problem:} Peak load is uncertain. Model: $L \sim N(\mu_{L},\, \sigma_{L}^{2})$
 
-Design question: What capacity C ensures P(load \textgreater{} capacity) \textless{} 0.01?
+Design question: What capacity $C$ ensures $P(\text{load} > \text{capacity}) < 0.01$?
 
-C = \ensuremath{\mu}\textsubscript{L} + 2.326\ensuremath{\sigma}\textsubscript{L} (for 1\% exceedance probability)
+$C = \mu_{L} + 2.326\sigma_{L}$ (for 1\% exceedance probability)
 
 \PSsubsection{16.4.2 System Reliability}
 
 \textbf{Series system:} All components must work.
 
-R\textsubscript{sys} = R\textsubscript{1} \ensuremath{\times} R\textsubscript{2} \ensuremath{\times} … \ensuremath{\times} R\textsubscript{n} (for independent components)
+$R_{\mathrm{sys}} = R_{1} \times R_{2} \times \ldots \times R_{n}$ (for independent components)
 
 \textbf{Parallel system:} At least one must work.
 
-R\textsubscript{sys} = 1 - (1-R\textsubscript{1})(1-R\textsubscript{2})…(1-R\textsubscript{n})
+$R_{\mathrm{sys}} = 1 - (1-R_{1})(1-R_{2})\ldots (1-R_{n})$
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -345,16 +345,16 @@ R\textsubscript{sys} = 1 - (1-R\textsubscript{1})(1-R\textsubscript{2})…(1-R\t
 
 \textbf{Problem:} A control system uses noisy sensor readings.
 
-Measurement: y(k) = x(k) + n(k) where n \textasciitilde{} N(0, \ensuremath{\sigma}\textsuperscript{2}\textsubscript{n})
+Measurement: $y(k) = x(k) + n(k)$ where $n \sim N(0,\, \sigma^{2}_{n})$
 
-Controller acts on y(k) \ensuremath{\to} tracking error includes noise contribution.
+Controller acts on $y(k)$ \ensuremath{\to} tracking error includes noise contribution.
 
 \textbf{Solution approaches:}
 
 \begin{itemize}
 \tightlist
 \item
-  Averaging (low-pass filter): reduces noise by \ensuremath{\surd}n
+  Averaging (low-pass filter): reduces noise by $\sqrt{n}$
 \item
   Kalman filter: optimal fusion of model prediction and measurement
 \end{itemize}
@@ -388,9 +388,9 @@ Controller acts on y(k) \ensuremath{\to} tracking error includes noise contribut
 
 \PSsubsection{16.5.2 Parameter Uncertainty}
 
-System model: G(s) = K/(\ensuremath{\tau}s + 1) where K and \ensuremath{\tau} are uncertain.
+System model: $G(s) = \frac{K}{\tau s + 1}$ where $K$ and $\tau$ are uncertain.
 
-Monte Carlo approach: sample K and \ensuremath{\tau} from their distributions, simulate system response many times, compute statistics of output.
+Monte Carlo approach: sample $K$ and $\tau$ from their distributions, simulate system response many times, compute statistics of output.
 
 \PSsection{16.6}{Machine Learning / AI Connections}
 
@@ -423,7 +423,7 @@ Monte Carlo approach: sample K and \ensuremath{\tau} from their distributions, s
 \begin{itemize}
 \tightlist
 \item
-  Generative models: learn P(X) directly
+  Generative models: learn $P(X)$ directly
 \item
   Gaussian Mixture Models: weighted sum of Gaussians
 \item
@@ -542,7 +542,7 @@ This is exactly the MSE decomposition from estimation theory (Module 13)!
 3. Distributions & Choosing noise/fading/failure models \\
 4. Moments & Signal power, noise power, SNR \\
 5. Transformations & dB conversion, power from voltage \\
-6-7. Joint/Functions & Signal+noise, system combinations \\
+$6-7$. Joint/Functions & Signal+noise, system combinations \\
 8. Conditional & Performance under different states \\
 9. Correlation & MIMO channels, sensor arrays \\
 10. Multiple RVs & Vector processing, beamforming \\

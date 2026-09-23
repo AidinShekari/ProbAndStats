@@ -21,16 +21,16 @@ After completing this module, students will be able to:
 
 \PSsection{13.1}{Introduction}
 
-We observe data X\textsubscript{1}, …, X\textsubscript{n} from a distribution with unknown parameter \ensuremath{\theta}. \textbf{Parameter estimation} gives us a method to infer \ensuremath{\theta} from data.
+We observe data $X_{1},\, \ldots,\, X_{n}$ from a distribution with unknown parameter $\theta$. \textbf{Parameter estimation} gives us a method to infer $\theta$ from data.
 
 Engineering examples:
 
 \begin{itemize}
 \tightlist
 \item
-  Estimate noise variance \ensuremath{\sigma}\textsuperscript{2} from recorded samples
+  Estimate noise variance $\sigma^{2}$ from recorded samples
 \item
-  Estimate failure rate \ensuremath{\lambda} from component lifetimes
+  Estimate failure rate $\lambda$ from component lifetimes
 \item
   Estimate channel gain from received signal strength
 \item
@@ -53,8 +53,8 @@ Engineering examples:
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{Estimator} \ensuremath{\hat{\theta}} & Random variable (function of data) & The RULE applied to data & \ensuremath{\hat{\theta}} = \ensuremath{\bar{X}} = (1/n)\ensuremath{\Sigma}X\textsubscript{i} \\
-\textbf{Estimate} & Number & The VALUE from a specific sample & \ensuremath{\hat{\theta}} = 3.47 (from one dataset) \\
+\textbf{Estimator} $\hat{\theta}$ & Random variable (function of data) & The RULE applied to data & $\hat{\theta} = \bar{X} = \frac{1}{n}\sum X_{i}$ \\
+\textbf{Estimate} & Number & The VALUE from a specific sample & $\hat{\theta} = 3.47$ (from one dataset) \\
 \end{longtable}
 }
 
@@ -73,9 +73,9 @@ The \textbf{estimator} is a random variable — it has a sampling distribution.\
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Unbiased:} B(\ensuremath{\hat{\theta}}) = 0, i.e., E[\ensuremath{\hat{\theta}}] = \ensuremath{\theta} (on average, correct)
+  \textbf{Unbiased:} $B(\hat{\theta}) = 0$, i.e., $E[\hat{\theta}] = \theta$ (on average, correct)
 \item
-  \textbf{Biased:} E[\ensuremath{\hat{\theta}}] \ensuremath{\neq} \ensuremath{\theta} (systematic error)
+  \textbf{Biased:} $E[\hat{\theta}] \ne \theta$ (systematic error)
 \end{itemize}
 
 Examples:
@@ -83,20 +83,20 @@ Examples:
 \begin{itemize}
 \tightlist
 \item
-  \ensuremath{\bar{X}} is unbiased for \ensuremath{\mu}: E[\ensuremath{\bar{X}}] = \ensuremath{\mu} \PSyes{}
+  $\bar{X}$ is unbiased for $\mu$: $E[\bar{X}] = \mu$ \PSyes{}
 \item
-  S\textsuperscript{2} (with n-1) is unbiased for \ensuremath{\sigma}\textsuperscript{2}: E[S\textsuperscript{2}] = \ensuremath{\sigma}\textsuperscript{2} \PSyes{}
+  $S^{2}$ (with $n-1$) is unbiased for $\sigma^{2}$: $E[S^{2}] = \sigma^{2}$ \PSyes{}
 \item
-  S (sample std dev) is biased for \ensuremath{\sigma}: E[S] \ensuremath{\neq} \ensuremath{\sigma} (slight downward bias)
+  $S$ (sample std dev) is biased for $\sigma$: $E[S] \ne \sigma$ (slight downward bias)
 \end{itemize}
 
 \PSsubsection{Consistency}
 
-\ensuremath{\hat{\theta}}\textsubscript{n} is \textbf{consistent} if \ensuremath{\hat{\theta}}\textsubscript{n} \ensuremath{\to} \ensuremath{\theta} in probability as n \ensuremath{\to} \ensuremath{\infty}.
+$\hat{\theta}_{n}$ is \textbf{consistent} if $\hat{\theta}_{n} \to \theta$ in probability as $n \to \infty$.
 
 Practical meaning: with enough data, the estimator gets arbitrarily close to the truth.
 
-Sufficient condition: If bias \ensuremath{\to} 0 and variance \ensuremath{\to} 0 as n \ensuremath{\to} \ensuremath{\infty}, then consistent.
+Sufficient condition: If bias \ensuremath{\to} 0 and variance \ensuremath{\to} 0 as $n \to \infty$, then consistent.
 
 \PSsubsection{Efficiency}
 
@@ -104,7 +104,7 @@ Among all unbiased estimators, the \textbf{efficient} one has the smallest varia
 
 The \textbf{Cramér-Rao Lower Bound} (CRLB) gives the minimum possible variance:\PSdisplay{\text{Var}(\hat{\theta}) \geq \frac{1}{nI(\theta)}}
 
-where I(\ensuremath{\theta}) = Fisher information = -E[\ensuremath{\partial}\textsuperscript{2}ln f(X;\ensuremath{\theta})/\ensuremath{\partial}\ensuremath{\theta}\textsuperscript{2}].
+where $I(\theta)$ = Fisher information $= -E\left[\frac{\partial^{2}\ln f(X; \theta)}{\partial \theta^{2}}\right]$.
 
 An estimator achieving the CRLB is called \textbf{efficient} or \textbf{minimum variance unbiased (MVU)}.
 
@@ -112,7 +112,7 @@ An estimator achieving the CRLB is called \textbf{efficient} or \textbf{minimum 
 
 \PSdisplay{\text{MSE}(\hat{\theta}) = E[(\hat{\theta} - \theta)^2] = \text{Var}(\hat{\theta}) + [B(\hat{\theta})]^2}
 
-\textbf{MSE = Variance + Bias\textsuperscript{2}}
+\textbf{$\operatorname{MSE} = \operatorname{Variance} + \operatorname{Bias}^{2}$}
 
 This is the \textbf{bias-variance tradeoff}: sometimes a slightly biased estimator with much lower variance has smaller MSE than an unbiased one.
 
@@ -125,9 +125,9 @@ Set population moments equal to sample moments, then solve for parameters.
 \begin{itemize}
 \tightlist
 \item
-  k-th population moment: \ensuremath{\mu}’\textsubscript{k} = E[X\textsuperscript{k}]
+  $k-\mathrm{th}$ population moment: $\mu 'k = E[X^{k}]$
 \item
-  k-th sample moment: m’\textsubscript{k} = (1/n)\ensuremath{\Sigma}X\textsubscript{i}\textsuperscript{k}
+  $k-\mathrm{th}$ sample moment: $m'k = \frac{1}{n}\sum X_{i}^{k}$
 \end{itemize}
 
 \PSsubsection{Procedure}
@@ -145,20 +145,20 @@ Set population moments equal to sample moments, then solve for parameters.
 
 \begin{PSbox}[unbreakable]{ex}{Example: Exponential Distribution}
 
-Data from Exp(\ensuremath{\lambda}). Population moment: E[X] = 1/\ensuremath{\lambda}.\PSbr{}Set equal: (1/n)\ensuremath{\Sigma}X\textsubscript{i} = 1/\ensuremath{\hat{\lambda}} \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MoM} = 1/\ensuremath{\bar{X}}
+Data from $\mathrm{Exp}(\lambda)$. Population moment: $E[X] = \frac{1}{\lambda}$.\PSbr{}Set equal: $\frac{1}{n}\sum X_{i} = \frac{1}{\hat{\lambda}} \to \hat{\lambda}_{\mathrm{MoM}} = \frac{1}{\bar{X}}$
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{Example: Gaussian Distribution}
 
-Data from N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}):
+Data from $N(\mu,\, \sigma^{2})$:
 
 \begin{itemize}
 \tightlist
 \item
-  1st moment: \ensuremath{\hat{\mu}} = \ensuremath{\bar{X}}
+  1st moment: $\hat{\mu} = \bar{X}$
 \item
-  2nd central moment: \ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i} - \ensuremath{\bar{X}})\textsuperscript{2} (note: biased, uses n not n-1)
+  2nd central moment: $\hat{\sigma}^{2} = \frac{1}{n}\sum (X_{i} - \bar{X})^{2}$ (note: biased, uses $n$ not $n-1$)
 \end{itemize}
 
 \end{PSbox}
@@ -175,7 +175,7 @@ Choose the parameter value that makes the observed data \textbf{most probable}.
 
 \PSsubsection{Likelihood Function}
 
-Given data x\textsubscript{1}, …, x\textsubscript{n} from f(x; \ensuremath{\theta}):
+Given data $x_{1},\, \ldots,\, x_{n}$ from $f(x; \theta)$:
 
 \PSdisplay{L(\theta) = \prod_{i=1}^n f(x_i; \theta)}
 
@@ -189,13 +189,13 @@ Given data x\textsubscript{1}, …, x\textsubscript{n} from f(x; \ensuremath{\th
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Write the log-likelihood \ensuremath{\ell}(\ensuremath{\theta})
+  Write the log-likelihood $\ell (\theta)$
 \item
-  Differentiate: d\ensuremath{\ell}/d\ensuremath{\theta} = 0
+  Differentiate: $\frac{d\ell}{d\theta} = 0$
 \item
-  Solve for \ensuremath{\hat{\theta}}\textsubscript{MLE}
+  Solve for $\hat{\theta}_{\mathrm{MLE}}$
 \item
-  Verify it’s a maximum (d\textsuperscript{2}\ensuremath{\ell}/d\ensuremath{\theta}\textsuperscript{2} \textless{} 0)
+  Verify it’s a maximum $\left(\frac{d^{2}\ell}{d\theta^{2}} < 0\right)$
 \end{enumerate}
 
 \PSsubsection{Properties of MLE}
@@ -206,44 +206,44 @@ Given data x\textsubscript{1}, …, x\textsubscript{n} from f(x; \ensuremath{\th
 \item
   \textbf{Consistent} (converges to true value)
 \item
-  \textbf{Asymptotically unbiased} (bias \ensuremath{\to} 0 as n \ensuremath{\to} \ensuremath{\infty})
+  \textbf{Asymptotically unbiased} (bias \ensuremath{\to} 0 as $n \to \infty$)
 \item
-  \textbf{Asymptotically efficient} (achieves CRLB for large n)
+  \textbf{Asymptotically efficient} (achieves CRLB for large $n$)
 \item
-  \textbf{Invariant:} If \ensuremath{\hat{\theta}} is MLE of \ensuremath{\theta}, then g(\ensuremath{\hat{\theta}}) is MLE of g(\ensuremath{\theta})
+  \textbf{Invariant:} If $\hat{\theta}$ is MLE of $\theta$, then $g(\hat{\theta})$ is MLE of $g(\theta)$
 \end{enumerate}
 
 \begin{PSbox}[unbreakable]{ex}{Example: MLE for Gaussian Mean}
 
-Data X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}) with \ensuremath{\sigma}\textsuperscript{2} known.
+Data $X_{1},\, \ldots,\, X_{n} \sim N(\mu,\, \sigma^{2})$ with $\sigma^{2}$ known.
 
-\ensuremath{\ell}(\ensuremath{\mu}) = -(n/2)ln(2\ensuremath{\pi}\ensuremath{\sigma}\textsuperscript{2}) - (1/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}
+$\displaystyle \ell (\mu) = -\frac{n}{2}\ln (2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}}\sum (x_{i} - \mu)^{2}$
 
-d\ensuremath{\ell}/d\ensuremath{\mu} = (1/\ensuremath{\sigma}\textsuperscript{2})\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu}) = 0 \ensuremath{\to} \ensuremath{\hat{\mu}}\textsubscript{MLE} = \ensuremath{\bar{X}}
+$\displaystyle \frac{d\ell}{d\mu} = \frac{1}{\sigma^{2}}\sum (x_{i} - \mu) = 0 \to \hat{\mu}_{\mathrm{MLE}} = \bar{X}$
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{Example: MLE for Exponential Rate}
 
-Data X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} Exp(\ensuremath{\lambda}).
+Data $X_{1},\, \ldots,\, X_{n} \sim \mathrm{Exp}(\lambda)$.
 
-\ensuremath{\ell}(\ensuremath{\lambda}) = n\ensuremath{\cdot}ln(\ensuremath{\lambda}) - \ensuremath{\lambda}\ensuremath{\cdot}\ensuremath{\Sigma}x\textsubscript{i}
+$\ell (\lambda) = n \cdot \ln (\lambda) - \lambda \cdot \sum x_{i}$
 
-d\ensuremath{\ell}/d\ensuremath{\lambda} = n/\ensuremath{\lambda} - \ensuremath{\Sigma}x\textsubscript{i} = 0 \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MLE} = n/\ensuremath{\Sigma}x\textsubscript{i} = 1/\ensuremath{\bar{X}}
+$\displaystyle \frac{d\ell}{d\lambda} = \frac{n}{\lambda} - \sum x_{i} = 0 \to \hat{\lambda}_{\mathrm{MLE}} = \frac{n}{\sum x_{i}} = \frac{1}{\bar{X}}$
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{Example: MLE for Gaussian Variance}
 
-Data X\textsubscript{1}, …, X\textsubscript{n} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}), \ensuremath{\mu} known.
+Data $X_{1},\, \ldots,\, X_{n} \sim N(\mu,\, \sigma^{2}),\, \mu$ known.
 
-\ensuremath{\ell}(\ensuremath{\sigma}\textsuperscript{2}) = -(n/2)ln(2\ensuremath{\pi}\ensuremath{\sigma}\textsuperscript{2}) - (1/(2\ensuremath{\sigma}\textsuperscript{2}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}
+$\displaystyle \ell (\sigma^{2}) = -\frac{n}{2}\ln (2\pi \sigma^{2}) - \frac{1}{2\sigma^{2}}\sum (x_{i} - \mu)^{2}$
 
-d\ensuremath{\ell}/d(\ensuremath{\sigma}\textsuperscript{2}) = -n/(2\ensuremath{\sigma}\textsuperscript{2}) + (1/(2\ensuremath{\sigma}\textsuperscript{4}))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2} = 0
+$\displaystyle \frac{d\ell}{d(\sigma^{2})} = -\frac{n}{2\sigma^{2}} + \frac{1}{2\sigma^{4}}\sum (x_{i} - \mu)^{2} = 0$
 
-\ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\mu})\textsuperscript{2}
+$\displaystyle \hat{\sigma}^{2}_{\mathrm{MLE}} = \frac{1}{n}\sum (x_{i} - \mu)^{2}$
 
-Note: With \ensuremath{\mu} unknown, \ensuremath{\hat{\sigma}}\textsuperscript{2}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2} — biased! (Uses n, not n-1)
+Note: With $\mu$ unknown, $\hat{\sigma}^{2}_{\mathrm{MLE}} = \frac{1}{n}\sum (x_{i} - \bar{x})^{2}$ — biased! (Uses $n$, not $n-1$)
 
 \end{PSbox}
 
@@ -251,47 +251,47 @@ Note: With \ensuremath{\mu} unknown, \ensuremath{\hat{\sigma}}\textsuperscript{2
 
 \PSsubsection{Estimating Noise Variance}
 
-\textbf{Problem:} Measure n samples of noise. Estimate noise power \ensuremath{\sigma}\textsuperscript{2}.
+\textbf{Problem:} Measure $n$ samples of noise. Estimate noise power $\sigma^{2}$.
 
-\textbf{Data:} x\textsubscript{1}, …, x\textsubscript{n} (noise voltage samples, assumed zero-mean)
+\textbf{Data:} $x_{1},\, \ldots,\, x_{n}$ (noise voltage samples, assumed zero-mean)
 
-\textbf{MLE:} \ensuremath{\hat{\sigma}}\textsuperscript{2} = (1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2} (biased by factor (n-1)/n)\PSbr{}\textbf{Unbiased:} S\textsuperscript{2} = (1/(n-1))\ensuremath{\Sigma}(x\textsubscript{i} - \ensuremath{\bar{x}})\textsuperscript{2} or if \ensuremath{\mu}=0 known: (1/n)\ensuremath{\Sigma}x\textsubscript{i}\textsuperscript{2} is actually unbiased for E[X\textsuperscript{2}]=\ensuremath{\sigma}\textsuperscript{2}
+\textbf{MLE:} $\hat{\sigma}^{2} = \frac{1}{n}\sum x_{i}^{2}$ (biased by factor $\frac{n-1}{n}$)\PSbr{}\textbf{Unbiased:} $S^{2} = \frac{1}{n-1}\sum (x_{i} - \bar{x})^{2}$ or if $\mu = 0$ known: $\frac{1}{n}\sum x_{i}^{2}$ is actually unbiased for $E[X^{2}] = \sigma^{2}$
 
 \PSsubsection{Estimating Failure Rate}
 
-\textbf{Problem:} 20 components tested until failure. Lifetimes: t\textsubscript{1}, …, t\textsubscript{20}.
+\textbf{Problem:} 20 components tested until failure. Lifetimes: $t_{1},\, \ldots,\, t_{20}$.
 
-\textbf{Model:} T \textasciitilde{} Exp(\ensuremath{\lambda}), parameter \ensuremath{\lambda} (failure rate).
+\textbf{Model:} $T \sim \mathrm{Exp}(\lambda)$, parameter $\lambda$ (failure rate).
 
-\textbf{MLE:} \ensuremath{\hat{\lambda}} = 20/\ensuremath{\Sigma}t\textsubscript{i} = 1/\ensuremath{\bar{T}}
+\textbf{MLE:} $\hat{\lambda} = \frac{20}{\sum t_{i}} = \frac{1}{\bar{T}}$
 
-If \ensuremath{\bar{T}} = 500 hours: \ensuremath{\hat{\lambda}} = 1/500 = 0.002 failures/hour.
+If $\bar{T} = 500$ hours: $\hat{\lambda} = \frac{1}{500} = 0.002$ failures/hour.
 
 \PSsubsection{Estimating Channel Parameter}
 
-\textbf{Problem:} Rayleigh fading channel. Observed power samples: p\textsubscript{1}, …, p\textsubscript{n}.
+\textbf{Problem:} Rayleigh fading channel. Observed power samples: $p_{1},\, \ldots,\, p_{n}$.
 
-\textbf{Model:} Power P \textasciitilde{} Exp(1/\ensuremath{\Omega}), where \ensuremath{\Omega} = E[P] = average power.
+\textbf{Model:} Power $P \sim \mathrm{Exp}\left(\frac{1}{\Omega}\right)$, where $\Omega = E[P]$ = average power.
 
-\textbf{MLE:} \ensuremath{\hat{\Omega}} = \ensuremath{\bar{P}} = (1/n)\ensuremath{\Sigma}p\textsubscript{i}
+\textbf{MLE:} $\hat{\Omega} = \bar{P} = \frac{1}{n}\sum p_{i}$
 
 \PSsection{13.7}{Comparing Estimators}
 
 \PSsubsection{Bias-Variance Tradeoff}
 
-Two estimators for \ensuremath{\sigma}\textsuperscript{2}:
+Two estimators for $\sigma^{2}$:
 
 \begin{itemize}
 \tightlist
 \item
-  \ensuremath{\hat{\theta}}\textsubscript{1} = S\textsuperscript{2} (unbiased, variance = 2\ensuremath{\sigma}\textsuperscript{4}/(n-1))
+  $\hat{\theta}_{1} = S^{2}$ (unbiased, variance $= \frac{2\sigma^{4}}{n-1}$)
 \item
-  \ensuremath{\hat{\theta}}\textsubscript{2} = (1/n)\ensuremath{\Sigma}(X\textsubscript{i}-\ensuremath{\bar{X}})\textsuperscript{2} (biased by -\ensuremath{\sigma}\textsuperscript{2}/n, variance = 2\ensuremath{\sigma}\textsuperscript{4}(n-1)/n\textsuperscript{2})
+  $\hat{\theta}_{2} = \frac{1}{n}\sum (X_{i}-\bar{X})^{2}$ (biased by $-\frac{\sigma^{2}}{n}$, variance $= \frac{2\sigma^{4}(n-1)}{n^{2}}$)
 \end{itemize}
 
-MSE(\ensuremath{\hat{\theta}}\textsubscript{1}) = 2\ensuremath{\sigma}\textsuperscript{4}/(n-1)\PSbr{}MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) = 2\ensuremath{\sigma}\textsuperscript{4}(n-1)/n\textsuperscript{2} + \ensuremath{\sigma}\textsuperscript{4}/n\textsuperscript{2} = \ensuremath{\sigma}\textsuperscript{4}(2n-1)/n\textsuperscript{2}
+$\displaystyle \operatorname{MSE}(\hat{\theta}_{1}) = \frac{2\sigma^{4}}{n-1}$\PSbr{}$\displaystyle \operatorname{MSE}(\hat{\theta}_{2}) = \frac{2\sigma^{4}(n-1)}{n^{2}} + \frac{\sigma^{4}}{n^{2}} = \frac{\sigma^{4}(2n-1)}{n^{2}}$
 
-For any n \ensuremath{\ge} 2: MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) \textless{} MSE(\ensuremath{\hat{\theta}}\textsubscript{1})! The biased MLE actually has smaller total error.
+For any $n \ge 2$: $\operatorname{MSE}(\hat{\theta}_{2}) < \operatorname{MSE}(\hat{\theta}_{1})$! The biased MLE actually has smaller total error.
 
 \PSsection{13.8}{MATLAB Examples}
 
@@ -397,13 +397,13 @@ For any n \ensuremath{\ge} 2: MSE(\ensuremath{\hat{\theta}}\textsubscript{2}) \t
 
 \begin{PSbox}[unbreakable]{prob}{Problem 1}
 
-Data from N(\ensuremath{\mu}, 9): \ensuremath{\bar{x}} = 4.2, n = 25.
+Data from $N(\mu,\, 9)$: $\bar{x} = 4.2,\, n = 25$.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Give the MLE of \ensuremath{\mu}. (b) What is Var(\ensuremath{\hat{\mu}})? (c) Is \ensuremath{\bar{X}} efficient for \ensuremath{\mu}?
+  Give the MLE of $\mu$. (b) What is $\operatorname{Var}(\hat{\mu})$? (c) Is $\bar{X}$ efficient for $\mu$?
 \end{enumerate}
 
 \PSsolution{} 
@@ -412,11 +412,11 @@ Data from N(\ensuremath{\mu}, 9): \ensuremath{\bar{x}} = 4.2, n = 25.
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  \ensuremath{\hat{\mu}}\textsubscript{MLE} = \ensuremath{\bar{X}} = 4.2
+  $\hat{\mu}_{\mathrm{MLE}} = \bar{X} = 4.2$
 \item
-  Var(\ensuremath{\bar{X}}) = \ensuremath{\sigma}\textsuperscript{2}/n = 9/25 = 0.36
+  $\displaystyle \operatorname{Var}(\bar{X}) = \frac{\sigma^{2}}{n} = \frac{9}{25} = 0.36$
 \item
-  CRLB for N(\ensuremath{\mu},\ensuremath{\sigma}\textsuperscript{2}): 1/(n\ensuremath{\cdot}I(\ensuremath{\mu})) = \ensuremath{\sigma}\textsuperscript{2}/n = 0.36. \ensuremath{\bar{X}} achieves CRLB \ensuremath{\to} yes, efficient.
+  CRLB for $N(\mu,\,\sigma^{2})$: $\frac{1}{n \cdot I(\mu)} = \frac{\sigma^{2}}{n} = 0.36$. $\bar{X}$ achieves $\mathrm{CRLB}$ \ensuremath{\to} yes, efficient.
 \end{enumerate}
 
 \end{PSbox}
@@ -429,7 +429,7 @@ Component lifetimes (hours): 120, 350, 200, 480, 90, 560, 310, 175, 420, 280.
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Estimate \ensuremath{\lambda} (failure rate) by MLE assuming Exp(\ensuremath{\lambda}). (b) Estimate MTTF.
+  Estimate $\lambda$ (failure rate) by MLE assuming $\mathrm{Exp}(\lambda)$. (b) Estimate MTTF.
 \end{enumerate}
 
 \PSsolution{} 
@@ -438,18 +438,18 @@ Component lifetimes (hours): 120, 350, 200, 480, 90, 560, 310, 175, 420, 280.
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  \ensuremath{\bar{X}} = (120+350+200+480+90+560+310+175+420+280)/10 = 298.5.\PSbr{}\ensuremath{\hat{\lambda}} = 1/298.5 = 0.00335 failures/hour.
+  $\displaystyle \bar{X} = \frac{120+350+200+480+90+560+310+175+420+280}{10} = 298.5$.\PSbr{}$\hat{\lambda} = \frac{1}{298.5} = 0.00335$ failures/hour.
 \item
-  MTTF = 1/\ensuremath{\hat{\lambda}} = \ensuremath{\bar{X}} = 298.5 hours.
+  $\mathrm{MTTF} = \frac{1}{\hat{\lambda}} = \bar{X} = 298.5$ hours.
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 3}
 
-For Poisson(\ensuremath{\lambda}) data: x\textsubscript{1},…,x\textsubscript{n}. Derive the MLE of \ensuremath{\lambda}.
+For $\mathrm{Poisson}(\lambda)$ data: $x_{1},\,\ldots,\,x_{n}$. Derive the MLE of $\lambda$.
 
-\PSsolution{} \ensuremath{\ell}(\ensuremath{\lambda}) = \ensuremath{\Sigma}[x\textsubscript{i} ln(\ensuremath{\lambda}) - \ensuremath{\lambda} - ln(x\textsubscript{i}!)] = (\ensuremath{\Sigma}x\textsubscript{i})ln(\ensuremath{\lambda}) - n\ensuremath{\lambda} - \ensuremath{\Sigma}ln(x\textsubscript{i}!)\PSbr{}d\ensuremath{\ell}/d\ensuremath{\lambda} = (\ensuremath{\Sigma}x\textsubscript{i})/\ensuremath{\lambda} - n = 0 \ensuremath{\to} \ensuremath{\hat{\lambda}}\textsubscript{MLE} = (1/n)\ensuremath{\Sigma}x\textsubscript{i} = \ensuremath{\bar{X}}.\PSbr{}The MLE for Poisson rate is the sample mean.
+\PSsolution{} $\ell (\lambda) = \sum [x_{i} \ln (\lambda) - \lambda - \ln (x_{i}!)] = \left(\sum x_{i}\right)\ln (\lambda) - n\lambda - \sum \ln (x_{i}!)$\PSbr{}$\displaystyle \frac{d\ell}{d\lambda} = \frac{\sum x_{i}}{\lambda} - n = 0 \to \hat{\lambda}_{\mathrm{MLE}} = \frac{1}{n}\sum x_{i} = \bar{X}$.\PSbr{}The MLE for Poisson rate is the sample mean.
 
 \emph{Next Module: {Module 14 — Confidence Intervals}}
 

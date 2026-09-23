@@ -43,7 +43,7 @@ Understanding the \textbf{joint behavior} tells us things marginals cannot — l
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-For discrete RVs X, Y:\PSdisplay{p_{X,Y}(x,y) = P(X = x, Y = y)}
+For discrete RVs $X,\, Y$:\PSdisplay{p_{X,Y}(x,y) = P(X = x, Y = y)}
 
 \end{PSbox}
 
@@ -53,27 +53,27 @@ For discrete RVs X, Y:\PSdisplay{p_{X,Y}(x,y) = P(X = x, Y = y)}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  p\textsubscript{X,Y}(x,y) \ensuremath{\ge} 0
+  $p_{X,Y}(x,\,y) \ge 0$
 \item
-  \ensuremath{\Sigma}\textsubscript{x} \ensuremath{\Sigma}\textsubscript{y} p\textsubscript{X,Y}(x,y) = 1
+  $\sum_{x} \Sigma_{y} p_{X,Y}(x,\,y) = 1$
 \end{enumerate}
 
 \PSsubsection{Visualization: Probability Table}
 
-\textbf{Example:} X = number of retransmissions (0,1,2), Y = acknowledgment delay category (1=fast, 2=slow)
+\textbf{Example:} $X$ = number of retransmissions $(0,\,1,\,2),\, Y$ = acknowledgment delay category $(1 = \text{fast},\, 2 = \text{slow})$
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cccc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}& \PSth{Y=1} & \PSth{Y=2} & \PSth{p\textsubscript{X}(x)} \\
+\rowcolor{PSnavy}& \PSth{$Y = 1$} & \PSth{$Y = 2$} & \PSth{$p_{X}(x)$} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-X=0 & 0.30 & 0.10 & 0.40 \\
-X=1 & 0.15 & 0.20 & 0.35 \\
-X=2 & 0.05 & 0.20 & 0.25 \\
-p\textsubscript{Y}(y) & 0.50 & 0.50 & 1.00 \\
+$X = 0$ & 0.30 & 0.10 & 0.40 \\
+$X = 1$ & 0.15 & 0.20 & 0.35 \\
+$X = 2$ & 0.05 & 0.20 & 0.25 \\
+$p_{Y}(y)$ & 0.50 & 0.50 & 1.00 \\
 \end{longtable}
 }
 
@@ -81,7 +81,7 @@ p\textsubscript{Y}(y) & 0.50 & 0.50 & 1.00 \\
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-For continuous RVs X, Y, the joint PDF f\textsubscript{X,Y}(x,y) satisfies:\PSdisplay{P((X,Y) \in A) = \iint_A f_{X,Y}(x,y) \, dx \, dy}
+For continuous RVs $X,\, Y$, the joint PDF $f_{X,Y}(x,\,y)$ satisfies:\PSdisplay{P((X,Y) \in A) = \iint_A f_{X,Y}(x,y) \, dx \, dy}
 
 \end{PSbox}
 
@@ -91,18 +91,18 @@ For continuous RVs X, Y, the joint PDF f\textsubscript{X,Y}(x,y) satisfies:\PSdi
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  f\textsubscript{X,Y}(x,y) \ensuremath{\ge} 0
+  $f_{X,Y}(x,\,y) \ge 0$
 \item
-  \ensuremath{\int}\ensuremath{\int} f\textsubscript{X,Y}(x,y) dx dy = 1
+  $\int \int f_{X,Y}(x,\,y)\,dx\,dy = 1$
 \end{enumerate}
 
 \PSsubsection{Visualization}
 
-The joint PDF is a \textbf{surface} over the (x,y) plane. Probability = volume under surface over a region.
+The joint PDF is a \textbf{surface} over the $(x,\,y)$ plane. Probability = volume under surface over a region.
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Bivariate Gaussian}
 
-Two correlated noise voltages (X, Y) with correlation \ensuremath{\rho}:
+Two correlated noise voltages $(X,\, Y)$ with correlation $\rho$:
 
 \PSdisplay{f_{X,Y}(x,y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)}\left[\frac{x^2}{\sigma_X^2} - \frac{2\rho xy}{\sigma_X\sigma_Y} + \frac{y^2}{\sigma_Y^2}\right]\right)}
 
@@ -122,13 +122,13 @@ Two correlated noise voltages (X, Y) with correlation \ensuremath{\rho}:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  F\textsubscript{X,Y}(-\ensuremath{\infty}, y) = 0, F\textsubscript{X,Y}(x, -\ensuremath{\infty}) = 0
+  $F_{X,Y}(-\infty,\, y) = 0,\, F_{X,Y}(x,\, -\infty) = 0$
 \item
-  F\textsubscript{X,Y}(\ensuremath{\infty}, \ensuremath{\infty}) = 1
+  $F_{X,Y}(\infty,\, \infty) = 1$
 \item
   Non-decreasing in both arguments
 \item
-  f\textsubscript{X,Y}(x,y) = \ensuremath{\partial}\textsuperscript{2}F\textsubscript{X,Y}/(\ensuremath{\partial}x \ensuremath{\partial}y)
+  $\displaystyle f_{X,Y}(x,\,y) = \frac{\partial^{2}F_{X,Y}}{\partial x \partial y}$
 \end{enumerate}
 
 \PSsection{6.5}{Marginal Distributions}
@@ -141,20 +141,20 @@ Two correlated noise voltages (X, Y) with correlation \ensuremath{\rho}:
 
 \PSsubsection{Visual Interpretation}
 
-The marginal PDF f\textsubscript{X}(x) is the \textbf{projection} (integral) of the joint surface onto the x-axis. Similarly f\textsubscript{Y}(y) projects onto the y-axis.
+The marginal PDF $f_{X}(x)$ is the \textbf{projection} (integral) of the joint surface onto the x-axis. Similarly $f_{Y}(y)$ projects onto the y-axis.
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example}
 
-Joint PDF: f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{-x}e\textsuperscript{-2y}, x \ensuremath{\ge} 0, y \ensuremath{\ge} 0
+Joint PDF: $f_{X,Y}(x,\,y) = 2e^{-x}e^{-2y},\, x \ge 0,\, y \ge 0$
 
 Marginals:
 
 \begin{itemize}
 \tightlist
 \item
-  f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{-x}e\textsuperscript{-2y} dy = 2e\textsuperscript{-x} \ensuremath{\cdot} [1/2] = e\textsuperscript{-x} \ensuremath{\to} X \textasciitilde{} Exp(1)
+  $\displaystyle f_{X}(x) = \int_{0}^{\infty} 2e^{-x}e^{-2y}\,dy = 2e^{-x} \cdot \left[\frac{1}{2}\right] = e^{-x} \to X \sim \mathrm{Exp}(1)$
 \item
-  f\textsubscript{Y}(y) = \ensuremath{\int}\textsubscript{0}\textsuperscript{\ensuremath{\infty}} 2e\textsuperscript{-x}e\textsuperscript{-2y} dx = 2e\textsuperscript{-2y} \ensuremath{\cdot} [1] = 2e\textsuperscript{-2y} \ensuremath{\to} Y \textasciitilde{} Exp(2)
+  $f_{Y}(y) = \int_{0}^{\infty} 2e^{-x}e^{-2y}\,dx = 2e^{-2y} \cdot [1] = 2e^{-2y} \to Y \sim \mathrm{Exp}(2)$
 \end{itemize}
 
 \end{PSbox}
@@ -171,20 +171,20 @@ Marginals:
 
 \PSsubsection{Interpretation}
 
-The conditional distribution describes X when we \textbf{know} Y = y. It’s a ``slice'' of the joint distribution at a fixed y value, renormalized to integrate to 1.
+The conditional distribution describes $X$ when we \textbf{know} $Y = y$. It’s a ``slice'' of the joint distribution at a fixed $y$ value, renormalized to integrate to 1.
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Signal Given Channel State}
 
-Received power Y given channel state X:
+Received power $Y$ given channel state $X$:
 
 \begin{itemize}
 \tightlist
 \item
-  If channel is good (X=1): Y \textasciitilde{} N(10, 1)
+  If channel is good $(X = 1)$: $Y \sim N(10,\, 1)$
 \item
-  If channel is poor (X=0): Y \textasciitilde{} N(2, 4)
+  If channel is poor $(X = 0)$: $Y \sim N(2,\, 4)$
 \item
-  P(X=1) = 0.7, P(X=0) = 0.3
+  $P(X = 1) = 0.7,\, P(X = 0) = 0.3$
 \end{itemize}
 
 Conditional PDFs describe receiver behavior in each state.
@@ -195,11 +195,11 @@ Conditional PDFs describe receiver behavior in each state.
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-X and Y are independent if and only if:
+$X$ and $Y$ are independent if and only if:
 
 \PSdisplay{f_{X,Y}(x,y) = f_X(x) \cdot f_Y(y) \quad \text{for all } x, y}
 
-(Or equivalently for PMFs: p\textsubscript{X,Y}(x,y) = p\textsubscript{X}(x)\ensuremath{\cdot}p\textsubscript{Y}(y))
+(Or equivalently for PMFs: $p_{X,Y}(x,\,y) = p_{X}(x) \cdot p_{Y}(y)$)
 
 \end{PSbox}
 
@@ -208,28 +208,28 @@ X and Y are independent if and only if:
 \begin{itemize}
 \tightlist
 \item
-  f\textsubscript{X\textbar{}Y}(x\textbar{}y) = f\textsubscript{X}(x) (knowing Y doesn’t change X)
+  $f_{X \mid Y}(x \mid y) = f_{X}(x)$ (knowing $Y$ doesn’t change $X$)
 \item
-  E[XY] = E[X]E[Y]
+  $E[XY] = E[X]E[Y]$
 \item
-  Var(X + Y) = Var(X) + Var(Y)
+  $\operatorname{Var}(X + Y) = \operatorname{Var}(X) + \operatorname{Var}(Y)$
 \end{itemize}
 
 \PSsubsection{Testing Independence}
 
-Check: Does the joint factor into a product of a function of x alone and y alone?
+Check: Does the joint factor into a product of a function of $x$ alone and $y$ alone?
 
 \begin{itemize}
 \tightlist
 \item
-  f\textsubscript{X,Y}(x,y) = 2e\textsuperscript{-x}\ensuremath{\cdot}e\textsuperscript{-2y} = [e\textsuperscript{-x}]\ensuremath{\cdot}[2e\textsuperscript{-2y}] \PSyes{} Independent!
+  $f_{X,Y}(x,\,y) = 2e^{-x} \cdot e^{-2y} = [e^{-x}] \cdot [2e^{-2y}]$ \PSyes{} Independent!
 \item
-  f\textsubscript{X,Y}(x,y) = x + y for 0\ensuremath{\le}x,y\ensuremath{\le}1 \ensuremath{\to} cannot factor \ensuremath{\to} NOT independent
+  $f_{X,Y}(x,\,y) = x + y$ for $0 \le x,\,y \le 1$ \ensuremath{\to} cannot factor \ensuremath{\to} NOT independent
 \end{itemize}
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Signal and Independent Noise}
 
-Transmitted signal S and channel noise N are independent by physical assumption:\PSbr{}f\textsubscript{S,N}(s,n) = f\textsubscript{S}(s)\ensuremath{\cdot}f\textsubscript{N}(n)
+Transmitted signal $S$ and channel noise $N$ are independent by physical assumption:\PSbr{}$f_{S,N}(s,\,n) = f_{S}(s) \cdot f_{N}(n)$
 
 This independence assumption is fundamental to communication system design.
 
@@ -245,13 +245,13 @@ This independence assumption is fundamental to communication system design.
 
 \PSsubsection{Interpretation}
 
-E[X\textbar{}Y=y] is the \textbf{best prediction} of X given that we observed Y = y (in the mean-square sense).
+$E[X \mid Y = y]$ is the \textbf{best prediction} of $X$ given that we observed $Y = y$ (in the mean-square sense).
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Temperature-Dependent Resistance}
 
-A resistor’s value R depends on temperature T. If R\textbar{}T \textasciitilde{} N(1000 + 0.5T, 4):
+A resistor’s value $R$ depends on temperature $T$. If $R \mid T \sim N(1000 + 0.5T,\, 4)$:
 
-E[R\textbar{}T=50\ensuremath{^{\circ}}C] = 1000 + 0.5(50) = 1025\ensuremath{\Omega}
+$E[R \mid T = 50^{\circ}C] = 1000 + 0.5(50) = 1025\,\Omega$
 
 Given temperature, we can predict resistance.
 
@@ -373,13 +373,13 @@ Given temperature, we can predict resistance.
 
 \begin{PSbox}[unbreakable]{prob}{Problem 1}
 
-Joint PDF: f\textsubscript{X,Y}(x,y) = 6(1-y) for 0 \ensuremath{\le} x \ensuremath{\le} y \ensuremath{\le} 1, zero elsewhere.
+Joint PDF: $f_{X,Y}(x,\,y) = 6(1-y)$ for $0 \le x \le y \le 1$, zero elsewhere.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Verify normalization. (b) Find marginals. (c) Are X,Y independent? (d) Find P(X \textless{} 0.5, Y \textless{} 0.5).
+  Verify normalization. (b) Find marginals. (c) Are X,Y independent? (d) Find $P(X < 0.5,\, Y < 0.5)$.
 \end{enumerate}
 
 \PSsolution{} 
@@ -388,28 +388,28 @@ Joint PDF: f\textsubscript{X,Y}(x,y) = 6(1-y) for 0 \ensuremath{\le} x \ensurema
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  \ensuremath{\int}\textsubscript{0}\textsuperscript{1} \ensuremath{\int}\textsubscript{0}\textsuperscript{y} 6(1-y) dx dy = \ensuremath{\int}\textsubscript{0}\textsuperscript{1} 6y(1-y) dy = 6[y\textsuperscript{2}/2 - y\textsuperscript{3}/3]\textsubscript{0}\textsuperscript{1} = 6(1/2 - 1/3) = 1 \PSyes{}
+  $\int_{0}^{1} \int_{0}^{y} 6(1-y)\,dx\,dy = \int_{0}^{1} 6y(1-y)\,dy = 6\left[\frac{y^{2}}{2} - \frac{y^{3}}{3}\right]_{0}^{1} = 6\left(\frac{1}{2} - \frac{1}{3}\right) = 1$ \PSyes{}
 \item
-  f\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{x}\textsuperscript{1} 6(1-y) dy = 6[(1-y\textsuperscript{2}/2) - (y)]\textsubscript{x}\textsuperscript{1} = 3(1-x)\textsuperscript{2}; f\textsubscript{Y}(y) = 6y(1-y)
+  $f_{X}(x) = \int_{x}^{1} 6(1-y)\,dy = 6\left[\left(1-\frac{y^{2}}{2}\right) - (y)\right]_{x}^{1} = 3(1-x)^{2}$; $f_{Y}(y) = 6y(1-y)$
 \item
-  f\textsubscript{X,Y} \ensuremath{\neq} f\textsubscript{X} \ensuremath{\cdot} f\textsubscript{Y} \ensuremath{\to} NOT independent (also, the support is triangular, not rectangular)
+  $f_{X,Y} \ne f_{X} \cdot f_{Y}$ \ensuremath{\to} NOT independent (also, the support is triangular, not rectangular)
 \item
-  P(X\textless{}0.5, Y\textless{}0.5) = \ensuremath{\int}\textsubscript{0}\textsuperscript{0}.5 \ensuremath{\int}\textsubscript{0}\textsuperscript{y} 6(1-y) dx dy = \ensuremath{\int}\textsubscript{0}\textsuperscript{0}.5 6y(1-y) dy = 6[y\textsuperscript{2}/2 - y\textsuperscript{3}/3]\textsubscript{0}\textsuperscript{0}.5 = 0.500
+  $\displaystyle P(X < 0.5,\, Y < 0.5) = \int_{0}^{0.5} \int_{0}^{y} 6(1-y)\,dx\,dy = \int_{0}^{0.5} 6y(1-y)\,dy = 6\left[\frac{y^{2}}{2} - \frac{y^{3}}{3}\right]_{0}^{0.5} = 0.500$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 2}
 
-Two sensors measure the same signal with independent noise. X = S + N\textsubscript{1}, Y = S + N\textsubscript{2} where S=5V, N\textsubscript{1}\textasciitilde{}N(0,1), N\textsubscript{2}\textasciitilde{}N(0,4). Are X and Y independent? Find E[X], E[Y], and explain why Cov(X,Y) \ensuremath{\neq} 0.
+Two sensors measure the same signal with independent noise. $X = S + N_{1},\, Y = S + N_{2}$ where $S = 5\,\mathrm{V},\, N_{1} \sim N(0,\,1),\, N_{2} \sim N(0,\,4)$. Are $X$ and $Y$ independent? Find $E[X],\, E[Y]$, and explain why $\operatorname{Cov}(X,\,Y) \ne 0$.
 
-\PSsolution{} X and Y are NOT independent because they share S (though noise is independent). E[X] = E[Y] = 5. Cov(X,Y) = Cov(S+N\textsubscript{1}, S+N\textsubscript{2}) = Var(S) + Cov(S,N\textsubscript{1}) + Cov(N\textsubscript{2},S) + Cov(N\textsubscript{1},N\textsubscript{2}). Since S is constant, Var(S)=0, so if S were random they’d be correlated. With S fixed, X and Y are actually independent in this case. If S is random with Var(S) = \ensuremath{\sigma}\textsubscript{S}\textsuperscript{2}, then Cov(X,Y) = \ensuremath{\sigma}\textsubscript{S}\textsuperscript{2}.
+\PSsolution{} $X$ and $Y$ are NOT independent because they share $S$ (though noise is independent). $E[X] = E[Y] = 5$. $\operatorname{Cov}(X,\,Y) = \operatorname{Cov}(S+N_{1},\, S+N_{2}) = \operatorname{Var}(S) + \operatorname{Cov}(S,\,N_{1}) + \operatorname{Cov}(N_{2},\,S) + \operatorname{Cov}(N_{1},\,N_{2})$. Since $S$ is constant, $\operatorname{Var}(S) = 0$, so if $S$ were random they’d be correlated. With $S$ fixed, $X$ and $Y$ are actually independent in this case. If $S$ is random with $\operatorname{Var}(S) = \sigma_{S}^{2}$, then $\operatorname{Cov}(X,\,Y) = \sigma_{S}^{2}$.
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 3}
 
-Given joint PMF in the table of Section 6.2, find (a) P(X\ensuremath{\le}1, Y=2), (b) f\textsubscript{X\textbar{}Y}(x\textbar{}Y=1), (c) E[X\textbar{}Y=1].
+Given joint PMF in the table of Section 6.2, find (a) $P(X \le 1,\, Y = 2)$, (b) $f_{X \mid Y}(x \mid Y = 1)$, (c) $E[X \mid Y = 1]$.
 
 \PSsolution{} 
 
@@ -417,11 +417,11 @@ Given joint PMF in the table of Section 6.2, find (a) P(X\ensuremath{\le}1, Y=2)
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  P(X\ensuremath{\le}1, Y=2) = p(0,2) + p(1,2) = 0.10 + 0.20 = 0.30
+  $P(X \le 1,\, Y = 2) = p(0,\,2) + p(1,\,2) = 0.10 + 0.20 = 0.30$
 \item
-  p\textsubscript{X\textbar{}Y}(x\textbar{}1) = p(x,1)/p\textsubscript{Y}(1): p(0\textbar{}1)=0.30/0.50=0.60, p(1\textbar{}1)=0.15/0.50=0.30, p(2\textbar{}1)=0.05/0.50=0.10
+  $p_{X \mid Y}(x \mid 1) = \frac{p(x,\,1)}{p_{Y}(1)}$: $p(0 \mid 1) = \frac{0.30}{0.50} = 0.60,\, p(1 \mid 1) = \frac{0.15}{0.50} = 0.30,\, p(2 \mid 1) = \frac{0.05}{0.50} = 0.10$
 \item
-  E[X\textbar{}Y=1] = 0(0.60) + 1(0.30) + 2(0.10) = 0.50
+  $E[X \mid Y = 1] = 0(0.60) + 1(0.30) + 2(0.10) = 0.50$
 \end{enumerate}
 
 \emph{Next Module: {Module 7 — Functions of Two Random Variables}}

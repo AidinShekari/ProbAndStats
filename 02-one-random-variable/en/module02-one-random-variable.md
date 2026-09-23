@@ -29,11 +29,11 @@ A **random variable** maps outcomes of a random experiment to real numbers, enab
 
 | We want to analyze... | We define a random variable... |
 |----------------------|-------------------------------|
-| Noise in a circuit | X = noise voltage (volts) |
-| Bit errors in a frame | N = number of bit errors |
-| Component lifetime | T = time until failure (hours) |
-| Signal amplitude | A = received amplitude (V) |
-| Packet delay | D = end-to-end delay (ms) |
+| Noise in a circuit | $X$ = noise voltage (volts) |
+| Bit errors in a frame | $N$ = number of bit errors |
+| Component lifetime | $T$ = time until failure (hours) |
+| Signal amplitude | A = received amplitude $(V)$ |
+| Packet delay | $D$ = end-to-end delay $(ms)$ |
 
 ---
 
@@ -41,30 +41,30 @@ A **random variable** maps outcomes of a random experiment to real numbers, enab
 
 ### Formal Definition
 
-A **random variable** X is a function that maps each outcome ω in the sample space S to a real number:
+A **random variable** $X$ is a function that maps each outcome $\omega$ in the sample space $S$ to a real number:
 
 $$X: S \rightarrow \mathbb{R}$$
 $$\omega \mapsto X(\omega)$$
 
 ### Interpretation
 
-The random variable assigns a numerical value to each possible outcome of the experiment. The randomness comes from which outcome ω occurs — once ω is determined, X(ω) is a definite number.
+The random variable assigns a numerical value to each possible outcome of the experiment. The randomness comes from which outcome $\omega$ occurs — once $\omega$ is determined, $X(\omega)$ is a definite number.
 
 ### Engineering Example
 
 **Experiment:** Transmit 5 bits over a noisy channel.
-**Sample space:** S = all possible sequences of correct/error for 5 bits (2⁵ = 32 outcomes)
-**Random variable:** X = number of bit errors
+**Sample space:** $S$ = all possible sequences of correct/error for 5 bits ($2^{5} = 32$ outcomes)
+**Random variable:** $X$ = number of bit errors
 
-| Outcome ω | X(ω) |
+| Outcome $\omega$ | $X(\omega)$ |
 |-----------|------|
-| (C,C,C,C,C) | 0 |
-| (E,C,C,C,C) | 1 |
-| (E,E,C,C,C) | 2 |
+| $(C,\,C,\,C,\,C,\,C)$ | 0 |
+| $(E,\,C,\,C,\,C,\,C)$ | 1 |
+| $(E,\,E,\,C,\,C,\,C)$ | 2 |
 | ... | ... |
-| (E,E,E,E,E) | 5 |
+| $(E,\,E,\,E,\,E,\,E)$ | 5 |
 
-Now instead of working with 32 outcomes, we work with a single number X ∈ {0,1,2,3,4,5}.
+Now instead of working with 32 outcomes, we work with a single number $X \in \{0,\,1,\,2,\,3,\,4,\,5\}$.
 
 ---
 
@@ -72,10 +72,10 @@ Now instead of working with 32 outcomes, we work with a single number X ∈ {0,1
 
 ### Definition
 
-A random variable X is **discrete** if it takes values from a **countable** set (finite or countably infinite).
+A random variable $X$ is **discrete** if it takes values from a **countable** set (finite or countably infinite).
 
 ### Characteristics
-- Values can be listed: {x₁, x₂, x₃, ...}
+- Values can be listed: $\{x_{1},\, x_{2},\, x_{3},\, \ldots \}$
 - Each value has a specific probability (a "mass" of probability)
 - Sum of all probabilities = 1
 
@@ -83,11 +83,11 @@ A random variable X is **discrete** if it takes values from a **countable** set 
 
 | Random Variable | Possible Values | Context |
 |----------------|-----------------|---------|
-| Number of bit errors | {0, 1, 2, ..., n} | Packet transmission |
+| Number of bit errors | $\{0,\, 1,\, 2,\, \ldots,\, n\}$ | Packet transmission |
 | Number of retransmissions | {0, 1, 2, ...} | ARQ protocol |
-| Quantized voltage level | {0, 1, ..., 2ᴺ-1} | N-bit ADC output |
+| Quantized voltage level | $\{0,\, 1,\, \ldots,\, 2^{N}-1\}$ | N-bit ADC output |
 | Number of arrivals per second | {0, 1, 2, ...} | Network traffic |
-| Number of defective chips | {0, 1, ..., n} | Wafer testing |
+| Number of defective chips | $\{0,\, 1,\, \ldots,\, n\}$ | Wafer testing |
 
 ---
 
@@ -95,26 +95,26 @@ A random variable X is **discrete** if it takes values from a **countable** set 
 
 ### Definition
 
-A random variable X is **continuous** if it takes values from an **uncountable** set (interval of real numbers).
+A random variable $X$ is **continuous** if it takes values from an **uncountable** set (interval of real numbers).
 
 ### Characteristics
-- X can take any value in a range (e.g., [0, ∞) or (-∞, ∞))
-- Probability of any single exact value is ZERO: P(X = x) = 0
-- Probabilities are defined for intervals: P(a ≤ X ≤ b)
+- $X$ can take any value in a range (e.g., $[0,\, \infty)$ or $(-\infty,\, \infty)$)
+- Probability of any single exact value is ZERO: $P(X = x) = 0$
+- Probabilities are defined for intervals: $P(a \le X \le b)$
 
 ### Engineering Examples
 
 | Random Variable | Range | Context |
 |----------------|-------|---------|
-| Thermal noise voltage | (-∞, ∞) | Circuit noise |
-| Time until failure | [0, ∞) | Reliability |
-| Phase of received signal | [0, 2π) | Communications |
-| Resistor value | (R₀ - δ, R₀ + δ) | Manufacturing |
-| Channel gain | [0, ∞) | Wireless fading |
+| Thermal noise voltage | $(-\infty,\, \infty)$ | Circuit noise |
+| Time until failure | $[0,\, \infty)$ | Reliability |
+| Phase of received signal | $[0,\, 2\pi)$ | Communications |
+| Resistor value | $(R_{0} - \delta,\, R_{0} + \delta)$ | Manufacturing |
+| Channel gain | $[0,\, \infty)$ | Wireless fading |
 
-### Why P(X = x) = 0 for Continuous RVs
+### Why $P(X = x) = 0$ for Continuous RVs
 
-Imagine measuring a voltage. The probability that V = exactly 3.14159265... volts (infinite precision) is zero. We can only ask about intervals: P(3.14 < V < 3.15).
+Imagine measuring a voltage. The probability that $V$ = exactly 3.14159265... volts (infinite precision) is zero. We can only ask about intervals: $P(3.14 < V < 3.15)$.
 
 ---
 
@@ -122,15 +122,15 @@ Imagine measuring a voltage. The probability that V = exactly 3.14159265... volt
 
 ### Definition
 
-For a discrete random variable X, the **probability mass function** is:
+For a discrete random variable $X$, the **probability mass function** is:
 
 $$p_X(x) = P(X = x)$$
 
 ### Properties
 
-1. **Non-negativity:** p_X(x) ≥ 0 for all x
-2. **Normalization:** Σ p_X(xᵢ) = 1 (sum over all possible values)
-3. **Probability computation:** P(X ∈ A) = Σ_{x∈A} p_X(x)
+1. **Non-negativity:** $p_{X}(x) \ge 0$ for all $x$
+2. **Normalization:** $\sum p_{X}(x_{i}) = 1$ (sum over all possible values)
+3. **Probability computation:** $P(X \in A) = \sum_{x \in A} p_{X}(x)$
 
 ### Visualization
 
@@ -153,12 +153,12 @@ p_X(x)
 
 ### Engineering Example: Bit Errors in a Byte
 
-Transmit 8 bits, each with independent error probability p = 0.1.
-X = number of bit errors.
+Transmit 8 bits, each with independent error probability $p = 0.1$.
+$X$ = number of bit errors.
 
-p_X(k) = C(8,k) · (0.1)^k · (0.9)^(8-k), for k = 0, 1, ..., 8
+$p_{X}(k) = C(8,\,k) \cdot (0.1)^{k} \cdot (0.9)^{8-k}$, for $k = 0,\, 1,\, \ldots,\, 8$
 
-| k | p_X(k) |
+| $k$ | $p_{X}(k)$ |
 |---|--------|
 | 0 | 0.4305 |
 | 1 | 0.3826 |
@@ -173,19 +173,19 @@ p_X(k) = C(8,k) · (0.1)^k · (0.9)^(8-k), for k = 0, 1, ..., 8
 
 ### Definition
 
-For a continuous random variable X, the **probability density function** f_X(x) is defined such that:
+For a continuous random variable $X$, the **probability density function** $f_{X}(x)$ is defined such that:
 
 $$P(a \leq X \leq b) = \int_a^b f_X(x) \, dx$$
 
 ### Properties
 
-1. **Non-negativity:** f_X(x) ≥ 0 for all x
-2. **Normalization:** ∫_{-∞}^{∞} f_X(x) dx = 1
+1. **Non-negativity:** $f_{X}(x) \ge 0$ for all $x$
+2. **Normalization:** $\int_{-\infty}^{\infty} f_{X}(x)\,dx = 1$
 3. **Probability = Area under curve** between two points
 
-### Critical Point: f_X(x) is NOT a Probability!
+### Critical Point: $f_{X}(x)$ is NOT a Probability!
 
-> ⚠️ f_X(x) can be GREATER than 1!
+> ⚠️ $f_{X}(x)$ can be GREATER than 1!
 
 The PDF gives probability **density** — probability per unit length. Only the **integral** (area) gives probability.
 
@@ -211,9 +211,9 @@ Thermal noise voltage in a circuit often follows a Gaussian distribution:
 
 $$f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-x^2/(2\sigma^2)}$$
 
-where σ is the RMS noise voltage.
+where $\sigma$ is the RMS noise voltage.
 
-P(noise exceeds 2σ) = P(|X| > 2σ) = 1 - P(-2σ ≤ X ≤ 2σ) ≈ 1 - 0.9545 = 0.0455
+$P(\text{noise exceeds 2}\sigma) = P(\lvert X\rvert > 2\sigma) = 1 - P(-2\sigma \le X \le 2\sigma) \approx 1 - 0.9545 = 0.0455$
 
 ---
 
@@ -221,16 +221,16 @@ P(noise exceeds 2σ) = P(|X| > 2σ) = 1 - P(-2σ ≤ X ≤ 2σ) ≈ 1 - 0.9545 =
 
 ### Definition
 
-For any random variable X (discrete or continuous), the **cumulative distribution function** is:
+For any random variable $X$ (discrete or continuous), the **cumulative distribution function** is:
 
 $$F_X(x) = P(X \leq x)$$
 
 ### Properties
 
-1. **Non-decreasing:** if a < b, then F_X(a) ≤ F_X(b)
-2. **Limits:** F_X(-∞) = 0, F_X(+∞) = 1
-3. **Right-continuous:** F_X(x) is continuous from the right
-4. **Probability of interval:** P(a < X ≤ b) = F_X(b) - F_X(a)
+1. **Non-decreasing:** if $a < b$, then $F_{X}(a) \le F_{X}(b)$
+2. **Limits:** $F_{X}(-\infty) = 0,\, F_{X}(+\infty) = 1$
+3. **Right-continuous:** $F_{X}(x)$ is continuous from the right
+4. **Probability of interval:** $P(a < X \le b) = F_{X}(b) - F_{X}(a)$
 
 ### CDF for Discrete RVs
 
@@ -250,7 +250,7 @@ F_X(x)
        0    1    2    3
 ```
 
-Jump at x = k has height p_X(k).
+Jump at $x = k$ has height $p_{X}(k)$.
 
 ### CDF for Continuous RVs
 
@@ -274,12 +274,12 @@ F_X(x)
   +---+---+---+---+---+---→ x
 ```
 
-### Relationship: PDF ↔ CDF
+### Relationship: $\mathrm{PDF}$ ↔ CDF
 
 | Direction | Formula | Meaning |
 |-----------|---------|---------|
-| PDF → CDF | F_X(x) = ∫_{-∞}^x f_X(t)dt | Integrate density to get cumulative probability |
-| CDF → PDF | f_X(x) = dF_X/dx | Differentiate CDF to get density |
+| $\mathrm{PDF}$ → CDF | $F_{X}(x) = \int_{-\infty}^{x} f_{X}(t)dt$ | Integrate density to get cumulative probability |
+| $\mathrm{CDF}$ → PDF | $f_{X}(x) = \frac{dF_{X}}{dx}$ | Differentiate CDF to get density |
 
 
 
@@ -291,13 +291,13 @@ This is one of the most important conceptual distinctions in probability theory.
 
 ### Comparison Table
 
-| Property | PMF p_X(x) | PDF f_X(x) | CDF F_X(x) |
+| Property | PMF $p_{X}(x)$ | PDF $f_{X}(x)$ | CDF $F_{X}(x)$ |
 |----------|-----------|-----------|-----------|
 | **Applies to** | Discrete RVs only | Continuous RVs only | Both |
-| **Gives directly** | P(X = x) | Probability density at x | P(X ≤ x) |
-| **Range of values** | [0, 1] | [0, ∞) — can exceed 1! | [0, 1] |
-| **Sum/Integral** | Σ p_X(x) = 1 | ∫ f_X(x)dx = 1 | Starts at 0, ends at 1 |
-| **Get probability** | P(X=x) = p_X(x) | P(a≤X≤b) = ∫ f_X(x)dx | P(a<X≤b) = F(b)-F(a) |
+| **Gives directly** | $P(X = x)$ | Probability density at $x$ | $P(X \le x)$ |
+| **Range of values** | [0, 1] | $[0,\, \infty)$ — can exceed 1! | [0, 1] |
+| **Sum/Integral** | $\sum p_{X}(x) = 1$ | $\int f_{X}(x)dx = 1$ | Starts at 0, ends at 1 |
+| **Get probability** | $P(X = x) = p_{X}(x)$ | $P(a \le X \le b) = \int f_{X}(x)dx$ | $P(a < X \le b) = F(b)-F(a)$ |
 
 ### Visual Analogy: The Warehouse
 
@@ -333,19 +333,19 @@ Imagine probability as "material" distributed across possible values:
 
 ### Why This Matters in Engineering
 
-**Example:** A noise voltage X has PDF f_X(x) = 2 for x ∈ [0, 0.5].
+**Example:** A noise voltage $X$ has PDF $f_{X}(x) = 2$ for $x \in [0,\, 0.5]$.
 
-- f_X(0.3) = 2 — this is NOT a probability! It means the density is 2 V⁻¹.
-- P(0.2 ≤ X ≤ 0.4) = ∫_{0.2}^{0.4} 2 dx = 2 × 0.2 = 0.4 — THIS is a probability.
-- P(X = 0.3) = 0 — a single point has zero probability for continuous RVs.
+- $f_{X}(0.3) = 2$ — this is NOT a probability! It means the density is $2\,\mathrm{V}^{-1}$.
+- $P(0.2 \le X \le 0.4) = \int_{0.2}^{0.4} 2\,dx = 2 \times 0.2 = 0.4$ — THIS is a probability.
+- $P(X = 0.3) = 0$ — a single point has zero probability for continuous RVs.
 
 ### Common Errors to Avoid
 
 | ❌ Wrong Statement | ✅ Correct Statement |
 |---|---|
-| "The probability at x=2 is f(2)" | "The probability density at x=2 is f(2)" |
-| "f(x) must be ≤ 1" | "f(x) can be any non-negative value" |
-| "P(X=3) = f(3) for continuous X" | "P(X=3) = 0 for continuous X" |
+| "The probability at $x = 2$ is $f(2)$" | "The probability density at $x = 2$ is $f(2)$" |
+| "$f(x)$ must be ≤ 1" | "$f(x)$ can be any non-negative value" |
+| "$P(X = 3) = f(3)$ for continuous $X$" | "$P(X = 3) = 0$ for continuous $X$" |
 | "PMF and PDF are the same thing" | "PMF gives mass; PDF gives density" |
 
 ---
@@ -356,27 +356,27 @@ Imagine probability as "material" distributed across possible values:
 
 In engineering, we often know the distribution of one quantity but need the distribution of a **function** of that quantity:
 
-- Know voltage V → need power P = V²/R
-- Know linear signal X → need dB value Y = 10·log₁₀(X)
-- Know noise N → need |N| (rectified noise)
+- Know voltage $V$ → need power $P = \frac{V^{2}}{R}$
+- Know linear signal $X$ → need dB value $Y = 10 \cdot \log_{10}(X)$
+- Know noise $N$ → need $\lvert N\rvert$ (rectified noise)
 
 ### Problem Statement
 
-Given: X with known PDF f_X(x) or PMF p_X(x)
-Find: The distribution of Y = g(X)
+Given: $X$ with known PDF $f_{X}(x)$ or PMF $p_{X}(x)$
+Find: The distribution of $Y = g(X)$
 
 ### Case 1: Discrete RV Transformation
 
-If X is discrete with PMF p_X(x), and Y = g(X):
+If $X$ is discrete with PMF $p_{X}(x)$, and $Y = g(X)$:
 
 $$p_Y(y) = \sum_{x: g(x)=y} p_X(x)$$
 
-Sum the probabilities of all x values that map to the same y.
+Sum the probabilities of all $x$ values that map to the same $y$.
 
-**Example:** X ∈ {-2, -1, 0, 1, 2} with equal probability 0.2 each.
-Y = X²
+**Example:** $X \in \{-2,\, -1,\, 0,\, 1,\, 2\}$ with equal probability 0.2 each.
+$Y = X^{2}$
 
-| Y = X² | X values mapping to Y | p_Y(y) |
+| $Y = X^{2}$ | $X$ values mapping to $Y$ | $p_{Y}(y)$ |
 |---------|----------------------|---------|
 | 0 | {0} | 0.2 |
 | 1 | {-1, 1} | 0.4 |
@@ -384,7 +384,7 @@ Y = X²
 
 ### Case 2: Monotonic Transformation (Continuous)
 
-If Y = g(X) where g is strictly monotonic and differentiable:
+If $Y = g(X)$ where $g$ is strictly monotonic and differentiable:
 
 $$f_Y(y) = f_X(g^{-1}(y)) \cdot \left|\frac{dg^{-1}(y)}{dy}\right|$$
 
@@ -392,39 +392,39 @@ Or equivalently:
 $$f_Y(y) = \frac{f_X(x)}{|g'(x)|}\bigg|_{x=g^{-1}(y)}$$
 
 **Derivation via CDF method:**
-1. Start with CDF: F_Y(y) = P(Y ≤ y) = P(g(X) ≤ y)
-2. Invert: = P(X ≤ g⁻¹(y)) if g is increasing
-3. Differentiate: f_Y(y) = f_X(g⁻¹(y)) · d/dy[g⁻¹(y)]
+1. Start with CDF: $F_{Y}(y) = P(Y \le y) = P(g(X) \le y)$
+2. Invert: $= P(X \le g^{-1}(y))$ if $g$ is increasing
+3. Differentiate: $f_{Y}(y) = f_{X}(g^{-1}(y)) \cdot \frac{d}{dy}[g^{-1}(y)]$
 
 ### Case 3: Non-Monotonic Transformation
 
-If g is not monotonic, split the domain into intervals where g IS monotonic:
+If $g$ is not monotonic, split the domain into intervals where $g$ IS monotonic:
 
 $$f_Y(y) = \sum_i \frac{f_X(x_i)}{|g'(x_i)|}$$
 
-where x₁, x₂, ... are all solutions of g(x) = y.
+where $x_{1},\, x_{2}$, ... are all solutions of $g(x) = y$.
 
 ### Engineering Example: Power from Voltage
 
-A noise voltage X has PDF f_X(x) (e.g., Gaussian with zero mean).
-Power dissipated in a 1Ω resistor: P = X²
+A noise voltage $X$ has PDF $f_{X}(x)$ (e.g., Gaussian with zero mean).
+Power dissipated in a 1Ω resistor: $P = X^{2}$
 
-Since Y = X² is NOT monotonic (both +x and -x give the same y):
+Since $Y = X^{2}$ is NOT monotonic (both $+x$ and $-x$ give the same $y$):
 
-For y > 0: x = +√y and x = -√y are both solutions.
-g(x) = x², so g'(x) = 2x
+For $y > 0$: $x = +\sqrt{y}$ and $x = -\sqrt{y}$ are both solutions.
+$g(x) = x^{2}$, so $g'(x) = 2x$
 
 $$f_Y(y) = \frac{f_X(\sqrt{y})}{2\sqrt{y}} + \frac{f_X(-\sqrt{y})}{2\sqrt{y}}, \quad y > 0$$
 
-If X is zero-mean Gaussian: f_X(x) = f_X(-x), so:
+If $X$ is zero-mean Gaussian: $f_{X}(x) = f_{X}(-x)$, so:
 $$f_Y(y) = \frac{f_X(\sqrt{y})}{\sqrt{y}}, \quad y > 0$$
 
 ### Engineering Example: Linear Amplification
 
-Signal Y = aX + b (amplifier with gain a and offset b).
-X has PDF f_X(x).
+Signal $Y$ = aX $+ b$ (amplifier with gain a and offset b).
+$X$ has PDF $f_{X}(x)$.
 
-g⁻¹(y) = (y-b)/a, and |d/dy[(y-b)/a]| = 1/|a|
+$g^{-1}(y) = \frac{y-b}{a}$, and $\lvert \frac{d}{dy}\left[\frac{y-b}{a}\right]\rvert = \frac{1}{\lvert a\rvert}$
 
 $$f_Y(y) = \frac{1}{|a|} f_X\left(\frac{y-b}{a}\right)$$
 
@@ -619,90 +619,90 @@ Classify each as discrete or continuous and state the range:
 (e) Quantizer output level (3-bit quantizer)
 
 **Solution:**
-(a) Discrete, X ∈ {0, 1, 2, ...}
-(b) Continuous, X ∈ (-∞, ∞) practically ~ (-120, 0) dBm
-(c) Discrete, X ∈ {0, 1, 2, ..., 12000}
-(d) Continuous, T ∈ [0, ∞)
-(e) Discrete, X ∈ {0, 1, 2, 3, 4, 5, 6, 7}
+(a) Discrete, $X \in \{0,\, 1,\, 2,\, \ldots \}$
+(b) Continuous, $X \in (-\infty,\, \infty)$ practically $\sim (-120,\, 0)$ dBm
+(c) Discrete, $X \in \{0,\, 1,\, 2,\, \ldots,\, 12000\}$
+(d) Continuous, $T \in [0,\, \infty)$
+(e) Discrete, $X \in \{0,\, 1,\, 2,\, 3,\, 4,\, 5,\, 6,\, 7\}$
 
 ---
 
 ### Problem 2: PMF Properties
-A random variable X has PMF: p_X(0) = 0.1, p_X(1) = 0.3, p_X(2) = c, p_X(3) = 0.2.
+A random variable $X$ has PMF: $p_{X}(0) = 0.1,\, p_{X}(1) = 0.3,\, p_{X}(2) = c,\, p_{X}(3) = 0.2$.
 
-(a) Find c.
-(b) Find P(X ≥ 2).
-(c) Find F_X(1.5).
-(d) Find P(0.5 < X ≤ 2.5).
+(a) Find $c$.
+(b) Find $P(X \ge 2)$.
+(c) Find $F_{X}(1.5)$.
+(d) Find $P(0.5 < X \le 2.5)$.
 
 **Solution:**
-(a) Sum = 1: 0.1 + 0.3 + c + 0.2 = 1 → c = 0.4
+(a) Sum = 1: $0.1 + 0.3 + c + 0.2 = 1 \to c = 0.4$
 
-(b) P(X ≥ 2) = p_X(2) + p_X(3) = 0.4 + 0.2 = 0.6
+(b) $P(X \ge 2) = p_{X}(2) + p_{X}(3) = 0.4 + 0.2 = 0.6$
 
-(c) F_X(1.5) = P(X ≤ 1.5) = p_X(0) + p_X(1) = 0.1 + 0.3 = 0.4
+(c) $F_{X}(1.5) = P(X \le 1.5) = p_{X}(0) + p_{X}(1) = 0.1 + 0.3 = 0.4$
 
-(d) P(0.5 < X ≤ 2.5) = p_X(1) + p_X(2) = 0.3 + 0.4 = 0.7
+(d) $P(0.5 < X \le 2.5) = p_{X}(1) + p_{X}(2) = 0.3 + 0.4 = 0.7$
 
 ---
 
 ### Problem 3: PDF and CDF
 A random variable has PDF:
-f_X(x) = cx for 0 ≤ x ≤ 4, and 0 otherwise.
+$f_{X}(x)$ = cx for $0 \le x \le 4$, and 0 otherwise.
 
-(a) Find c.
-(b) Find the CDF F_X(x).
-(c) Find P(1 ≤ X ≤ 3).
-(d) Find the value x₀ such that P(X ≤ x₀) = 0.5.
+(a) Find $c$.
+(b) Find the CDF $F_{X}(x)$.
+(c) Find $P(1 \le X \le 3)$.
+(d) Find the value $x_{0}$ such that $P(X \le x_{0}) = 0.5$.
 
 **Solution:**
-(a) ∫₀⁴ cx dx = c·[x²/2]₀⁴ = c·8 = 1 → c = 1/8
+(a) $\int_{0}^{4}$ cx $dx = c \cdot \left[\frac{x^{2}}{2}\right]_{0}^{4} = c \cdot 8 = 1 \to c = \frac{1}{8}$
 
-(b) F_X(x) = ∫₀ˣ (t/8)dt = x²/16, for 0 ≤ x ≤ 4
-    F_X(x) = 0 for x < 0; F_X(x) = 1 for x > 4
+(b) $F_{X}(x) = \int_{0}^{x} \frac{t}{8}dt = \frac{x^{2}}{16}$, for $0 \le x \le 4$
+    $F_{X}(x) = 0$ for $x < 0$; $F_{X}(x) = 1$ for $x > 4$
 
-(c) P(1 ≤ X ≤ 3) = F_X(3) - F_X(1) = 9/16 - 1/16 = 8/16 = 0.5
+(c) $P(1 \le X \le 3) = F_{X}(3) - F_{X}(1) = \frac{9}{16} - \frac{1}{16} = \frac{8}{16} = 0.5$
 
-(d) x₀²/16 = 0.5 → x₀² = 8 → x₀ = 2√2 ≈ 2.83
+(d) $\frac{x_{0}^{2}}{16} = 0.5 \to x_{0}^{2} = 8 \to x_{0} = 2\sqrt{2} \approx 2.83$
 
 ---
 
 ### Problem 4: Transformation
-A sensor measures temperature X uniformly distributed on [20, 30] °C.
-The output voltage is Y = 0.1X - 2 (linear sensor).
+A sensor measures temperature $X$ uniformly distributed on [20, 30] °C.
+The output voltage is $Y = 0.1X - 2$ (linear sensor).
 
-(a) Find the PDF of Y.
-(b) Find the range of Y.
-(c) Find P(Y > 0.5).
+(a) Find the PDF of $Y$.
+(b) Find the range of $Y$.
+(c) Find $P(Y > 0.5)$.
 
 **Solution:**
-(a) X ~ Uniform[20, 30], so f_X(x) = 1/10 for 20 ≤ x ≤ 30.
-Y = 0.1X - 2, so a = 0.1, b = -2.
-f_Y(y) = (1/|a|) · f_X((y-b)/a) = (1/0.1) · (1/10) = 1 for the valid range.
+(a) $X \sim \mathrm{Uniform}[20,\, 30]$, so $f_{X}(x) = \frac{1}{10}$ for $20 \le x \le 30$.
+$Y = 0.1X - 2$, so $a = 0.1,\, b = -2$.
+$f_{Y}(y) = \frac{1}{\lvert a\rvert} \cdot f_{X}\left(\frac{y-b}{a}\right) = \frac{1}{0.1} \cdot \frac{1}{10} = 1$ for the valid range.
 
-(b) When X = 20: Y = 0.1(20) - 2 = 0; When X = 30: Y = 0.1(30) - 2 = 1
-Range of Y: [0, 1]. So Y ~ Uniform[0, 1].
+(b) When $X = 20$: $Y = 0.1(20) - 2 = 0$; When $X = 30$: $Y = 0.1(30) - 2 = 1$
+Range of $Y$: [0, 1]. So $Y \sim \mathrm{Uniform}[0,\, 1]$.
 
-(c) P(Y > 0.5) = 1 - F_Y(0.5) = 1 - 0.5 = 0.5
+(c) $P(Y > 0.5) = 1 - F_{Y}(0.5) = 1 - 0.5 = 0.5$
 
 ---
 
 ### Problem 5: Non-Monotonic Transformation
-A voltage X ~ Uniform[-1, 1] V. The instantaneous power is Y = X².
+A voltage $X \sim \mathrm{Uniform}[-1,\, 1] V$. The instantaneous power is $Y = X^{2}$.
 
-(a) Find the CDF of Y.
-(b) Find the PDF of Y.
+(a) Find the CDF of $Y$.
+(b) Find the PDF of $Y$.
 (c) Verify using MATLAB simulation.
 
 **Solution:**
-(a) For 0 ≤ y ≤ 1:
-F_Y(y) = P(X² ≤ y) = P(-√y ≤ X ≤ √y) = F_X(√y) - F_X(-√y)
+(a) For $0 \le y \le 1$:
+$F_{Y}(y) = P(X^{2} \le y) = P\left(-\sqrt{y} \le X \le \sqrt{y}\right) = F_{X}\left(\sqrt{y}\right) - F_{X}\left(-\sqrt{y}\right)$
 
-Since X ~ Uniform[-1,1]: F_X(x) = (x+1)/2
+Since $X \sim \mathrm{Uniform}[-1,\,1]$: $F_{X}(x) = \frac{x+1}{2}$
 
-F_Y(y) = (√y + 1)/2 - (-√y + 1)/2 = √y
+$F_{Y}(y) = \frac{\sqrt{y} + 1}{2} - \frac{-\sqrt{y} + 1}{2} = \sqrt{y}$
 
-(b) f_Y(y) = dF_Y/dy = 1/(2√y) for 0 < y ≤ 1
+(b) $f_{Y}(y) = \frac{dF_{Y}}{dy} = \frac{1}{2\sqrt{y}}$ for $0 < y \le 1$
 
 (c) MATLAB:
 ```matlab
@@ -724,7 +724,7 @@ xlabel('Y = X²'); ylabel('f_Y(y)');
 1. **Random variables** convert experimental outcomes into numbers for mathematical analysis
 2. **PMF** gives the actual probability for discrete RVs (bar heights sum to 1)
 3. **PDF** gives probability density for continuous RVs (area gives probability, not height)
-4. **CDF** works universally — gives cumulative probability P(X ≤ x)
+4. **CDF** works universally — gives cumulative probability $P(X \le x)$
 5. **Transformations** let us derive distributions of functions of random variables
 6. The **CDF method** (find CDF first, then differentiate) is often the safest approach for transformations
 

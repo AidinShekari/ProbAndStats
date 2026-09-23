@@ -14,7 +14,7 @@ After completing this module, students will be able to:
 
 ## 14.1 Introduction: Why Point Estimates Aren't Enough
 
-A point estimate (e.g., X̄ = 3.47) gives no information about **precision**. We need to quantify uncertainty:
+A point estimate (e.g., $\bar{X} = 3.47$) gives no information about **precision**. We need to quantify uncertainty:
 
 "The true mean is estimated to be 3.47, **give or take** some amount."
 
@@ -26,22 +26,22 @@ A **confidence interval** provides a range that, with a specified confidence lev
 
 ### ✅ CORRECT (Frequentist) Interpretation
 
-> "If we repeat this experiment many times, each time computing a 95% CI, then approximately 95% of those intervals will contain the true parameter μ."
+> "If we repeat this experiment many times, each time computing a 95% CI, then approximately 95% of those intervals will contain the true parameter $\mu$."
 
-The **procedure** has a 95% success rate. Each specific interval either contains μ or it doesn't.
+The **procedure** has a 95% success rate. Each specific interval either contains $\mu$ or it doesn't.
 
 ### ❌ WRONG Interpretation
 
-> ~~"There is a 95% probability that μ is inside this particular interval [2.1, 4.8]."~~
+> $\sim \sim "\mathrm{There}$ is a 95% probability that $\mu$ is inside this particular interval $[2.1,\, 4.8]." \sim \sim$
 
-**Why this is wrong:** μ is a fixed (non-random) number. It's either in [2.1, 4.8] or not — there is no probability about it. The **interval** is random (varies from sample to sample), not the parameter.
+**Why this is wrong:** $\mu$ is a fixed (non-random) number. It's either in [2.1, 4.8] or not — there is no probability about it. The **interval** is random (varies from sample to sample), not the parameter.
 
 ### Analogy
 
 Think of CIs like a fishing net:
 - Before you cast: 95% chance your net will catch the fish (the procedure works 95% of the time)
 - After you cast: the fish is either caught or not — no probability anymore
-- The fish (μ) doesn't move; your net (CI) does
+- The fish $(\mu)$ doesn't move; your net $(\mathrm{CI})$ does
 
 ---
 
@@ -49,15 +49,15 @@ Think of CIs like a fishing net:
 
 ### Setup
 
-Data: X₁, ..., Xₙ i.i.d. from N(μ, σ²) with σ² **known**.
+Data: $X_{1},\, \ldots,\, X_{n}$ i.i.d. from $N(\mu,\, \sigma^{2})$ with $\sigma^{2}$ **known**.
 
 ### Derivation
 
-X̄ ~ N(μ, σ²/n), so Z = (X̄ - μ)/(σ/√n) ~ N(0,1)
+$\bar{X} \sim N\left(\mu,\, \frac{\sigma^{2}}{n}\right)$, so $Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,\,1)$
 
-P(-z_{α/2} ≤ Z ≤ z_{α/2}) = 1 - α
+$P(-z_{\alpha /2} \le Z \le z_{\alpha /2}) = 1 - \alpha$
 
-Solving for μ:
+Solving for $\mu$:
 $$P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha$$
 
 ### Formula
@@ -66,7 +66,7 @@ $$\text{CI: } \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}$$
 
 ### Common z-values
 
-| Confidence Level | α | z_{α/2} |
+| Confidence Level | $\alpha$ | $z_{\alpha /2}$ |
 |-----------------|---|---------|
 | 90% | 0.10 | 1.645 |
 | 95% | 0.05 | 1.960 |
@@ -74,9 +74,9 @@ $$\text{CI: } \bar{X} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}$$
 
 ### Example
 
-Noise measurements: n = 36, X̄ = 0.52V, σ = 0.12V (known from equipment spec).
+Noise measurements: $n = 36,\, \bar{X} = 0.52\,\mathrm{V},\, \sigma = 0.12\,\mathrm{V}$ (known from equipment spec).
 
-95% CI: 0.52 ± 1.96 × 0.12/√36 = 0.52 ± 0.0392 = **[0.481, 0.559] V**
+95% CI: $0.52 \pm 1.96 \times \frac{0.12}{\sqrt{36}} = 0.52 \pm 0.0392 = \ast \ast [0.481,\, 0.559] V$**
 
 ---
 
@@ -84,7 +84,7 @@ Noise measurements: n = 36, X̄ = 0.52V, σ = 0.12V (known from equipment spec).
 
 ### The Problem
 
-Usually σ is unknown. We estimate it with S. But X̄/(S/√n) does NOT follow N(0,1).
+Usually $\sigma$ is unknown. We estimate it with $S$. But $\frac{\bar{X}}{\frac{S}{\sqrt{n}}}$ does NOT follow $N(0,\,1)$.
 
 ### Student's t-Distribution
 
@@ -92,10 +92,10 @@ $$T = \frac{\bar{X} - \mu}{S/\sqrt{n}} \sim t(n-1)$$
 
 The t-distribution:
 - Symmetric about 0
-- Heavier tails than N(0,1) (more uncertainty because S is estimated)
-- Degrees of freedom: ν = n - 1
-- As ν → ∞: t(ν) → N(0,1)
-- For ν ≥ 30: t ≈ z (practically)
+- Heavier tails than $N(0,\,1)$ (more uncertainty because $S$ is estimated)
+- Degrees of freedom: $\nu = n - 1$
+- As $\nu \to \infty$: $t(\nu) \to N(0,\,1)$
+- For $\nu \ge 30$: $t \approx z$ (practically)
 
 ### Formula
 
@@ -103,11 +103,11 @@ $$\text{CI: } \bar{X} \pm t_{\alpha/2, n-1} \cdot \frac{S}{\sqrt{n}}$$
 
 ### Example
 
-Component delay: n = 15, X̄ = 2.34 ns, S = 0.45 ns.
+Component delay: $n = 15,\, \bar{X} = 2.34$ ns, $S = 0.45$ ns.
 
-95% CI: t_{0.025, 14} = 2.145
+95% CI: $t_{0.025, 14} = 2.145$
 
-CI: 2.34 ± 2.145 × 0.45/√15 = 2.34 ± 0.249 = **[2.09, 2.59] ns**
+CI: $2.34 \pm 2.145 \times \frac{0.45}{\sqrt{15}} = 2.34 \pm 0.249 = \ast \ast [2.09,\, 2.59]$ ns**
 
 (Wider than z-interval because of additional uncertainty in S.)
 
@@ -117,7 +117,7 @@ CI: 2.34 ± 2.145 × 0.45/√15 = 2.34 ± 0.249 = **[2.09, 2.59] ns**
 
 ### Setup
 
-Data from N(μ, σ²). Want CI for σ².
+Data from $N(\mu,\, \sigma^{2})$. Want CI for $\sigma^{2}$.
 
 ### Key Distribution
 
@@ -129,13 +129,13 @@ $$\left[\frac{(n-1)S^2}{\chi^2_{\alpha/2, n-1}}, \quad \frac{(n-1)S^2}{\chi^2_{1
 
 ### Example
 
-Noise power: n = 20, S² = 0.045 V².
+Noise power: $n = 20,\, S^{2} = 0.045\,\mathrm{V}^{2}$.
 
-95% CI for σ²: χ²_{0.025, 19} = 32.852, χ²_{0.975, 19} = 8.907
+95% CI for $\sigma^{2}$: $\chi^{2}_{0.025, 19} = 32.852,\, \chi^{2}_{0.975, 19} = 8.907$
 
-CI: [(19)(0.045)/32.852, (19)(0.045)/8.907] = [0.026, 0.096] V²
+CI: $\left[\frac{(19)(0.045)}{32.852},\, \frac{(19)(0.045)}{8.907}\right] = [0.026,\, 0.096] V^{2}$
 
-95% CI for σ: [√0.026, √0.096] = [0.161, 0.310] V
+95% CI for $\sigma$: $\left[\sqrt{0.026},\, \sqrt{0.096}\right] = [0.161,\, 0.310] V$
 
 ---
 
@@ -143,7 +143,7 @@ CI: [(19)(0.045)/32.852, (19)(0.045)/8.907] = [0.026, 0.096] V²
 
 ### Setup
 
-n trials, x̂ = k/n successes. Estimate p = true proportion.
+$n$ trials, $\hat{x} = \frac{k}{n}$ successes. Estimate $p$ = true proportion.
 
 ### Large-Sample Formula (Wald Interval)
 
@@ -151,11 +151,11 @@ $$\hat{p} \pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$$
 
 ### Example: Bit Error Rate
 
-Transmitted 100,000 bits, observed 53 errors. p̂ = 53/100000 = 5.3×10⁻⁴.
+Transmitted 100,000 bits, observed 53 errors. $\hat{p} = \frac{53}{100000} = 5.3 \times 10^{-4}$.
 
-95% CI: 5.3×10⁻⁴ ± 1.96√(5.3×10⁻⁴ × 0.9995 / 100000) = 5.3×10⁻⁴ ± 1.43×10⁻⁴
+95% CI: $5.3 \times 10^{-4} \pm 1.96\sqrt{5.3 \times 10^{-4} \times \frac{0.9995}{100000}} = 5.3 \times 10^{-4} \pm 1.43 \times 10^{-4}$
 
-CI: **[3.9×10⁻⁴, 6.7×10⁻⁴]**
+CI: **$[3.9 \times 10^{-4},\, 6.7 \times 10^{-4}]$**
 
 ---
 
@@ -163,9 +163,9 @@ CI: **[3.9×10⁻⁴, 6.7×10⁻⁴]**
 
 | Factor | Effect on Width | Explanation |
 |--------|----------------|-------------|
-| ↑ Sample size n | Narrower | More data → more precision |
+| ↑ Sample size $n$ | Narrower | More data → more precision |
 | ↑ Confidence level | Wider | More confidence → wider net |
-| ↑ Variability σ | Wider | More noise → harder to pin down μ |
+| ↑ Variability $\sigma$ | Wider | More noise → harder to pin down $\mu$ |
 
 ### The Tradeoff
 
@@ -177,17 +177,17 @@ CI: **[3.9×10⁻⁴, 6.7×10⁻⁴]**
 
 ## 14.8 Sample Size Determination
 
-### Question: How many measurements do I need?
+### Question: How many measurements $do$ I need?
 
-For CI width ≤ 2E (margin of error E):
+For CI width $\le 2E$ (margin of error $E$):
 
 $$n \geq \left(\frac{z_{\alpha/2} \cdot \sigma}{E}\right)^2$$
 
 ### Example
 
-Want to estimate mean delay within ±0.5ms with 95% confidence. Expect σ ≈ 3ms.
+Want to estimate mean delay within $\pm 0.5\,\mathrm{ms}$ with 95% confidence. Expect $\sigma \approx 3\,\mathrm{ms}$.
 
-n ≥ (1.96 × 3 / 0.5)² = (11.76)² = 138.3 → need **n = 139 measurements**
+$n \ge \left(1.96 \times \frac{3}{0.5}\right)^{2} = (11.76)^{2} = 138.3$ → need **$n = 139$ measurements**
 
 ---
 
@@ -270,26 +270,26 @@ end
 ## 14.10 Practice Problems
 
 ### Problem 1
-A sensor measures voltage. From 50 measurements: X̄ = 3.32V, S = 0.15V.
-(a) Construct 95% CI for μ. (b) Construct 99% CI for μ. (c) Which is wider and why?
+A sensor measures voltage. From 50 measurements: $\bar{X} = 3.32\,\mathrm{V},\, S = 0.15\,\mathrm{V}$.
+(a) Construct 95% CI for $\mu$. (b) Construct 99% CI for $\mu$. (c) Which is wider and why?
 
 **Solution:**
-(a) t_{0.025,49} ≈ 2.010. CI: 3.32 ± 2.010(0.15/√50) = 3.32 ± 0.043 = [3.277, 3.363]
-(b) t_{0.005,49} ≈ 2.680. CI: 3.32 ± 2.680(0.15/√50) = 3.32 ± 0.057 = [3.263, 3.377]
+(a) $t_{0.025,49} \approx 2.010$. CI: $3.32 \pm 2.010\left(\frac{0.15}{\sqrt{50}}\right) = 3.32 \pm 0.043 = [3.277,\, 3.363]$
+(b) $t_{0.005,49} \approx 2.680$. CI: $3.32 \pm 2.680\left(\frac{0.15}{\sqrt{50}}\right) = 3.32 \pm 0.057 = [3.263,\, 3.377]$
 (c) 99% CI is wider — higher confidence requires a wider interval.
 
 ### Problem 2
-From 25 noise power measurements: S² = 0.048 V². Construct 95% CI for σ².
+From 25 noise power measurements: $S^{2} = 0.048\,\mathrm{V}^{2}$. Construct 95% CI for $\sigma^{2}$.
 
-**Solution:** χ²_{0.025,24} = 39.364, χ²_{0.975,24} = 12.401
-CI: [24(0.048)/39.364, 24(0.048)/12.401] = [0.029, 0.093] V²
+**Solution:** $\chi^{2}_{0.025,24} = 39.364,\, \chi^{2}_{0.975,24} = 12.401$
+CI: $\left[\frac{24(0.048)}{39.364},\, \frac{24(0.048)}{12.401}\right] = [0.029,\, 0.093] V^{2}$
 
 ### Problem 3
-How many BER measurements needed to estimate BER within ±20% of its true value with 95% confidence, if expected BER ≈ 10⁻³?
+How many BER measurements needed to estimate BER within $\pm 20\%$ of its true value with 95% confidence, if expected $\mathrm{BER} \approx 10^{-3}$?
 
-**Solution:** For proportion: n ≥ z²p(1-p)/E² where E = 0.2p = 2×10⁻⁴.
-n ≥ (1.96)²(10⁻³)(0.999)/(2×10⁻⁴)² = 3.84 × 10⁻³ / (4×10⁻⁸) ≈ 96,000 bits.
-Need to transmit approximately 96,000 bits (or observe ~96 errors).
+**Solution:** For proportion: $n \ge \frac{z^{2}p(1-p)}{E^{2}}$ where $E = 0.2p = 2 \times 10^{-4}$.
+$n \ge \frac{(1.96)^{2}(10^{-3})(0.999)}{(2 \times 10^{-4})^{2}} = 3.84 \times \frac{10^{-3}}{4 \times 10^{-8}} \approx 96{,}000$ bits.
+Need to transmit approximately 96,000 bits (or observe $\sim 96$ errors).
 
 ---
 

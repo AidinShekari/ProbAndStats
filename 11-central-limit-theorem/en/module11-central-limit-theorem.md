@@ -24,17 +24,17 @@ The Gaussian distribution appears in:
 
 ### Weak Law of Large Numbers
 
-For X₁, X₂, ..., Xₙ i.i.d. with mean μ and finite variance σ²:
+For $X_{1},\, X_{2},\, \ldots,\, X_{n}$ i.i.d. with mean $\mu$ and finite variance $\sigma^{2}$:
 
 $$\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{P} \mu \quad \text{as } n \to \infty$$
 
-("Convergence in probability": P(|X̄ₙ - μ| > ε) → 0 for any ε > 0)
+("Convergence in probability": $P(\lvert \bar{X}_{n} - \mu\rvert > \varepsilon) \to 0$ for any $\varepsilon > 0$)
 
 ### Strong Law of Large Numbers
 
 $$\bar{X}_n \xrightarrow{a.s.} \mu \quad \text{as } n \to \infty$$
 
-("Almost sure convergence": P(X̄ₙ → μ) = 1)
+("Almost sure convergence": $P(\bar{X}_{n} \to \mu) = 1$)
 
 ### Engineering Significance
 
@@ -45,9 +45,9 @@ $$\bar{X}_n \xrightarrow{a.s.} \mu \quad \text{as } n \to \infty$$
 
 ### How Fast?
 
-By Chebyshev: P(|X̄ₙ - μ| > ε) ≤ σ²/(nε²)
+By Chebyshev: $P(\lvert \bar{X}_{n} - \mu\rvert > \varepsilon) \le \frac{\sigma^{2}}{n\varepsilon^{2}}$
 
-For 95% confidence that error < ε: need n ≥ σ²/(0.05 · ε²)
+For 95% confidence that error $< \varepsilon$: need $n \ge \frac{\sigma^{2}}{0.05 \cdot \varepsilon^{2}}$
 
 ---
 
@@ -55,26 +55,26 @@ For 95% confidence that error < ε: need n ≥ σ²/(0.05 · ε²)
 
 ### Formal Statement
 
-For X₁, X₂, ..., Xₙ i.i.d. with mean μ and finite variance σ²:
+For $X_{1},\, X_{2},\, \ldots,\, X_{n}$ i.i.d. with mean $\mu$ and finite variance $\sigma^{2}$:
 
 $$Z_n = \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} = \frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} N(0,1)$$
 
 ### Practical Form
 
-For large n:
+For large $n$:
 $$\bar{X}_n \approx N\left(\mu, \frac{\sigma^2}{n}\right)$$
 
 $$S_n = \sum_{i=1}^n X_i \approx N(n\mu, n\sigma^2)$$
 
 ### Conditions
-1. X₁, ..., Xₙ are independent
+1. $X_{1},\, \ldots,\, X_{n}$ are independent
 2. Identically distributed (can be relaxed with Lyapunov/Lindeberg CLT)
-3. Finite mean μ and finite variance σ²
-4. n is "large enough" (rule of thumb: n ≥ 30, but depends on distribution shape)
+3. Finite mean $\mu$ and finite variance $\sigma^{2}$
+4. $n$ is "large enough" (rule of thumb: $n \ge 30$, but depends on distribution shape)
 
 ### What CLT Does NOT Require
-- Does NOT require Xᵢ to be Gaussian
-- Does NOT require Xᵢ to be continuous
+- Does NOT require $X_{i}$ to be Gaussian
+- Does NOT require $X_{i}$ to be continuous
 - Does NOT require any specific distribution
 
 ---
@@ -83,12 +83,12 @@ $$S_n = \sum_{i=1}^n X_i \approx N(n\mu, n\sigma^2)$$
 
 How fast does the CLT "kick in"?
 
-| Original Distribution | n needed for good approximation |
+| Original Distribution | $n$ needed for good approximation |
 |----------------------|--------------------------------|
-| Symmetric (uniform) | n ≈ 5-10 |
-| Mildly skewed | n ≈ 20-30 |
-| Highly skewed (exponential) | n ≈ 30-50 |
-| Extremely skewed | n ≈ 50-100+ |
+| Symmetric (uniform) | $n \approx 5-10$ |
+| Mildly skewed | $n \approx 20-30$ |
+| Highly skewed (exponential) | $n \approx 30-50$ |
+| Extremely skewed | $n \approx 50-100+$ |
 
 **Rule:** More symmetric distributions → faster convergence.
 
@@ -98,25 +98,25 @@ How fast does the CLT "kick in"?
 
 ### Sum of Uniform RVs → Gaussian
 
-- n=1: Uniform (flat)
-- n=2: Triangular
-- n=3: Starts looking bell-shaped
-- n=5: Nearly Gaussian
-- n=12: Practically indistinguishable from Gaussian
+- $n = 1$: Uniform (flat)
+- $n = 2$: Triangular
+- $n = 3$: Starts looking bell-shaped
+- $n = 5$: Nearly Gaussian
+- $n = 12$: Practically indistinguishable from Gaussian
 
 ### Sum of Exponential RVs → Gaussian
 
-- n=1: Exponential (heavily right-skewed)
-- n=3: Still skewed but less so (Gamma(3))
-- n=10: Nearly symmetric, bell-shaped
-- n=30: Essentially Gaussian
+- $n = 1$: Exponential (heavily right-skewed)
+- $n = 3$: Still skewed but less so $(\mathrm{Gamma}(3))$
+- $n = 10$: Nearly symmetric, bell-shaped
+- $n = 30$: Essentially Gaussian
 
 ### Binomial → Normal Approximation
 
-Binomial(n, p) ≈ N(np, np(1-p)) for large n
+$\mathrm{Binomial}(n,\, p) \approx N(np,\, np(1-p))$ for large $n$
 
 This is CLT applied to sum of Bernoulli trials!
-- Continuity correction: P(X ≤ k) ≈ Φ((k + 0.5 - np)/(√(np(1-p))))
+- Continuity correction: $P(X \le k) \approx \Phi \left(\frac{k + 0.5 - np}{\sqrt{np(1-p)}}\right)$
 
 ---
 
@@ -128,15 +128,15 @@ Thermal noise = aggregate effect of billions of electrons moving randomly. Each 
 
 ### Why Aggregate Interference is Gaussian
 
-In a cellular network, total interference = sum of signals from many independent users. CLT → interference ≈ Gaussian (for many users).
+In a cellular network, total interference = sum of signals from many independent users. $\mathrm{CLT}$ → interference ≈ Gaussian (for many users).
 
 ### Why Measurement Errors are Gaussian
 
-Total error = sum of many independent small error sources (calibration, quantization, thermal, vibration, etc.) → CLT → error ≈ Gaussian.
+Total error = sum of many independent small error sources (calibration, quantization, thermal, vibration, etc.) $\to \mathrm{CLT}$ → error ≈ Gaussian.
 
 ### Why Manufacturing Variations are Gaussian
 
-Resistor value = nominal + sum of many small process variations (doping, etching, temperature, etc.) → CLT → value ≈ Gaussian around nominal.
+Resistor value = nominal + sum of many small process variations (doping, etching, temperature, etc.) $\to \mathrm{CLT}$ → value ≈ Gaussian around nominal.
 
 ---
 
@@ -268,46 +268,46 @@ legend('Empirical', 'Gaussian approximation');
 
 ### General Procedure
 
-To approximate P(Sₙ ≤ x) where Sₙ = X₁ + ... + Xₙ:
-1. Compute μ = E[Xᵢ], σ² = Var(Xᵢ)
-2. Sₙ ≈ N(nμ, nσ²)
-3. P(Sₙ ≤ x) ≈ Φ((x - nμ)/(σ√n))
+To approximate $P(S_{n} \le x)$ where $S_{n} = X_{1} + \ldots + X_{n}$:
+1. Compute $\mu = E[X_{i}],\, \sigma^{2} = \operatorname{Var}(X_{i})$
+2. $S_{n} \approx N(n\mu,\, n\sigma^{2})$
+3. $P(S_{n} \le x) \approx \Phi \left(\frac{x - n\mu}{\sigma \sqrt{n}}\right)$
 
 ### Continuity Correction (for Discrete RVs)
 
 When approximating a discrete sum by Gaussian:
-- P(X ≤ k) ≈ Φ((k + 0.5 - nμ)/(σ√n))
-- P(X = k) ≈ Φ((k + 0.5 - nμ)/(σ√n)) - Φ((k - 0.5 - nμ)/(σ√n))
+- $P(X \le k) \approx \Phi \left(\frac{k + 0.5 - n\mu}{\sigma \sqrt{n}}\right)$
+- $P(X = k) \approx \Phi \left(\frac{k + 0.5 - n\mu}{\sigma \sqrt{n}}\right) - \Phi \left(\frac{k - 0.5 - n\mu}{\sigma \sqrt{n}}\right)$
 
 ### Example: Packet Errors
 
-1000 packets, each error probability 0.02. X = total errors.
-Exact: X ~ Binomial(1000, 0.02)
-CLT approx: X ≈ N(20, 19.6)
+1000 packets, each error probability 0.02. $X$ = total errors.
+Exact: $X \sim \mathrm{Binomial}(1000,\, 0.02)$
+CLT approx: $X \approx N(20,\, 19.6)$
 
-P(X > 30) ≈ 1 - Φ((30.5 - 20)/√19.6) = 1 - Φ(2.37) = 0.0089
+$P(X > 30) \approx 1 - \Phi \left(\frac{30.5 - 20}{\sqrt{19.6}}\right) = 1 - \Phi (2.37) = 0.0089$
 
 ---
 
 ## 11.9 Practice Problems
 
 ### Problem 1
-A factory produces bolts. Length X ~ distribution with μ = 10cm, σ = 0.2cm. A batch of 100 bolts is measured.
-(a) What is the approximate distribution of X̄? (b) P(X̄ > 10.05)? (c) P(9.96 < X̄ < 10.04)?
+A factory produces bolts. Length $X$ ~ distribution with $\mu = 10\,\mathrm{cm},\, \sigma = 0.2\,\mathrm{cm}$. A batch of 100 bolts is measured.
+(a) What is the approximate distribution of $\bar{X}$? (b) $P(\bar{X} > 10.05)$? (c) $P(9.96 < \bar{X} < 10.04)$?
 
 **Solution:**
-(a) X̄ ~ N(10, 0.04/100) = N(10, 0.0004), σ_X̄ = 0.02
-(b) P(X̄ > 10.05) = P(Z > 2.5) = 0.0062
-(c) P(9.96 < X̄ < 10.04) = Φ(2) - Φ(-2) = 0.9545
+(a) $\bar{X} \sim N\left(10,\, \frac{0.04}{100}\right) = N(10,\, 0.0004),\, \sigma_{\bar{X}} = 0.02$
+(b) $P(\bar{X} > 10.05) = P(Z > 2.5) = 0.0062$
+(c) $P(9.96 < \bar{X} < 10.04) = \Phi (2) - \Phi (-2) = 0.9545$
 
 ### Problem 2
-A communication link has 10000 bits with BER = 0.001. Approximate P(more than 15 errors) using CLT.
+A communication link has 10000 bits with $\mathrm{BER} = 0.001$. Approximate $P(\text{more than 15 errors})$ using CLT.
 
-**Solution:** X ~ Binomial(10000, 0.001). μ=10, σ²=9.99.
-P(X > 15) ≈ 1 - Φ((15.5-10)/√9.99) = 1 - Φ(1.74) = 0.0409
+**Solution:** $X \sim \mathrm{Binomial}(10000,\, 0.001)$. $\mu = 10,\, \sigma^{2} = 9.99$.
+$P(X > 15) \approx 1 - \Phi \left(\frac{15.5-10}{\sqrt{9.99}}\right) = 1 - \Phi (1.74) = 0.0409$
 
 ### Problem 3
-Write MATLAB code to verify the CLT for chi-squared(1) distribution (very skewed) and show convergence for n=2,5,10,50.
+Write MATLAB code to verify the CLT for chi-squared(1) distribution (very skewed) and show convergence for $n = 2,\,5,\,10,\,50$.
 
 **Solution:**
 ```matlab

@@ -19,7 +19,7 @@ Many engineering systems operate under **different conditions** (channel states,
 
 ---
 
-## 8.2 Conditional Expectation E[X|Y=y]
+## 8.2 Conditional Expectation $E[X \mid Y = y]$
 
 ### Definition
 
@@ -31,22 +31,22 @@ $$E[X|Y=y] = \sum_x x \cdot p_{X|Y}(x|y)$$
 
 ### Interpretation
 
-E[X|Y=y] is the **average value of X** when we know Y = y. It is a function of y.
+$E[X \mid Y = y]$ is the **average value of $X$** when we know $Y = y$. It is a function of $y$.
 
-### E[X|Y] as a Random Variable
+### $E[X \mid Y]$ as a Random Variable
 
-When Y is itself random, E[X|Y] is a **random variable** — it takes the value E[X|Y=y] when Y = y.
+When $Y$ is itself random, $E[X \mid Y]$ is a **random variable** — it takes the value $E[X \mid Y = y]$ when $Y = y$.
 
 ### Engineering Example
 
 Average received power given channel state:
-- Good channel (Y=1): E[P|Y=1] = 10 mW
-- Poor channel (Y=0): E[P|Y=0] = 1 mW
-- P(Y=1) = 0.7, P(Y=0) = 0.3
+- Good channel $(Y = 1)$: $E[P \mid Y = 1] = 10$ mW
+- Poor channel $(Y = 0)$: $E[P \mid Y = 0] = 1$ mW
+- $P(Y = 1) = 0.7,\, P(Y = 0) = 0.3$
 
 ---
 
-## 8.3 Conditional Variance Var(X|Y=y)
+## 8.3 Conditional Variance $\operatorname{Var}(X \mid Y = y)$
 
 ### Definition
 
@@ -54,13 +54,13 @@ $$\text{Var}(X|Y=y) = E[(X - E[X|Y=y])^2 | Y=y] = E[X^2|Y=y] - (E[X|Y=y])^2$$
 
 ### Interpretation
 
-The conditional variance measures the **remaining uncertainty in X** after Y is known.
+The conditional variance measures the **remaining uncertainty in $X$** after $Y$ is known.
 
 ### Engineering Example
 
 Measurement precision depends on temperature:
-- At T=20°C: Var(X|T=20) = 0.01 (high precision)
-- At T=80°C: Var(X|T=80) = 0.09 (low precision due to thermal effects)
+- At $T = 20^{\circ}C$: $\operatorname{Var}(X \mid T = 20) = 0.01$ (high precision)
+- At $T = 80^{\circ}C$: $\operatorname{Var}(X \mid T = 80) = 0.09$ (low precision due to thermal effects)
 
 ---
 
@@ -78,10 +78,10 @@ $$E[X] = \int_{-\infty}^{\infty} E[X|Y=y] \cdot f_Y(y) \, dy$$
 
 ### Proof (Discrete)
 
-E[E[X|Y]] = Σ_y E[X|Y=y] · P(Y=y)
-           = Σ_y [Σ_x x · P(X=x|Y=y)] · P(Y=y)
-           = Σ_x Σ_y x · P(X=x, Y=y)
-           = Σ_x x · P(X=x) = E[X] ✓
+$E[E[X \mid Y]] = \sum_{y} E[X \mid Y = y] \cdot P(Y = y)$
+           $= \sum_{y} \left[\sum_{x} x \cdot P(X = x \mid Y = y)\right] \cdot P(Y = y)$
+           $= \sum_{x} \Sigma_{y} x \cdot P(X = x,\, Y = y)$
+           $= \sum_{x} x \cdot P(X = x) = E[X]$ ✓
 
 ### Interpretation
 
@@ -90,22 +90,22 @@ The **overall average** equals the **weighted average of conditional averages**,
 ### Engineering Example: Average BER Across Channel States
 
 A wireless system switches between three modes:
-- Mode 1 (60% of time): BER = 10⁻⁶
-- Mode 2 (30% of time): BER = 10⁻⁴
-- Mode 3 (10% of time): BER = 10⁻²
+- Mode 1 (60% of time): $\mathrm{BER} = 10^{-6}$
+- Mode 2 (30% of time): $\mathrm{BER} = 10^{-4}$
+- Mode 3 (10% of time): $\mathrm{BER} = 10^{-2}$
 
-Overall BER = E[BER] = 0.6(10⁻⁶) + 0.3(10⁻⁴) + 0.1(10⁻²)
-            = 0.6×10⁻⁶ + 30×10⁻⁶ + 10000×10⁻⁶ ≈ 1.003 × 10⁻³
+Overall $\mathrm{BER} = E[\mathrm{BER}] = 0.6(10^{-6}) + 0.3(10^{-4}) + 0.1(10^{-2})$
+            $= 0.6 \times 10^{-6} + 30 \times 10^{-6} + 10000 \times 10^{-6} \approx 1.003 \times 10^{-3}$
 
 **Engineering insight:** The overall BER is dominated by the worst mode, even though it occurs only 10% of the time.
 
 ### Engineering Example: Average Lifetime with Defect Types
 
 Components are defect-free (90%) or have a hidden defect (10%):
-- Defect-free: E[T|good] = 10000 hours
-- With defect: E[T|defect] = 500 hours
+- Defect-free: $E[T \mid \text{good}] = 10000$ hours
+- With defect: $E[T \mid \text{defect}] = 500$ hours
 
-E[T] = 0.9(10000) + 0.1(500) = 9050 hours
+$E[T] = 0.9(10000) + 0.1(500) = 9050$ hours
 
 ---
 
@@ -117,22 +117,22 @@ $$\text{Var}(X) = E[\text{Var}(X|Y)] + \text{Var}(E[X|Y])$$
 
 | Term | Name | Interpretation |
 |------|------|---------------|
-| Var(X) | Total variance | Overall uncertainty in X |
-| E[Var(X\|Y)] | Expected conditional variance | Average "within-group" variability |
-| Var(E[X\|Y]) | Variance of conditional means | "Between-group" variability |
+| $\operatorname{Var}(X)$ | Total variance | Overall uncertainty in $X$ |
+| $E[\operatorname{Var}(X \mid Y)]$ | Expected conditional variance | Average "within-group" variability |
+| $\operatorname{Var}(E[X \mid Y])$ | Variance of conditional means | "Between-group" variability |
 
 ### Proof
 
-Var(X) = E[X²] - (E[X])²
+$\operatorname{Var}(X) = E[X^{2}] - (E[X])^{2}$
 
-E[X²] = E[E[X²|Y]] (tower property)
-       = E[Var(X|Y) + (E[X|Y])²]
-       = E[Var(X|Y)] + E[(E[X|Y])²]
+$E[X^{2}] = E[E[X^{2} \mid Y]]$ (tower property)
+       $= E[\operatorname{Var}(X \mid Y) + (E[X \mid Y])^{2}]$
+       $= E[\operatorname{Var}(X \mid Y)] + E[(E[X \mid Y])^{2}]$
 
-(E[X])² = (E[E[X|Y]])²
+$(E[X])^{2} = (E[E[X \mid Y]])^{2}$
 
-Var(X) = E[Var(X|Y)] + E[(E[X|Y])²] - (E[E[X|Y]])²
-       = E[Var(X|Y)] + Var(E[X|Y]) ✓
+$\operatorname{Var}(X) = E[\operatorname{Var}(X \mid Y)] + E[(E[X \mid Y])^{2}] - (E[E[X \mid Y]])^{2}$
+       $= E[\operatorname{Var}(X \mid Y)] + \operatorname{Var}(E[X \mid Y])$ ✓
 
 ### Interpretation: Decomposition of Uncertainty
 
@@ -140,16 +140,16 @@ Total uncertainty = Average uncertainty within each condition + Variability of t
 
 ### Engineering Example: Sensor in Two Environments
 
-A sensor operates indoors (Y=1, prob 0.6) and outdoors (Y=2, prob 0.4):
-- Indoor: E[X|Y=1] = 25°C, Var(X|Y=1) = 1
-- Outdoor: E[X|Y=2] = 15°C, Var(X|Y=2) = 16
+A sensor operates indoors ($Y = 1$, prob 0.6) and outdoors ($Y = 2$, prob 0.4):
+- Indoor: $E[X \mid Y = 1] = 25^{\circ}C,\, \operatorname{Var}(X \mid Y = 1) = 1$
+- Outdoor: $E[X \mid Y = 2] = 15^{\circ}C,\, \operatorname{Var}(X \mid Y = 2) = 16$
 
-**E[Var(X|Y)]** = 0.6(1) + 0.4(16) = 7.0 (average within-condition variance)
+**$E[\operatorname{Var}(X \mid Y)] \ast \ast = 0.6(1) + 0.4(16) = 7.0$ (average within-condition variance)
 
-**Var(E[X|Y])** = E[(E[X|Y])²] - (E[E[X|Y]])²
-= 0.6(25²) + 0.4(15²) - [0.6(25) + 0.4(15)]² = 375 + 90 - (21)² = 465 - 441 = 24
+**$\operatorname{Var}(E[X \mid Y]) \ast \ast = E[(E[X \mid Y])^{2}] - (E[E[X \mid Y]])^{2}$
+$= 0.6(25^{2}) + 0.4(15^{2}) - [0.6(25) + 0.4(15)]^{2} = 375 + 90 - (21)^{2} = 465 - 441 = 24$
 
-**Var(X)** = 7.0 + 24.0 = 31.0
+**$\operatorname{Var}(X) \ast \ast = 7.0 + 24.0 = 31.0$
 
 Most variance comes from the **between-condition** difference (24 out of 31).
 
@@ -243,24 +243,24 @@ title('Conditional Expectation');
 
 ### Problem 1
 A digital link operates over two channel types:
-- Type A (prob 0.7): E[delay|A] = 5ms, Var(delay|A) = 2
-- Type B (prob 0.3): E[delay|B] = 20ms, Var(delay|B) = 25
+- Type $A$ (prob 0.7): $E[\text{delay}\ \mid A] = 5\,\mathrm{ms},\, \operatorname{Var}(\text{delay}\ \mid A) = 2$
+- Type $B$ (prob 0.3): $E[\text{delay}\ \mid B] = 20\,\mathrm{ms},\, \operatorname{Var}(\text{delay}\ \mid B) = 25$
 
-Find (a) E[delay], (b) Var(delay).
+Find (a) $E[\text{delay}]$, (b) $\operatorname{Var}(\text{delay})$.
 
 **Solution:**
-(a) E[D] = 0.7(5) + 0.3(20) = 3.5 + 6 = 9.5 ms
-(b) E[Var(D|type)] = 0.7(2) + 0.3(25) = 1.4 + 7.5 = 8.9
-    Var(E[D|type]) = 0.7(5²) + 0.3(20²) - 9.5² = 17.5 + 120 - 90.25 = 47.25
-    Var(D) = 8.9 + 47.25 = 56.15
+(a) $E[D] = 0.7(5) + 0.3(20) = 3.5 + 6 = 9.5$ ms
+(b) $E[\operatorname{Var}(D \mid \text{type})] = 0.7(2) + 0.3(25) = 1.4 + 7.5 = 8.9$
+    $\operatorname{Var}(E[D \mid \text{type}]) = 0.7(5^{2}) + 0.3(20^{2}) - 9.5^{2} = 17.5 + 120 - 90.25 = 47.25$
+    $\operatorname{Var}(D) = 8.9 + 47.25 = 56.15$
 
 ### Problem 2
-A random number N of components are tested. N ~ Poisson(10). Each has independent failure probability p=0.05. Let X = number of failures. Find E[X] and Var(X).
+A random number $N$ of components are tested. $N \sim \mathrm{Poisson}(10)$. Each has independent failure probability $p = 0.05$. Let $X$ = number of failures. Find $E[X]$ and $\operatorname{Var}(X)$.
 
 **Solution:**
-X|N ~ Binomial(N, 0.05). E[X|N] = 0.05N. Var(X|N) = N(0.05)(0.95) = 0.0475N.
-E[X] = E[E[X|N]] = E[0.05N] = 0.05(10) = 0.5
-Var(X) = E[Var(X|N)] + Var(E[X|N]) = E[0.0475N] + Var(0.05N) = 0.0475(10) + 0.05²(10) = 0.475 + 0.025 = 0.5
+$X \mid N \sim \mathrm{Binomial}(N,\, 0.05)$. $E[X \mid N] = 0.05\,\mathrm{N}$. $\operatorname{Var}(X \mid N) = N(0.05)(0.95) = 0.0475\,\mathrm{N}$.
+$E[X] = E[E[X \mid N]] = E[0.05\,\mathrm{N}] = 0.05(10) = 0.5$
+$\operatorname{Var}(X) = E[\operatorname{Var}(X \mid N)] + \operatorname{Var}(E[X \mid N]) = E[0.0475\,\mathrm{N}] + \operatorname{Var}(0.05\,\mathrm{N}) = 0.0475(10) + 0.05^{2}(10) = 0.475 + 0.025 = 0.5$
 
 ### Problem 3
 Write MATLAB code to verify Problem 2 by simulation.

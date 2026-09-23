@@ -29,32 +29,32 @@ We need a \textbf{systematic framework} to answer such questions from data, whil
 
 \PSsection{15.2}{Framework}
 
-\PSsubsection{Null Hypothesis H\textsubscript{0}}
+\PSsubsection{Null Hypothesis $H_{0}$}
 
 The \textbf{default assumption} — typically ``nothing changed'' or ``no effect'':
 
 \begin{itemize}
 \tightlist
 \item
-  H\textsubscript{0}: \ensuremath{\mu} = \ensuremath{\mu}\textsubscript{0} (sensor is not biased)
+  $H_{0}: \mu = \mu_{0}$ (sensor is not biased)
 \item
-  H\textsubscript{0}: \ensuremath{\mu}\textsubscript{1} = \ensuremath{\mu}\textsubscript{2} (two methods perform equally)
+  $H_{0}: \mu_{1} = \mu_{2}$ (two methods perform equally)
 \item
-  H\textsubscript{0}: \ensuremath{\sigma}\textsuperscript{2} = \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2} (variance hasn’t changed)
+  $H_{0}: \sigma^{2} = \sigma_{0}^{2}$ (variance hasn’t changed)
 \end{itemize}
 
-\PSsubsection{Alternative Hypothesis H\textsubscript{1}}
+\PSsubsection{Alternative Hypothesis $H_{1}$}
 
 What we want to \textbf{detect} or prove:
 
 \begin{itemize}
 \tightlist
 \item
-  H\textsubscript{1}: \ensuremath{\mu} \ensuremath{\neq} \ensuremath{\mu}\textsubscript{0} (sensor IS biased — two-sided)
+  $H_{1}: \mu \ne \mu_{0}$ (sensor IS biased — two-sided)
 \item
-  H\textsubscript{1}: \ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0} (performance improved — one-sided)
+  $H_{1}: \mu > \mu_{0}$ (performance improved — one-sided)
 \item
-  H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2} (variance increased)
+  $H_{1}: \sigma^{2} > \sigma_{0}^{2}$ (variance increased)
 \end{itemize}
 
 \PSsubsection{Decision}
@@ -64,41 +64,44 @@ Based on data, either:
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Reject H\textsubscript{0}} \ensuremath{\to} evidence supports H\textsubscript{1}
+  \textbf{Reject $H_{0}$} \ensuremath{\to} evidence supports $H_{1}$
 \item
-  \textbf{Fail to reject H\textsubscript{0}} \ensuremath{\to} insufficient evidence against H\textsubscript{0}
+  \textbf{Fail to reject $H_{0}$} \ensuremath{\to} insufficient evidence against $H_{0}$
 \end{itemize}
 
 \begin{PSquote}
 
-\PSwarn{} ``Fail to reject H\textsubscript{0}'' \ensuremath{\neq} ``H\textsubscript{0} is true''. Absence of evidence \ensuremath{\neq} evidence of absence.
+\PSwarn{} ``Fail to reject $H_{0}$'' \ensuremath{\neq} ``$H_{0}$ is true''. Absence of evidence \ensuremath{\neq} evidence of absence.
 
 \end{PSquote}
 
 \PSsection{15.3}{Types of Errors}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[c]{@{}ccc@{}}
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}& \PSth{H\textsubscript{0} True (reality)} & \PSth{H\textsubscript{1} True (reality)} \\
+\rowcolor{PSnavy} & \PSth{$H_{0}$ True (reality)} & \PSth{$H_{1}$ True (reality)} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{Reject H\textsubscript{0}} (decision) & Type I Error (\ensuremath{\alpha}) & Correct! (Power = 1-\ensuremath{\beta}) \\
-\textbf{Fail to reject H\textsubscript{0}} (decision) & Correct! & Type II Error (\ensuremath{\beta}) \\
+\textbf{Reject $H_{0}$} (decision) & Type I Error $(\alpha)$ & Correct! (Power $= 1-\beta$) \\
+\textbf{Fail to reject $H_{0}$} (decision) & Correct! & Type II Error $(\beta)$ \\
 \end{longtable}
 }
 
-\PSsubsection{Type I Error (False Alarm) — probability \ensuremath{\alpha}}
+\PSsubsection{Type I Error (False Alarm) — probability $\alpha$}
 
-Rejecting H\textsubscript{0} when it’s actually true. ``Crying wolf.''
+Rejecting $H_{0}$ when it’s actually true. ``Crying wolf.''
 
 Engineering analogy: Declaring a process has changed when it hasn’t \ensuremath{\to} unnecessary recalibration.
 
-\PSsubsection{Type II Error (Missed Detection) — probability \ensuremath{\beta}}
+\PSsubsection{Type II Error (Missed Detection) — probability $\beta$}
 
-Failing to reject H\textsubscript{0} when H\textsubscript{1} is actually true. ``Missing the signal.''
+Failing to reject $H_{0}$ when $H_{1}$ is actually true. ``Missing the signal.''
 
 Engineering analogy: Failing to detect a sensor bias \ensuremath{\to} biased measurements continue.
 
@@ -112,36 +115,36 @@ Engineering analogy: Failing to detect a sensor bias \ensuremath{\to} biased mea
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-H\textsubscript{0}: no target & No aircraft present \\
-H\textsubscript{1}: target present & Aircraft present \\
-Type I error (\ensuremath{\alpha}) & False alarm \\
-Type II error (\ensuremath{\beta}) & Missed detection \\
-Power (1-\ensuremath{\beta}) & Probability of detection \\
+$H_{0}$: no target & No aircraft present \\
+$H_{1}$: target present & Aircraft present \\
+Type I error $(\alpha)$ & False alarm \\
+Type II error $(\beta)$ & Missed detection \\
+Power $(1-\beta)$ & Probability of detection \\
 \end{longtable}
 }
 
 \PSsubsection{The Tradeoff}
 
-Reducing \ensuremath{\alpha} (fewer false alarms) \ensuremath{\to} increases \ensuremath{\beta} (more missed detections), and vice versa.
+Reducing $\alpha$ (fewer false alarms) \ensuremath{\to} increases $\beta$ (more missed detections), and vice versa.
 
-Fix \ensuremath{\alpha} (significance level), then maximize power = 1 - \ensuremath{\beta}.
+Fix $\alpha$ (significance level), then maximize power $= 1 - \beta$.
 
-\PSsection{15.4}{Significance Level \ensuremath{\alpha}}
+\PSsection{15.4}{Significance Level $\alpha$}
 
 The \textbf{maximum acceptable Type I error rate}, chosen BEFORE looking at data.
 
-Common choices: \ensuremath{\alpha} = 0.05, 0.01, 0.10
+Common choices: $\alpha = 0.05,\, 0.01,\, 0.10$
 
-\textbf{Choosing \ensuremath{\alpha}:} Consider the cost of a false alarm:
+\textbf{Choosing $\alpha$:} Consider the cost of a false alarm:
 
 \begin{itemize}
 \tightlist
 \item
-  \ensuremath{\alpha} = 0.01: Very conservative (e.g., medical device safety)
+  $\alpha = 0.01$: Very conservative (e.g., medical device safety)
 \item
-  \ensuremath{\alpha} = 0.05: Standard in most engineering/science
+  $\alpha = 0.05$: Standard in most engineering/science
 \item
-  \ensuremath{\alpha} = 0.10: More tolerant (exploratory analysis)
+  $\alpha = 0.10$: More tolerant (exploratory analysis)
 \end{itemize}
 
 \PSsection{15.5}{Power of a Test}
@@ -156,18 +159,18 @@ Power depends on:
 \item
   \textbf{Effect size:} Larger true difference \ensuremath{\to} easier to detect \ensuremath{\to} more power
 \item
-  \textbf{Sample size n:} More data \ensuremath{\to} more power
+  \textbf{Sample size $n$:} More data \ensuremath{\to} more power
 \item
-  \textbf{Significance level \ensuremath{\alpha}:} Larger \ensuremath{\alpha} \ensuremath{\to} more power (but more false alarms)
+  \textbf{Significance level $\alpha$:} Larger $\alpha$ \ensuremath{\to} more power (but more false alarms)
 \item
-  \textbf{Variability \ensuremath{\sigma}:} Less noise \ensuremath{\to} more power
+  \textbf{Variability $\sigma$:} Less noise \ensuremath{\to} more power
 \end{enumerate}
 
 \PSsection{15.6}{The p-value}
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-The \textbf{p-value} is the probability of obtaining a test statistic \textbf{as extreme or more extreme} than the observed value, \textbf{assuming H\textsubscript{0} is true}.
+The \textbf{p-value} is the probability of obtaining a test statistic \textbf{as extreme or more extreme} than the observed value, \textbf{assuming $H_{0}$ is true}.
 
 \PSdisplay{p\text{-value} = P(\text{data this extreme or more} | H_0 \text{ true})}
 
@@ -178,16 +181,16 @@ The \textbf{p-value} is the probability of obtaining a test statistic \textbf{as
 \begin{itemize}
 \tightlist
 \item
-  If p-value \textless{} \ensuremath{\alpha} \ensuremath{\to} Reject H\textsubscript{0}
+  If p-value $< \alpha$ \ensuremath{\to} Reject $H_{0}$
 \item
-  If p-value \ensuremath{\ge} \ensuremath{\alpha} \ensuremath{\to} Fail to reject H\textsubscript{0}
+  If p-value $\ge \alpha$ \ensuremath{\to} Fail to reject $H_{0}$
 \end{itemize}
 
 \PSsubsection{\PSyes{} CORRECT Interpretation}
 
 \begin{PSquote}
 
-``The p-value is the probability of seeing data this extreme (or more) if H\textsubscript{0} were true. A small p-value means the data is unlikely under H\textsubscript{0}.''
+``The p-value is the probability of seeing data this extreme (or more) if $H_{0}$ were true. A small p-value means the data is unlikely under $H_{0}$.''
 
 \end{PSquote}
 
@@ -195,18 +198,18 @@ The \textbf{p-value} is the probability of obtaining a test statistic \textbf{as
 
 \begin{PSquote}
 
-{``The p-value is the probability that H\textsubscript{0} is true.''}
+$\sim \sim "\text{The}$ p-value is the probability that $H_{0}$ is $\mathrm{true}." \sim \sim$
 
 \end{PSquote}
 
-\textbf{Why wrong:} H\textsubscript{0} is either true or false (fixed). The p-value says nothing about P(H\textsubscript{0} true). It measures how surprising the data is under H\textsubscript{0}.
+\textbf{Why wrong:} $H_{0}$ is either true or false (fixed). The p-value says nothing about $P(H_{0}\ \text{true})$. It measures how surprising the data is under $H_{0}$.
 
 \PSsubsection{Calibration}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{p-value} & \PSth{Evidence against H\textsubscript{0}} \\
+\rowcolor{PSnavy}\PSth{p-value} & \PSth{Evidence against $H_{0}$} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -221,34 +224,36 @@ The \textbf{p-value} is the probability of obtaining a test statistic \textbf{as
 
 \PSsection{15.7}{One-Sided vs. Two-Sided Tests}
 
-\PSsubsection{Two-Sided (H\textsubscript{1}: \ensuremath{\mu} \ensuremath{\neq} \ensuremath{\mu}\textsubscript{0})}
+\PSsubsection{Two-Sided ($H_{1}$: $\mu \ne \mu_{0}$)}
 
 Used when deviation in \textbf{either} direction is important.
 
 \begin{itemize}
 \tightlist
 \item
-  Reject if \textbar{}T\textbar{} \textgreater{} t\textsubscript{\ensuremath{\alpha}/2, n-1}
+  Reject if $\lvert T\rvert > t_{\alpha /2, n-1}$
 \item
-  p-value = 2\ensuremath{\cdot}P(T \textgreater{} \textbar{}t\textsubscript{obs}\textbar{})
+  p-value $= 2 \cdot P(T > \lvert t_{\text{obs}}\rvert)$
 \end{itemize}
 
-\PSsubsection{One-Sided (H\textsubscript{1}: \ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0} or H\textsubscript{1}: \ensuremath{\mu} \textless{} \ensuremath{\mu}\textsubscript{0})}
+\PSsubsection{One-Sided ($H_{1}$: $\mu > \mu_{0}$ or $H_{1}: \mu < \mu_{0}$)}
 
 Used when only one direction of deviation matters.
 
 \begin{itemize}
 \tightlist
 \item
-  H\textsubscript{1}: \ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0}: Reject if T \textgreater{} t\textsubscript{\ensuremath{\alpha}, n-1}
+  $H_{1}: \mu > \mu_{0}$: Reject if $T > t_{\alpha, n-1}$
 \item
-  H\textsubscript{1}: \ensuremath{\mu} \textless{} \ensuremath{\mu}\textsubscript{0}: Reject if T \textless{} -t\textsubscript{\ensuremath{\alpha}, n-1}
+  $H_{1}: \mu < \mu_{0}$: Reject if $T < -t_{\alpha, n-1}$
 \end{itemize}
 
 \PSsubsection{When to Use Which}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[c]{@{}cc@{}}
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 2\tabcolsep) * \real{0.4762}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 2\tabcolsep) * \real{0.5238}}@{}}
 \toprule\noalign{}
 \rowcolor{PSnavy}\PSth{Scenario} & \PSth{Test Type} \\
 \midrule\noalign{}
@@ -256,56 +261,56 @@ Used when only one direction of deviation matters.
 \bottomrule\noalign{}
 \endlastfoot
 Is the sensor biased (either direction)? & Two-sided \\
-Does the new algorithm IMPROVE BER? & One-sided (H\textsubscript{1}: BER \textless{} BER\textsubscript{old}) \\
-Has noise power INCREASED? & One-sided (H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}) \\
+Does the new algorithm IMPROVE BER? & One-sided ($H_{1}$: $\mathrm{BER} < \mathrm{BER}_{\mathrm{old}}$) \\
+Has noise power INCREASED? & One-sided ($H_{1}$: $\sigma^{2} > \sigma_{0}^{2}$) \\
 Did the process mean CHANGE? & Two-sided \\
 \end{longtable}
 }
 
 \PSsection{15.8}{Tests for Means}
 
-\PSsubsection{One-Sample Z-Test (\ensuremath{\sigma} known)}
+\PSsubsection{One-Sample Z-Test ($\sigma$ known)}
 
-Test: H\textsubscript{0}: \ensuremath{\mu} = \ensuremath{\mu}\textsubscript{0}
+Test: $H_{0}: \mu = \mu_{0}$
 
-Test statistic: Z = (\ensuremath{\bar{X}} - \ensuremath{\mu}\textsubscript{0})/(\ensuremath{\sigma}/\ensuremath{\surd}n)
+Test statistic: $Z = \frac{\bar{X} - \mu_{0}}{\frac{\sigma}{\sqrt{n}}}$
 
-Under H\textsubscript{0}: Z \textasciitilde{} N(0,1)
+Under $H_{0}: Z \sim N(0,\,1)$
 
-\PSsubsection{One-Sample t-Test (\ensuremath{\sigma} unknown)}
+\PSsubsection{One-Sample t-Test ($\sigma$ unknown)}
 
-Test: H\textsubscript{0}: \ensuremath{\mu} = \ensuremath{\mu}\textsubscript{0}
+Test: $H_{0}: \mu = \mu_{0}$
 
-Test statistic: T = (\ensuremath{\bar{X}} - \ensuremath{\mu}\textsubscript{0})/(S/\ensuremath{\surd}n)
+Test statistic: $T = \frac{\bar{X} - \mu_{0}}{\frac{S}{\sqrt{n}}}$
 
-Under H\textsubscript{0}: T \textasciitilde{} t(n-1)
+Under $H_{0}: T \sim t(n-1)$
 
 \PSsubsection{Two-Sample t-Test (comparing two means)}
 
-Test: H\textsubscript{0}: \ensuremath{\mu}\textsubscript{1} = \ensuremath{\mu}\textsubscript{2}
+Test: $H_{0}: \mu_{1} = \mu_{2}$
 
-Test statistic: T = (\ensuremath{\bar{X}}\textsubscript{1} - \ensuremath{\bar{X}}\textsubscript{2}) / \ensuremath{\surd}(S\textsubscript{1}\textsuperscript{2}/n\textsubscript{1} + S\textsubscript{2}\textsuperscript{2}/n\textsubscript{2})
+Test statistic: $T = \frac{\bar{X}_{1} - \bar{X}_{2}}{\sqrt{\frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}}}}$
 
-Approximate df by Welch-Satterthwaite formula.
+Approximate $df$ by Welch-Satterthwaite formula.
 
 \PSsection{15.9}{Test for Variance (Chi-Square Test)}
 
 \PSsubsection{One-Sample Test}
 
-H\textsubscript{0}: \ensuremath{\sigma}\textsuperscript{2} = \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}
+$H_{0}: \sigma^{2} = \sigma_{0}^{2}$
 
-Test statistic: \ensuremath{\chi}\textsuperscript{2} = (n-1)S\textsuperscript{2}/\ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}
+Test statistic: $\chi^{2} = \frac{(n-1)S^{2}}{\sigma_{0}^{2}}$
 
-Under H\textsubscript{0}: \ensuremath{\chi}\textsuperscript{2} \textasciitilde{} \ensuremath{\chi}\textsuperscript{2}(n-1)
+Under $H_{0}: \chi^{2} \sim \chi^{2}(n-1)$
 
 \PSsubsection{Decision}
 
 \begin{itemize}
 \tightlist
 \item
-  H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}: Reject if \ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{\ensuremath{\alpha}, n-1}
+  $H_{1}: \sigma^{2} > \sigma_{0}^{2}$: Reject if $\chi^{2} > \chi^{2}_{\alpha, n-1}$
 \item
-  H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \ensuremath{\neq} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}: Reject if \ensuremath{\chi}\textsuperscript{2} \textless{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{1-\ensuremath{\alpha}/2, n-1} or \ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{\ensuremath{\alpha}/2, n-1}
+  $H_{1}: \sigma^{2} \ne \sigma_{0}^{2}$: Reject if $\chi^{2} < \chi^{2}_{1-\alpha /2, n-1}$ or $\chi^{2} > \chi^{2}_{\alpha /2, n-1}$
 \end{itemize}
 
 \PSsection{15.10}{Step-by-Step Hypothesis Testing Procedure}
@@ -314,17 +319,17 @@ Under H\textsubscript{0}: \ensuremath{\chi}\textsuperscript{2} \textasciitilde{}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{State hypotheses:} H\textsubscript{0} and H\textsubscript{1}
+  \textbf{State hypotheses:} $H_{0}$ and $H_{1}$
 \item
-  \textbf{Choose significance level:} \ensuremath{\alpha} (e.g., 0.05)
+  \textbf{Choose significance level:} $\alpha$ (e.g., 0.05)
 \item
-  \textbf{Select test statistic:} Z, t, or \ensuremath{\chi}\textsuperscript{2} depending on scenario
+  \textbf{Select test statistic:} $Z,\, t$, or $\chi^{2}$ depending on scenario
 \item
   \textbf{Determine critical value(s)} or compute p-value
 \item
   \textbf{Compute test statistic} from data
 \item
-  \textbf{Make decision:} Reject H\textsubscript{0} if test statistic in critical region (or p \textless{} \ensuremath{\alpha})
+  \textbf{Make decision:} Reject $H_{0}$ if test statistic in critical region (or $p < \alpha$)
 \item
   \textbf{State conclusion} in engineering terms
 \end{enumerate}
@@ -333,15 +338,15 @@ Under H\textsubscript{0}: \ensuremath{\chi}\textsuperscript{2} \textasciitilde{}
 
 \begin{PSbox}[unbreakable]{ex}{Example 1: Is a Sensor Biased?}
 
-A sensor should read 0V with no input. 20 measurements give \ensuremath{\bar{X}} = 0.012V, S = 0.03V.
+A sensor should read 0V with no input. 20 measurements give $\bar{X} = 0.012\,\mathrm{V},\, S = 0.03\,\mathrm{V}$.
 
-H\textsubscript{0}: \ensuremath{\mu} = 0 (no bias), H\textsubscript{1}: \ensuremath{\mu} \ensuremath{\neq} 0 (biased), \ensuremath{\alpha} = 0.05
+$H_{0}: \mu = 0$ (no bias), $H_{1}: \mu \ne 0$ (biased), $\alpha = 0.05$
 
-T = (0.012 - 0)/(0.03/\ensuremath{\surd}20) = 0.012/0.00671 = 1.789
+$\displaystyle T = \frac{0.012 - 0}{\frac{0.03}{\sqrt{20}}} = \frac{0.012}{0.00671} = 1.789$
 
-t\textsubscript{0.025, 19} = 2.093. Since \textbar{}T\textbar{} = 1.789 \textless{} 2.093 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
+$t_{0.025, 19} = 2.093$. Since $\lvert T\rvert = 1.789 < 2.093$ \ensuremath{\to} \textbf{Fail to reject $H_{0}$.}
 
-p-value = 2\ensuremath{\cdot}P(t(19) \textgreater{} 1.789) \ensuremath{\approx} 0.090. Not significant at 5\% level.
+p-value $= 2 \cdot P(t(19) > 1.789) \approx 0.090$. Not significant at 5\% level.
 
 Conclusion: Insufficient evidence to conclude the sensor is biased.
 
@@ -349,27 +354,27 @@ Conclusion: Insufficient evidence to conclude the sensor is biased.
 
 \begin{PSbox}[unbreakable]{ex}{Example 2: Did Manufacturing Process Change?}
 
-Before: \ensuremath{\mu}\textsubscript{0} = 100\ensuremath{\Omega} (established). After modification: n = 30, \ensuremath{\bar{X}} = 101.2\ensuremath{\Omega}, S = 3.5\ensuremath{\Omega}.
+Before: $\mu_{0} = 100\,\Omega$ (established). After modification: $n = 30,\, \bar{X} = 101.2\,\Omega,\, S = 3.5\,\Omega$.
 
-H\textsubscript{0}: \ensuremath{\mu} = 100, H\textsubscript{1}: \ensuremath{\mu} \ensuremath{\neq} 100, \ensuremath{\alpha} = 0.05
+$H_{0}: \mu = 100,\, H_{1}: \mu \ne 100,\, \alpha = 0.05$
 
-T = (101.2 - 100)/(3.5/\ensuremath{\surd}30) = 1.2/0.639 = 1.878
+$\displaystyle T = \frac{101.2 - 100}{\frac{3.5}{\sqrt{30}}} = \frac{1.2}{0.639} = 1.878$
 
-t\textsubscript{0.025, 29} = 2.045. \textbar{}T\textbar{} = 1.878 \textless{} 2.045 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
+$t_{0.025, 29} = 2.045$. $\lvert T\rvert = 1.878 < 2.045$ \ensuremath{\to} \textbf{Fail to reject $H_{0}$.}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{Example 3: Does New Algorithm Improve BER?}
 
-Old algorithm: BER\textsubscript{0} = 10\textsuperscript{-3}. New algorithm tested: n = 50000 bits, 38 errors.
+Old algorithm: $\mathrm{BER}_{0} = 10^{-3}$. New algorithm tested: $n = 50000$ bits, 38 errors.
 
-BER\textsubscript{new} = 38/50000 = 7.6\ensuremath{\times}10\textsuperscript{-4}
+$\displaystyle \mathrm{BER}_{\mathrm{new}} = \frac{38}{50000} = 7.6 \times 10^{-4}$
 
-H\textsubscript{0}: p = 0.001, H\textsubscript{1}: p \textless{} 0.001 (improvement), \ensuremath{\alpha} = 0.05
+$H_{0}: p = 0.001,\, H_{1}: p < 0.001$ (improvement), $\alpha = 0.05$
 
-Z = (\ensuremath{\hat{p}} - p\textsubscript{0})/\ensuremath{\surd}(p\textsubscript{0}(1-p\textsubscript{0})/n) = (0.00076 - 0.001)/\ensuremath{\surd}(0.001\ensuremath{\times}0.999/50000) = -0.00024/0.000141 = -1.70
+$\displaystyle Z = \frac{\hat{p} - p_{0}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}} = \frac{0.00076 - 0.001}{\sqrt{0.001 \times \frac{0.999}{50000}}} = -\frac{0.00024}{0.000141} = -1.70$
 
-p-value = P(Z \textless{} -1.70) = 0.0446 \textless{} 0.05 \ensuremath{\to} \textbf{Reject H\textsubscript{0}.}
+p-value $= P(Z < -1.70) = 0.0446 < 0.05$ \ensuremath{\to} \textbf{Reject $H_{0}$.}
 
 Conclusion: Evidence supports that the new algorithm has lower BER.
 
@@ -377,13 +382,13 @@ Conclusion: Evidence supports that the new algorithm has lower BER.
 
 \begin{PSbox}[unbreakable]{ex}{Example 4: Has Noise Power Increased?}
 
-Historical: \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2} = 0.04 V\textsuperscript{2}. New measurements: n = 25, S\textsuperscript{2} = 0.058 V\textsuperscript{2}.
+Historical: $\sigma_{0}^{2} = 0.04\,\mathrm{V}^{2}$. New measurements: $n = 25,\, S^{2} = 0.058\,\mathrm{V}^{2}$.
 
-H\textsubscript{0}: \ensuremath{\sigma}\textsuperscript{2} = 0.04, H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \textgreater{} 0.04, \ensuremath{\alpha} = 0.05
+$H_{0}: \sigma^{2} = 0.04,\, H_{1}: \sigma^{2} > 0.04,\, \alpha = 0.05$
 
-\ensuremath{\chi}\textsuperscript{2} = (24)(0.058)/0.04 = 34.8
+$\displaystyle \chi^{2} = \frac{(24)(0.058)}{0.04} = 34.8$
 
-\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.05, 24} = 36.415. Since 34.8 \textless{} 36.415 \ensuremath{\to} \textbf{Fail to reject H\textsubscript{0}.}
+$\chi^{2}_{0.05, 24} = 36.415$. Since $34.8 < 36.415$ \ensuremath{\to} \textbf{Fail to reject $H_{0}$.}
 
 \end{PSbox}
 
@@ -476,25 +481,25 @@ H\textsubscript{0}: \ensuremath{\sigma}\textsuperscript{2} = 0.04, H\textsubscri
 
 \begin{PSbox}[unbreakable]{prob}{Problem 1}
 
-A manufacturing spec requires mean resistance = 100\ensuremath{\Omega}. A sample of 16 resistors gives \ensuremath{\bar{X}} = 101.5\ensuremath{\Omega}, S = 3\ensuremath{\Omega}. At \ensuremath{\alpha} = 0.05, is there evidence the process has drifted?
+A manufacturing spec requires mean resistance = 100\ensuremath{\Omega}. A sample of 16 resistors gives $\bar{X} = 101.5\,\Omega,\, S = 3\,\Omega$. At $\alpha = 0.05$, is there evidence the process has drifted?
 
-\PSsolution{} H\textsubscript{0}: \ensuremath{\mu}=100, H\textsubscript{1}: \ensuremath{\mu}\ensuremath{\neq}100. T = (101.5-100)/(3/4) = 2.0. t\textsubscript{0.025,15} = 2.131. \textbar{}T\textbar{}=2.0 \textless{} 2.131 \ensuremath{\to} Fail to reject. p-value \ensuremath{\approx} 0.064 \textgreater{} 0.05.
+\PSsolution{} $H_{0}: \mu = 100,\, H_{1}: \mu \ne 100$. $T = \frac{101.5-100}{\frac{3}{4}} = 2.0$. $t_{0.025,15} = 2.131$. $\lvert T\rvert = 2.0 < 2.131$ \ensuremath{\to} Fail to reject. p-value $\approx 0.064 > 0.05$.
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 2}
 
-Average packet delay was 5ms. After network upgrade, 40 measurements give \ensuremath{\bar{X}} = 4.6ms, S = 1.2ms. Test if delay decreased at \ensuremath{\alpha} = 0.01.
+Average packet delay was 5ms. After network upgrade, 40 measurements give $\bar{X} = 4.6\,\mathrm{ms},\, S = 1.2\,\mathrm{ms}$. Test if delay decreased at $\alpha = 0.01$.
 
-\PSsolution{} H\textsubscript{0}: \ensuremath{\mu}=5, H\textsubscript{1}: \ensuremath{\mu}\textless{}5. T = (4.6-5)/(1.2/\ensuremath{\surd}40) = -0.4/0.190 = -2.11. t\textsubscript{0.01,39} \ensuremath{\approx} -2.426. T = -2.11 \textgreater{} -2.426 \ensuremath{\to} Fail to reject at 1\% level. (Would reject at 5\% since t\textsubscript{0.05,39}\ensuremath{\approx}-1.685.)
+\PSsolution{} $H_{0}: \mu = 5,\, H_{1}: \mu < 5$. $T = \frac{4.6-5}{\frac{1.2}{\sqrt{40}}} = -\frac{0.4}{0.190} = -2.11$. $t_{0.01,39} \approx -2.426$. $T = -2.11 > -2.426$ \ensuremath{\to} Fail to reject at 1\% level. (Would reject at 5\% since $t_{0.05,39} \approx -1.685.$)
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 3}
 
-Explain why ``p = 0.04 means there is only a 4\% chance H\textsubscript{0} is true'' is WRONG.
+Explain why ``$p = 0.04$ means there is only a 4\% chance $H_{0}$ is true'' is WRONG.
 
-\PSsolution{} The p-value is P(data this extreme \textbar{} H\textsubscript{0} true), NOT P(H\textsubscript{0} true \textbar{} data). It conditions on H\textsubscript{0} being true and asks about data extremity. To get P(H\textsubscript{0} true \textbar{} data) would require Bayesian analysis with a prior. The p-value is a property of the data-generating process under H\textsubscript{0}, not a posterior probability about H\textsubscript{0}.
+\PSsolution{} The p-value is $P(\text{data this extreme}\ \mid H_{0}\ \text{true})$, NOT $P(H_{0}\ \text{true}\ \mid \text{data})$. It conditions on $H_{0}$ being true and asks about data extremity. To get $P(H_{0}\ \text{true}\ \mid \text{data})$ would require Bayesian analysis with a prior. The p-value is a property of the data-generating process under $H_{0}$, not a posterior probability about $H_{0}$.
 
 \emph{Next Module: {Module 16 — Engineering Statistical Applications}}
 

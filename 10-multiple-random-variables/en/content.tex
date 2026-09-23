@@ -6,7 +6,7 @@ After completing this module, students will be able to:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Extend joint distributions to N random variables
+  Extend joint distributions to $N$ random variables
 \item
   Define and work with random vectors
 \item
@@ -19,29 +19,29 @@ After completing this module, students will be able to:
 
 \end{PSbox}
 
-\PSsection{10.1}{Introduction: From 2 to N Variables}
+\PSsection{10.1}{Introduction: From 2 to $N$ Variables}
 
 Real systems often involve many uncertain quantities simultaneously:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Sensor array:} N sensors each producing a noisy measurement
+  \textbf{Sensor array:} $N$ sensors each producing a noisy measurement
 \item
-  \textbf{MIMO system:} M\ensuremath{\times}N channel coefficients
+  \textbf{MIMO system:} $M \times N$ channel coefficients
 \item
-  \textbf{Parameter estimation:} p unknown parameters
+  \textbf{Parameter estimation:} $p$ unknown parameters
 \item
-  \textbf{Signal samples:} N consecutive noise samples
+  \textbf{Signal samples:} $N$ consecutive noise samples
 \end{itemize}
 
 We need a framework for \textbf{N-dimensional} random vectors.
 
-\PSsection{10.2}{Joint Distributions for N Random Variables}
+\PSsection{10.2}{Joint Distributions for $N$ Random Variables}
 
 \PSsubsection{Joint PDF}
 
-For X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n}:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) \geq 0, \quad \int\cdots\int f_{X_1,...,X_n} \, dx_1 \cdots dx_n = 1}
+For $X_{1},\, X_{2},\, \ldots,\, X_{n}$:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) \geq 0, \quad \int\cdots\int f_{X_1,...,X_n} \, dx_1 \cdots dx_n = 1}
 
 \PSsubsection{Marginal Distributions}
 
@@ -53,7 +53,7 @@ Integrate (or sum) out unwanted variables:\PSdisplay{f_{X_1}(x_1) = \int\cdots\i
 
 \PSsubsection{Mutual Independence}
 
-X\textsubscript{1}, …, X\textsubscript{n} are mutually independent if:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) = \prod_{i=1}^n f_{X_i}(x_i)}
+$X_{1},\, \ldots,\, X_{n}$ are mutually independent if:\PSdisplay{f_{X_1,...,X_n}(x_1,...,x_n) = \prod_{i=1}^n f_{X_i}(x_i)}
 
 \PSsection{10.3}{Random Vectors}
 
@@ -68,16 +68,19 @@ A \textbf{random vector} is an ordered collection of random variables:
 \PSsubsection{Engineering Examples}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[c]{@{}ccc@{}}
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.4118}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3235}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.2647}}@{}}
 \toprule\noalign{}
 \rowcolor{PSnavy}\PSth{Random Vector} & \PSth{Components} & \PSth{Context} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Sensor array output & X\textsubscript{1},…,X\textsubscript{n} = sensor readings & Array processing \\
-MIMO channel & h\textsubscript{1},…,h\textsubscript{n} = channel gains & Wireless communications \\
-Noise vector & N\textsubscript{1},…,N\textsubscript{n} = noise samples & Signal processing \\
+Sensor array output & $X_{1},\,\ldots,\,X_{n}$ = sensor readings & Array processing \\
+MIMO channel & $h_{1},\,\ldots,\,h_{n}$ = channel gains & Wireless communications \\
+Noise vector & $N_{1},\,\ldots,\,N_{n}$ = noise samples & Signal processing \\
 State vector & Position, velocity, acceleration & Kalman filtering \\
 Feature vector & Extracted measurements & Pattern recognition \\
 \end{longtable}
@@ -96,7 +99,7 @@ Feature vector & Extracted measurements & Pattern recognition \\
 \begin{itemize}
 \tightlist
 \item
-  E[AX + b] = AE[X] + b = A\ensuremath{\mu} + b
+  $E[AX + b]$ = AE[X] $+ b = A\mu + b$
 \item
   Linearity extends to vectors and matrices
 \end{itemize}
@@ -107,7 +110,7 @@ Feature vector & Extracted measurements & Pattern recognition \\
 
 \PSdisplay{\boldsymbol{\Sigma} = E[(\mathbf{X} - \boldsymbol{\mu})(\mathbf{X} - \boldsymbol{\mu})^T]}
 
-Element (i,j): \ensuremath{\Sigma}\textsubscript{ij} = Cov(X\textsubscript{i}, X\textsubscript{j})
+Element $(i,\,j)$: $\Sigma_{ij} = \operatorname{Cov}(X_{i},\, X_{j})$
 
 \PSdisplay{\boldsymbol{\Sigma} = \begin{bmatrix} \sigma_1^2 & \text{Cov}(X_1,X_2) & \cdots & \text{Cov}(X_1,X_n) \\ \text{Cov}(X_2,X_1) & \sigma_2^2 & \cdots & \text{Cov}(X_2,X_n) \\ \vdots & & \ddots & \vdots \\ \text{Cov}(X_n,X_1) & \cdots & \cdots & \sigma_n^2 \end{bmatrix}}
 
@@ -119,15 +122,15 @@ Element (i,j): \ensuremath{\Sigma}\textsubscript{ij} = Cov(X\textsubscript{i}, X
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Symmetric:} \ensuremath{\Sigma} = \ensuremath{\Sigma}\textsuperscript{T}
+  \textbf{Symmetric:} $\Sigma = \Sigma^{T}$
 \item
-  \textbf{Positive semi-definite:} v\textsuperscript{T}\ensuremath{\Sigma}v \ensuremath{\ge} 0 for all v
+  \textbf{Positive semi-definite:} $v^{T}\Sigma v \ge 0$ for all $v$
 \item
-  \textbf{Diagonal = variances:} \ensuremath{\Sigma}\textsubscript{ii} = Var(X\textsubscript{i})
+  \textbf{Diagonal = variances:} $\Sigma_{ii} = \operatorname{Var}(X_{i})$
 \item
-  \textbf{Off-diagonal = covariances:} \ensuremath{\Sigma}\textsubscript{ij} = Cov(X\textsubscript{i}, X\textsubscript{j})
+  \textbf{Off-diagonal = covariances:} $\Sigma_{ij} = \operatorname{Cov}(X_{i},\, X_{j})$
 \item
-  \textbf{Independent components \ensuremath{\to} diagonal \ensuremath{\Sigma}}
+  \textbf{Independent components \ensuremath{\to} diagonal $\Sigma$}
 \end{enumerate}
 
 \PSsubsection{Alternative Formula}
@@ -138,11 +141,11 @@ Element (i,j): \ensuremath{\Sigma}\textsubscript{ij} = Cov(X\textsubscript{i}, X
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-X \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\Sigma}) has PDF:
+$X \sim N(\mu,\, \Sigma)$ has PDF:
 
 \PSdisplay{f_\mathbf{X}(\mathbf{x}) = \frac{1}{(2\pi)^{n/2}|\boldsymbol{\Sigma}|^{1/2}} \exp\left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1}(\mathbf{x}-\boldsymbol{\mu})\right)}
 
-where \textbar{}\ensuremath{\Sigma}\textbar{} = determinant of \ensuremath{\Sigma}.
+where $\lvert \Sigma\rvert$ = determinant of $\Sigma$.
 
 \end{PSbox}
 
@@ -154,13 +157,13 @@ where \textbar{}\ensuremath{\Sigma}\textbar{} = determinant of \ensuremath{\Sigm
 \item
   \textbf{Marginals are Gaussian:} Any subset of components is jointly Gaussian
 \item
-  \textbf{Conditionals are Gaussian:} X\textsubscript{1}\textbar{}X\textsubscript{2}=x\textsubscript{2} is Gaussian
+  \textbf{Conditionals are Gaussian:} $X_{1} \mid X_{2} = x_{2}$ is Gaussian
 \item
-  \textbf{Linear transformations:} Y = AX + b \textasciitilde{} N(A\ensuremath{\mu}+b, A\ensuremath{\Sigma}A\textsuperscript{T})
+  \textbf{Linear transformations:} $Y$ = AX $+ b \sim N(A\mu +b,\, A\Sigma A^{T})$
 \item
   \textbf{Uncorrelated = Independent} (unique to Gaussian!)
 \item
-  \textbf{Fully specified} by \ensuremath{\mu} and \ensuremath{\Sigma} (only 2 parameters needed per variable plus correlations)
+  \textbf{Fully specified} by $\mu$ and $\Sigma$ (only 2 parameters needed per variable plus correlations)
 \end{enumerate}
 
 \PSsubsection{Why So Important?}
@@ -177,43 +180,43 @@ where \textbar{}\ensuremath{\Sigma}\textbar{} = determinant of \ensuremath{\Sigm
   Optimal filters (Kalman, Wiener) assume Gaussian
 \end{itemize}
 
-\PSsubsection{2D Case (Bivariate Gaussian)}
+\PSsubsection{$2D$ Case (Bivariate Gaussian)}
 
-For n=2 with \ensuremath{\mu} = [0,0]\textsuperscript{T}, \ensuremath{\sigma}\textsubscript{1} = \ensuremath{\sigma}\textsubscript{2} = 1:
+For $n = 2$ with $\mu = [0,\,0]^{T},\, \sigma_{1} = \sigma_{2} = 1$:
 
 \PSdisplay{f(x,y) = \frac{1}{2\pi\sqrt{1-\rho^2}} \exp\left(-\frac{x^2 - 2\rho xy + y^2}{2(1-\rho^2)}\right)}
 
-Contours are \textbf{ellipses} (tilted when \ensuremath{\rho} \ensuremath{\neq} 0).
+Contours are \textbf{ellipses} (tilted when $\rho \ne 0$).
 
 \PSsection{10.7}{Linear Transformations of Random Vectors}
 
-\PSsubsection{Transformation Y = AX + b}
+\PSsubsection{Transformation $Y$ = AX $+ b$}
 
-If X is a random vector with mean \ensuremath{\mu}\textsubscript{X} and covariance \ensuremath{\Sigma}\textsubscript{X}:
+If $X$ is a random vector with mean $\mu_{X}$ and covariance $\Sigma_{X}$:
 
 \PSdisplay{E[\mathbf{Y}] = A\boldsymbol{\mu}_X + \mathbf{b}}\PSdisplay{\boldsymbol{\Sigma}_Y = A\boldsymbol{\Sigma}_X A^T}
 
 \PSsubsection{Engineering Applications}
 
-\textbf{Beamforming:} Output y = w\textsuperscript{T}X (weight vector applied to sensor array)
+\textbf{Beamforming:} Output $y = w^{T}X$ (weight vector applied to sensor array)
 
 \begin{itemize}
 \tightlist
 \item
-  E[y] = w\textsuperscript{T}\ensuremath{\mu}
+  $E[y] = w^{T}\mu$
 \item
-  Var(y) = w\textsuperscript{T}\ensuremath{\Sigma}w
+  $\operatorname{Var}(y) = w^{T}\Sigma w$
 \end{itemize}
 
-\textbf{Whitening:} Find matrix W such that W\ensuremath{\Sigma}W\textsuperscript{T} = I (decorrelates data)
+\textbf{Whitening:} Find matrix $W$ such that $W\Sigma W^{T}$ = I (decorrelates data)
 
 \begin{itemize}
 \tightlist
 \item
-  W = \ensuremath{\Sigma}\textsuperscript{-1/2}
+  $W = \Sigma^{-1/2}$
 \end{itemize}
 
-\textbf{Principal Component Analysis:} Rotate to diagonalize \ensuremath{\Sigma}
+\textbf{Principal Component Analysis:} Rotate to diagonalize $\Sigma$
 
 \PSsection{10.8}{MATLAB Examples}
 
@@ -318,13 +321,13 @@ If X is a random vector with mean \ensuremath{\mu}\textsubscript{X} and covarian
 
 \begin{PSbox}[unbreakable]{prob}{Problem 1}
 
-Random vector X = [X\textsubscript{1}, X\textsubscript{2}, X\textsubscript{3}]\textsuperscript{T} with \ensuremath{\mu} = [1, 0, -1]\textsuperscript{T}, and covariance matrix \ensuremath{\Sigma} = [4 1 0; 1 2 -1; 0 -1 3].
+Random vector $X = [X_{1},\, X_{2},\, X_{3}]^{T}$ with $\mu = [1,\, 0,\, -1]^{T}$, and covariance matrix $\Sigma = \begin{bmatrix} 4 & 1 & 0 \\ 1 & 2 & -1 \\ 0 & -1 & 3 \end{bmatrix}$.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Find Var(X\textsubscript{1} + X\textsubscript{2} + X\textsubscript{3}). (b) Find Cov(X\textsubscript{1}, X\textsubscript{2}+X\textsubscript{3}). (c) Are X\textsubscript{1} and X\textsubscript{3} uncorrelated?
+  Find $\operatorname{Var}(X_{1} + X_{2} + X_{3})$. (b) Find $\operatorname{Cov}(X_{1},\, X_{2}+X_{3})$. (c) Are $X_{1}$ and $X_{3}$ uncorrelated?
 \end{enumerate}
 
 \PSsolution{} 
@@ -333,28 +336,28 @@ Random vector X = [X\textsubscript{1}, X\textsubscript{2}, X\textsubscript{3}]\t
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Var(X\textsubscript{1}+X\textsubscript{2}+X\textsubscript{3}) = 1\textsuperscript{T}\ensuremath{\Sigma}1 = 4+2+3 + 2(1) + 2(0) + 2(-1) = 9 + 0 = 9\PSbr{}Wait: = \ensuremath{\Sigma}\textsubscript{ij} all entries = 4+1+0+1+2+(-1)+0+(-1)+3 = 9
+  $\operatorname{Var}(X_{1}+X_{2}+X_{3}) = 1^{T}\Sigma 1 = 4+2+3 + 2(1) + 2(0) + 2(-1) = 9 + 0 = 9$\PSbr{}Wait: $= \sum_{ij}$ all entries $= 4+1+0+1+2+(-1)+0+(-1)+3 = 9$
 \item
-  Cov(X\textsubscript{1}, X\textsubscript{2}+X\textsubscript{3}) = Cov(X\textsubscript{1},X\textsubscript{2}) + Cov(X\textsubscript{1},X\textsubscript{3}) = 1 + 0 = 1
+  $\operatorname{Cov}(X_{1},\, X_{2}+X_{3}) = \operatorname{Cov}(X_{1},\,X_{2}) + \operatorname{Cov}(X_{1},\,X_{3}) = 1 + 0 = 1$
 \item
-  Cov(X\textsubscript{1},X\textsubscript{3}) = 0, so yes, X\textsubscript{1} and X\textsubscript{3} are uncorrelated.
+  $\operatorname{Cov}(X_{1},\,X_{3}) = 0$, so yes, $X_{1}$ and $X_{3}$ are uncorrelated.
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 2}
 
-X \textasciitilde{} N(0, \ensuremath{\Sigma}) with \ensuremath{\Sigma} = [1 \ensuremath{\rho}; \ensuremath{\rho} 1]. Find the conditional distribution of X\textsubscript{1}\textbar{}X\textsubscript{2}=x\textsubscript{2}.
+$X \sim N(0,\, \Sigma)$ with $\Sigma = \begin{bmatrix} 1 & \rho \\ \rho & 1 \end{bmatrix}$. Find the conditional distribution of $X_{1} \mid X_{2} = x_{2}$.
 
-\PSsolution{} For bivariate Gaussian:\PSbr{}X\textsubscript{1}\textbar{}X\textsubscript{2}=x\textsubscript{2} \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1} + \ensuremath{\rho}(\ensuremath{\sigma}\textsubscript{1}/\ensuremath{\sigma}\textsubscript{2})(x\textsubscript{2}-\ensuremath{\mu}\textsubscript{2}), \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}(1-\ensuremath{\rho}\textsuperscript{2}))\PSbr{}= N(\ensuremath{\rho}x\textsubscript{2}, 1-\ensuremath{\rho}\textsuperscript{2})
+\PSsolution{} For bivariate Gaussian:\PSbr{}$\displaystyle X_{1} \mid X_{2} = x_{2} \sim N\left(\mu_{1} + \rho \left(\frac{\sigma_{1}}{\sigma_{2}}\right)(x_{2}-\mu_{2}),\, \sigma_{1}^{2}(1-\rho^{2})\right)$\PSbr{}$= N(\rho x_{2},\, 1-\rho^{2})$
 
-The conditional mean is a linear function of x\textsubscript{2}, and conditional variance is reduced by factor (1-\ensuremath{\rho}\textsuperscript{2}).
+The conditional mean is a linear function of $x_{2}$, and conditional variance is reduced by factor $(1-\rho^{2})$.
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 3}
 
-Write MATLAB code to generate a 3D Gaussian vector with given \ensuremath{\mu} and \ensuremath{\Sigma}, compute the sample covariance, and verify.
+Write MATLAB code to generate a $3D$ Gaussian vector with given $\mu$ and $\Sigma$, compute the sample covariance, and verify.
 
 \PSsolution{} 
 

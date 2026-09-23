@@ -28,23 +28,23 @@ Understanding the **joint behavior** tells us things marginals cannot — like c
 
 ### Definition
 
-For discrete RVs X, Y:
+For discrete RVs $X,\, Y$:
 $$p_{X,Y}(x,y) = P(X = x, Y = y)$$
 
 ### Properties
-1. p_{X,Y}(x,y) ≥ 0
-2. Σ_x Σ_y p_{X,Y}(x,y) = 1
+1. $p_{X,Y}(x,\,y) \ge 0$
+2. $\sum_{x} \Sigma_{y} p_{X,Y}(x,\,y) = 1$
 
 ### Visualization: Probability Table
 
-**Example:** X = number of retransmissions (0,1,2), Y = acknowledgment delay category (1=fast, 2=slow)
+**Example:** $X$ = number of retransmissions $(0,\,1,\,2),\, Y$ = acknowledgment delay category $(1 = \text{fast},\, 2 = \text{slow})$
 
-| | Y=1 | Y=2 | p_X(x) |
+| | $Y = 1$ | $Y = 2$ | $p_{X}(x)$ |
 |---|---|---|---|
-| X=0 | 0.30 | 0.10 | 0.40 |
-| X=1 | 0.15 | 0.20 | 0.35 |
-| X=2 | 0.05 | 0.20 | 0.25 |
-| p_Y(y) | 0.50 | 0.50 | 1.00 |
+| $X = 0$ | 0.30 | 0.10 | 0.40 |
+| $X = 1$ | 0.15 | 0.20 | 0.35 |
+| $X = 2$ | 0.05 | 0.20 | 0.25 |
+| $p_{Y}(y)$ | 0.50 | 0.50 | 1.00 |
 
 ---
 
@@ -52,20 +52,20 @@ $$p_{X,Y}(x,y) = P(X = x, Y = y)$$
 
 ### Definition
 
-For continuous RVs X, Y, the joint PDF f_{X,Y}(x,y) satisfies:
+For continuous RVs $X,\, Y$, the joint PDF $f_{X,Y}(x,\,y)$ satisfies:
 $$P((X,Y) \in A) = \iint_A f_{X,Y}(x,y) \, dx \, dy$$
 
 ### Properties
-1. f_{X,Y}(x,y) ≥ 0
-2. ∫∫ f_{X,Y}(x,y) dx dy = 1
+1. $f_{X,Y}(x,\,y) \ge 0$
+2. $\int \int f_{X,Y}(x,\,y)\,dx\,dy = 1$
 
 ### Visualization
 
-The joint PDF is a **surface** over the (x,y) plane. Probability = volume under surface over a region.
+The joint PDF is a **surface** over the $(x,\,y)$ plane. Probability = volume under surface over a region.
 
 ### Engineering Example: Bivariate Gaussian
 
-Two correlated noise voltages (X, Y) with correlation ρ:
+Two correlated noise voltages $(X,\, Y)$ with correlation $\rho$:
 
 $$f_{X,Y}(x,y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}} \exp\left(-\frac{1}{2(1-\rho^2)}\left[\frac{x^2}{\sigma_X^2} - \frac{2\rho xy}{\sigma_X\sigma_Y} + \frac{y^2}{\sigma_Y^2}\right]\right)$$
 
@@ -78,10 +78,10 @@ $$f_{X,Y}(x,y) = \frac{1}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}} \exp\left(-\frac{
 $$F_{X,Y}(x,y) = P(X \leq x, Y \leq y)$$
 
 ### Properties
-1. F_{X,Y}(-∞, y) = 0, F_{X,Y}(x, -∞) = 0
-2. F_{X,Y}(∞, ∞) = 1
+1. $F_{X,Y}(-\infty,\, y) = 0,\, F_{X,Y}(x,\, -\infty) = 0$
+2. $F_{X,Y}(\infty,\, \infty) = 1$
 3. Non-decreasing in both arguments
-4. f_{X,Y}(x,y) = ∂²F_{X,Y}/(∂x ∂y)
+4. $f_{X,Y}(x,\,y) = \frac{\partial^{2}F_{X,Y}}{\partial x \partial y}$
 
 ---
 
@@ -97,15 +97,15 @@ $$f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) \, dy, \quad f_Y(y) = \int_{-\in
 
 ### Visual Interpretation
 
-The marginal PDF f_X(x) is the **projection** (integral) of the joint surface onto the x-axis. Similarly f_Y(y) projects onto the y-axis.
+The marginal PDF $f_{X}(x)$ is the **projection** (integral) of the joint surface onto the x-axis. Similarly $f_{Y}(y)$ projects onto the y-axis.
 
 ### Engineering Example
 
-Joint PDF: f_{X,Y}(x,y) = 2e^(-x)e^(-2y), x ≥ 0, y ≥ 0
+Joint PDF: $f_{X,Y}(x,\,y) = 2e^{-x}e^{-2y},\, x \ge 0,\, y \ge 0$
 
 Marginals:
-- f_X(x) = ∫₀^∞ 2e^(-x)e^(-2y) dy = 2e^(-x) · [1/2] = e^(-x) → X ~ Exp(1)
-- f_Y(y) = ∫₀^∞ 2e^(-x)e^(-2y) dx = 2e^(-2y) · [1] = 2e^(-2y) → Y ~ Exp(2)
+- $f_{X}(x) = \int_{0}^{\infty} 2e^{-x}e^{-2y}\,dy = 2e^{-x} \cdot \left[\frac{1}{2}\right] = e^{-x} \to X \sim \mathrm{Exp}(1)$
+- $f_{Y}(y) = \int_{0}^{\infty} 2e^{-x}e^{-2y}\,dx = 2e^{-2y} \cdot [1] = 2e^{-2y} \to Y \sim \mathrm{Exp}(2)$
 
 ---
 
@@ -121,14 +121,14 @@ $$f_{X|Y}(x|y) = \frac{f_{X,Y}(x,y)}{f_Y(y)}$$
 
 ### Interpretation
 
-The conditional distribution describes X when we **know** Y = y. It's a "slice" of the joint distribution at a fixed y value, renormalized to integrate to 1.
+The conditional distribution describes $X$ when we **know** $Y = y$. It's a "slice" of the joint distribution at a fixed $y$ value, renormalized to integrate to 1.
 
 ### Engineering Example: Signal Given Channel State
 
-Received power Y given channel state X:
-- If channel is good (X=1): Y ~ N(10, 1)
-- If channel is poor (X=0): Y ~ N(2, 4)
-- P(X=1) = 0.7, P(X=0) = 0.3
+Received power $Y$ given channel state $X$:
+- If channel is good $(X = 1)$: $Y \sim N(10,\, 1)$
+- If channel is poor $(X = 0)$: $Y \sim N(2,\, 4)$
+- $P(X = 1) = 0.7,\, P(X = 0) = 0.3$
 
 Conditional PDFs describe receiver behavior in each state.
 
@@ -138,26 +138,26 @@ Conditional PDFs describe receiver behavior in each state.
 
 ### Definition
 
-X and Y are independent if and only if:
+$X$ and $Y$ are independent if and only if:
 
 $$f_{X,Y}(x,y) = f_X(x) \cdot f_Y(y) \quad \text{for all } x, y$$
 
-(Or equivalently for PMFs: p_{X,Y}(x,y) = p_X(x)·p_Y(y))
+(Or equivalently for PMFs: $p_{X,Y}(x,\,y) = p_{X}(x) \cdot p_{Y}(y)$)
 
 ### Consequences of Independence
-- f_{X|Y}(x|y) = f_X(x) (knowing Y doesn't change X)
-- E[XY] = E[X]E[Y]
-- Var(X + Y) = Var(X) + Var(Y)
+- $f_{X \mid Y}(x \mid y) = f_{X}(x)$ (knowing $Y$ doesn't change $X$)
+- $E[XY] = E[X]E[Y]$
+- $\operatorname{Var}(X + Y) = \operatorname{Var}(X) + \operatorname{Var}(Y)$
 
 ### Testing Independence
-Check: Does the joint factor into a product of a function of x alone and y alone?
-- f_{X,Y}(x,y) = 2e^(-x)·e^(-2y) = [e^(-x)]·[2e^(-2y)] ✓ Independent!
-- f_{X,Y}(x,y) = x + y for 0≤x,y≤1 → cannot factor → NOT independent
+Check: Does the joint factor into a product of a function of $x$ alone and $y$ alone?
+- $f_{X,Y}(x,\,y) = 2e^{-x} \cdot e^{-2y} = [e^{-x}] \cdot [2e^{-2y}]$ ✓ Independent!
+- $f_{X,Y}(x,\,y) = x + y$ for $0 \le x,\,y \le 1$ → cannot factor → NOT independent
 
 ### Engineering Example: Signal and Independent Noise
 
-Transmitted signal S and channel noise N are independent by physical assumption:
-f_{S,N}(s,n) = f_S(s)·f_N(n)
+Transmitted signal $S$ and channel noise $N$ are independent by physical assumption:
+$f_{S,N}(s,\,n) = f_{S}(s) \cdot f_{N}(n)$
 
 This independence assumption is fundamental to communication system design.
 
@@ -171,13 +171,13 @@ $$E[X|Y=y] = \begin{cases} \sum_x x \cdot p_{X|Y}(x|y) & \text{discrete} \\ \int
 
 ### Interpretation
 
-E[X|Y=y] is the **best prediction** of X given that we observed Y = y (in the mean-square sense).
+$E[X \mid Y = y]$ is the **best prediction** of $X$ given that we observed $Y = y$ (in the mean-square sense).
 
 ### Engineering Example: Temperature-Dependent Resistance
 
-A resistor's value R depends on temperature T. If R|T ~ N(1000 + 0.5T, 4):
+A resistor's value $R$ depends on temperature $T$. If $R \mid T \sim N(1000 + 0.5T,\, 4)$:
 
-E[R|T=50°C] = 1000 + 0.5(50) = 1025Ω
+$E[R \mid T = 50^{\circ}C] = 1000 + 0.5(50) = 1025\,\Omega$
 
 Given temperature, we can predict resistance.
 
@@ -276,27 +276,27 @@ legend('Empirical', sprintf('N(%.1f, %.2f)', rho, 1-rho^2));
 ## 6.10 Practice Problems
 
 ### Problem 1
-Joint PDF: f_{X,Y}(x,y) = 6(1-y) for 0 ≤ x ≤ y ≤ 1, zero elsewhere.
-(a) Verify normalization. (b) Find marginals. (c) Are X,Y independent? (d) Find P(X < 0.5, Y < 0.5).
+Joint PDF: $f_{X,Y}(x,\,y) = 6(1-y)$ for $0 \le x \le y \le 1$, zero elsewhere.
+(a) Verify normalization. (b) Find marginals. (c) Are X,Y independent? (d) Find $P(X < 0.5,\, Y < 0.5)$.
 
 **Solution:**
-(a) ∫₀¹ ∫₀ʸ 6(1-y) dx dy = ∫₀¹ 6y(1-y) dy = 6[y²/2 - y³/3]₀¹ = 6(1/2 - 1/3) = 1 ✓
-(b) f_X(x) = ∫ₓ¹ 6(1-y) dy = 6[(1-y²/2) - (y)]ₓ¹ = 3(1-x)²; f_Y(y) = 6y(1-y)
-(c) f_{X,Y} ≠ f_X · f_Y → NOT independent (also, the support is triangular, not rectangular)
-(d) P(X<0.5, Y<0.5) = ∫₀^0.5 ∫₀^y 6(1-y) dx dy = ∫₀^0.5 6y(1-y) dy = 6[y²/2 - y³/3]₀^0.5 = 0.500
+(a) $\int_{0}^{1} \int_{0}^{y} 6(1-y)\,dx\,dy = \int_{0}^{1} 6y(1-y)\,dy = 6\left[\frac{y^{2}}{2} - \frac{y^{3}}{3}\right]_{0}^{1} = 6\left(\frac{1}{2} - \frac{1}{3}\right) = 1$ ✓
+(b) $f_{X}(x) = \int_{x}^{1} 6(1-y)\,dy = 6\left[\left(1-\frac{y^{2}}{2}\right) - (y)\right]_{x}^{1} = 3(1-x)^{2}$; $f_{Y}(y) = 6y(1-y)$
+(c) $f_{X,Y} \ne f_{X} \cdot f_{Y}$ → NOT independent (also, the support is triangular, not rectangular)
+(d) $P(X < 0.5,\, Y < 0.5) = \int_{0}^{0.5} \int_{0}^{y} 6(1-y)\,dx\,dy = \int_{0}^{0.5} 6y(1-y)\,dy = 6\left[\frac{y^{2}}{2} - \frac{y^{3}}{3}\right]_{0}^{0.5} = 0.500$
 
 ### Problem 2
-Two sensors measure the same signal with independent noise. X = S + N₁, Y = S + N₂ where S=5V, N₁~N(0,1), N₂~N(0,4). Are X and Y independent? Find E[X], E[Y], and explain why Cov(X,Y) ≠ 0.
+Two sensors measure the same signal with independent noise. $X = S + N_{1},\, Y = S + N_{2}$ where $S = 5\,\mathrm{V},\, N_{1} \sim N(0,\,1),\, N_{2} \sim N(0,\,4)$. Are $X$ and $Y$ independent? Find $E[X],\, E[Y]$, and explain why $\operatorname{Cov}(X,\,Y) \ne 0$.
 
-**Solution:** X and Y are NOT independent because they share S (though noise is independent). E[X] = E[Y] = 5. Cov(X,Y) = Cov(S+N₁, S+N₂) = Var(S) + Cov(S,N₁) + Cov(N₂,S) + Cov(N₁,N₂). Since S is constant, Var(S)=0, so if S were random they'd be correlated. With S fixed, X and Y are actually independent in this case. If S is random with Var(S) = σ_S², then Cov(X,Y) = σ_S².
+**Solution:** $X$ and $Y$ are NOT independent because they share $S$ (though noise is independent). $E[X] = E[Y] = 5$. $\operatorname{Cov}(X,\,Y) = \operatorname{Cov}(S+N_{1},\, S+N_{2}) = \operatorname{Var}(S) + \operatorname{Cov}(S,\,N_{1}) + \operatorname{Cov}(N_{2},\,S) + \operatorname{Cov}(N_{1},\,N_{2})$. Since $S$ is constant, $\operatorname{Var}(S) = 0$, so if $S$ were random they'd be correlated. With $S$ fixed, $X$ and $Y$ are actually independent in this case. If $S$ is random with $\operatorname{Var}(S) = \sigma_{S}^{2}$, then $\operatorname{Cov}(X,\,Y) = \sigma_{S}^{2}$.
 
 ### Problem 3
-Given joint PMF in the table of Section 6.2, find (a) P(X≤1, Y=2), (b) f_{X|Y}(x|Y=1), (c) E[X|Y=1].
+Given joint PMF in the table of Section 6.2, find (a) $P(X \le 1,\, Y = 2)$, (b) $f_{X \mid Y}(x \mid Y = 1)$, (c) $E[X \mid Y = 1]$.
 
 **Solution:**
-(a) P(X≤1, Y=2) = p(0,2) + p(1,2) = 0.10 + 0.20 = 0.30
-(b) p_{X|Y}(x|1) = p(x,1)/p_Y(1): p(0|1)=0.30/0.50=0.60, p(1|1)=0.15/0.50=0.30, p(2|1)=0.05/0.50=0.10
-(c) E[X|Y=1] = 0(0.60) + 1(0.30) + 2(0.10) = 0.50
+(a) $P(X \le 1,\, Y = 2) = p(0,\,2) + p(1,\,2) = 0.10 + 0.20 = 0.30$
+(b) $p_{X \mid Y}(x \mid 1) = \frac{p(x,\,1)}{p_{Y}(1)}$: $p(0 \mid 1) = \frac{0.30}{0.50} = 0.60,\, p(1 \mid 1) = \frac{0.15}{0.50} = 0.30,\, p(2 \mid 1) = \frac{0.05}{0.50} = 0.10$
+(c) $E[X \mid Y = 1] = 0(0.60) + 1(0.30) + 2(0.10) = 0.50$
 
 ---
 

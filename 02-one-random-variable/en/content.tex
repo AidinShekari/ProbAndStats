@@ -49,11 +49,11 @@ A \textbf{random variable} maps outcomes of a random experiment to real numbers,
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Noise in a circuit & X = noise voltage (volts) \\
-Bit errors in a frame & N = number of bit errors \\
-Component lifetime & T = time until failure (hours) \\
-Signal amplitude & A = received amplitude (V) \\
-Packet delay & D = end-to-end delay (ms) \\
+Noise in a circuit & $X$ = noise voltage (volts) \\
+Bit errors in a frame & $N$ = number of bit errors \\
+Component lifetime & $T$ = time until failure (hours) \\
+Signal amplitude & A = received amplitude $(V)$ \\
+Packet delay & $D$ = end-to-end delay $(ms)$ \\
 \end{longtable}
 }
 
@@ -61,41 +61,41 @@ Packet delay & D = end-to-end delay (ms) \\
 
 \PSsubsection{Formal Definition}
 
-A \textbf{random variable} X is a function that maps each outcome \ensuremath{\omega} in the sample space S to a real number:
+A \textbf{random variable} $X$ is a function that maps each outcome $\omega$ in the sample space $S$ to a real number:
 
 \PSdisplay{X: S \rightarrow \mathbb{R}}\PSdisplay{\omega \mapsto X(\omega)}
 
 \PSsubsection{Interpretation}
 
-The random variable assigns a numerical value to each possible outcome of the experiment. The randomness comes from which outcome \ensuremath{\omega} occurs — once \ensuremath{\omega} is determined, X(\ensuremath{\omega}) is a definite number.
+The random variable assigns a numerical value to each possible outcome of the experiment. The randomness comes from which outcome $\omega$ occurs — once $\omega$ is determined, $X(\omega)$ is a definite number.
 
 \PSsubsection{Engineering Example}
 
-\textbf{Experiment:} Transmit 5 bits over a noisy channel.\PSbr{}\textbf{Sample space:} S = all possible sequences of correct/error for 5 bits (2\textsuperscript{5} = 32 outcomes)\PSbr{}\textbf{Random variable:} X = number of bit errors
+\textbf{Experiment:} Transmit 5 bits over a noisy channel.\PSbr{}\textbf{Sample space:} $S$ = all possible sequences of correct/error for 5 bits ($2^{5} = 32$ outcomes)\PSbr{}\textbf{Random variable:} $X$ = number of bit errors
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{Outcome \ensuremath{\omega}} & \PSth{X(\ensuremath{\omega})} \\
+\rowcolor{PSnavy}\PSth{Outcome $\omega$} & \PSth{$X(\omega)$} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-(C,C,C,C,C) & 0 \\
-(E,C,C,C,C) & 1 \\
-(E,E,C,C,C) & 2 \\
+$(C,\,C,\,C,\,C,\,C)$ & 0 \\
+$(E,\,C,\,C,\,C,\,C)$ & 1 \\
+$(E,\,E,\,C,\,C,\,C)$ & 2 \\
 … & … \\
-(E,E,E,E,E) & 5 \\
+$(E,\,E,\,E,\,E,\,E)$ & 5 \\
 \end{longtable}
 }
 
-Now instead of working with 32 outcomes, we work with a single number X \ensuremath{\in} \{0,1,2,3,4,5\}.
+Now instead of working with 32 outcomes, we work with a single number $X \in \{0,\,1,\,2,\,3,\,4,\,5\}$.
 
 \PSsection{2.3}{Discrete Random Variables}
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-A random variable X is \textbf{discrete} if it takes values from a \textbf{countable} set (finite or countably infinite).
+A random variable $X$ is \textbf{discrete} if it takes values from a \textbf{countable} set (finite or countably infinite).
 
 \end{PSbox}
 
@@ -104,7 +104,7 @@ A random variable X is \textbf{discrete} if it takes values from a \textbf{count
 \begin{itemize}
 \tightlist
 \item
-  Values can be listed: \{x\textsubscript{1}, x\textsubscript{2}, x\textsubscript{3}, …\}
+  Values can be listed: $\{x_{1},\, x_{2},\, x_{3},\, \ldots \}$
 \item
   Each value has a specific probability (a ``mass'' of probability)
 \item
@@ -114,18 +114,21 @@ A random variable X is \textbf{discrete} if it takes values from a \textbf{count
 \PSsubsection{Engineering Examples}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[c]{@{}ccc@{}}
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3810}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.4048}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.2143}}@{}}
 \toprule\noalign{}
 \rowcolor{PSnavy}\PSth{Random Variable} & \PSth{Possible Values} & \PSth{Context} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Number of bit errors & \{0, 1, 2, …, n\} & Packet transmission \\
+Number of bit errors & $\{0,\, 1,\, 2,\, \ldots,\, n\}$ & Packet transmission \\
 Number of retransmissions & \{0, 1, 2, …\} & ARQ protocol \\
-Quantized voltage level & \{0, 1, …, 2\textsuperscript{N}-1\} & N-bit ADC output \\
+Quantized voltage level & $\{0,\, 1,\, \ldots,\, 2^{N}-1\}$ & N-bit ADC output \\
 Number of arrivals per second & \{0, 1, 2, …\} & Network traffic \\
-Number of defective chips & \{0, 1, …, n\} & Wafer testing \\
+Number of defective chips & $\{0,\, 1,\, \ldots,\, n\}$ & Wafer testing \\
 \end{longtable}
 }
 
@@ -133,7 +136,7 @@ Number of defective chips & \{0, 1, …, n\} & Wafer testing \\
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-A random variable X is \textbf{continuous} if it takes values from an \textbf{uncountable} set (interval of real numbers).
+A random variable $X$ is \textbf{continuous} if it takes values from an \textbf{uncountable} set (interval of real numbers).
 
 \end{PSbox}
 
@@ -142,40 +145,43 @@ A random variable X is \textbf{continuous} if it takes values from an \textbf{un
 \begin{itemize}
 \tightlist
 \item
-  X can take any value in a range (e.g., [0, \ensuremath{\infty}) or (-\ensuremath{\infty}, \ensuremath{\infty}))
+  $X$ can take any value in a range (e.g., $[0,\, \infty)$ or $(-\infty,\, \infty)$)
 \item
-  Probability of any single exact value is ZERO: P(X = x) = 0
+  Probability of any single exact value is ZERO: $P(X = x) = 0$
 \item
-  Probabilities are defined for intervals: P(a \ensuremath{\le} X \ensuremath{\le} b)
+  Probabilities are defined for intervals: $P(a \le X \le b)$
 \end{itemize}
 
 \PSsubsection{Engineering Examples}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[c]{@{}ccc@{}}
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.5000}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.2188}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.2812}}@{}}
 \toprule\noalign{}
 \rowcolor{PSnavy}\PSth{Random Variable} & \PSth{Range} & \PSth{Context} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Thermal noise voltage & (-\ensuremath{\infty}, \ensuremath{\infty}) & Circuit noise \\
-Time until failure & [0, \ensuremath{\infty}) & Reliability \\
-Phase of received signal & [0, 2\ensuremath{\pi}) & Communications \\
-Resistor value & (R\textsubscript{0} - \ensuremath{\delta}, R\textsubscript{0} + \ensuremath{\delta}) & Manufacturing \\
-Channel gain & [0, \ensuremath{\infty}) & Wireless fading \\
+Thermal noise voltage & $(-\infty,\, \infty)$ & Circuit noise \\
+Time until failure & $[0,\, \infty)$ & Reliability \\
+Phase of received signal & $[0,\, 2\pi)$ & Communications \\
+Resistor value & $(R_{0} - \delta,\, R_{0} + \delta)$ & Manufacturing \\
+Channel gain & $[0,\, \infty)$ & Wireless fading \\
 \end{longtable}
 }
 
-\PSsubsection{Why P(X = x) = 0 for Continuous RVs}
+\PSsubsection{Why $P(X = x) = 0$ for Continuous RVs}
 
-Imagine measuring a voltage. The probability that V = exactly 3.14159265… volts (infinite precision) is zero. We can only ask about intervals: P(3.14 \textless{} V \textless{} 3.15).
+Imagine measuring a voltage. The probability that $V$ = exactly 3.14159265… volts (infinite precision) is zero. We can only ask about intervals: $P(3.14 < V < 3.15)$.
 
 \PSsection{2.5}{Probability Mass Function (PMF)}
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-For a discrete random variable X, the \textbf{probability mass function} is:
+For a discrete random variable $X$, the \textbf{probability mass function} is:
 
 \PSdisplay{p_X(x) = P(X = x)}
 
@@ -187,11 +193,11 @@ For a discrete random variable X, the \textbf{probability mass function} is:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Non-negativity:} p\textsubscript{X}(x) \ensuremath{\ge} 0 for all x
+  \textbf{Non-negativity:} $p_{X}(x) \ge 0$ for all $x$
 \item
-  \textbf{Normalization:} \ensuremath{\Sigma} p\textsubscript{X}(x\textsubscript{i}) = 1 (sum over all possible values)
+  \textbf{Normalization:} $\sum p_{X}(x_{i}) = 1$ (sum over all possible values)
 \item
-  \textbf{Probability computation:} P(X \ensuremath{\in} A) = \ensuremath{\Sigma}\textsubscript{x\ensuremath{\in}A} p\textsubscript{X}(x)
+  \textbf{Probability computation:} $P(X \in A) = \sum_{x \in A} p_{X}(x)$
 \end{enumerate}
 
 \PSsubsection{Visualization}
@@ -202,14 +208,14 @@ The PMF is represented as \textbf{vertical lines} (impulses) at each possible va
 
 \PSsubsection{Engineering Example: Bit Errors in a Byte}
 
-Transmit 8 bits, each with independent error probability p = 0.1.\PSbr{}X = number of bit errors.
+Transmit 8 bits, each with independent error probability $p = 0.1$.\PSbr{}$X$ = number of bit errors.
 
-p\textsubscript{X}(k) = C(8,k) \ensuremath{\cdot} (0.1)\textsuperscript{k} \ensuremath{\cdot} (0.9)\textsuperscript{8-k}, for k = 0, 1, …, 8
+$p_{X}(k) = C(8,\,k) \cdot (0.1)^{k} \cdot (0.9)^{8-k}$, for $k = 0,\, 1,\, \ldots,\, 8$
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{k} & \PSth{p\textsubscript{X}(k)} \\
+\rowcolor{PSnavy}\PSth{$k$} & \PSth{$p_{X}(k)$} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -227,7 +233,7 @@ p\textsubscript{X}(k) = C(8,k) \ensuremath{\cdot} (0.1)\textsuperscript{k} \ensu
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-For a continuous random variable X, the \textbf{probability density function} f\textsubscript{X}(x) is defined such that:
+For a continuous random variable $X$, the \textbf{probability density function} $f_{X}(x)$ is defined such that:
 
 \PSdisplay{P(a \leq X \leq b) = \int_a^b f_X(x) \, dx}
 
@@ -239,18 +245,18 @@ For a continuous random variable X, the \textbf{probability density function} f\
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Non-negativity:} f\textsubscript{X}(x) \ensuremath{\ge} 0 for all x
+  \textbf{Non-negativity:} $f_{X}(x) \ge 0$ for all $x$
 \item
-  \textbf{Normalization:} \ensuremath{\int}\textsubscript{-\ensuremath{\infty}}\textsuperscript{\ensuremath{\infty}} f\textsubscript{X}(x) dx = 1
+  \textbf{Normalization:} $\int_{-\infty}^{\infty} f_{X}(x)\,dx = 1$
 \item
   \textbf{Probability = Area under curve} between two points
 \end{enumerate}
 
-\PSsubsection{Critical Point: f\textsubscript{X}(x) is NOT a Probability!}
+\PSsubsection{Critical Point: $f_{X}(x)$ is NOT a Probability!}
 
 \begin{PSquote}
 
-\PSwarn{} f\textsubscript{X}(x) can be GREATER than 1!
+\PSwarn{} $f_{X}(x)$ can be GREATER than 1!
 
 \end{PSquote}
 
@@ -268,9 +274,9 @@ Thermal noise voltage in a circuit often follows a Gaussian distribution:
 
 \PSdisplay{f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-x^2/(2\sigma^2)}}
 
-where \ensuremath{\sigma} is the RMS noise voltage.
+where $\sigma$ is the RMS noise voltage.
 
-P(noise exceeds 2\ensuremath{\sigma}) = P(\textbar{}X\textbar{} \textgreater{} 2\ensuremath{\sigma}) = 1 - P(-2\ensuremath{\sigma} \ensuremath{\le} X \ensuremath{\le} 2\ensuremath{\sigma}) \ensuremath{\approx} 1 - 0.9545 = 0.0455
+$P(\text{noise exceeds 2}\sigma) = P(\lvert X\rvert > 2\sigma) = 1 - P(-2\sigma \le X \le 2\sigma) \approx 1 - 0.9545 = 0.0455$
 
 \end{PSbox}
 
@@ -278,7 +284,7 @@ P(noise exceeds 2\ensuremath{\sigma}) = P(\textbar{}X\textbar{} \textgreater{} 2
 
 \begin{PSbox}[unbreakable]{def}{Definition}
 
-For any random variable X (discrete or continuous), the \textbf{cumulative distribution function} is:
+For any random variable $X$ (discrete or continuous), the \textbf{cumulative distribution function} is:
 
 \PSdisplay{F_X(x) = P(X \leq x)}
 
@@ -290,13 +296,13 @@ For any random variable X (discrete or continuous), the \textbf{cumulative distr
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Non-decreasing:} if a \textless{} b, then F\textsubscript{X}(a) \ensuremath{\le} F\textsubscript{X}(b)
+  \textbf{Non-decreasing:} if $a < b$, then $F_{X}(a) \le F_{X}(b)$
 \item
-  \textbf{Limits:} F\textsubscript{X}(-\ensuremath{\infty}) = 0, F\textsubscript{X}(+\ensuremath{\infty}) = 1
+  \textbf{Limits:} $F_{X}(-\infty) = 0,\, F_{X}(+\infty) = 1$
 \item
-  \textbf{Right-continuous:} F\textsubscript{X}(x) is continuous from the right
+  \textbf{Right-continuous:} $F_{X}(x)$ is continuous from the right
 \item
-  \textbf{Probability of interval:} P(a \textless{} X \ensuremath{\le} b) = F\textsubscript{X}(b) - F\textsubscript{X}(a)
+  \textbf{Probability of interval:} $P(a < X \le b) = F_{X}(b) - F_{X}(a)$
 \end{enumerate}
 
 \PSsubsection{CDF for Discrete RVs}
@@ -305,7 +311,7 @@ The CDF is a \textbf{staircase function} with jumps at each possible value:
 
 \PSfigure{m02-cdf-discrete}
 
-Jump at x = k has height p\textsubscript{X}(k).
+Jump at $x = k$ has height $p_{X}(k)$.
 
 \PSsubsection{CDF for Continuous RVs}
 
@@ -317,7 +323,7 @@ And conversely:\PSdisplay{f_X(x) = \frac{dF_X(x)}{dx}}
 
 \PSfigure{m02-cdf-continuous}
 
-\PSsubsection{Relationship: PDF \ensuremath{\leftrightarrow} CDF}
+\PSsubsection{Relationship: $\mathrm{PDF}$ \ensuremath{\leftrightarrow} CDF}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}
@@ -330,8 +336,8 @@ And conversely:\PSdisplay{f_X(x) = \frac{dF_X(x)}{dx}}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-PDF \ensuremath{\to} CDF & F\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{-\ensuremath{\infty}}\textsuperscript{x} f\textsubscript{X}(t)dt & Integrate density to get cumulative probability \\
-CDF \ensuremath{\to} PDF & f\textsubscript{X}(x) = dF\textsubscript{X}/dx & Differentiate CDF to get density \\
+$\mathrm{PDF}$ \ensuremath{\to} CDF & $F_{X}(x) = \int_{-\infty}^{x} f_{X}(t)dt$ & Integrate density to get cumulative probability \\
+$\mathrm{CDF}$ \ensuremath{\to} PDF & $f_{X}(x) = \frac{dF_{X}}{dx}$ & Differentiate CDF to get density \\
 \end{longtable}
 }
 
@@ -348,16 +354,16 @@ This is one of the most important conceptual distinctions in probability theory.
   >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.2558}}
   >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.2558}}@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{Property} & \PSth{PMF p\textsubscript{X}(x)} & \PSth{PDF f\textsubscript{X}(x)} & \PSth{CDF F\textsubscript{X}(x)} \\
+\rowcolor{PSnavy}\PSth{Property} & \PSth{PMF $p_{X}(x)$} & \PSth{PDF $f_{X}(x)$} & \PSth{CDF $F_{X}(x)$} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 \textbf{Applies to} & Discrete RVs only & Continuous RVs only & Both \\
-\textbf{Gives directly} & P(X = x) & Probability density at x & P(X \ensuremath{\le} x) \\
-\textbf{Range of values} & [0, 1] & [0, \ensuremath{\infty}) — can exceed 1! & [0, 1] \\
-\textbf{Sum/Integral} & \ensuremath{\Sigma} p\textsubscript{X}(x) = 1 & \ensuremath{\int} f\textsubscript{X}(x)dx = 1 & Starts at 0, ends at 1 \\
-\textbf{Get probability} & P(X=x) = p\textsubscript{X}(x) & P(a\ensuremath{\le}X\ensuremath{\le}b) = \ensuremath{\int} f\textsubscript{X}(x)dx & P(a\textless{}X\ensuremath{\le}b) = F(b)-F(a) \\
+\textbf{Gives directly} & $P(X = x)$ & Probability density at $x$ & $P(X \le x)$ \\
+\textbf{Range of values} & [0, 1] & $[0,\, \infty)$ — can exceed 1! & [0, 1] \\
+\textbf{Sum/Integral} & $\sum p_{X}(x) = 1$ & $\int f_{X}(x)dx = 1$ & Starts at 0, ends at 1 \\
+\textbf{Get probability} & $P(X = x) = p_{X}(x)$ & $P(a \le X \le b) = \int f_{X}(x)dx$ & $P(a < X \le b) = F(b)-F(a)$ \\
 \end{longtable}
 }
 
@@ -377,16 +383,16 @@ Imagine probability as ``material'' distributed across possible values:
 
 \PSsubsection{Why This Matters in Engineering}
 
-\textbf{Example:} A noise voltage X has PDF f\textsubscript{X}(x) = 2 for x \ensuremath{\in} [0, 0.5].
+\textbf{Example:} A noise voltage $X$ has PDF $f_{X}(x) = 2$ for $x \in [0,\, 0.5]$.
 
 \begin{itemize}
 \tightlist
 \item
-  f\textsubscript{X}(0.3) = 2 — this is NOT a probability! It means the density is 2 V\textsuperscript{-1}.
+  $f_{X}(0.3) = 2$ — this is NOT a probability! It means the density is $2\,\mathrm{V}^{-1}$.
 \item
-  P(0.2 \ensuremath{\le} X \ensuremath{\le} 0.4) = \ensuremath{\int}\textsubscript{0.2}\textsuperscript{0.4} 2 dx = 2 \ensuremath{\times} 0.2 = 0.4 — THIS is a probability.
+  $P(0.2 \le X \le 0.4) = \int_{0.2}^{0.4} 2\,dx = 2 \times 0.2 = 0.4$ — THIS is a probability.
 \item
-  P(X = 0.3) = 0 — a single point has zero probability for continuous RVs.
+  $P(X = 0.3) = 0$ — a single point has zero probability for continuous RVs.
 \end{itemize}
 
 \PSsubsection{Common Errors to Avoid}
@@ -401,9 +407,9 @@ Imagine probability as ``material'' distributed across possible values:
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-``The probability at x=2 is f(2)'' & ``The probability density at x=2 is f(2)'' \\
-``f(x) must be \ensuremath{\le} 1'' & ``f(x) can be any non-negative value'' \\
-``P(X=3) = f(3) for continuous X'' & ``P(X=3) = 0 for continuous X'' \\
+``The probability at $x = 2$ is $f(2)$'' & ``The probability density at $x = 2$ is $f(2)$'' \\
+``$f(x)$ must be \ensuremath{\le} 1'' & ``$f(x)$ can be any non-negative value'' \\
+``$P(X = 3) = f(3)$ for continuous $X$'' & ``$P(X = 3) = 0$ for continuous $X$'' \\
 ``PMF and PDF are the same thing'' & ``PMF gives mass; PDF gives density'' \\
 \end{longtable}
 }
@@ -417,33 +423,33 @@ In engineering, we often know the distribution of one quantity but need the dist
 \begin{itemize}
 \tightlist
 \item
-  Know voltage V \ensuremath{\to} need power P = V\textsuperscript{2}/R
+  Know voltage $V$ \ensuremath{\to} need power $P = \frac{V^{2}}{R}$
 \item
-  Know linear signal X \ensuremath{\to} need dB value Y = 10\ensuremath{\cdot}log\textsubscript{10}(X)
+  Know linear signal $X$ \ensuremath{\to} need dB value $Y = 10 \cdot \log_{10}(X)$
 \item
-  Know noise N \ensuremath{\to} need \textbar{}N\textbar{} (rectified noise)
+  Know noise $N$ \ensuremath{\to} need $\lvert N\rvert$ (rectified noise)
 \end{itemize}
 
 \begin{PSbox}[unbreakable]{prob}{Problem Statement}
 
-Given: X with known PDF f\textsubscript{X}(x) or PMF p\textsubscript{X}(x)\PSbr{}Find: The distribution of Y = g(X)
+Given: $X$ with known PDF $f_{X}(x)$ or PMF $p_{X}(x)$\PSbr{}Find: The distribution of $Y = g(X)$
 
 \end{PSbox}
 
 \PSsubsection{Case 1: Discrete RV Transformation}
 
-If X is discrete with PMF p\textsubscript{X}(x), and Y = g(X):
+If $X$ is discrete with PMF $p_{X}(x)$, and $Y = g(X)$:
 
 \PSdisplay{p_Y(y) = \sum_{x: g(x)=y} p_X(x)}
 
-Sum the probabilities of all x values that map to the same y.
+Sum the probabilities of all $x$ values that map to the same $y$.
 
-\textbf{Example:} X \ensuremath{\in} \{-2, -1, 0, 1, 2\} with equal probability 0.2 each.\PSbr{}Y = X\textsuperscript{2}
+\textbf{Example:} $X \in \{-2,\, -1,\, 0,\, 1,\, 2\}$ with equal probability 0.2 each.\PSbr{}$Y = X^{2}$
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}ccc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{Y = X\textsuperscript{2}} & \PSth{X values mapping to Y} & \PSth{p\textsubscript{Y}(y)} \\
+\rowcolor{PSnavy}\PSth{$Y = X^{2}$} & \PSth{$X$ values mapping to $Y$} & \PSth{$p_{Y}(y)$} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -456,7 +462,7 @@ Sum the probabilities of all x values that map to the same y.
 
 \PSsubsection{Case 2: Monotonic Transformation (Continuous)}
 
-If Y = g(X) where g is strictly monotonic and differentiable:
+If $Y = g(X)$ where $g$ is strictly monotonic and differentiable:
 
 \PSdisplay{f_Y(y) = f_X(g^{-1}(y)) \cdot \left|\frac{dg^{-1}(y)}{dy}\right|}
 
@@ -468,40 +474,40 @@ Or equivalently:\PSdisplay{f_Y(y) = \frac{f_X(x)}{|g'(x)|}\bigg|_{x=g^{-1}(y)}}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Start with CDF: F\textsubscript{Y}(y) = P(Y \ensuremath{\le} y) = P(g(X) \ensuremath{\le} y)
+  Start with CDF: $F_{Y}(y) = P(Y \le y) = P(g(X) \le y)$
 \item
-  Invert: = P(X \ensuremath{\le} g\textsuperscript{-1}(y)) if g is increasing
+  Invert: $= P(X \le g^{-1}(y))$ if $g$ is increasing
 \item
-  Differentiate: f\textsubscript{Y}(y) = f\textsubscript{X}(g\textsuperscript{-1}(y)) \ensuremath{\cdot} d/dy[g\textsuperscript{-1}(y)]
+  Differentiate: $f_{Y}(y) = f_{X}(g^{-1}(y)) \cdot \frac{d}{dy}[g^{-1}(y)]$
 \end{enumerate}
 
 \PSsubsection{Case 3: Non-Monotonic Transformation}
 
-If g is not monotonic, split the domain into intervals where g IS monotonic:
+If $g$ is not monotonic, split the domain into intervals where $g$ IS monotonic:
 
 \PSdisplay{f_Y(y) = \sum_i \frac{f_X(x_i)}{|g'(x_i)|}}
 
-where x\textsubscript{1}, x\textsubscript{2}, … are all solutions of g(x) = y.
+where $x_{1},\, x_{2}$, … are all solutions of $g(x) = y$.
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Power from Voltage}
 
-A noise voltage X has PDF f\textsubscript{X}(x) (e.g., Gaussian with zero mean).\PSbr{}Power dissipated in a 1\ensuremath{\Omega} resistor: P = X\textsuperscript{2}
+A noise voltage $X$ has PDF $f_{X}(x)$ (e.g., Gaussian with zero mean).\PSbr{}Power dissipated in a 1\ensuremath{\Omega} resistor: $P = X^{2}$
 
-Since Y = X\textsuperscript{2} is NOT monotonic (both +x and -x give the same y):
+Since $Y = X^{2}$ is NOT monotonic (both $+x$ and $-x$ give the same $y$):
 
-For y \textgreater{} 0: x = +\ensuremath{\surd}y and x = -\ensuremath{\surd}y are both solutions.\PSbr{}g(x) = x\textsuperscript{2}, so g’(x) = 2x
+For $y > 0$: $x = +\sqrt{y}$ and $x = -\sqrt{y}$ are both solutions.\PSbr{}$g(x) = x^{2}$, so $g'(x) = 2x$
 
 \PSdisplay{f_Y(y) = \frac{f_X(\sqrt{y})}{2\sqrt{y}} + \frac{f_X(-\sqrt{y})}{2\sqrt{y}}, \quad y > 0}
 
-If X is zero-mean Gaussian: f\textsubscript{X}(x) = f\textsubscript{X}(-x), so:\PSdisplay{f_Y(y) = \frac{f_X(\sqrt{y})}{\sqrt{y}}, \quad y > 0}
+If $X$ is zero-mean Gaussian: $f_{X}(x) = f_{X}(-x)$, so:\PSdisplay{f_Y(y) = \frac{f_X(\sqrt{y})}{\sqrt{y}}, \quad y > 0}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{Engineering Example: Linear Amplification}
 
-Signal Y = aX + b (amplifier with gain a and offset b).\PSbr{}X has PDF f\textsubscript{X}(x).
+Signal $Y$ = aX $+ b$ (amplifier with gain a and offset b).\PSbr{}$X$ has PDF $f_{X}(x)$.
 
-g\textsuperscript{-1}(y) = (y-b)/a, and \textbar{}d/dy[(y-b)/a]\textbar{} = 1/\textbar{}a\textbar{}
+$g^{-1}(y) = \frac{y-b}{a}$, and $\lvert \frac{d}{dy}\left[\frac{y-b}{a}\right]\rvert = \frac{1}{\lvert a\rvert}$
 
 \PSdisplay{f_Y(y) = \frac{1}{|a|} f_X\left(\frac{y-b}{a}\right)}
 
@@ -736,34 +742,34 @@ Classify each as discrete or continuous and state the range:
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Discrete, X \ensuremath{\in} \{0, 1, 2, …\}
+  Discrete, $X \in \{0,\, 1,\, 2,\, \ldots \}$
 \item
-  Continuous, X \ensuremath{\in} (-\ensuremath{\infty}, \ensuremath{\infty}) practically \textasciitilde{} (-120, 0) dBm
+  Continuous, $X \in (-\infty,\, \infty)$ practically $\sim (-120,\, 0)$ dBm
 \item
-  Discrete, X \ensuremath{\in} \{0, 1, 2, …, 12000\}
+  Discrete, $X \in \{0,\, 1,\, 2,\, \ldots,\, 12000\}$
 \item
-  Continuous, T \ensuremath{\in} [0, \ensuremath{\infty})
+  Continuous, $T \in [0,\, \infty)$
 \item
-  Discrete, X \ensuremath{\in} \{0, 1, 2, 3, 4, 5, 6, 7\}
+  Discrete, $X \in \{0,\, 1,\, 2,\, 3,\, 4,\, 5,\, 6,\, 7\}$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 2: PMF Properties}
 
-A random variable X has PMF: p\textsubscript{X}(0) = 0.1, p\textsubscript{X}(1) = 0.3, p\textsubscript{X}(2) = c, p\textsubscript{X}(3) = 0.2.
+A random variable $X$ has PMF: $p_{X}(0) = 0.1,\, p_{X}(1) = 0.3,\, p_{X}(2) = c,\, p_{X}(3) = 0.2$.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Find c.
+  Find $c$.
 \item
-  Find P(X \ensuremath{\ge} 2).
+  Find $P(X \ge 2)$.
 \item
-  Find F\textsubscript{X}(1.5).
+  Find $F_{X}(1.5)$.
 \item
-  Find P(0.5 \textless{} X \ensuremath{\le} 2.5).
+  Find $P(0.5 < X \le 2.5)$.
 \end{enumerate}
 
 \PSsolution{} 
@@ -771,32 +777,32 @@ A random variable X has PMF: p\textsubscript{X}(0) = 0.1, p\textsubscript{X}(1) 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  Sum = 1: 0.1 + 0.3 + c + 0.2 = 1 \ensuremath{\to} c = 0.4
+  Sum = 1: $0.1 + 0.3 + c + 0.2 = 1 \to c = 0.4$
 \item
-  P(X \ensuremath{\ge} 2) = p\textsubscript{X}(2) + p\textsubscript{X}(3) = 0.4 + 0.2 = 0.6
+  $P(X \ge 2) = p_{X}(2) + p_{X}(3) = 0.4 + 0.2 = 0.6$
 \item
-  F\textsubscript{X}(1.5) = P(X \ensuremath{\le} 1.5) = p\textsubscript{X}(0) + p\textsubscript{X}(1) = 0.1 + 0.3 = 0.4
+  $F_{X}(1.5) = P(X \le 1.5) = p_{X}(0) + p_{X}(1) = 0.1 + 0.3 = 0.4$
 \item
-  P(0.5 \textless{} X \ensuremath{\le} 2.5) = p\textsubscript{X}(1) + p\textsubscript{X}(2) = 0.3 + 0.4 = 0.7
+  $P(0.5 < X \le 2.5) = p_{X}(1) + p_{X}(2) = 0.3 + 0.4 = 0.7$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 3: PDF and CDF}
 
-A random variable has PDF:\PSbr{}f\textsubscript{X}(x) = cx for 0 \ensuremath{\le} x \ensuremath{\le} 4, and 0 otherwise.
+A random variable has PDF:\PSbr{}$f_{X}(x)$ = cx for $0 \le x \le 4$, and 0 otherwise.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Find c.
+  Find $c$.
 \item
-  Find the CDF F\textsubscript{X}(x).
+  Find the CDF $F_{X}(x)$.
 \item
-  Find P(1 \ensuremath{\le} X \ensuremath{\le} 3).
+  Find $P(1 \le X \le 3)$.
 \item
-  Find the value x\textsubscript{0} such that P(X \ensuremath{\le} x\textsubscript{0}) = 0.5.
+  Find the value $x_{0}$ such that $P(X \le x_{0}) = 0.5$.
 \end{enumerate}
 
 \PSsolution{} 
@@ -804,30 +810,30 @@ A random variable has PDF:\PSbr{}f\textsubscript{X}(x) = cx for 0 \ensuremath{\l
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  \ensuremath{\int}\textsubscript{0}\textsuperscript{4} cx dx = c\ensuremath{\cdot}[x\textsuperscript{2}/2]\textsubscript{0}\textsuperscript{4} = c\ensuremath{\cdot}8 = 1 \ensuremath{\to} c = 1/8
+  $\int_{0}^{4}$ cx $dx = c \cdot \left[\frac{x^{2}}{2}\right]_{0}^{4} = c \cdot 8 = 1 \to c = \frac{1}{8}$
 \item
-  F\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{0}\textsuperscript{x} (t/8)dt = x\textsuperscript{2}/16, for 0 \ensuremath{\le} x \ensuremath{\le} 4\PSbr{}F\textsubscript{X}(x) = 0 for x \textless{} 0; F\textsubscript{X}(x) = 1 for x \textgreater{} 4
+  $F_{X}(x) = \int_{0}^{x} \frac{t}{8}dt = \frac{x^{2}}{16}$, for $0 \le x \le 4$\PSbr{}$F_{X}(x) = 0$ for $x < 0$; $F_{X}(x) = 1$ for $x > 4$
 \item
-  P(1 \ensuremath{\le} X \ensuremath{\le} 3) = F\textsubscript{X}(3) - F\textsubscript{X}(1) = 9/16 - 1/16 = 8/16 = 0.5
+  $\displaystyle P(1 \le X \le 3) = F_{X}(3) - F_{X}(1) = \frac{9}{16} - \frac{1}{16} = \frac{8}{16} = 0.5$
 \item
-  x\textsubscript{0}\textsuperscript{2}/16 = 0.5 \ensuremath{\to} x\textsubscript{0}\textsuperscript{2} = 8 \ensuremath{\to} x\textsubscript{0} = 2\ensuremath{\surd}2 \ensuremath{\approx} 2.83
+  $\displaystyle \frac{x_{0}^{2}}{16} = 0.5 \to x_{0}^{2} = 8 \to x_{0} = 2\sqrt{2} \approx 2.83$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 4: Transformation}
 
-A sensor measures temperature X uniformly distributed on [20, 30] \ensuremath{^{\circ}}C.\PSbr{}The output voltage is Y = 0.1X - 2 (linear sensor).
+A sensor measures temperature $X$ uniformly distributed on [20, 30] \ensuremath{^{\circ}}C.\PSbr{}The output voltage is $Y = 0.1X - 2$ (linear sensor).
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Find the PDF of Y.
+  Find the PDF of $Y$.
 \item
-  Find the range of Y.
+  Find the range of $Y$.
 \item
-  Find P(Y \textgreater{} 0.5).
+  Find $P(Y > 0.5)$.
 \end{enumerate}
 
 \PSsolution{} 
@@ -835,26 +841,26 @@ A sensor measures temperature X uniformly distributed on [20, 30] \ensuremath{^{
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  X \textasciitilde{} Uniform[20, 30], so f\textsubscript{X}(x) = 1/10 for 20 \ensuremath{\le} x \ensuremath{\le} 30.\PSbr{}Y = 0.1X - 2, so a = 0.1, b = -2.\PSbr{}f\textsubscript{Y}(y) = (1/\textbar{}a\textbar{}) \ensuremath{\cdot} f\textsubscript{X}((y-b)/a) = (1/0.1) \ensuremath{\cdot} (1/10) = 1 for the valid range.
+  $X \sim \mathrm{Uniform}[20,\, 30]$, so $f_{X}(x) = \frac{1}{10}$ for $20 \le x \le 30$.\PSbr{}$Y = 0.1X - 2$, so $a = 0.1,\, b = -2$.\PSbr{}$f_{Y}(y) = \frac{1}{\lvert a\rvert} \cdot f_{X}\left(\frac{y-b}{a}\right) = \frac{1}{0.1} \cdot \frac{1}{10} = 1$ for the valid range.
 \item
-  When X = 20: Y = 0.1(20) - 2 = 0; When X = 30: Y = 0.1(30) - 2 = 1\PSbr{}Range of Y: [0, 1]. So Y \textasciitilde{} Uniform[0, 1].
+  When $X = 20$: $Y = 0.1(20) - 2 = 0$; When $X = 30$: $Y = 0.1(30) - 2 = 1$\PSbr{}Range of $Y$: [0, 1]. So $Y \sim \mathrm{Uniform}[0,\, 1]$.
 \item
-  P(Y \textgreater{} 0.5) = 1 - F\textsubscript{Y}(0.5) = 1 - 0.5 = 0.5
+  $P(Y > 0.5) = 1 - F_{Y}(0.5) = 1 - 0.5 = 0.5$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 5: Non-Monotonic Transformation}
 
-A voltage X \textasciitilde{} Uniform[-1, 1] V. The instantaneous power is Y = X\textsuperscript{2}.
+A voltage $X \sim \mathrm{Uniform}[-1,\, 1] V$. The instantaneous power is $Y = X^{2}$.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Find the CDF of Y.
+  Find the CDF of $Y$.
 \item
-  Find the PDF of Y.
+  Find the PDF of $Y$.
 \item
   Verify using MATLAB simulation.
 \end{enumerate}
@@ -865,18 +871,18 @@ A voltage X \textasciitilde{} Uniform[-1, 1] V. The instantaneous power is Y = X
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  For 0 \ensuremath{\le} y \ensuremath{\le} 1:\PSbr{}F\textsubscript{Y}(y) = P(X\textsuperscript{2} \ensuremath{\le} y) = P(-\ensuremath{\surd}y \ensuremath{\le} X \ensuremath{\le} \ensuremath{\surd}y) = F\textsubscript{X}(\ensuremath{\surd}y) - F\textsubscript{X}(-\ensuremath{\surd}y)
+  For $0 \le y \le 1$:\PSbr{}$F_{Y}(y) = P(X^{2} \le y) = P\left(-\sqrt{y} \le X \le \sqrt{y}\right) = F_{X}\left(\sqrt{y}\right) - F_{X}\left(-\sqrt{y}\right)$
 \end{enumerate}
 
-Since X \textasciitilde{} Uniform[-1,1]: F\textsubscript{X}(x) = (x+1)/2
+Since $X \sim \mathrm{Uniform}[-1,\,1]$: $F_{X}(x) = \frac{x+1}{2}$
 
-F\textsubscript{Y}(y) = (\ensuremath{\surd}y + 1)/2 - (-\ensuremath{\surd}y + 1)/2 = \ensuremath{\surd}y
+$\displaystyle F_{Y}(y) = \frac{\sqrt{y} + 1}{2} - \frac{-\sqrt{y} + 1}{2} = \sqrt{y}$
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \setcounter{enumi}{1}
 \item
-  f\textsubscript{Y}(y) = dF\textsubscript{Y}/dy = 1/(2\ensuremath{\surd}y) for 0 \textless{} y \ensuremath{\le} 1
+  $f_{Y}(y) = \frac{dF_{Y}}{dy} = \frac{1}{2\sqrt{y}}$ for $0 < y \le 1$
 \item
   MATLAB:
 \end{enumerate}
@@ -911,7 +917,7 @@ F\textsubscript{Y}(y) = (\ensuremath{\surd}y + 1)/2 - (-\ensuremath{\surd}y + 1)
 \item
   \textbf{PDF} gives probability density for continuous RVs (area gives probability, not height)
 \item
-  \textbf{CDF} works universally — gives cumulative probability P(X \ensuremath{\le} x)
+  \textbf{CDF} works universally — gives cumulative probability $P(X \le x)$
 \item
   \textbf{Transformations} let us derive distributions of functions of random variables
 \item

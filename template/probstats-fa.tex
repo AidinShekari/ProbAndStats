@@ -11,6 +11,8 @@
 \defpersianfont\PSfaDisplay[Path=\PSroot/fonts/, Extension=.ttf, AutoFakeBold=2.6]{BNazanin}
 
 \linespread{1.22}
+% inline formulas inside right-to-left text: avoid splitting them across lines
+\relpenalty=9999 \binoppenalty=9999
 \newif\ifPSrtl \PSrtltrue
 
 % language strings

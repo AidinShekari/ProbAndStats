@@ -51,11 +51,11 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-نویز در یک مدار & \lr{\mbox{X}} = ولتاژ نویز (ولت) \\
-خطاهای بیت در یک فریم & \lr{\mbox{N}} = تعداد خطاهای بیت \\
-عمر قطعه & \lr{\mbox{T}} = زمان تا خرابی (ساعت) \\
-دامنه سیگنال & \lr{\mbox{A}} = دامنه دریافتی \lr{\mbox{(V)}} \\
-تأخیر بسته & \lr{\mbox{D}} = تأخیر سرتاسری \lr{\mbox{(ms)}} \\
+نویز در یک مدار & \lr{$X$} = ولتاژ نویز (ولت) \\
+خطاهای بیت در یک فریم & \lr{$N$} = تعداد خطاهای بیت \\
+عمر قطعه & \lr{$T$} = زمان تا خرابی (ساعت) \\
+دامنه سیگنال & \lr{$A$} = دامنه دریافتی \lr{$(V)$} \\
+تأخیر بسته & \lr{$D$} = تأخیر سرتاسری \lr{$(ms)$} \\
 \end{longtable}
 }
 
@@ -63,7 +63,7 @@
 
 \begin{PSbox}[unbreakable]{def}{تعریف صوری}
 
-یک \textbf{متغیر تصادفی} \lr{\mbox{X}} تابعی است که هر خروجی \lr{\mbox{\ensuremath{\omega}}} در فضای نمونه \lr{\mbox{S}} را به یک عدد حقیقی نگاشت می‌کند:
+یک \textbf{متغیر تصادفی} \lr{$X$} تابعی است که هر خروجی \lr{$\omega$} در فضای نمونه \lr{$S$} را به یک عدد حقیقی نگاشت می‌کند:
 
 \PSdisplay{X: S \rightarrow \mathbb{R}}\PSdisplay{\omega \mapsto X(\omega)}
 
@@ -71,35 +71,35 @@
 
 \PSsubsection{تفسیر}
 
-متغیر تصادفی به هر خروجی ممکن آزمایش یک مقدار عددی نسبت می‌دهد. تصادفی‌بودن از این ناشی می‌شود که کدام خروجی \lr{\mbox{\ensuremath{\omega}}} رخ می‌دهد \lr{—} به‌محض تعیین \lr{\mbox{\ensuremath{\omega}}}، مقدار \lr{\mbox{X(\ensuremath{\omega})}} یک عدد معیّن است.
+متغیر تصادفی به هر خروجی ممکن آزمایش یک مقدار عددی نسبت می‌دهد. تصادفی‌بودن از این ناشی می‌شود که کدام خروجی \lr{$\omega$} رخ می‌دهد \lr{—} به‌محض تعیین \lr{$\omega$}، مقدار \lr{$X(\omega)$} یک عدد معیّن است.
 
 \PSsubsection{مثال مهندسی}
 
-\textbf{آزمایش:} ارسال 5 بیت روی یک کانال نویزی.\PSbr{}\textbf{فضای نمونه:} \lr{\mbox{S}} = تمام دنباله‌های ممکن درست/خطا برای 5 بیت (\lr{\mbox{2\textsuperscript{5} = 32}} خروجی)\PSbr{}\textbf{متغیر تصادفی:} \lr{\mbox{X}} = تعداد خطاهای بیت
+\textbf{آزمایش:} ارسال 5 بیت روی یک کانال نویزی.\PSbr{}\textbf{فضای نمونه:} \lr{$S$} = تمام دنباله‌های ممکن درست/خطا برای 5 بیت (\lr{$2^{5} = 32$} خروجی)\PSbr{}\textbf{متغیر تصادفی:} \lr{$X$} = تعداد خطاهای بیت
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{خروجی \lr{\mbox{\ensuremath{\omega}}}} & \PSth{\lr{\mbox{X(\ensuremath{\omega})}}} \\
+\rowcolor{PSnavy}\PSth{خروجی \lr{$\omega$}} & \PSth{\lr{$X(\omega)$}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{\mbox{(C,C,C,C,C)}} & 0 \\
-\lr{\mbox{(E,C,C,C,C)}} & 1 \\
-\lr{\mbox{(E,E,C,C,C)}} & 2 \\
+\lr{$(C,\,C,\,C,\,C,\,C)$} & 0 \\
+\lr{$(E,\,C,\,C,\,C,\,C)$} & 1 \\
+\lr{$(E,\,E,\,C,\,C,\,C)$} & 2 \\
 \lr{\mbox{…}} & \lr{\mbox{…}} \\
-\lr{\mbox{(E,E,E,E,E)}} & 5 \\
+\lr{$(E,\,E,\,E,\,E,\,E)$} & 5 \\
 \end{longtable}
 }
 
-حالا به‌جای کار با 32 خروجی، با یک عدد منفرد \lr{\mbox{X \ensuremath{\in} \{0,1,2,3,4,5\}}} کار می‌کنیم.
+حالا به‌جای کار با 32 خروجی، با یک عدد منفرد \lr{$X \in \{0,\,1,\,2,\,3,\,4,\,5\}$} کار می‌کنیم.
 
 \PSsection{2.3}{متغیرهای تصادفی گسسته}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-متغیر تصادفی \lr{\mbox{X}} \textbf{گسسته} است اگر مقادیر خود را از یک مجموعه \textbf{شمارا} (متناهی یا شمارای نامتناهی) بگیرد.
+متغیر تصادفی \lr{$X$} \textbf{گسسته} است اگر مقادیر خود را از یک مجموعه \textbf{شمارا} (متناهی یا شمارای نامتناهی) بگیرد.
 
 \end{PSbox}
 
@@ -108,7 +108,7 @@
 \begin{itemize}
 \tightlist
 \item
-  مقادیر را می‌توان فهرست کرد: \lr{\{x\textsubscript{1}, x\textsubscript{2}, x\textsubscript{3}, …\}}
+  مقادیر را می‌توان فهرست کرد: \lr{$\{x_{1},\, x_{2},\, x_{3},\, \ldots \}$}
 \item
   هر مقدار یک احتمال مشخص دارد (یک «جرم» از احتمال)
 \item
@@ -128,11 +128,11 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-تعداد خطاهای بیت & \lr{\mbox{\{0, 1, 2, …, n\}}} & انتقال بسته \\
+تعداد خطاهای بیت & \lr{$\{0,\, 1,\, 2,\, \ldots,\, n\}$} & انتقال بسته \\
 تعداد ارسال‌های مجدد & \lr{\mbox{\{0, 1, 2, …\}}} & پروتکل \lr{\mbox{ARQ}} \\
-سطح ولتاژ کوانتیزه‌شده & \lr{\mbox{\{0, 1, …, 2\textsuperscript{N}-1\}}} & خروجی مبدل آنالوگ به دیجیتال \lr{\mbox{N}}-بیتی \\
+سطح ولتاژ کوانتیزه‌شده & \lr{$\{0,\, 1,\, \ldots,\, 2^{N}-1\}$} & خروجی مبدل آنالوگ به دیجیتال \lr{\mbox{N}}-بیتی \\
 تعداد ورودها در هر ثانیه & \lr{\mbox{\{0, 1, 2, …\}}} & ترافیک شبکه \\
-تعداد تراشه‌های معیوب & \lr{\mbox{\{0, 1, …, n\}}} & آزمون ویفر \\
+تعداد تراشه‌های معیوب & \lr{$\{0,\, 1,\, \ldots,\, n\}$} & آزمون ویفر \\
 \end{longtable}
 }
 
@@ -140,7 +140,7 @@
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-متغیر تصادفی \lr{\mbox{X}} \textbf{پیوسته} است اگر مقادیر خود را از یک مجموعه \textbf{ناشمارا} (بازه‌ای از اعداد حقیقی) بگیرد.
+متغیر تصادفی \lr{$X$} \textbf{پیوسته} است اگر مقادیر خود را از یک مجموعه \textbf{ناشمارا} (بازه‌ای از اعداد حقیقی) بگیرد.
 
 \end{PSbox}
 
@@ -149,11 +149,11 @@
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{X}} می‌تواند هر مقدار در یک محدوده را اختیار کند (مثلاً \lr{\mbox{[0, \ensuremath{\infty})}} یا \lr{\mbox{(-\ensuremath{\infty}, \ensuremath{\infty})}})
+  \lr{$X$} می‌تواند هر مقدار در یک محدوده را اختیار کند (مثلاً \lr{$[0,\, \infty)$} یا \lr{$(-\infty,\, \infty)$})
 \item
-  احتمال هر مقدار دقیق منفرد صفر است: \lr{\mbox{P(X = x) = 0}}
+  احتمال هر مقدار دقیق منفرد صفر است: \lr{$P(X = x) = 0$}
 \item
-  احتمال‌ها برای بازه‌ها تعریف می‌شوند: \lr{\mbox{P(a \ensuremath{\le} X \ensuremath{\le} b)}}
+  احتمال‌ها برای بازه‌ها تعریف می‌شوند: \lr{$P(a \le X \le b)$}
 \end{itemize}
 
 \PSsubsection{مثال‌های مهندسی}
@@ -166,23 +166,23 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-ولتاژ نویز حرارتی & \lr{\mbox{(-\ensuremath{\infty}, \ensuremath{\infty})}} & نویز مدار \\
-زمان تا خرابی & \lr{\mbox{[0, \ensuremath{\infty})}} & قابلیت اطمینان \\
-فاز سیگنال دریافتی & \lr{\mbox{[0, 2\ensuremath{\pi})}} & مخابرات \\
-مقدار مقاومت & \lr{(R\textsubscript{0} - \ensuremath{\delta}, R\textsubscript{0} + \ensuremath{\delta})} & ساخت و تولید \\
-بهره کانال & \lr{\mbox{[0, \ensuremath{\infty})}} & محوشدگی بی‌سیم \\
+ولتاژ نویز حرارتی & \lr{$(-\infty,\, \infty)$} & نویز مدار \\
+زمان تا خرابی & \lr{$[0,\, \infty)$} & قابلیت اطمینان \\
+فاز سیگنال دریافتی & \lr{$[0,\, 2\pi)$} & مخابرات \\
+مقدار مقاومت & \lr{$(R_{0} - \delta,\, R_{0} + \delta)$} & ساخت و تولید \\
+بهره کانال & \lr{$[0,\, \infty)$} & محوشدگی بی‌سیم \\
 \end{longtable}
 }
 
-\PSsubsection{چرا برای متغیرهای تصادفی پیوسته \lr{\mbox{P(X = x) = 0}} است}
+\PSsubsection{چرا برای متغیرهای تصادفی پیوسته \lr{$P(X = x) = 0$} است}
 
-تصور کنید یک ولتاژ را اندازه‌گیری می‌کنید. احتمال این‌که \lr{\mbox{V}} دقیقاً \lr{\mbox{3.14159265}}\lr{…} ولت باشد (با دقت نامتناهی) صفر است. تنها می‌توانیم درباره بازه‌ها بپرسیم: \lr{\mbox{P(3.14 \textless{} V \textless{} 3.15)}}.
+تصور کنید یک ولتاژ را اندازه‌گیری می‌کنید. احتمال این‌که \lr{$V$} دقیقاً \lr{\mbox{3.14159265}}\lr{…} ولت باشد (با دقت نامتناهی) صفر است. تنها می‌توانیم درباره بازه‌ها بپرسیم: \lr{$P(3.14 < V < 3.15)$}.
 
 \PSsection{2.5}{تابع جرم احتمال \lr{\mbox{(PMF)}}}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-برای یک متغیر تصادفی گسسته \lr{\mbox{X}}، \textbf{تابع جرم احتمال} عبارت است از:
+برای یک متغیر تصادفی گسسته \lr{$X$}، \textbf{تابع جرم احتمال} عبارت است از:
 
 \PSdisplay{p_X(x) = P(X = x)}
 
@@ -194,11 +194,11 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{نامنفی بودن:} \lr{\mbox{p\textsubscript{X}(x) \ensuremath{\ge} 0}} برای تمام \lr{\mbox{x}}
+  \textbf{نامنفی بودن:} \lr{$p_{X}(x) \ge 0$} برای تمام \lr{$x$}
 \item
-  \textbf{نرمال‌سازی:} \lr{\ensuremath{\Sigma} p\textsubscript{X}(x\textsubscript{i}) = 1} (جمع روی تمام مقادیر ممکن)
+  \textbf{نرمال‌سازی:} \lr{$\sum p_{X}(x_{i}) = 1$} (جمع روی تمام مقادیر ممکن)
 \item
-  \textbf{محاسبه احتمال:} \lr{P(X \ensuremath{\in} A) = \ensuremath{\Sigma}\textsubscript{x\ensuremath{\in}A} p\textsubscript{X}(x)}
+  \textbf{محاسبه احتمال:} \lr{$P(X \in A) = \sum_{x \in A} p_{X}(x)$}
 \end{enumerate}
 
 \PSsubsection{مصورسازی}
@@ -209,14 +209,14 @@
 
 \PSsubsection{مثال مهندسی: خطاهای بیت در یک بایت}
 
-8 بیت ارسال می‌شود که هر بیت احتمال خطای مستقل \lr{\mbox{p = 0.1}} دارد.\PSbr{}\lr{\mbox{X}} = تعداد خطاهای بیت.
+8 بیت ارسال می‌شود که هر بیت احتمال خطای مستقل \lr{$p = 0.1$} دارد.\PSbr{}\lr{$X$} = تعداد خطاهای بیت.
 
-\lr{p\textsubscript{X}(k) = C(8,k) \ensuremath{\cdot} (0.1)\textsuperscript{k} \ensuremath{\cdot} (0.9)\textsuperscript{8-k}}، \lr{\mbox{for k = 0}}، 1، \lr{…}، 8
+\lr{$p_{X}(k) = C(8,\,k) \cdot (0.1)^{k} \cdot (0.9)^{8-k}$, for $k = 0,\, 1,\, \ldots,\, 8$}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{\lr{\mbox{k}}} & \PSth{\lr{\mbox{p\textsubscript{X}(k)}}} \\
+\rowcolor{PSnavy}\PSth{\lr{$k$}} & \PSth{\lr{$p_{X}(k)$}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -234,7 +234,7 @@
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-برای یک متغیر تصادفی پیوسته \lr{\mbox{X}}، \textbf{تابع چگالی احتمال} \lr{\mbox{f\textsubscript{X}(x)}} به‌گونه‌ای تعریف می‌شود که:
+برای یک متغیر تصادفی پیوسته \lr{$X$}، \textbf{تابع چگالی احتمال} \lr{$f_{X}(x)$} به‌گونه‌ای تعریف می‌شود که:
 
 \PSdisplay{P(a \leq X \leq b) = \int_a^b f_X(x) \, dx}
 
@@ -246,18 +246,18 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{نامنفی بودن:} \lr{\mbox{f\textsubscript{X}(x) \ensuremath{\ge} 0}} برای تمام \lr{\mbox{x}}
+  \textbf{نامنفی بودن:} \lr{$f_{X}(x) \ge 0$} برای تمام \lr{$x$}
 \item
-  \textbf{نرمال‌سازی:} \lr{\ensuremath{\int}\textsubscript{-\ensuremath{\infty}}\textsuperscript{\ensuremath{\infty}} f\textsubscript{X}(x) dx = 1}
+  \textbf{نرمال‌سازی:} \lr{$\int_{-\infty}^{\infty} f_{X}(x)\,dx = 1$}
 \item
   \textbf{احتمال = مساحت زیر منحنی} میان دو نقطه
 \end{enumerate}
 
-\PSsubsection{نکته حیاتی: \lr{\mbox{f\textsubscript{X}(x)}} یک احتمال نیست!}
+\PSsubsection{نکته حیاتی: \lr{$f_{X}(x)$} یک احتمال نیست!}
 
 \begin{PSquote}
 
-\lr{\mbox{\PSwarn{} f\textsubscript{X}(x)}} می‌تواند بزرگ‌تر از 1 باشد!
+\lr{\mbox{\PSwarn{} $f_{X}(x)$}} می‌تواند بزرگ‌تر از 1 باشد!
 
 \end{PSquote}
 
@@ -275,9 +275,9 @@
 
 \PSdisplay{f_X(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-x^2/(2\sigma^2)}}
 
-که در آن \lr{\mbox{\ensuremath{\sigma}}} ولتاژ مؤثر \lr{\mbox{(RMS)}} نویز است.
+که در آن \lr{$\sigma$} ولتاژ مؤثر \lr{\mbox{(RMS)}} نویز است.
 
-\lr{P(noise exceeds 2\ensuremath{\sigma}) = P(\textbar{}X\textbar{} \textgreater{} 2\ensuremath{\sigma}) = 1 - P(-2\ensuremath{\sigma} \ensuremath{\le} X \ensuremath{\le} 2\ensuremath{\sigma}) \ensuremath{\approx} 1 - 0.9545 = 0.0455}
+\lr{$P(\PSmtext{noise exceeds 2}\sigma) = P(\lvert X\rvert > 2\sigma) = 1 - P(-2\sigma \le X \le 2\sigma) \approx 1 - 0.9545 = 0.0455$}
 
 \end{PSbox}
 
@@ -285,7 +285,7 @@
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-برای هر متغیر تصادفی \lr{\mbox{X}} (گسسته یا پیوسته)، \textbf{تابع توزیع تجمعی} عبارت است از:
+برای هر متغیر تصادفی \lr{$X$} (گسسته یا پیوسته)، \textbf{تابع توزیع تجمعی} عبارت است از:
 
 \PSdisplay{F_X(x) = P(X \leq x)}
 
@@ -297,13 +297,13 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{نامنزولی:} اگر \lr{\mbox{a \textless{} b}}، آنگاه \lr{F\textsubscript{X}(a) \ensuremath{\le} F\textsubscript{X}(b)}
+  \textbf{نامنزولی:} اگر \lr{$a < b$}، آنگاه \lr{$F_{X}(a) \le F_{X}(b)$}
 \item
-  \textbf{حدود:} \lr{\mbox{F\textsubscript{X}(-\ensuremath{\infty}) = 0}}، \lr{\mbox{F\textsubscript{X}(+\ensuremath{\infty}) = 1}}
+  \textbf{حدود:} \lr{$F_{X}(-\infty) = 0$}، \lr{$F_{X}(+\infty) = 1$}
 \item
-  \textbf{پیوستگی از راست:} \lr{\mbox{F\textsubscript{X}(x)}} از سمت راست پیوسته است
+  \textbf{پیوستگی از راست:} \lr{$F_{X}(x)$} از سمت راست پیوسته است
 \item
-  \textbf{احتمال یک بازه:} \lr{P(a \textless{} X \ensuremath{\le} b) = F\textsubscript{X}(b) - F\textsubscript{X}(a)}
+  \textbf{احتمال یک بازه:} \lr{$P(a < X \le b) = F_{X}(b) - F_{X}(a)$}
 \end{enumerate}
 
 \PSsubsection{\lr{\mbox{CDF}} برای متغیرهای تصادفی گسسته}
@@ -312,7 +312,7 @@
 
 \PSfigure{m02-cdf-discrete}
 
-جهش در \lr{\mbox{x = k}} دارای ارتفاع \lr{\mbox{p\textsubscript{X}(k)}} است.
+جهش در \lr{$x = k$} دارای ارتفاع \lr{$p_{X}(k)$} است.
 
 \PSsubsection{\lr{\mbox{CDF}} برای متغیرهای تصادفی پیوسته}
 
@@ -324,7 +324,7 @@
 
 \PSfigure{m02-cdf-continuous}
 
-\PSsubsection{رابطه: \lr{\mbox{PDF \ensuremath{\leftrightarrow} CDF}}}
+\PSsubsection{رابطه: \lr{\mbox{$\mathrm{PDF}$ \ensuremath{\leftrightarrow} CDF}}}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}
@@ -337,8 +337,8 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{\mbox{PDF \ensuremath{\to} CDF}} & \lr{F\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{-\ensuremath{\infty}}\textsuperscript{x} f\textsubscript{X}(t)dt} & انتگرال‌گیری از چگالی برای به‌دست‌آوردن احتمال تجمعی \\
-\lr{\mbox{CDF \ensuremath{\to} PDF}} & \lr{\mbox{f\textsubscript{X}(x) = dF\textsubscript{X}/dx}} & مشتق‌گیری از \lr{\mbox{CDF}} برای به‌دست‌آوردن چگالی \\
+\lr{\mbox{$\mathrm{PDF}$ \ensuremath{\to} CDF}} & \lr{$F_{X}(x) = \int_{-\infty}^{x} f_{X}(t)dt$} & انتگرال‌گیری از چگالی برای به‌دست‌آوردن احتمال تجمعی \\
+\lr{\mbox{$\mathrm{CDF}$ \ensuremath{\to} PDF}} & \lr{$f_{X}(x) = \frac{dF_{X}}{dx}$} & مشتق‌گیری از \lr{\mbox{CDF}} برای به‌دست‌آوردن چگالی \\
 \end{longtable}
 }
 
@@ -355,16 +355,16 @@
   >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.2558}}
   >{\centering\arraybackslash}p{(0.965\linewidth - 6\tabcolsep) * \real{0.2558}}@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{ویژگی} & \PSth{\lr{\mbox{PMF p\textsubscript{X}(x)}}} & \PSth{\lr{\mbox{PDF f\textsubscript{X}(x)}}} & \PSth{\lr{\mbox{CDF F\textsubscript{X}(x)}}} \\
+\rowcolor{PSnavy}\PSth{ویژگی} & \PSth{\lr{\mbox{PMF $p_{X}(x)$}}} & \PSth{\lr{\mbox{PDF $f_{X}(x)$}}} & \PSth{\lr{\mbox{CDF $F_{X}(x)$}}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 \textbf{برای} & فقط متغیرهای تصادفی گسسته & فقط متغیرهای تصادفی پیوسته & هر دو \\
-\textbf{مستقیماً می‌دهد} & \lr{\mbox{P(X = x)}} & چگالی احتمال در \lr{\mbox{x}} & \lr{\mbox{P(X \ensuremath{\le} x)}} \\
-\textbf{دامنه مقادیر} & \lr{\mbox{[0, 1]}} & \lr{\mbox{[0, \ensuremath{\infty})}} \lr{—} می‌تواند از 1 فراتر رود! & \lr{\mbox{[0, 1]}} \\
-\textbf{جمع/انتگرال} & \lr{\mbox{\ensuremath{\Sigma} p\textsubscript{X}(x) = 1}} & \lr{\mbox{\ensuremath{\int} f\textsubscript{X}(x)dx = 1}} & از 0 شروع و به 1 ختم می‌شود \\
-\textbf{به‌دست‌آوردن احتمال} & \lr{\mbox{P(X=x) = p\textsubscript{X}(x)}} & \lr{P(a\ensuremath{\le}X\ensuremath{\le}b) = \ensuremath{\int} f\textsubscript{X}(x)dx} & \lr{\mbox{P(a\textless{}X\ensuremath{\le}b) = F(b)-F(a)}} \\
+\textbf{مستقیماً می‌دهد} & \lr{$P(X = x)$} & چگالی احتمال در \lr{$x$} & \lr{$P(X \le x)$} \\
+\textbf{دامنه مقادیر} & \lr{\mbox{[0, 1]}} & \lr{$[0,\, \infty)$} \lr{—} می‌تواند از 1 فراتر رود! & \lr{\mbox{[0, 1]}} \\
+\textbf{جمع/انتگرال} & \lr{$\sum p_{X}(x) = 1$} & \lr{$\int f_{X}(x)dx = 1$} & از 0 شروع و به 1 ختم می‌شود \\
+\textbf{به‌دست‌آوردن احتمال} & \lr{$P(X = x) = p_{X}(x)$} & \lr{$P(a \le X \le b) = \int f_{X}(x)dx$} & \lr{$P(a < X \le b) = F(b)-F(a)$} \\
 \end{longtable}
 }
 
@@ -384,16 +384,16 @@
 
 \PSsubsection{چرا این موضوع در مهندسی اهمیت دارد}
 
-\textbf{مثال:} یک ولتاژ نویز \lr{\mbox{X}} دارای \lr{\mbox{PDF f\textsubscript{X}(x) = 2}} برای \lr{\mbox{x \ensuremath{\in} [0, 0.5]}} است.
+\textbf{مثال:} یک ولتاژ نویز \lr{$X$} دارای \lr{\mbox{PDF $f_{X}(x) = 2$}} برای \lr{$x \in [0,\, 0.5]$} است.
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{f\textsubscript{X}(0.3) = 2}} \lr{—} این یک احتمال نیست! به این معناست که چگالی برابر \lr{\mbox{2 V\textsuperscript{-1}}} است.
+  \lr{$f_{X}(0.3) = 2$} \lr{—} این یک احتمال نیست! به این معناست که چگالی برابر \lr{$2\,\mathrm{V}^{-1}$} است.
 \item
-  \lr{P(0.2 \ensuremath{\le} X \ensuremath{\le} 0.4) = \ensuremath{\int}\textsubscript{0.2}\textsuperscript{0.4} 2 dx = 2 \ensuremath{\times} 0.2 = 0.4} \lr{—} این یک احتمال است.
+  \lr{$P(0.2 \le X \le 0.4) = \int_{0.2}^{0.4} 2\,dx = 2 \times 0.2 = 0.4$} \lr{—} این یک احتمال است.
 \item
-  \lr{\mbox{P(X = 0.3) = 0}} \lr{—} برای متغیرهای تصادفی پیوسته، یک نقطه منفرد احتمال صفر دارد.
+  \lr{$P(X = 0.3) = 0$} \lr{—} برای متغیرهای تصادفی پیوسته، یک نقطه منفرد احتمال صفر دارد.
 \end{itemize}
 
 \PSsubsection{خطاهای رایجی که باید از آن‌ها پرهیز کرد}
@@ -408,9 +408,9 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-«احتمال در \lr{\mbox{x=2}} برابر \lr{\mbox{f(2)}} است» & «چگالی احتمال در \lr{\mbox{x=2}} برابر \lr{\mbox{f(2)}} است» \\
-«\lr{\mbox{f(x)}} باید \lr{\mbox{\ensuremath{\le} 1}} باشد» & «\lr{\mbox{f(x)}} می‌تواند هر مقدار نامنفی باشد» \\
-«برای \lr{\mbox{X}} پیوسته \lr{\mbox{P(X=3) = f(3)}}» & «برای \lr{\mbox{X}} پیوسته \lr{\mbox{P(X=3) = 0}}» \\
+«احتمال در \lr{$x = 2$} برابر \lr{$f(2)$} است» & «چگالی احتمال در \lr{$x = 2$} برابر \lr{$f(2)$} است» \\
+«\lr{$f(x)$} باید \lr{\mbox{\ensuremath{\le} 1}} باشد» & «\lr{$f(x)$} می‌تواند هر مقدار نامنفی باشد» \\
+«برای \lr{$X$} پیوسته \lr{$P(X = 3) = f(3)$}» & «برای \lr{$X$} پیوسته \lr{$P(X = 3) = 0$}» \\
 «\lr{\mbox{PMF}} و \lr{\mbox{PDF}} یک چیز هستند» & «\lr{\mbox{PMF}} جرم می‌دهد؛ \lr{\mbox{PDF}} چگالی می‌دهد» \\
 \end{longtable}
 }
@@ -424,31 +424,31 @@
 \begin{itemize}
 \tightlist
 \item
-  ولتاژ \lr{\mbox{V}} معلوم است \lr{\mbox{\ensuremath{\to}}} توان \lr{\mbox{P = V\textsuperscript{2}/R}} لازم است
+  ولتاژ \lr{$V$} معلوم است \lr{\mbox{\ensuremath{\to}}} توان \lr{$P = \frac{V^{2}}{R}$} لازم است
 \item
-  سیگنال خطی \lr{\mbox{X}} معلوم است \lr{\mbox{\ensuremath{\to}}} مقدار \lr{\mbox{dB}} یعنی \lr{\mbox{Y = 10\ensuremath{\cdot}log\textsubscript{10}(X)}} لازم است
+  سیگنال خطی \lr{$X$} معلوم است \lr{\mbox{\ensuremath{\to}}} مقدار \lr{\mbox{dB}} یعنی \lr{$Y = 10 \cdot \log_{10}(X)$} لازم است
 \item
-  نویز \lr{\mbox{N}} معلوم است \lr{\mbox{\ensuremath{\to} \textbar{}N\textbar{}}} (نویز یکسوسازی‌شده) لازم است
+  نویز \lr{$N$} معلوم است \lr{$\to \lvert N\rvert$} (نویز یکسوسازی‌شده) لازم است
 \end{itemize}
 
 \PSsubsection{بیان مسیله}
 
-داده شده: \lr{\mbox{X}} با \lr{\mbox{PDF}} معلوم \lr{\mbox{f\textsubscript{X}(x)}} یا \lr{\mbox{PMF}} معلوم \lr{\mbox{p\textsubscript{X}(x)}}\PSbr{}مطلوب: توزیع \lr{\mbox{Y = g(X)}}
+داده شده: \lr{$X$} با \lr{\mbox{PDF}} معلوم \lr{$f_{X}(x)$} یا \lr{\mbox{PMF}} معلوم \lr{$p_{X}(x)$}\PSbr{}مطلوب: توزیع \lr{$Y = g(X)$}
 
 \PSsubsection{حالت 1: تبدیل متغیر تصادفی گسسته}
 
-اگر \lr{\mbox{X}} گسسته با \lr{\mbox{PMF p\textsubscript{X}(x)}} باشد و \lr{\mbox{Y = g(X)}}:
+اگر \lr{$X$} گسسته با \lr{\mbox{PMF $p_{X}(x)$}} باشد و \lr{$Y = g(X)$}:
 
 \PSdisplay{p_Y(y) = \sum_{x: g(x)=y} p_X(x)}
 
-احتمال‌های تمام مقادیر \lr{\mbox{x}} را که به همان \lr{\mbox{y}} نگاشت می‌شوند جمع کنید.
+احتمال‌های تمام مقادیر \lr{$x$} را که به همان \lr{$y$} نگاشت می‌شوند جمع کنید.
 
-\textbf{مثال:} \lr{\mbox{X \ensuremath{\in} \{-2, -1, 0, 1, 2\}}} با احتمال برابر \PSnum{0.2} برای هر یک.\PSbr{}\lr{\mbox{Y = X\textsuperscript{2}}}
+\textbf{مثال:} \lr{$X \in \{-2,\, -1,\, 0,\, 1,\, 2\}$} با احتمال برابر \PSnum{0.2} برای هر یک.\PSbr{}\lr{$Y = X^{2}$}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}ccc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{\lr{\mbox{Y = X\textsuperscript{2}}}} & \PSth{مقادیر \lr{\mbox{X}} که به \lr{\mbox{Y}} نگاشت می‌شوند} & \PSth{\lr{\mbox{p\textsubscript{Y}(y)}}} \\
+\rowcolor{PSnavy}\PSth{\lr{$Y = X^{2}$}} & \PSth{مقادیر \lr{$X$} که به \lr{$Y$} نگاشت می‌شوند} & \PSth{\lr{$p_{Y}(y)$}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -461,7 +461,7 @@
 
 \PSsubsection{حالت 2: تبدیل یکنوا (پیوسته)}
 
-اگر \lr{\mbox{Y = g(X)}} که در آن \lr{\mbox{g}} اکیداً یکنوا و مشتق‌پذیر است:
+اگر \lr{$Y = g(X)$} که در آن \lr{$g$} اکیداً یکنوا و مشتق‌پذیر است:
 
 \PSdisplay{f_Y(y) = f_X(g^{-1}(y)) \cdot \left|\frac{dg^{-1}(y)}{dy}\right|}
 
@@ -473,40 +473,40 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  با \lr{\mbox{CDF}} شروع کنید: \lr{F\textsubscript{Y}(y) = P(Y \ensuremath{\le} y) = P(g(X) \ensuremath{\le} y)}
+  با \lr{\mbox{CDF}} شروع کنید: \lr{$F_{Y}(y) = P(Y \le y) = P(g(X) \le y)$}
 \item
-  وارون کنید: = \lr{\mbox{P(X \ensuremath{\le} g\textsuperscript{-1}(y))}} اگر \lr{\mbox{g}} صعودی باشد
+  وارون کنید: \lr{$= P(X \le g^{-1}(y))$} اگر \lr{$g$} صعودی باشد
 \item
-  مشتق بگیرید: \lr{f\textsubscript{Y}(y) = f\textsubscript{X}(g\textsuperscript{-1}(y)) \ensuremath{\cdot} d/dy[g\textsuperscript{-1}(y)]}
+  مشتق بگیرید: \lr{$f_{Y}(y) = f_{X}(g^{-1}(y)) \cdot \frac{d}{dy}[g^{-1}(y)]$}
 \end{enumerate}
 
 \PSsubsection{حالت 3: تبدیل غیریکنوا}
 
-اگر \lr{\mbox{g}} یکنوا نباشد، دامنه را به بازه‌هایی تقسیم کنید که در آن‌ها \lr{\mbox{g}} یکنوا است:
+اگر \lr{$g$} یکنوا نباشد، دامنه را به بازه‌هایی تقسیم کنید که در آن‌ها \lr{$g$} یکنوا است:
 
 \PSdisplay{f_Y(y) = \sum_i \frac{f_X(x_i)}{|g'(x_i)|}}
 
-که در آن \lr{\mbox{x\textsubscript{1}}}، \lr{\mbox{x\textsubscript{2}}}، \lr{…} همگی جواب‌های \lr{\mbox{g(x) = y}} هستند.
+که در آن \lr{$x_{1},\, x_{2}$}, \lr{…} همگی جواب‌های \lr{$g(x) = y$} هستند.
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: توان از ولتاژ}
 
-یک ولتاژ نویز \lr{\mbox{X}} دارای \lr{\mbox{PDF f\textsubscript{X}(x)}} است (مثلاً گاوسی با میانگین صفر).\PSbr{}توان تلف‌شده در یک مقاومت \lr{\mbox{1\ensuremath{\Omega}}}: \lr{\mbox{P = X\textsuperscript{2}}}
+یک ولتاژ نویز \lr{$X$} دارای \lr{\mbox{PDF $f_{X}(x)$}} است (مثلاً گاوسی با میانگین صفر).\PSbr{}توان تلف‌شده در یک مقاومت \lr{\mbox{1\ensuremath{\Omega}}}: \lr{$P = X^{2}$}
 
-از آنجا که \lr{\mbox{Y = X\textsuperscript{2}}} یکنوا نیست (هر دو \lr{\mbox{+x}} و \lr{\mbox{-x}} همان \lr{\mbox{y}} را می‌دهند):
+از آنجا که \lr{$Y = X^{2}$} یکنوا نیست (هر دو \lr{$+x$} و \lr{$-x$} همان \lr{$y$} را می‌دهند):
 
-برای \lr{\mbox{y \textgreater{} 0}}: هر دو \lr{\mbox{x = +\ensuremath{\surd}y}} و \lr{\mbox{x = -\ensuremath{\surd}y}} جواب هستند.\PSbr{}\lr{\mbox{g(x) = x\textsuperscript{2}}}، پس \lr{\mbox{g’(x) = 2x}}
+برای \lr{$y > 0$}: هر دو \lr{$x = +\sqrt{y}$} و \lr{$x = -\sqrt{y}$} جواب هستند.\PSbr{}\lr{$g(x) = x^{2}$}، پس \lr{$g'(x) = 2x$}
 
 \PSdisplay{f_Y(y) = \frac{f_X(\sqrt{y})}{2\sqrt{y}} + \frac{f_X(-\sqrt{y})}{2\sqrt{y}}, \quad y > 0}
 
-اگر \lr{\mbox{X}} گاوسی با میانگین صفر باشد: \lr{\mbox{f\textsubscript{X}(x) = f\textsubscript{X}(-x)}}، پس:\PSdisplay{f_Y(y) = \frac{f_X(\sqrt{y})}{\sqrt{y}}, \quad y > 0}
+اگر \lr{$X$} گاوسی با میانگین صفر باشد: \lr{$f_{X}(x) = f_{X}(-x)$}، پس:\PSdisplay{f_Y(y) = \frac{f_X(\sqrt{y})}{\sqrt{y}}, \quad y > 0}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: تقویت خطی}
 
-سیگنال \lr{\mbox{Y = aX + b}} (تقویت‌کننده با بهره \lr{\mbox{a}} و آفست \lr{\mbox{b}}).\PSbr{}\lr{\mbox{X}} دارای \lr{\mbox{PDF f\textsubscript{X}(x)}} است.
+سیگنال \lr{\mbox{$Y$ = aX $+ b$}} (تقویت‌کننده با بهره \lr{$a$} و آفست \lr{\mbox{b}}).\PSbr{}\lr{$X$} دارای \lr{\mbox{PDF $f_{X}(x)$}} است.
 
-\lr{\mbox{g\textsuperscript{-1}(y) = (y-b)/a}}، و \lr{\mbox{\textbar{}d/dy[(y-b)/a]\textbar{} = 1/\textbar{}a\textbar{}}}
+\lr{$g^{-1}(y) = \frac{y-b}{a}$}، و \lr{$\lvert \frac{d}{dy}\left[\frac{y-b}{a}\right]\rvert = \frac{1}{\lvert a\rvert}$}
 
 \PSdisplay{f_Y(y) = \frac{1}{|a|} f_X\left(\frac{y-b}{a}\right)}
 
@@ -741,34 +741,34 @@
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  گسسته، \lr{\mbox{X \ensuremath{\in} \{0, 1, 2, …\}}}
+  گسسته، \lr{$X \in \{0,\, 1,\, 2,\, \ldots \}$}
 \item
-  پیوسته، \lr{X \ensuremath{\in} (-\ensuremath{\infty}, \ensuremath{\infty})} و در عمل حدود \lr{\textasciitilde{}} \lr{\mbox{(-120, 0) dBm}}
+  پیوسته، \lr{$X \in (-\infty,\, \infty)$} و در عمل حدود \lr{\mbox{$\sim (-120,\, 0)$ dBm}}
 \item
-  گسسته، \lr{\mbox{X \ensuremath{\in} \{0, 1, 2, …, 12000\}}}
+  گسسته، \lr{$X \in \{0,\, 1,\, 2,\, \ldots,\, 12000\}$}
 \item
-  پیوسته، \lr{\mbox{T \ensuremath{\in} [0, \ensuremath{\infty})}}
+  پیوسته، \lr{$T \in [0,\, \infty)$}
 \item
-  گسسته، \lr{\mbox{X \ensuremath{\in} \{0, 1, 2, 3, 4, 5, 6, 7\}}}
+  گسسته، \lr{$X \in \{0,\, 1,\, 2,\, 3,\, 4,\, 5,\, 6,\, 7\}$}
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2: ویژگی‌های \lr{\mbox{PMF}}}
 
-یک متغیر تصادفی \lr{\mbox{X}} دارای \lr{\mbox{PMF}} زیر است: \lr{\mbox{p\textsubscript{X}(0) = 0.1}}، \lr{\mbox{p\textsubscript{X}(1) = 0.3}}، \lr{\mbox{p\textsubscript{X}(2) = c}}، \lr{\mbox{p\textsubscript{X}(3) = 0.2}}.
+یک متغیر تصادفی \lr{$X$} دارای \lr{\mbox{PMF}} زیر است: \lr{$p_{X}(0) = 0.1$}، \lr{$p_{X}(1) = 0.3$}، \lr{$p_{X}(2) = c$}، \lr{$p_{X}(3) = 0.2$}.
 
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  مقدار \lr{\mbox{c}} را بیابید.
+  مقدار \lr{$c$} را بیابید.
 \item
-  \lr{\mbox{P(X \ensuremath{\ge} 2)}} را بیابید.
+  \lr{$P(X \ge 2)$} را بیابید.
 \item
-  \lr{\mbox{F\textsubscript{X}(1.5)}} را بیابید.
+  \lr{$F_{X}(1.5)$} را بیابید.
 \item
-  \lr{\mbox{P(0.5 \textless{} X \ensuremath{\le} 2.5)}} را بیابید.
+  \lr{$P(0.5 < X \le 2.5)$} را بیابید.
 \end{enumerate}
 
 \PSsolution{} 
@@ -776,32 +776,32 @@
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \item
-  مجموع = \lr{\mbox{1}}: \lr{\mbox{0.1 + 0.3 + c + 0.2 = 1 \ensuremath{\to} c = 0.4}}
+  مجموع = \lr{\mbox{1}}: \lr{$0.1 + 0.3 + c + 0.2 = 1 \to c = 0.4$}
 \item
-  \lr{P(X \ensuremath{\ge} 2) = p\textsubscript{X}(2) + p\textsubscript{X}(3) = 0.4 + 0.2 = 0.6}
+  \lr{$P(X \ge 2) = p_{X}(2) + p_{X}(3) = 0.4 + 0.2 = 0.6$}
 \item
-  \lr{F\textsubscript{X}(1.5) = P(X \ensuremath{\le} 1.5) = p\textsubscript{X}(0) + p\textsubscript{X}(1) = 0.1 + 0.3 = 0.4}
+  \lr{$F_{X}(1.5) = P(X \le 1.5) = p_{X}(0) + p_{X}(1) = 0.1 + 0.3 = 0.4$}
 \item
-  \lr{P(0.5 \textless{} X \ensuremath{\le} 2.5) = p\textsubscript{X}(1) + p\textsubscript{X}(2) = 0.3 + 0.4 = 0.7}
+  \lr{$P(0.5 < X \le 2.5) = p_{X}(1) + p_{X}(2) = 0.3 + 0.4 = 0.7$}
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3: \lr{\mbox{PDF}} و \lr{\mbox{CDF}}}
 
-یک متغیر تصادفی دارای \lr{\mbox{PDF}} زیر است:\PSbr{}\lr{\mbox{f\textsubscript{X}(x) = cx}} برای \lr{\mbox{0 \ensuremath{\le} x \ensuremath{\le} 4}}، و در غیر این صورت 0.
+یک متغیر تصادفی دارای \lr{\mbox{PDF}} زیر است:\PSbr{}\lr{\mbox{$f_{X}(x)$ = cx}} برای \lr{$0 \le x \le 4$}، و در غیر این صورت 0.
 
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  مقدار \lr{\mbox{c}} را بیابید.
+  مقدار \lr{$c$} را بیابید.
 \item
-  تابع \lr{\mbox{CDF}} یعنی \lr{\mbox{F\textsubscript{X}(x)}} را بیابید.
+  تابع \lr{\mbox{CDF}} یعنی \lr{$F_{X}(x)$} را بیابید.
 \item
-  \lr{\mbox{P(1 \ensuremath{\le} X \ensuremath{\le} 3)}} را بیابید.
+  \lr{$P(1 \le X \le 3)$} را بیابید.
 \item
-  مقدار \lr{\mbox{x\textsubscript{0}}} را بیابید که در آن \lr{\mbox{P(X \ensuremath{\le} x\textsubscript{0}) = 0.5}}.
+  مقدار \lr{$x_{0}$} را بیابید که در آن \lr{$P(X \le x_{0}) = 0.5$}.
 \end{enumerate}
 
 \PSsolution{} 
@@ -809,30 +809,30 @@
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \item
-  \lr{\ensuremath{\int}\textsubscript{0}\textsuperscript{4} cx dx = c\ensuremath{\cdot}[x\textsuperscript{2}/2]\textsubscript{0}\textsuperscript{4} = c\ensuremath{\cdot}8 = 1 \ensuremath{\to} c = 1/8}
+  \lr{$\int_{0}^{4}$ cx $dx = c \cdot \left[\frac{x^{2}}{2}\right]_{0}^{4} = c \cdot 8 = 1 \to c = \frac{1}{8}$}
 \item
-  \lr{F\textsubscript{X}(x) = \ensuremath{\int}\textsubscript{0}\textsuperscript{x} (t/8)dt = x\textsuperscript{2}/16}، برای \lr{\mbox{0 \ensuremath{\le} x \ensuremath{\le} 4}}\PSbr{}\lr{\mbox{F\textsubscript{X}(x) = 0}} برای \lr{\mbox{x \textless{} 0}}؛ \lr{\mbox{F\textsubscript{X}(x) = 1}} برای \lr{\mbox{x \textgreater{} 4}}
+  \lr{$F_{X}(x) = \int_{0}^{x} \frac{t}{8}dt = \frac{x^{2}}{16}$}، برای \lr{$0 \le x \le 4$}\PSbr{}\lr{$F_{X}(x) = 0$} برای \lr{$x < 0$}؛ \lr{$F_{X}(x) = 1$} برای \lr{$x > 4$}
 \item
-  \lr{P(1 \ensuremath{\le} X \ensuremath{\le} 3) = F\textsubscript{X}(3) - F\textsubscript{X}(1) = 9/16 - 1/16 = 8/16 = 0.5}
+  \lr{$\displaystyle P(1 \le X \le 3) = F_{X}(3) - F_{X}(1) = \frac{9}{16} - \frac{1}{16} = \frac{8}{16} = 0.5$}
 \item
-  \lr{x\textsubscript{0}\textsuperscript{2}/16 = 0.5 \ensuremath{\to} x\textsubscript{0}\textsuperscript{2} = 8 \ensuremath{\to} x\textsubscript{0} = 2\ensuremath{\surd}2 \ensuremath{\approx} 2.83}
+  \lr{$\displaystyle \frac{x_{0}^{2}}{16} = 0.5 \to x_{0}^{2} = 8 \to x_{0} = 2\sqrt{2} \approx 2.83$}
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 4: تبدیل}
 
-یک حسگر دما \lr{\mbox{X}} را اندازه‌گیری می‌کند که به‌طور یکنواخت روی \lr{\mbox{[20, 30] \ensuremath{^{\circ}}C}} توزیع شده است.\PSbr{}ولتاژ خروجی \lr{\mbox{Y = 0.1X - 2}} است (حسگر خطی).
+یک حسگر دما \lr{$X$} را اندازه‌گیری می‌کند که به‌طور یکنواخت روی \lr{\mbox{[20, 30] \ensuremath{^{\circ}}C}} توزیع شده است.\PSbr{}ولتاژ خروجی \lr{$Y = 0.1X - 2$} است (حسگر خطی).
 
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{\mbox{PDF}} مربوط به \lr{\mbox{Y}} را بیابید.
+  \lr{\mbox{PDF}} مربوط به \lr{$Y$} را بیابید.
 \item
-  محدوده \lr{\mbox{Y}} را بیابید.
+  محدوده \lr{$Y$} را بیابید.
 \item
-  \lr{\mbox{P(Y \textgreater{} 0.5)}} را بیابید.
+  \lr{$P(Y > 0.5)$} را بیابید.
 \end{enumerate}
 
 \PSsolution{} 
@@ -840,26 +840,26 @@
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \item
-  \lr{\mbox{X \textasciitilde{} Uniform[20, 30]}}، پس \lr{\mbox{f\textsubscript{X}(x) = 1/10}} برای \lr{\mbox{20 \ensuremath{\le} x \ensuremath{\le} 30}}.\PSbr{}\lr{\mbox{Y = 0.1X - 2}}، پس \lr{\mbox{a = 0.1}} و \lr{\mbox{b = -2}}.\PSbr{}\lr{f\textsubscript{Y}(y) = (1/\textbar{}a\textbar{}) \ensuremath{\cdot} f\textsubscript{X}((y-b)/a) = (1/0.1) \ensuremath{\cdot} (1/10) = 1} برای محدوده معتبر.
+  \lr{$X \sim \mathrm{Uniform}[20,\, 30]$}، پس \lr{$f_{X}(x) = \frac{1}{10}$} برای \lr{$20 \le x \le 30$}.\PSbr{}\lr{$Y = 0.1X - 2$}، پس \lr{$a = 0.1$} و \lr{$b = -2$}.\PSbr{}\lr{$f_{Y}(y) = \frac{1}{\lvert a\rvert} \cdot f_{X}\left(\frac{y-b}{a}\right) = \frac{1}{0.1} \cdot \frac{1}{10} = 1$} برای محدوده معتبر.
 \item
-  وقتی \lr{\mbox{X = 20}}: \lr{\mbox{Y = 0.1(20) - 2 = 0}}؛ وقتی \lr{\mbox{X = 30}}: \lr{\mbox{Y = 0.1(30) - 2 = 1}}\PSbr{}محدوده \lr{\mbox{Y}}: \lr{\mbox{[0, 1]}}. پس \lr{\mbox{Y \textasciitilde{} Uniform[0, 1]}}.
+  وقتی \lr{\mbox{$X = 20$: $Y = 0.1(20) - 2 = 0$}}؛ وقتی \lr{\mbox{$X = 30$: $Y = 0.1(30) - 2 = 1$}}\PSbr{}محدوده \lr{\mbox{$Y$: [0, 1]}}. پس \lr{$Y \sim \mathrm{Uniform}[0,\, 1]$}.
 \item
-  \lr{P(Y \textgreater{} 0.5) = 1 - F\textsubscript{Y}(0.5) = 1 - 0.5 = 0.5}
+  \lr{$P(Y > 0.5) = 1 - F_{Y}(0.5) = 1 - 0.5 = 0.5$}
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 5: تبدیل غیریکنوا}
 
-یک ولتاژ \lr{\mbox{X \textasciitilde{} Uniform[-1, 1] V}}. توان لحظه‌ای \lr{\mbox{Y = X\textsuperscript{2}}} است.
+یک ولتاژ \lr{$X \sim \mathrm{Uniform}[-1,\, 1] V$}. توان لحظه‌ای \lr{$Y = X^{2}$} است.
 
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{\mbox{CDF}} مربوط به \lr{\mbox{Y}} را بیابید.
+  \lr{\mbox{CDF}} مربوط به \lr{$Y$} را بیابید.
 \item
-  \lr{\mbox{PDF}} مربوط به \lr{\mbox{Y}} را بیابید.
+  \lr{\mbox{PDF}} مربوط به \lr{$Y$} را بیابید.
 \item
   با شبیه‌سازی \lr{\mbox{MATLAB}} بررسی کنید.
 \end{enumerate}
@@ -870,18 +870,18 @@
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  برای \lr{\mbox{0 \ensuremath{\le} y \ensuremath{\le} 1}}:\PSbr{}\lr{F\textsubscript{Y}(y) = P(X\textsuperscript{2} \ensuremath{\le} y) = P(-\ensuremath{\surd}y \ensuremath{\le} X \ensuremath{\le} \ensuremath{\surd}y) = F\textsubscript{X}(\ensuremath{\surd}y) - F\textsubscript{X}(-\ensuremath{\surd}y)}
+  برای \lr{$0 \le y \le 1$}:\PSbr{}\lr{$F_{Y}(y) = P(X^{2} \le y) = P\left(-\sqrt{y} \le X \le \sqrt{y}\right) = F_{X}\left(\sqrt{y}\right) - F_{X}\left(-\sqrt{y}\right)$}
 \end{enumerate}
 
-از آنجا که \lr{\mbox{X \textasciitilde{} Uniform[-1,1]}}: \lr{\mbox{F\textsubscript{X}(x) = (x+1)/2}}
+از آنجا که \lr{$X \sim \mathrm{Uniform}[-1,\,1]$: $F_{X}(x) = \frac{x+1}{2}$}
 
-\lr{F\textsubscript{Y}(y) = (\ensuremath{\surd}y + 1)/2 - (-\ensuremath{\surd}y + 1)/2 = \ensuremath{\surd}y}
+\lr{$\displaystyle F_{Y}(y) = \frac{\sqrt{y} + 1}{2} - \frac{-\sqrt{y} + 1}{2} = \sqrt{y}$}
 
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \setcounter{enumi}{1}
 \item
-  \lr{f\textsubscript{Y}(y) = dF\textsubscript{Y}/dy = 1/(2\ensuremath{\surd}y)} برای \lr{\mbox{0 \textless{} y \ensuremath{\le} 1}}
+  \lr{$f_{Y}(y) = \frac{dF_{Y}}{dy} = \frac{1}{2\sqrt{y}}$} برای \lr{$0 < y \le 1$}
 \item
   \lr{\mbox{MATLAB:}}
 \end{enumerate}
@@ -916,7 +916,7 @@
 \item
   \lr{\mbox{\textbf{\lr{\mbox{PDF}}}}} چگالی احتمال را برای متغیرهای تصادفی پیوسته می‌دهد (مساحت احتمال را می‌دهد، نه ارتفاع)
 \item
-  \lr{\mbox{\textbf{\lr{\mbox{CDF}}}}} به‌طور کلی کار می‌کند \lr{—} احتمال تجمعی \lr{\mbox{P(X \ensuremath{\le} x)}} را می‌دهد
+  \lr{\mbox{\textbf{\lr{\mbox{CDF}}}}} به‌طور کلی کار می‌کند \lr{—} احتمال تجمعی \lr{$P(X \le x)$} را می‌دهد
 \item
   \textbf{تبدیل‌ها} به ما امکان می‌دهند توزیع توابعی از متغیرهای تصادفی را استخراج کنیم
 \item

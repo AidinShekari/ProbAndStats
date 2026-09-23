@@ -31,26 +31,26 @@ $$\text{Cov}(X,Y) = E[(X - \mu_X)(Y - \mu_Y)] = E[XY] - E[X]E[Y]$$
 
 ### Properties
 
-1. Cov(X, X) = Var(X)
-2. Cov(X, Y) = Cov(Y, X) (symmetric)
-3. Cov(aX + b, cY + d) = ac · Cov(X, Y)
-4. If X, Y independent → Cov(X, Y) = 0
-5. Var(X + Y) = Var(X) + Var(Y) + 2Cov(X, Y)
-6. Var(X - Y) = Var(X) + Var(Y) - 2Cov(X, Y)
+1. $\operatorname{Cov}(X,\, X) = \operatorname{Var}(X)$
+2. $\operatorname{Cov}(X,\, Y) = \operatorname{Cov}(Y,\, X)$ (symmetric)
+3. $\operatorname{Cov}(\text{aX} + b,\, \text{cY} + d)$ = ac $\cdot \operatorname{Cov}(X,\, Y)$
+4. If $X,\, Y$ independent $\to \operatorname{Cov}(X,\, Y) = 0$
+5. $\operatorname{Var}(X + Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2\operatorname{Cov}(X,\, Y)$
+6. $\operatorname{Var}(X - Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) - 2\operatorname{Cov}(X,\, Y)$
 
 ### Sign Interpretation
 
-| Cov(X,Y) | Meaning |
+| $\operatorname{Cov}(X,\,Y)$ | Meaning |
 |-----------|---------|
-| > 0 | X and Y tend to increase together |
-| < 0 | When X increases, Y tends to decrease |
+| > 0 | $X$ and $Y$ tend to increase together |
+| < 0 | When $X$ increases, $Y$ tends to decrease |
 | = 0 | No linear relationship (uncorrelated) |
 
 ### Engineering Example: Amplifier Gain and Output
 
-If gain G varies randomly and input is fixed at V_in:
-- Output: V_out = G · V_in
-- Cov(G, V_out) = Cov(G, G·V_in) = V_in · Var(G) > 0
+If gain $G$ varies randomly and input is fixed at $V_{\mathrm{in}}$:
+- Output: $V_{\mathrm{out}} = G \cdot V_{\mathrm{in}}$
+- $\operatorname{Cov}(G,\, V_{\text{out}}) = \operatorname{Cov}(G,\, G \cdot V_{\mathrm{in}}) = V_{\mathrm{in}} \cdot \operatorname{Var}(G) > 0$
 
 Higher gain → higher output (positive covariance).
 
@@ -64,15 +64,15 @@ $$\rho_{XY} = \frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}$$
 
 ### Properties
 
-1. **Bounded:** -1 ≤ ρ ≤ 1
-2. **ρ = 1:** Perfect positive linear relationship (Y = aX + b, a > 0)
-3. **ρ = -1:** Perfect negative linear relationship (Y = aX + b, a < 0)
-4. **ρ = 0:** Uncorrelated (no linear relationship)
-5. **Dimensionless:** Unlike covariance, ρ doesn't depend on units
+1. **Bounded:** $-1 \le \rho \le 1$
+2. **$\rho = 1$:** Perfect positive linear relationship ($Y$ = aX $+ b,\, a > 0$)
+3. **$\rho = -1$:** Perfect negative linear relationship ($Y$ = aX $+ b,\, a < 0$)
+4. **$\rho = 0$:** Uncorrelated (no linear relationship)
+5. **Dimensionless:** Unlike covariance, $\rho$ doesn't depend on units
 
 ### Interpretation Scale
 
-| |ρ| Range | Interpretation |
+| |$\rho$| Range | Interpretation |
 |-----------|---------------|
 | 0.0 – 0.2 | Very weak/negligible |
 | 0.2 – 0.4 | Weak |
@@ -82,11 +82,11 @@ $$\rho_{XY} = \frac{\text{Cov}(X,Y)}{\sigma_X \sigma_Y}$$
 
 ### Engineering Example: Correlated Fading
 
-Two antenna paths with correlation ρ = 0.3:
+Two antenna paths with correlation $\rho = 0.3$:
 - Low correlation → diversity works well (independent fading)
 - High correlation → diversity gain is reduced
 
-MIMO system design requires: ρ < 0.5 for effective spatial multiplexing.
+MIMO system design requires: $\rho < 0.5$ for effective spatial multiplexing.
 
 ---
 
@@ -100,7 +100,7 @@ $$R_{XY} = E[XY]$$
 
 $$\text{Cov}(X,Y) = R_{XY} - \mu_X \mu_Y$$
 
-If either X or Y has zero mean: Cov(X,Y) = E[XY] = R_{XY}
+If either $X$ or $Y$ has zero mean: $\operatorname{Cov}(X,\,Y) = E[XY] = R_{XY}$
 
 ### Engineering Significance
 
@@ -123,15 +123,15 @@ Cross-correlation is fundamental in:
 
 ### Why Independent → Uncorrelated
 
-If X, Y independent: E[XY] = E[X]E[Y], so Cov(X,Y) = E[XY] - E[X]E[Y] = 0.
+If $X,\, Y$ independent: $E[XY] = E[X]E[Y]$, so $\operatorname{Cov}(X,\,Y) = E[XY] - E[X]E[Y] = 0$.
 
 ### Counterexample: Uncorrelated but Dependent
 
-Let X ~ N(0,1) and Y = X². Then:
-- Cov(X, Y) = E[XY] - E[X]E[Y] = E[X³] - 0 = 0 (since X is symmetric)
-- But Y is completely determined by X → maximally dependent!
+Let $X \sim N(0,\,1)$ and $Y = X^{2}$. Then:
+- $\operatorname{Cov}(X,\, Y) = E[XY] - E[X]E[Y] = E[X^{3}] - 0 = 0$ (since $X$ is symmetric)
+- But $Y$ is completely determined by $X$ → maximally dependent!
 
-**ρ = 0 does NOT mean independent** (except for jointly Gaussian RVs).
+**$\rho = 0$ does NOT mean independent** (except for jointly Gaussian RVs).
 
 ### The Gaussian Exception
 
@@ -139,7 +139,7 @@ For **jointly Gaussian** random variables:
 
 $$\text{Uncorrelated} \Leftrightarrow \text{Independent}$$
 
-This is why the Gaussian distribution is so convenient in engineering — checking ρ = 0 suffices to establish independence.
+This is why the Gaussian distribution is so convenient in engineering — checking $\rho = 0$ suffices to establish independence.
 
 ### Engineering Implication
 
@@ -152,31 +152,31 @@ In communications with Gaussian noise:
 
 ## 9.6 Correlation Matrix
 
-### Definition for Random Vector X = [X₁, X₂, ..., Xₙ]ᵀ
+### Definition for Random Vector $X = [X_{1},\, X_{2},\, \ldots,\, X_{n}]^{T}$
 
-The **covariance matrix** Σ:
+The **covariance matrix** $\Sigma$:
 
 $$\Sigma_{ij} = \text{Cov}(X_i, X_j)$$
 
 $$\Sigma = \begin{bmatrix} \text{Var}(X_1) & \text{Cov}(X_1,X_2) & \cdots \\ \text{Cov}(X_2,X_1) & \text{Var}(X_2) & \cdots \\ \vdots & & \ddots \end{bmatrix}$$
 
-The **correlation matrix** R (normalized):
+The **correlation matrix** $R$ (normalized):
 
 $$R_{ij} = \rho_{X_i X_j} = \frac{\Sigma_{ij}}{\sqrt{\Sigma_{ii}\Sigma_{jj}}}$$
 
 ### Properties of Covariance Matrix
-1. Symmetric: Σ = Σᵀ
-2. Positive semi-definite: xᵀΣx ≥ 0 for all x
+1. Symmetric: $\Sigma = \Sigma^{T}$
+2. Positive semi-definite: $x^{T}\Sigma x \ge 0$ for all $x$
 3. Diagonal entries = variances
 4. Off-diagonal entries = covariances
 
 ### Engineering Example: Three Sensors
 
 Three temperature sensors with:
-- σ₁ = σ₂ = σ₃ = 1°C
-- ρ₁₂ = 0.8 (sensors 1,2 are nearby)
-- ρ₁₃ = 0.3 (sensor 3 is farther)
-- ρ₂₃ = 0.4
+- $\sigma_{1} = \sigma_{2} = \sigma_{3} = 1^{\circ}C$
+- $\rho_{12} = 0.8$ (sensors 1,2 are nearby)
+- $\rho_{13} = 0.3$ (sensor 3 is farther)
+- $\rho_{23} = 0.4$
 
 Correlation matrix:
 $$R = \begin{bmatrix} 1.0 & 0.8 & 0.3 \\ 0.8 & 1.0 & 0.4 \\ 0.3 & 0.4 & 1.0 \end{bmatrix}$$
@@ -189,27 +189,27 @@ $$R = \begin{bmatrix} 1.0 & 0.8 & 0.3 \\ 0.8 & 1.0 & 0.4 \\ 0.3 & 0.4 & 1.0 \end
 
 $$\text{Var}\left(\sum_{i=1}^n a_i X_i\right) = \sum_{i=1}^n a_i^2 \text{Var}(X_i) + 2\sum_{i<j} a_i a_j \text{Cov}(X_i, X_j)$$
 
-In matrix form: Var(aᵀX) = aᵀΣa
+In matrix form: $\operatorname{Var}(a^{T}X) = a^{T}\Sigma a$
 
 ### Special Case: Sum of Two RVs
 
-Var(X + Y) = Var(X) + Var(Y) + 2Cov(X,Y) = σ_X² + σ_Y² + 2ρσ_Xσ_Y
+$\operatorname{Var}(X + Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2\operatorname{Cov}(X,\,Y) = \sigma_{X}^{2} + \sigma_{Y}^{2} + 2\rho \sigma_{X}\sigma_{Y}$
 
-| Correlation | Var(X+Y) | Effect |
+| Correlation | $\operatorname{Var}(X+Y)$ | Effect |
 |-------------|----------|--------|
-| ρ = 1 | (σ_X + σ_Y)² | Maximum — variances add constructively |
-| ρ = 0 | σ_X² + σ_Y² | Independent addition |
-| ρ = -1 | (σ_X - σ_Y)² | Minimum — cancellation |
+| $\rho = 1$ | $(\sigma_{X} + \sigma_{Y})^{2}$ | Maximum — variances add constructively |
+| $\rho = 0$ | $\sigma_{X}^{2} + \sigma_{Y}^{2}$ | Independent addition |
+| $\rho = -1$ | $(\sigma_{X} - \sigma_{Y})^{2}$ | Minimum — cancellation |
 
 ### Engineering Application: Averaging Correlated Sensors
 
-If n sensors have equal variance σ² and pairwise correlation ρ:
+If $n$ sensors have equal variance $\sigma^{2}$ and pairwise correlation $\rho$:
 
 $$\text{Var}(\bar{X}) = \frac{\sigma^2}{n}[1 + (n-1)\rho]$$
 
-- If ρ = 0 (independent): Var(X̄) = σ²/n (full averaging benefit)
-- If ρ = 1 (identical): Var(X̄) = σ² (no benefit from averaging!)
-- If ρ = 0.5, n = 4: Var(X̄) = σ²(1 + 3×0.5)/4 = 0.625σ² (reduced benefit)
+- If $\rho = 0$ (independent): $\operatorname{Var}(\bar{X}) = \frac{\sigma^{2}}{n}$ (full averaging benefit)
+- If $\rho = 1$ (identical): $\operatorname{Var}(\bar{X}) = \sigma^{2}$ (no benefit from averaging!)
+- If $\rho = 0.5,\, n = 4$: $\operatorname{Var}(\bar{X}) = \frac{\sigma^{2}(1 + 3 \times 0.5)}{4} = 0.625\sigma^{2}$ (reduced benefit)
 
 ---
 
@@ -294,29 +294,29 @@ title('Estimated R'); xlabel('Sensor'); ylabel('Sensor');
 ## 9.9 Practice Problems
 
 ### Problem 1
-X and Y have: E[X]=2, E[Y]=3, Var(X)=4, Var(Y)=9, E[XY]=8.
-(a) Find Cov(X,Y). (b) Find ρ. (c) Find Var(X+Y). (d) Find Var(2X-3Y).
+$X$ and $Y$ have: $E[X] = 2,\, E[Y] = 3,\, \operatorname{Var}(X) = 4,\, \operatorname{Var}(Y) = 9,\, E[XY] = 8$.
+(a) Find $\operatorname{Cov}(X,\,Y)$. (b) Find $\rho$. (c) Find $\operatorname{Var}(X+Y)$. (d) Find $\operatorname{Var}(2X-3Y)$.
 
 **Solution:**
-(a) Cov(X,Y) = E[XY] - E[X]E[Y] = 8 - 2(3) = 2
-(b) ρ = 2/(√4·√9) = 2/6 = 1/3
-(c) Var(X+Y) = 4 + 9 + 2(2) = 17
-(d) Var(2X-3Y) = 4(4) + 9(9) + 2(2)(-3)(2) = 16 + 81 - 24 = 73
+(a) $\operatorname{Cov}(X,\,Y) = E[XY] - E[X]E[Y] = 8 - 2(3) = 2$
+(b) $\rho = \frac{2}{\sqrt{4} \cdot \sqrt{9}} = \frac{2}{6} = \frac{1}{3}$
+(c) $\operatorname{Var}(X+Y) = 4 + 9 + 2(2) = 17$
+(d) $\operatorname{Var}(2X-3Y) = 4(4) + 9(9) + 2(2)(-3)(2) = 16 + 81 - 24 = 73$
 
 ### Problem 2
-Four identical sensors (σ²=1) have pairwise correlation ρ=0.5. What is Var(X̄)?
+Four identical sensors $(\sigma^{2} = 1)$ have pairwise correlation $\rho = 0.5$. What is $\operatorname{Var}(\bar{X})$?
 
-**Solution:** Var(X̄) = σ²/n · [1 + (n-1)ρ] = 1/4 · [1 + 3(0.5)] = 0.25 × 2.5 = 0.625
+**Solution:** $\operatorname{Var}(\bar{X}) = \frac{\sigma^{2}}{n} \cdot [1 + (n-1)\rho] = \frac{1}{4} \cdot [1 + 3(0.5)] = 0.25 \times 2.5 = 0.625$
 
-Compare: if independent (ρ=0): Var(X̄) = 0.25. Correlation reduces the effectiveness of averaging.
+Compare: if independent $(\rho = 0)$: $\operatorname{Var}(\bar{X}) = 0.25$. Correlation reduces the effectiveness of averaging.
 
 ### Problem 3
-Given X ~ N(0,1), define Y = X when |X|<1 and Y = -X when |X|≥1. Show that Cov(X,Y) ≠ 0 in this case but that E[X·Y] can be computed.
+Given $X \sim N(0,\,1)$, define $Y = X$ when $\lvert X\rvert < 1$ and $Y = -X$ when $\lvert X\rvert \ge 1$. Show that $\operatorname{Cov}(X,\,Y) \ne 0$ in this case but that $E[X \cdot Y]$ can be computed.
 
-**Solution:** E[XY] = E[X²·1(|X|<1)] + E[-X²·1(|X|≥1)] = E[X²·1(|X|<1)] - E[X²·1(|X|≥1)]
-= P(|X|<1)E[X²| |X|<1] - P(|X|≥1)E[X²| |X|≥1]
-This is nonzero since E[X²| |X|<1] ≠ E[X²| |X|≥1], so Cov(X,Y) = E[XY] - 0 ≠ 0.
-X and Y are clearly dependent (Y is defined from X), and in this case also correlated.
+**Solution:** $E[XY] = E[X^{2} \cdot 1(\lvert X\rvert < 1)] + E[-X^{2} \cdot 1(\lvert X\rvert \ge 1)] = E[X^{2} \cdot 1(\lvert X\rvert < 1)] - E[X^{2} \cdot 1(\lvert X\rvert \ge 1)]$
+$= P(\lvert X\rvert < 1)E[X^{2}\lvert \rvert X \mid < 1] - P(\lvert X\rvert \ge 1)E[X^{2}\lvert \rvert X \mid \ge 1]$
+This is nonzero since $E[X^{2}\lvert \rvert X \mid < 1] \ne E[X^{2}\lvert \rvert X \mid \ge 1]$, so $\operatorname{Cov}(X,\,Y) = E[XY] - 0 \ne 0$.
+$X$ and $Y$ are clearly dependent ($Y$ is defined from $X$), and in this case also correlated.
 
 ---
 

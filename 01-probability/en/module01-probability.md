@@ -73,21 +73,21 @@ A **random experiment** is a procedure that:
 
 ### Definition
 
-The **sample space** S (or Ω) is the set of all possible outcomes of a random experiment.
+The **sample space** $S$ (or $\Omega$) is the set of all possible outcomes of a random experiment.
 
 ### Types of Sample Spaces
 
 **Discrete (Countable):**
 
-- Transmit one bit: S = {0, 1} (received correctly or in error)
-- Number of errors in a packet of n bits: S = {0, 1, 2, ..., n}
-- Number of arrivals at a server: S = {0, 1, 2, 3, ...}
+- Transmit one bit: $S = \{0,\, 1\}$ (received correctly or in error)
+- Number of errors in a packet of $n$ bits: $S = \{0,\, 1,\, 2,\, \ldots,\, n\}$
+- Number of arrivals at a server: $S = \{0,\, 1,\, 2,\, 3,\, \ldots \}$
 
 **Continuous (Uncountable):**
 
-- Measured voltage: S = ℝ (or a practical range like [0, 5] V)
-- Time until component failure: S = [0, ∞)
-- Phase of received signal: S = [0, 2π)
+- Measured voltage: $S = \mathbb{R}$ (or a practical range like $[0,\, 5] V$)
+- Time until component failure: $S = [0,\, \infty)$
+- Phase of received signal: $S = [0,\, 2\pi)$
 
 ### Engineering Example: Communication System
 
@@ -114,32 +114,32 @@ An **event** is a subset of the sample space. An event **occurs** if the outcome
 
 ### Types of Events
 
-- **Simple event**: Contains exactly one outcome. E = {(0,1)}
-- **Compound event**: Contains multiple outcomes. E = {(0,1), (1,0)} (any error)
-- **Certain event**: The entire sample space S (always occurs)
-- **Impossible event**: The empty set ∅ (never occurs)
+- **Simple event**: Contains exactly one outcome. $E = \{(0,\,1)\}$
+- **Compound event**: Contains multiple outcomes. $E = \{(0,\,1),\, (1,\,0)\}$ (any error)
+- **Certain event**: The entire sample space $S$ (always occurs)
+- **Impossible event**: The empty set $\emptyset$ (never occurs)
 
 ### Set Operations on Events
 
 | Operation | Notation | Meaning | Engineering Interpretation |
 |-----------|----------|---------|---------------------------|
-| Union | A ∪ B | A or B (or both) occurs | Either failure mode A or B triggers alarm |
-| Intersection | A ∩ B | Both A and B occur | Both sensors detect the signal |
-| Complement | Aᶜ or Ā | A does not occur | Component does NOT fail |
-| Difference | A - B = A ∩ Bᶜ | A occurs but not B | Sensor A triggers but sensor B doesn't |
-| Mutually exclusive | A ∩ B = ∅ | A and B cannot both occur | Component can't be both working and failed |
+| Union | $A \cup B$ | A or $B$ (or both) occurs | Either failure mode A or $B$ triggers alarm |
+| Intersection | $A \cap B$ | Both A and $B$ occur | Both sensors detect the signal |
+| Complement | $A^{c}$ or Ā | A does not occur | Component does NOT fail |
+| Difference | $A - B = A \cap B^{c}$ | A occurs but not $B$ | Sensor A triggers but sensor $B$ doesn't |
+| Mutually exclusive | $A \cap B = \emptyset$ | A and $B$ cannot both occur | Component can't be both working and failed |
 
 ### Engineering Example: Manufacturing Defects
 
 A circuit board inspection checks for three types of defects:
 - A = solder bridge defect
-- B = missing component
-- C = wrong component value
+- $B$ = missing component
+- $C$ = wrong component value
 
 Events:
-- A ∪ B ∪ C = "board has at least one defect"
-- A ∩ B = "board has both a solder bridge AND a missing component"
-- (A ∪ B ∪ C)ᶜ = "board is defect-free"
+- $A \cup B \cup C$ = "board has at least one defect"
+- $A \cap B$ = "board has both a solder bridge AND a missing component"
+- $(A \cup B \cup C)^{c}$ = "board is defect-free"
 
 ---
 
@@ -147,7 +147,7 @@ Events:
 
 ### Kolmogorov's Axioms
 
-For a sample space S with events defined on it, a probability function P satisfies:
+For a sample space $S$ with events defined on it, a probability function $P$ satisfies:
 
 **Axiom 1 (Non-negativity):**
 $$P(A) \geq 0 \quad \text{for any event } A$$
@@ -156,7 +156,7 @@ $$P(A) \geq 0 \quad \text{for any event } A$$
 $$P(S) = 1$$
 
 **Axiom 3 (Countable Additivity):**
-For mutually exclusive events A₁, A₂, A₃, ...:
+For mutually exclusive events $A_{1},\, A_{2},\, A_{3}$, ...:
 $$P(A_1 \cup A_2 \cup A_3 \cup \cdots) = P(A_1) + P(A_2) + P(A_3) + \cdots$$
 
 ### Properties Derived from Axioms
@@ -164,15 +164,15 @@ $$P(A_1 \cup A_2 \cup A_3 \cup \cdots) = P(A_1) + P(A_2) + P(A_3) + \cdots$$
 **Property 1: Complement Rule**
 $$P(A^c) = 1 - P(A)$$
 
-*Proof:* S = A ∪ Aᶜ and A ∩ Aᶜ = ∅, so P(S) = P(A) + P(Aᶜ) = 1.
+*Proof:* $S = A \cup A^{c}$ and $A \cap A^{c} = \emptyset$, so $P(S) = P(A) + P(A^{c}) = 1$.
 
-*Engineering meaning:* P(component works) = 1 - P(component fails)
+*Engineering meaning:* $P(\text{component works}) = 1 - P(\text{component fails})$
 
 **Property 2: Impossible Event**
 $$P(\emptyset) = 0$$
 
 **Property 3: Monotonicity**
-If A ⊆ B, then P(A) ≤ P(B)
+If $A \subseteq B$, then $P(A) \le P(B)$
 
 **Property 4: Bound**
 $$0 \leq P(A) \leq 1$$
@@ -180,7 +180,7 @@ $$0 \leq P(A) \leq 1$$
 **Property 5: Inclusion-Exclusion (Two Events)**
 $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
-*Engineering meaning:* When computing the probability of "failure A OR failure B," we must subtract the overlap where both fail simultaneously.
+*Engineering meaning:* When computing the probability of "failure $A$ OR failure $B$," we must subtract the overlap where both fail simultaneously.
 
 ---
 
@@ -191,7 +191,7 @@ $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 For any two events:
 $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
 
-For mutually exclusive events (A ∩ B = ∅):
+For mutually exclusive events $(A \cap B = \emptyset)$:
 $$P(A \cup B) = P(A) + P(B)$$
 
 ### Complement Rule
@@ -200,7 +200,7 @@ $$P(A) = 1 - P(A^c)$$
 
 This is often the easiest way to compute probabilities:
 
-> P(at least one error in 100 bits) = 1 - P(zero errors in 100 bits)
+> $P(\text{at least one error in 100}\,\mathrm{bits}) = 1 - P(\text{zero errors in 100}\,\mathrm{bits})$
 
 ### Inclusion-Exclusion (Three Events)
 
@@ -210,13 +210,13 @@ $$P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap
 
 A data center has three independent network links. Each link fails with probability 0.05.
 
-- A = link 1 fails, B = link 2 fails, C = link 3 fails
-- P(at least one fails) = P(A ∪ B ∪ C)
+- A = link 1 fails, $B$ = link 2 fails, $C$ = link 3 fails
+- $P(\text{at least one fails}) = P(A \cup B \cup C)$
 - Using inclusion-exclusion:
 
-P(A ∪ B ∪ C) = 3(0.05) - 3(0.05)² + (0.05)³ = 0.15 - 0.0075 + 0.000125 = 0.142625
+$P(A \cup B \cup C) = 3(0.05) - 3(0.05)^{2} + (0.05)^{3} = 0.15 - 0.0075 + 0.000125 = 0.142625$
 
-Alternatively: P(at least one fails) = 1 - P(none fail) = 1 - (0.95)³ = 0.142625 ✓
+Alternatively: $P(\text{at least one fails}) = 1 - P(\text{none fail}) = 1 - (0.95)^{3} = 0.142625$ ✓
 
 
 
@@ -226,60 +226,60 @@ Alternatively: P(at least one fails) = 1 - P(none fail) = 1 - (0.95)³ = 0.14262
 
 ### Definition
 
-The **conditional probability** of event A given that event B has occurred:
+The **conditional probability** of event A given that event $B$ has occurred:
 
 $$P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad P(B) > 0$$
 
 ### Interpretation
 
-Conditional probability **updates** our knowledge. Once we know B occurred, the effective sample space shrinks from S to B, and we ask: "Within B, how likely is A?"
+Conditional probability **updates** our knowledge. Once we know $B$ occurred, the effective sample space shrinks from $S$ to $B$, and we ask: "Within $B$, how likely is $A$?"
 
 ### Key Distinction
 
 | Concept | Notation | Meaning |
 |---------|----------|---------|
-| Probability of A | P(A) | Likelihood of A with no additional information |
-| Conditional probability | P(A\|B) | Likelihood of A **given** that B has occurred |
-| Joint probability | P(A ∩ B) | Likelihood that **both** A and B occur |
+| Probability of $A$ | $P(A)$ | Likelihood of A with no additional information |
+| Conditional probability | $P(A \mid B)$ | Likelihood of $A$ **given** that $B$ has occurred |
+| Joint probability | $P(A \cap B)$ | Likelihood that **both** A and $B$ occur |
 
-These are related: P(A ∩ B) = P(A|B) · P(B) = P(B|A) · P(A)
+These are related: $P(A \cap B) = P(A \mid B) \cdot P(B) = P(B \mid A) \cdot P(A)$
 
 ### Engineering Example: Detection Theory
 
 A radar system detects aircraft:
-- H₁ = aircraft is present (target)
-- H₀ = aircraft is absent (no target)
-- D = detector says "target present"
+- $H_{1}$ = aircraft is present (target)
+- $H_{0}$ = aircraft is absent (no target)
+- $D$ = detector says "target present"
 
 Important conditional probabilities:
-- P(D | H₁) = **probability of detection** (sensitivity)
-- P(D | H₀) = **probability of false alarm**
-- P(Dᶜ | H₁) = **probability of miss** = 1 - P(D | H₁)
+- $P(D \mid H_{1})$ = **probability of detection** (sensitivity)
+- $P(D \mid H_{0})$ = **probability of false alarm**
+- $P(D^{c} \mid H_{1})$ = **probability of miss** $= 1 - P(D \mid H_{1})$
 
-Suppose: P(H₁) = 0.01, P(D|H₁) = 0.95, P(D|H₀) = 0.02
+Suppose: $P(H_{1}) = 0.01,\, P(D \mid H_{1}) = 0.95,\, P(D \mid H_{0}) = 0.02$
 
-What is P(target actually present | detector says present)?
+What is $P(\text{target actually present}\ \mid \text{detector says present})$?
 
 This requires **Bayes' theorem** (Section 1.9).
 
 ### Engineering Example: Communication Channel
 
-A binary symmetric channel has crossover probability p = 0.01:
-- P(receive 1 | sent 0) = p = 0.01
-- P(receive 0 | sent 1) = p = 0.01
-- P(receive 0 | sent 0) = 1 - p = 0.99
-- P(receive 1 | sent 1) = 1 - p = 0.99
+A binary symmetric channel has crossover probability $p = 0.01$:
+- $P(\text{receive 1}\ \mid \text{sent 0}) = p = 0.01$
+- $P(\text{receive 0}\ \mid \text{sent 1}) = p = 0.01$
+- $P(\text{receive 0}\ \mid \text{sent 0}) = 1 - p = 0.99$
+- $P(\text{receive 1}\ \mid \text{sent 1}) = 1 - p = 0.99$
 
 If bits are equally likely to be 0 or 1:
-- P(sent 0 ∩ receive 1) = P(receive 1 | sent 0) · P(sent 0) = 0.01 × 0.5 = 0.005
-- P(error) = P(sent 0 ∩ receive 1) + P(sent 1 ∩ receive 0) = 0.005 + 0.005 = 0.01
+- $P(\text{sent 0}\ \cap \text{receive 1}) = P(\text{receive 1}\ \mid \text{sent 0}) \cdot P(\text{sent 0}) = 0.01 \times 0.5 = 0.005$
+- $P(\text{error}) = P(\text{sent 0}\ \cap \text{receive 1}) + P(\text{sent 1}\ \cap \text{receive 0}) = 0.005 + 0.005 = 0.01$
 
 ### Properties of Conditional Probability
 
 Conditional probability is itself a valid probability measure:
-1. P(A|B) ≥ 0
-2. P(S|B) = 1
-3. P(A₁ ∪ A₂|B) = P(A₁|B) + P(A₂|B) if A₁ ∩ A₂ = ∅
+1. $P(A \mid B) \ge 0$
+2. $P(S \mid B) = 1$
+3. $P(A_{1} \cup A_{2} \mid B) = P(A_{1} \mid B) + P(A_{2} \mid B)$ if $A_{1} \cap A_{2} = \emptyset$
 
 ### Multiplication Rule (Chain Rule)
 
@@ -294,11 +294,11 @@ $$P(A \cap B \cap C) = P(A) \cdot P(B|A) \cdot P(C|A \cap B)$$
 
 ### Definition
 
-Events A and B are **statistically independent** if:
+Events A and $B$ are **statistically independent** if:
 
 $$P(A \cap B) = P(A) \cdot P(B)$$
 
-Equivalently: P(A|B) = P(A) — knowing B occurred gives no information about A.
+Equivalently: $P(A \mid B) = P(A)$ — knowing $B$ occurred gives no information about $A$.
 
 ### Engineering Significance
 
@@ -310,16 +310,16 @@ Independence means **one event provides no information about the other**. This i
 
 ### Pairwise vs. Mutual Independence
 
-For three events A, B, C:
+For three events $A,\, B,\, C$:
 
 **Pairwise independence** (all three pairs):
-- P(A ∩ B) = P(A)P(B)
-- P(A ∩ C) = P(A)P(C)
-- P(B ∩ C) = P(B)P(C)
+- $P(A \cap B) = P(A)P(B)$
+- $P(A \cap C) = P(A)P(C)$
+- $P(B \cap C) = P(B)P(C)$
 
 **Mutual independence** (all combinations):
 - All pairwise conditions above, AND
-- P(A ∩ B ∩ C) = P(A)P(B)P(C)
+- $P(A \cap B \cap C) = P(A)P(B)P(C)$
 
 > ⚠️ Pairwise independence does NOT imply mutual independence!
 
@@ -327,17 +327,17 @@ For three events A, B, C:
 
 A system has three independent modules, each with failure probability 0.1.
 
-P(all three fail) = P(A)P(B)P(C) = (0.1)³ = 0.001
+$P(\text{all three fail}) = P(A)P(B)P(C) = (0.1)^{3} = 0.001$
 
-P(system works) = P(at least one works) = 1 - P(all fail) = 1 - 0.001 = 0.999
+$P(\text{system works}) = P(\text{at least one works}) = 1 - P(\text{all fail}) = 1 - 0.001 = 0.999$
 
 This calculation is ONLY valid because failures are independent.
 
 ### Testing Independence
 
 To verify independence from data:
-1. Compute P(A), P(B), and P(A ∩ B) empirically
-2. Check if P(A ∩ B) ≈ P(A) · P(B)
+1. Compute $P(A),\, P(B)$, and $P(A \cap B)$ empirically
+2. Check if $P(A \cap B) \approx P(A) \cdot P(B)$
 
 If not approximately equal, the events are **dependent**.
 
@@ -345,10 +345,10 @@ If not approximately equal, the events are **dependent**.
 
 > ❌ "Mutually exclusive events are independent"
 
-This is **FALSE**. If A ∩ B = ∅ and P(A) > 0, P(B) > 0, then:
-- P(A ∩ B) = 0
-- P(A)P(B) > 0
-- Therefore P(A ∩ B) ≠ P(A)P(B)
+This is **FALSE**. If $A \cap B = \emptyset$ and $P(A) > 0,\, P(B) > 0$, then:
+- $P(A \cap B) = 0$
+- $P(A)P(B) > 0$
+- Therefore $P(A \cap B) \ne P(A)P(B)$
 
 Mutually exclusive events are actually **maximally dependent** — if one occurs, the other cannot.
 
@@ -364,7 +364,7 @@ $$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B|A) \cdot P(A)}{P(B)}$$
 
 ### Full Statement
 
-If B₁, B₂, ..., Bₙ partition the sample space (mutually exclusive and exhaustive):
+If $B_{1},\, B_{2},\, \ldots,\, B_{n}$ partition the sample space (mutually exclusive and exhaustive):
 
 $$P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^{n} P(A|B_j) \cdot P(B_j)}$$
 
@@ -372,45 +372,45 @@ $$P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^{n} P(A|B_j) \cdot P(B_j)}$
 
 | Term | Name | Engineering Meaning |
 |------|------|---------------------|
-| P(Bᵢ) | Prior probability | What we believed before observing data |
-| P(A\|Bᵢ) | Likelihood | How likely is the observation given each hypothesis |
-| P(Bᵢ\|A) | Posterior probability | Updated belief after observing data |
-| P(A) | Evidence | Total probability of the observation |
+| $P(B_{i})$ | Prior probability | What we believed before observing data |
+| $P(A \mid B_{i})$ | Likelihood | How likely is the observation given each hypothesis |
+| $P(B_{i} \mid A)$ | Posterior probability | Updated belief after observing data |
+| $P(A)$ | Evidence | Total probability of the observation |
 
 ### Engineering Example: Fault Diagnosis
 
 A circuit board can have a fault in one of three subsystems:
-- B₁ = power supply fault, P(B₁) = 0.3
-- B₂ = processor fault, P(B₂) = 0.5
-- B₃ = memory fault, P(B₃) = 0.2
+- $B_{1}$ = power supply fault, $P(B_{1}) = 0.3$
+- $B_{2}$ = processor fault, $P(B_{2}) = 0.5$
+- $B_{3}$ = memory fault, $P(B_{3}) = 0.2$
 
-A diagnostic test produces symptom A (overheating):
-- P(A|B₁) = 0.8 (power supply faults usually cause overheating)
-- P(A|B₂) = 0.3 (processor faults sometimes cause overheating)
-- P(A|B₃) = 0.1 (memory faults rarely cause overheating)
+A diagnostic test produces symptom $A$ (overheating):
+- $P(A \mid B_{1}) = 0.8$ (power supply faults usually cause overheating)
+- $P(A \mid B_{2}) = 0.3$ (processor faults sometimes cause overheating)
+- $P(A \mid B_{3}) = 0.1$ (memory faults rarely cause overheating)
 
 **Question:** Given that overheating is observed, what is the most likely fault?
 
 **Solution:**
 
-P(A) = P(A|B₁)P(B₁) + P(A|B₂)P(B₂) + P(A|B₃)P(B₃)
-     = (0.8)(0.3) + (0.3)(0.5) + (0.1)(0.2)
-     = 0.24 + 0.15 + 0.02 = 0.41
+$P(A) = P(A \mid B_{1})P(B_{1}) + P(A \mid B_{2})P(B_{2}) + P(A \mid B_{3})P(B_{3})$
+     $= (0.8)(0.3) + (0.3)(0.5) + (0.1)(0.2)$
+     $= 0.24 + 0.15 + 0.02 = 0.41$
 
-P(B₁|A) = (0.8)(0.3) / 0.41 = 0.585 (most likely!)
-P(B₂|A) = (0.3)(0.5) / 0.41 = 0.366
-P(B₃|A) = (0.1)(0.2) / 0.41 = 0.049
+$P(B_{1} \mid A) = \frac{(0.8)(0.3)}{0.41} = 0.585$ (most likely!)
+$P(B_{2} \mid A) = \frac{(0.3)(0.5)}{0.41} = 0.366$
+$P(B_{3} \mid A) = \frac{(0.1)(0.2)}{0.41} = 0.049$
 
 **Engineering Decision:** Investigate the power supply first.
 
 ### Engineering Example: Detection with Bayes
 
 Returning to the radar example from Section 1.7:
-- P(H₁) = 0.01, P(D|H₁) = 0.95, P(D|H₀) = 0.02
+- $P(H_{1}) = 0.01,\, P(D \mid H_{1}) = 0.95,\, P(D \mid H_{0}) = 0.02$
 
-P(D) = P(D|H₁)P(H₁) + P(D|H₀)P(H₀) = (0.95)(0.01) + (0.02)(0.99) = 0.0095 + 0.0198 = 0.0293
+$P(D) = P(D \mid H_{1})P(H_{1}) + P(D \mid H_{0})P(H_{0}) = (0.95)(0.01) + (0.02)(0.99) = 0.0095 + 0.0198 = 0.0293$
 
-P(H₁|D) = (0.95)(0.01) / 0.0293 = 0.324
+$P(H_{1} \mid D) = \frac{(0.95)(0.01)}{0.0293} = 0.324$
 
 **Interpretation:** Even with a good detector (95% detection, 2% false alarm), when targets are rare (1%), most detections are false alarms! Only 32.4% of alarms correspond to real targets.
 
@@ -424,7 +424,7 @@ P(H₁|D) = (0.95)(0.01) / 0.0293 = 0.324
 
 ### Statement
 
-If B₁, B₂, ..., Bₙ form a **partition** of S (mutually exclusive, exhaustive):
+If $B_{1},\, B_{2},\, \ldots,\, B_{n}$ form a **partition** of $S$ (mutually exclusive, exhaustive):
 
 $$P(A) = \sum_{i=1}^{n} P(A|B_i) \cdot P(B_i)$$
 
@@ -439,9 +439,9 @@ A packet can be routed through three different paths:
 - Path 2: chosen 30% of the time, error probability 0.05
 - Path 3: chosen 20% of the time, error probability 0.10
 
-P(packet error) = P(error|path 1)P(path 1) + P(error|path 2)P(path 2) + P(error|path 3)P(path 3)
-                = (0.01)(0.50) + (0.05)(0.30) + (0.10)(0.20)
-                = 0.005 + 0.015 + 0.020 = 0.040
+$P(\text{packet error}) = P(\text{error}\ \mid \text{path 1})P(\text{path 1}) + P(\text{error}\ \mid \text{path 2})P(\text{path 2}) + P(\text{error}\ \mid \text{path 3})P(\text{path 3})$
+                $= (0.01)(0.50) + (0.05)(0.30) + (0.10)(0.20)$
+                $= 0.005 + 0.015 + 0.020 = 0.040$
 
 **Overall error rate: 4%**
 
@@ -449,18 +449,18 @@ P(packet error) = P(error|path 1)P(path 1) + P(error|path 2)P(path 2) + P(error|
 
 A company sources capacitors from two suppliers:
 - Supplier A: provides 60% of capacitors, defect rate 2%
-- Supplier B: provides 40% of capacitors, defect rate 5%
+- Supplier $B$: provides 40% of capacitors, defect rate 5%
 
-P(defective) = P(defective|A)P(A) + P(defective|B)P(B)
-             = (0.02)(0.60) + (0.05)(0.40)
-             = 0.012 + 0.020 = 0.032
+$P(\text{defective}) = P(\text{defective}\ \mid A)P(A) + P(\text{defective}\ \mid B)P(B)$
+             $= (0.02)(0.60) + (0.05)(0.40)$
+             $= 0.012 + 0.020 = 0.032$
 
 If a defective capacitor is found, which supplier likely produced it?
 
-P(A|defective) = (0.02)(0.60) / 0.032 = 0.375
-P(B|defective) = (0.05)(0.40) / 0.032 = 0.625
+$P(A \mid \text{defective}) = \frac{(0.02)(0.60)}{0.032} = 0.375$
+$P(B \mid \text{defective}) = \frac{(0.05)(0.40)}{0.032} = 0.625$
 
-Despite providing fewer units, Supplier B is more likely responsible for a given defect.
+Despite providing fewer units, Supplier $B$ is more likely responsible for a given defect.
 
 ---
 
@@ -625,9 +625,9 @@ fprintf('  These differ => events are dependent\n');
 | Concept | Definition | Engineering Meaning |
 |---------|-----------|---------------------|
 | **Event** | A subset of the sample space | A specific outcome or set of outcomes we care about |
-| **Probability** | P(A) = measure of likelihood | Long-run relative frequency of occurrence |
-| **Conditional Probability** | P(A\|B) = updated probability given B | How knowledge of one event changes another's likelihood |
-| **Independence** | P(A∩B) = P(A)P(B) | Knowing one event tells nothing about the other |
+| **Probability** | $P(A)$ = measure of likelihood | Long-run relative frequency of occurrence |
+| **Conditional Probability** | $P(A \mid B)$ = updated probability given $B$ | How knowledge of one event changes another's likelihood |
+| **Independence** | $P(A \cap B) = P(A)P(B)$ | Knowing one event tells nothing about the other |
 
 ---
 
@@ -641,48 +641,48 @@ A system has two independent processors. Processor 1 fails with probability 0.02
 (c) Given that the system is still working, what is the probability that processor 1 has failed?
 
 **Solution:**
-(a) P(system fails) = P(both fail) = (0.02)(0.03) = 0.0006
+(a) $P(\text{system fails}) = P(\text{both fail}) = (0.02)(0.03) = 0.0006$
 
-(b) P(at least one fails) = 1 - P(none fail) = 1 - (0.98)(0.97) = 1 - 0.9506 = 0.0494
+(b) $P(\text{at least one fails}) = 1 - P(\text{none fail}) = 1 - (0.98)(0.97) = 1 - 0.9506 = 0.0494$
 
 (c) System working = NOT(both fail) = at least one works.
-P(P1 failed | system works) = P(P1 failed ∩ P2 works) / P(system works)
-= (0.02)(0.97) / (1 - 0.0006) = 0.0194 / 0.9994 ≈ 0.0194
+$P(P1\ \text{failed}\ \mid \text{system works}) = \frac{P(P1\ \text{failed}\ \cap P2\ \text{works})}{P(\text{system works})}$
+$= \frac{(0.02)(0.97)}{1 - 0.0006} = \frac{0.0194}{0.9994} \approx 0.0194$
 
 ---
 
 ### Problem 2: Sensor Detection
-A fire detection system has: P(fire) = 0.001, P(alarm | fire) = 0.98, P(alarm | no fire) = 0.01.
+A fire detection system has: $P(\text{fire}) = 0.001,\, P(\text{alarm}\ \mid \text{fire}) = 0.98,\, P(\text{alarm}\ \mid \text{no fire}) = 0.01$.
 
-(a) What is P(alarm)?
-(b) If the alarm sounds, what is P(fire | alarm)?
+(a) What is $P(\text{alarm})$?
+(b) If the alarm sounds, what is $P(\text{fire}\ \mid \text{alarm})$?
 (c) Comment on the result.
 
 **Solution:**
-(a) P(alarm) = P(alarm|fire)P(fire) + P(alarm|no fire)P(no fire)
-= (0.98)(0.001) + (0.01)(0.999) = 0.000980 + 0.009990 = 0.010970
+(a) $P(\text{alarm}) = P(\text{alarm}\ \mid \text{fire})P(\text{fire}) + P(\text{alarm}\ \mid \text{no fire})P(\text{no fire})$
+$= (0.98)(0.001) + (0.01)(0.999) = 0.000980 + 0.009990 = 0.010970$
 
-(b) P(fire|alarm) = P(alarm|fire)P(fire) / P(alarm)
-= (0.98)(0.001) / 0.01097 = 0.0894
+(b) $P(\text{fire}\ \mid \text{alarm}) = \frac{P(\text{alarm}\ \mid \text{fire})P(\text{fire})}{P(\text{alarm})}$
+$= \frac{(0.98)(0.001)}{0.01097} = 0.0894$
 
-(c) Only ~9% of alarms correspond to real fires! This is the base rate fallacy. Even with an excellent detector, rare events produce many false alarms.
+(c) Only $\sim 9\%$ of alarms correspond to real fires! This is the base rate fallacy. Even with an excellent detector, rare events produce many false alarms.
 
 ---
 
 ### Problem 3: Communication Error
 A packet of 8 bits is transmitted. Each bit has independent error probability 0.05.
 
-(a) What is P(no errors in the packet)?
-(b) What is P(exactly one error)?
-(c) What is P(at least one error)?
+(a) What is $P(\text{no errors in the packet})$?
+(b) What is $P(\text{exactly one error})$?
+(c) What is $P(\text{at least one error})$?
 (d) Write MATLAB code to verify by simulation.
 
 **Solution:**
-(a) P(no errors) = (0.95)⁸ = 0.6634
+(a) $P(\text{no errors}) = (0.95)^{8} = 0.6634$
 
-(b) P(exactly one error) = C(8,1)(0.05)¹(0.95)⁷ = 8 × 0.05 × 0.6983 = 0.2793
+(b) $P(\text{exactly one error}) = C(8,\,1)(0.05)^{1}(0.95)^{7} = 8 \times 0.05 \times 0.6983 = 0.2793$
 
-(c) P(at least one error) = 1 - P(no errors) = 1 - 0.6634 = 0.3366
+(c) $P(\text{at least one error}) = 1 - P(\text{no errors}) = 1 - 0.6634 = 0.3366$
 
 (d) MATLAB verification:
 ```matlab
@@ -697,35 +697,35 @@ fprintf('P(>=1 error)= %.4f (theory: %.4f)\n', mean(errors_per_packet>=1), 1-0.9
 
 ### Problem 4: Total Probability Application
 A wireless system operates in three modes:
-- Mode 1 (good channel): 60% of time, P(outage) = 0.01
-- Mode 2 (moderate channel): 30% of time, P(outage) = 0.10
-- Mode 3 (poor channel): 10% of time, P(outage) = 0.50
+- Mode 1 (good channel): 60% of time, $P(\text{outage}) = 0.01$
+- Mode 2 (moderate channel): 30% of time, $P(\text{outage}) = 0.10$
+- Mode 3 (poor channel): 10% of time, $P(\text{outage}) = 0.50$
 
 (a) What is the overall outage probability?
 (b) Given an outage occurred, what is the probability the system was in Mode 3?
 
 **Solution:**
-(a) P(outage) = (0.01)(0.60) + (0.10)(0.30) + (0.50)(0.10) = 0.006 + 0.030 + 0.050 = 0.086
+(a) $P(\text{outage}) = (0.01)(0.60) + (0.10)(0.30) + (0.50)(0.10) = 0.006 + 0.030 + 0.050 = 0.086$
 
-(b) P(Mode 3 | outage) = (0.50)(0.10) / 0.086 = 0.581
+(b) $P(\text{Mode 3}\ \mid \text{outage}) = \frac{(0.50)(0.10)}{0.086} = 0.581$
 
 ---
 
 ### Problem 5: Independence Analysis
-Two sensors monitor a process. Sensor A has false alarm probability 0.05. Sensor B has false alarm probability 0.03.
+Two sensors monitor a process. Sensor A has false alarm probability 0.05. Sensor $B$ has false alarm probability 0.03.
 
-(a) If sensors are independent, what is P(both give false alarm)?
-(b) If sensors share a noise source and P(both false alarm) = 0.01, are they independent?
-(c) What is P(A false alarm | B false alarm) in case (b)?
+(a) If sensors are independent, what is $P(\text{both give false alarm})$?
+(b) If sensors share a noise source and $P(\text{both false alarm}) = 0.01$, are they independent?
+(c) What is $P(A\ \text{false alarm}\ \mid B\ \text{false alarm})$ in case (b)?
 
 **Solution:**
-(a) If independent: P(both) = (0.05)(0.03) = 0.0015
+(a) If independent: $P(\text{both}) = (0.05)(0.03) = 0.0015$
 
-(b) If P(both) = 0.01 ≠ 0.0015, they are NOT independent. The shared noise source creates dependence.
+(b) If $P(\text{both}) = 0.01 \ne 0.0015$, they are NOT independent. The shared noise source creates dependence.
 
-(c) P(A|B) = P(A∩B) / P(B) = 0.01 / 0.03 = 0.333
+(c) $P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{0.01}{0.03} = 0.333$
 
-This is much higher than P(A) = 0.05, confirming strong dependence.
+This is much higher than $P(A) = 0.05$, confirming strong dependence.
 
 ---
 

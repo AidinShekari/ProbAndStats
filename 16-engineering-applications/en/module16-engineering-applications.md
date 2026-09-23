@@ -18,10 +18,10 @@ This capstone module integrates ALL previous modules into real Electrical Engine
 
 **Problem:** Estimate the Bit Error Rate of a communication link.
 
-**Model:** Each bit is a Bernoulli trial with error probability p (the BER).
-- n bits transmitted, k errors observed
-- p̂ = k/n (MLE of BER)
-- 95% CI: p̂ ± 1.96√(p̂(1-p̂)/n)
+**Model:** Each bit is a Bernoulli trial with error probability $p$ (the BER).
+- $n$ bits transmitted, $k$ errors observed
+- $\hat{p} = \frac{k}{n}$ (MLE of BER)
+- 95% CI: $\hat{p} \pm 1.96\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
 
 **MATLAB: BER Simulation and CI**
 
@@ -50,17 +50,17 @@ fprintf('95%% CI: [%.4e, %.4e]\n', BER_hat-margin, BER_hat+margin);
 ### 16.1.2 AWGN Noise Modeling
 
 Additive White Gaussian Noise is the fundamental noise model:
-- **Distribution:** N(0, N₀/2) per dimension
+- **Distribution:** $N\left(0,\, \frac{N_{0}}{2}\right)$ per dimension
 - **Why Gaussian?** CLT — thermal noise is sum of many electron contributions
-- **Characterization:** Fully described by power spectral density N₀ or variance σ² = N₀B (B = bandwidth)
+- **Characterization:** Fully described by power spectral density $N_{0}$ or variance $\sigma^{2} = N_{0}B$ (B = bandwidth)
 
 ### 16.1.3 Rayleigh Fading Channel
 
-**Model:** Channel coefficient h = h_I + j·h_Q where h_I, h_Q ~ N(0, σ²) independent.
+**Model:** Channel coefficient $h = h_{I} + j \cdot h_{Q}$ where $h_{I},\, h_{Q} \sim N(0,\, \sigma^{2})$ independent.
 
-- Envelope |h| ~ Rayleigh(σ)
-- Power |h|² ~ Exponential(1/(2σ²))
-- **Outage probability:** P(|h|² < γ_th) = 1 - exp(-γ_th/(2σ²))
+- Envelope $\lvert h\rvert \sim \mathrm{Rayleigh}(\sigma)$
+- Power $\lvert h\rvert^{2} \sim \mathrm{Exponential}\left(\frac{1}{2\sigma^{2}}\right)$
+- **Outage probability:** $P(\lvert h\rvert^{2} < \gamma_{\mathrm{th}}) = 1 - \exp \left(-\frac{\gamma_{\mathrm{th}}}{2\sigma^{2}}\right)$
 
 ```matlab
 %% Rayleigh Fading: Outage Probability
@@ -85,21 +85,21 @@ fprintf('Outage Probability (simulated): %.4f\n', P_outage_sim);
 ### 16.1.4 Rician Fading
 
 When a line-of-sight (LOS) component exists:
-- h = h_LOS + h_scatter
-- |h| ~ Rician(ν, σ) where K = ν²/(2σ²) is the K-factor
+- $h = h_{\mathrm{LOS}} + h_{\mathrm{scatter}}$
+- $\lvert h\rvert \sim \mathrm{Rician}(\nu,\, \sigma)$ where $K = \frac{\nu^{2}}{2\sigma^{2}}$ is the K-factor
 
-K-factor: K = 0 (Rayleigh) → K = ∞ (no fading, AWGN)
+K-factor: $K = 0$ (Rayleigh) $\to K = \infty$ (no fading, AWGN)
 
 ### 16.1.5 SNR Statistics
 
-**Instantaneous SNR:** γ = |h|² × (E_s/N₀)
+**Instantaneous SNR:** $\gamma = \lvert h\rvert^{2} \times \frac{E_{s}}{N_{0}}$
 
-For Rayleigh: γ ~ Exponential(γ̄) where γ̄ = average SNR
+For Rayleigh: $\gamma \sim \mathrm{Exponential}(\bar{\gamma})$ where $\bar{\gamma}$ = average SNR
 
 **Average BER over fading:**
 $$\bar{P}_e = \int_0^\infty P_e(\gamma) \cdot f_\gamma(\gamma) \, d\gamma$$
 
-For BPSK over Rayleigh: P̄_e = (1/2)(1 - √(γ̄/(1+γ̄)))
+For BPSK over Rayleigh: $\bar{P}_{e} = \frac{1}{2}\left(1 - \sqrt{\frac{\bar{\gamma}}{1+\bar{\gamma}}}\right)$
 
 ---
 
@@ -107,13 +107,13 @@ For BPSK over Rayleigh: P̄_e = (1/2)(1 - √(γ̄/(1+γ̄)))
 
 ### 16.2.1 Measurement Noise Characterization
 
-**Problem:** Characterize noise in measured signal x(t) = s(t) + n(t).
+**Problem:** Characterize noise in measured signal $x(t) = s(t) + n(t)$.
 
 **Approach:**
 1. Collect noise-only samples (signal absent)
-2. Estimate noise statistics: μ̂_n, σ̂²_n
+2. Estimate noise statistics: $\hat{\mu}_{n},\, \hat{\sigma}^{2}_{n}$
 3. Test for Gaussianity (histogram, QQ-plot)
-4. Compute SNR: SNR = P_signal / σ̂²_n
+4. Compute SNR: $\mathrm{SNR} = \frac{P_{\mathrm{signal}}}{\hat{\sigma}^{2}_{n}}$
 
 ```matlab
 %% Noise Characterization
@@ -147,7 +147,7 @@ subplot(1,2,2); qqplot(noise_estimate); title('QQ Plot');
 
 **Problem:** Detect a known signal in noise.
 
-**Method:** Correlate received signal with known template. Under H₀ (noise only), the correlator output has known distribution → set threshold.
+**Method:** Correlate received signal with known template. Under $H_{0}$ (noise only), the correlator output has known distribution → set threshold.
 
 ```matlab
 %% Correlation Detector
@@ -180,19 +180,19 @@ fprintf('P_D = %.4f\n', P_D);
 
 ### 16.3.1 Component Tolerance Modeling
 
-**Problem:** Resistors have nominal value R₀ with manufacturing tolerance.
+**Problem:** Resistors have nominal value $R_{0}$ with manufacturing tolerance.
 
-**Model:** R ~ N(R₀, σ_R²) where σ_R depends on tolerance class.
+**Model:** $R \sim N(R_{0},\, \sigma_{R}^{2})$ where $\sigma_{R}$ depends on tolerance class.
 
-For ±5% tolerance (99.7% within bounds): 3σ = 0.05R₀ → σ = 0.0167R₀
+For $\pm 5\%$ tolerance (99.7% within bounds): $3\sigma = 0.05R_{0} \to \sigma = 0.0167R_{0}$
 
 ### 16.3.2 Monte Carlo Circuit Analysis
 
-**Problem:** A voltage divider uses R₁ and R₂. What is the distribution of output voltage?
+**Problem:** A voltage divider uses $R_{1}$ and $R_{2}$. What is the distribution of output voltage?
 
-V_out = V_in × R₂/(R₁ + R₂)
+$V_{\mathrm{out}} = V_{\mathrm{in}} \times \frac{R_{2}}{R_{1} + R_{2}}$
 
-With R₁, R₂ random: V_out is a random variable!
+With $R_{1},\, R_{2}$ random: $V_{\mathrm{out}}$ is a random variable!
 
 ```matlab
 %% Monte Carlo: Voltage Divider with Tolerant Components
@@ -220,11 +220,11 @@ fprintf('Yield (±2%%): %.2f%%\n', 100*yield);
 
 ### 16.3.3 Measurement Uncertainty Propagation
 
-If Z = f(X, Y) and X, Y have small uncertainties:
+If $Z = f(X,\, Y)$ and $X,\, Y$ have small uncertainties:
 
 $$\sigma_Z^2 \approx \left(\frac{\partial f}{\partial X}\right)^2 \sigma_X^2 + \left(\frac{\partial f}{\partial Y}\right)^2 \sigma_Y^2$$
 
-**Example:** Power P = V²/R. σ_P² ≈ (2V/R)²σ_V² + (V²/R²)²σ_R²
+**Example:** Power $P = \frac{V^{2}}{R}$. $\sigma_{P}^{2} \approx \frac{2\,\mathrm{V}}{R}^{2}\sigma_{V}^{2} + \frac{V^{2}}{R^{2}}^{2}\sigma_{R}^{2}$
 
 ---
 
@@ -232,21 +232,21 @@ $$\sigma_Z^2 \approx \left(\frac{\partial f}{\partial X}\right)^2 \sigma_X^2 + \
 
 ### 16.4.1 Load Uncertainty
 
-**Problem:** Peak load is uncertain. Model: L ~ N(μ_L, σ_L²)
+**Problem:** Peak load is uncertain. Model: $L \sim N(\mu_{L},\, \sigma_{L}^{2})$
 
-Design question: What capacity C ensures P(load > capacity) < 0.01?
+Design question: What capacity $C$ ensures $P(\text{load} > \text{capacity}) < 0.01$?
 
-C = μ_L + 2.326σ_L (for 1% exceedance probability)
+$C = \mu_{L} + 2.326\sigma_{L}$ (for 1% exceedance probability)
 
 ### 16.4.2 System Reliability
 
 **Series system:** All components must work.
 
-R_sys = R₁ × R₂ × ... × Rₙ (for independent components)
+$R_{\mathrm{sys}} = R_{1} \times R_{2} \times \ldots \times R_{n}$ (for independent components)
 
 **Parallel system:** At least one must work.
 
-R_sys = 1 - (1-R₁)(1-R₂)...(1-Rₙ)
+$R_{\mathrm{sys}} = 1 - (1-R_{1})(1-R_{2})\ldots (1-R_{n})$
 
 ```matlab
 %% Reliability Analysis: Series-Parallel System
@@ -286,12 +286,12 @@ fprintf('System reliability (sim): %.6f\n', mean(sys_works));
 
 **Problem:** A control system uses noisy sensor readings.
 
-Measurement: y(k) = x(k) + n(k) where n ~ N(0, σ²_n)
+Measurement: $y(k) = x(k) + n(k)$ where $n \sim N(0,\, \sigma^{2}_{n})$
 
-Controller acts on y(k) → tracking error includes noise contribution.
+Controller acts on $y(k)$ → tracking error includes noise contribution.
 
 **Solution approaches:**
-- Averaging (low-pass filter): reduces noise by √n
+- Averaging (low-pass filter): reduces noise by $\sqrt{n}$
 - Kalman filter: optimal fusion of model prediction and measurement
 
 ```matlab
@@ -319,9 +319,9 @@ title('Noise Reduction by Averaging');
 
 ### 16.5.2 Parameter Uncertainty
 
-System model: G(s) = K/(τs + 1) where K and τ are uncertain.
+System model: $G(s) = \frac{K}{\tau s + 1}$ where $K$ and $\tau$ are uncertain.
 
-Monte Carlo approach: sample K and τ from their distributions, simulate system response many times, compute statistics of output.
+Monte Carlo approach: sample $K$ and $\tau$ from their distributions, simulate system response many times, compute statistics of output.
 
 ---
 
@@ -341,7 +341,7 @@ Monte Carlo approach: sample K and τ from their distributions, simulate system 
 
 ### 16.6.3 Probability Distributions in ML
 
-- Generative models: learn P(X) directly
+- Generative models: learn $P(X)$ directly
 - Gaussian Mixture Models: weighted sum of Gaussians
 - Variational Autoencoders: latent variables with Gaussian priors
 
@@ -439,7 +439,7 @@ fprintf('   Theory:    %.4f\n', P_outage_theory);
 | 3. Distributions | Choosing noise/fading/failure models |
 | 4. Moments | Signal power, noise power, SNR |
 | 5. Transformations | dB conversion, power from voltage |
-| 6-7. Joint/Functions | Signal+noise, system combinations |
+| $6-7$. Joint/Functions | Signal+noise, system combinations |
 | 8. Conditional | Performance under different states |
 | 9. Correlation | MIMO channels, sensor arrays |
 | 10. Multiple RVs | Vector processing, beamforming |

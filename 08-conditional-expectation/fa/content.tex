@@ -29,7 +29,7 @@
   واریانس کل اندازه‌گیری چقدر است هنگامی که حسگر در محیط‌های مختلف کار می‌کند؟
 \end{itemize}
 
-\PSsection{8.2}{امید ریاضی شرطی \lr{\mbox{E[X\textbar{}Y=y]}}}
+\PSsection{8.2}{امید ریاضی شرطی \lr{$E[X \mid Y = y]$}}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
@@ -41,11 +41,11 @@
 
 \PSsubsection{تفسیر}
 
-\lr{\mbox{E[X\textbar{}Y=y]}} همان \textbf{مقدار میانگین \lr{\mbox{X}}} است هنگامی که \lr{\mbox{Y = y}} را می‌دانیم. این تابعی از \lr{\mbox{y}} است.
+\lr{$E[X \mid Y = y]$} همان \textbf{مقدار میانگین \lr{$X$}} است هنگامی که \lr{$Y = y$} را می‌دانیم. این تابعی از \lr{$y$} است.
 
-\PSsubsection{\lr{\mbox{E[X\textbar{}Y]}} به‌عنوان یک متغیر تصادفی}
+\PSsubsection{\lr{$E[X \mid Y]$} به‌عنوان یک متغیر تصادفی}
 
-هنگامی که خود \lr{\mbox{Y}} تصادفی باشد، \lr{\mbox{E[X\textbar{}Y]}} یک \textbf{متغیر تصادفی} است \lr{—} وقتی \lr{\mbox{Y = y}} باشد مقدار \lr{\mbox{E[X\textbar{}Y=y]}} را اختیار می‌کند.
+هنگامی که خود \lr{$Y$} تصادفی باشد، \lr{$E[X \mid Y]$} یک \textbf{متغیر تصادفی} است \lr{—} وقتی \lr{$Y = y$} باشد مقدار \lr{$E[X \mid Y = y]$} را اختیار می‌کند.
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی}
 
@@ -54,16 +54,16 @@
 \begin{itemize}
 \tightlist
 \item
-  کانال خوب \lr{\mbox{(Y=1)}}: \lr{\mbox{E[P\textbar{}Y=1] = 10 mW}}
+  کانال خوب \lr{\mbox{$(Y = 1)$: $E[P \mid Y = 1] = 10$ mW}}
 \item
-  کانال ضعیف \lr{\mbox{(Y=0)}}: \lr{\mbox{E[P\textbar{}Y=0] = 1 mW}}
+  کانال ضعیف \lr{\mbox{$(Y = 0)$: $E[P \mid Y = 0] = 1$ mW}}
 \item
-  \lr{\mbox{P(Y=1) = 0.7}}، \lr{\mbox{P(Y=0) = 0.3}}
+  \lr{$P(Y = 1) = 0.7$}، \lr{$P(Y = 0) = 0.3$}
 \end{itemize}
 
 \end{PSbox}
 
-\PSsection{8.3}{واریانس شرطی \lr{\mbox{Var(X\textbar{}Y=y)}}}
+\PSsection{8.3}{واریانس شرطی \lr{$\operatorname{Var}(X \mid Y = y)$}}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
@@ -73,7 +73,7 @@
 
 \PSsubsection{تفسیر}
 
-واریانس شرطی \textbf{عدم‌قطعیت باقی‌مانده در \lr{\mbox{X}}} را پس از معلوم‌شدن \lr{\mbox{Y}} می‌سنجد.
+واریانس شرطی \textbf{عدم‌قطعیت باقی‌مانده در \lr{$X$}} را پس از معلوم‌شدن \lr{$Y$} می‌سنجد.
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی}
 
@@ -82,9 +82,9 @@
 \begin{itemize}
 \tightlist
 \item
-  در \lr{\mbox{T=20\ensuremath{^{\circ}}C}}: \lr{\mbox{Var(X\textbar{}T=20) = 0.01}} (دقت بالا)
+  در \lr{$T = 20^{\circ}C$: $\operatorname{Var}(X \mid T = 20) = 0.01$} (دقت بالا)
 \item
-  در \lr{\mbox{T=80\ensuremath{^{\circ}}C}}: \lr{\mbox{Var(X\textbar{}T=80) = 0.09}} (دقت پایین به‌دلیل اثرهای گرمایی)
+  در \lr{$T = 80^{\circ}C$: $\operatorname{Var}(X \mid T = 80) = 0.09$} (دقت پایین به‌دلیل اثرهای گرمایی)
 \end{itemize}
 
 \end{PSbox}
@@ -101,7 +101,7 @@
 
 \PSsubsection{اثبات (گسسته)}
 
-\lr{E[E[X\textbar{}Y]] = \ensuremath{\Sigma}\textsubscript{y} E[X\textbar{}Y=y] \ensuremath{\cdot} P(Y=y)}\PSbr{}\lr{= \ensuremath{\Sigma}\textsubscript{y} [\ensuremath{\Sigma}\textsubscript{x} x \ensuremath{\cdot} P(X=x\textbar{}Y=y)] \ensuremath{\cdot} P(Y=y)}\PSbr{}\lr{= \ensuremath{\Sigma}\textsubscript{x} \ensuremath{\Sigma}\textsubscript{y} x \ensuremath{\cdot} P(X=x, Y=y)}\PSbr{}\lr{= \ensuremath{\Sigma}\textsubscript{x} x \ensuremath{\cdot} P(X=x) = E[X] \PSyes{}}
+\lr{$E[E[X \mid Y]] = \sum_{y} E[X \mid Y = y] \cdot P(Y = y)$}\PSbr{}\lr{$= \sum_{y} \left[\sum_{x} x \cdot P(X = x \mid Y = y)\right] \cdot P(Y = y)$}\PSbr{}\lr{$= \sum_{x} \Sigma_{y} x \cdot P(X = x,\, Y = y)$}\PSbr{}\lr{\mbox{$= \sum_{x} x \cdot P(X = x) = E[X]$ \PSyes{}}}
 
 \PSsubsection{تفسیر}
 
@@ -114,14 +114,14 @@
 \begin{itemize}
 \tightlist
 \item
-  حالت 1 (60\% زمان): \lr{\mbox{BER = 10\textsuperscript{-6}}}
+  حالت 1 (60\% زمان): \lr{$\mathrm{BER} = 10^{-6}$}
 \item
-  حالت 2 (30\% زمان): \lr{\mbox{BER = 10\textsuperscript{-4}}}
+  حالت 2 (30\% زمان): \lr{$\mathrm{BER} = 10^{-4}$}
 \item
-  حالت 3 (10\% زمان): \lr{\mbox{BER = 10\textsuperscript{-2}}}
+  حالت 3 (10\% زمان): \lr{$\mathrm{BER} = 10^{-2}$}
 \end{itemize}
 
-\lr{\mbox{BER}} کل = \lr{E[BER] = 0.6(10\textsuperscript{-6}) + 0.3(10\textsuperscript{-4}) + 0.1(10\textsuperscript{-2})}\PSbr{}\lr{= 0.6\ensuremath{\times}10\textsuperscript{-6} + 30\ensuremath{\times}10\textsuperscript{-6} + 10000\ensuremath{\times}10\textsuperscript{-6} \ensuremath{\approx} 1.003 \ensuremath{\times} 10\textsuperscript{-3}}
+\lr{\mbox{BER}} کل \lr{$= E[\mathrm{BER}] = 0.6(10^{-6}) + 0.3(10^{-4}) + 0.1(10^{-2})$}\PSbr{}\lr{$= 0.6 \times 10^{-6} + 30 \times 10^{-6} + 10000 \times 10^{-6} \approx 1.003 \times 10^{-3}$}
 
 \textbf{نکته مهندسی:} \lr{\mbox{BER}} کل تحت تسلط بدترین حالت است، هرچند که این حالت تنها در 10\% زمان رخ می‌دهد.
 
@@ -134,12 +134,12 @@
 \begin{itemize}
 \tightlist
 \item
-  بدون نقص: \lr{\mbox{E[T\textbar{}good] = 10000}} ساعت
+  بدون نقص: \lr{$E[T \mid \PSmtext{good}] = 10000$} ساعت
 \item
-  با نقص: \lr{\mbox{E[T\textbar{}defect] = 500}} ساعت
+  با نقص: \lr{$E[T \mid \PSmtext{defect}] = 500$} ساعت
 \end{itemize}
 
-\lr{\mbox{E[T] = 0.9(10000) + 0.1(500) = 9050}} ساعت
+\lr{$E[T] = 0.9(10000) + 0.1(500) = 9050$} ساعت
 
 \end{PSbox}
 
@@ -160,21 +160,21 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{\mbox{Var(X)}} & واریانس کل & عدم‌قطعیت کل در \lr{\mbox{X}} \\
-\lr{\mbox{E[Var(X\textbar{}Y)]}} & واریانس شرطی مورد انتظار & تغییرپذیری «درون‌گروهی» میانگین \\
-\lr{\mbox{Var(E[X\textbar{}Y])}} & واریانس میانگین‌های شرطی & تغییرپذیری «بین‌گروهی» \\
+\lr{$\operatorname{Var}(X)$} & واریانس کل & عدم‌قطعیت کل در \lr{$X$} \\
+\lr{$E[\operatorname{Var}(X \mid Y)]$} & واریانس شرطی مورد انتظار & تغییرپذیری «درون‌گروهی» میانگین \\
+\lr{$\operatorname{Var}(E[X \mid Y])$} & واریانس میانگین‌های شرطی & تغییرپذیری «بین‌گروهی» \\
 \end{longtable}
 }
 
 \PSsubsection{اثبات}
 
-\lr{Var(X) = E[X\textsuperscript{2}] - (E[X])\textsuperscript{2}}
+\lr{$\operatorname{Var}(X) = E[X^{2}] - (E[X])^{2}$}
 
-\lr{E[X\textsuperscript{2}] = E[E[X\textsuperscript{2}\textbar{}Y]]} (خاصیت برج)\PSbr{}\lr{= E[Var(X\textbar{}Y) + (E[X\textbar{}Y])\textsuperscript{2}]}\PSbr{}\lr{= E[Var(X\textbar{}Y)] + E[(E[X\textbar{}Y])\textsuperscript{2}]}
+\lr{$E[X^{2}] = E[E[X^{2} \mid Y]]$} (خاصیت برج)\PSbr{}\lr{$= E[\operatorname{Var}(X \mid Y) + (E[X \mid Y])^{2}]$}\PSbr{}\lr{$= E[\operatorname{Var}(X \mid Y)] + E[(E[X \mid Y])^{2}]$}
 
-\lr{(E[X])\textsuperscript{2} = (E[E[X\textbar{}Y]])\textsuperscript{2}}
+\lr{$(E[X])^{2} = (E[E[X \mid Y]])^{2}$}
 
-\lr{Var(X) = E[Var(X\textbar{}Y)] + E[(E[X\textbar{}Y])\textsuperscript{2}] - (E[E[X\textbar{}Y]])\textsuperscript{2}}\PSbr{}\lr{\mbox{= E[Var(X\textbar{}Y)] + Var(E[X\textbar{}Y]) \PSyes{}}}
+\lr{$\operatorname{Var}(X) = E[\operatorname{Var}(X \mid Y)] + E[(E[X \mid Y])^{2}] - (E[E[X \mid Y]])^{2}$}\PSbr{}\lr{$= E[\operatorname{Var}(X \mid Y)] + \operatorname{Var}(E[X \mid Y])$ \PSyes{}}
 
 \PSsubsection{تفسیر: تجزیه عدم‌قطعیت}
 
@@ -182,21 +182,21 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: حسگر در دو محیط}
 
-یک حسگر در فضای بسته (\lr{\mbox{Y=1}}، احتمال \PSnum{0.6)} و فضای باز (\lr{\mbox{Y=2}}، احتمال \PSnum{0.4)} کار می‌کند:
+یک حسگر در فضای بسته (\lr{$Y = 1$}، احتمال \PSnum{0.6)} و فضای باز (\lr{$Y = 2$}، احتمال \PSnum{0.4)} کار می‌کند:
 
 \begin{itemize}
 \tightlist
 \item
-  فضای بسته: \lr{\mbox{E[X\textbar{}Y=1] = 25\ensuremath{^{\circ}}C}}، \lr{\mbox{Var(X\textbar{}Y=1) = 1}}
+  فضای بسته: \lr{$E[X \mid Y = 1] = 25^{\circ}C$}، \lr{$\operatorname{Var}(X \mid Y = 1) = 1$}
 \item
-  فضای باز: \lr{\mbox{E[X\textbar{}Y=2] = 15\ensuremath{^{\circ}}C}}، \lr{\mbox{Var(X\textbar{}Y=2) = 16}}
+  فضای باز: \lr{$E[X \mid Y = 2] = 15^{\circ}C$}، \lr{$\operatorname{Var}(X \mid Y = 2) = 16$}
 \end{itemize}
 
-\lr{\textbf{\lr{\mbox{E[Var(X\textbar{}Y)]}}} = 0.6(1) + 0.4(16) = 7.0} (میانگین واریانس درون‌شرطی)
+**\lr{$E[\operatorname{Var}(X \mid Y)] \ast \ast = 0.6(1) + 0.4(16) = 7.0$} (میانگین واریانس درون‌شرطی)
 
-\lr{\textbf{\lr{\mbox{Var(E[X\textbar{}Y])}}} = E[(E[X\textbar{}Y])\textsuperscript{2}] - (E[E[X\textbar{}Y]])\textsuperscript{2}}\PSbr{}\lr{= 0.6(25\textsuperscript{2}) + 0.4(15\textsuperscript{2}) - [0.6(25) + 0.4(15)]\textsuperscript{2} = 375 + 90 - (21)\textsuperscript{2} = 465 - 441 = 24}
+\lr{**$\operatorname{Var}(E[X \mid Y]) \ast \ast = E[(E[X \mid Y])^{2}] - (E[E[X \mid Y]])^{2}$}\PSbr{}\lr{$= 0.6(25^{2}) + 0.4(15^{2}) - [0.6(25) + 0.4(15)]^{2} = 375 + 90 - (21)^{2} = 465 - 441 = 24$}
 
-\lr{\mbox{\textbf{\lr{\mbox{Var(X)}}} = 7.0 + 24.0 = 31.0}}
+\lr{\mbox{**$\operatorname{Var}(X) \ast \ast = 7.0 + 24.0 = 31.0$}}
 
 بیشتر واریانس از تفاوت \textbf{بین‌شرطی} ناشی می‌شود (24 از 31).
 
@@ -311,12 +311,12 @@
 \begin{itemize}
 \tightlist
 \item
-  نوع \lr{\mbox{A}} (احتمال \PSnum{0.7}): \lr{\mbox{E[delay\textbar{}A] = 5ms}}، \lr{\mbox{Var(delay\textbar{}A) = 2}}
+  نوع \lr{$A$} (احتمال \PSnum{0.7}): \lr{$E[\PSmtext{delay}\ \mid A] = 5\,\mathrm{ms}$}، \lr{$\operatorname{Var}(\PSmtext{delay}\ \mid A) = 2$}
 \item
-  نوع \lr{\mbox{B}} (احتمال \PSnum{0.3}): \lr{\mbox{E[delay\textbar{}B] = 20ms}}، \lr{\mbox{Var(delay\textbar{}B) = 25}}
+  نوع \lr{$B$} (احتمال \PSnum{0.3}): \lr{$E[\PSmtext{delay}\ \mid B] = 20\,\mathrm{ms}$}، \lr{$\operatorname{Var}(\PSmtext{delay}\ \mid B) = 25$}
 \end{itemize}
 
-موارد زیر را بیابید: (الف) \lr{\mbox{E[delay]}}، (ب) \lr{\mbox{Var(delay)}}.
+موارد زیر را بیابید: (الف) \lr{$E[\PSmtext{delay}]$}، (ب) \lr{$\operatorname{Var}(\PSmtext{delay})$}.
 
 \PSsolution{} 
 
@@ -324,18 +324,18 @@
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{\mbox{E[D] = 0.7(5) + 0.3(20) = 3.5 + 6 = 9.5 ms}}
+  \lr{\mbox{$E[D] = 0.7(5) + 0.3(20) = 3.5 + 6 = 9.5$ ms}}
 \item
-  \lr{E[Var(D\textbar{}type)] = 0.7(2) + 0.3(25) = 1.4 + 7.5 = 8.9}\PSbr{}\lr{Var(E[D\textbar{}type]) = 0.7(5\textsuperscript{2}) + 0.3(20\textsuperscript{2}) - 9.5\textsuperscript{2} = 17.5 + 120 - 90.25 = 47.25}\PSbr{}\lr{\mbox{Var(D) = 8.9 + 47.25 = 56.15}}
+  \lr{$E[\operatorname{Var}(D \mid \PSmtext{type})] = 0.7(2) + 0.3(25) = 1.4 + 7.5 = 8.9$}\PSbr{}\lr{$\operatorname{Var}(E[D \mid \PSmtext{type}]) = 0.7(5^{2}) + 0.3(20^{2}) - 9.5^{2} = 17.5 + 120 - 90.25 = 47.25$}\PSbr{}\lr{$\operatorname{Var}(D) = 8.9 + 47.25 = 56.15$}
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2}
 
-تعداد تصادفی \lr{\mbox{N}} از قطعات آزمایش می‌شوند. \lr{\mbox{N \textasciitilde{} Poisson(10)}}. هر قطعه احتمال خرابی مستقل \lr{\mbox{p=0.05}} دارد. فرض کنید \lr{\mbox{X}} = تعداد خرابی‌ها. \lr{\mbox{E[X]}} و \lr{\mbox{Var(X)}} را بیابید.
+تعداد تصادفی \lr{$N$} از قطعات آزمایش می‌شوند. \lr{$N \sim \mathrm{Poisson}(10)$}. هر قطعه احتمال خرابی مستقل \lr{$p = 0.05$} دارد. فرض کنید \lr{$X$} = تعداد خرابی‌ها. \lr{$E[X]$} و \lr{$\operatorname{Var}(X)$} را بیابید.
 
-\PSsolution{} \lr{\mbox{X\textbar{}N \textasciitilde{} Binomial(N, 0.05)}}. \lr{\mbox{E[X\textbar{}N] = 0.05N}}. \lr{\mbox{Var(X\textbar{}N) = N(0.05)(0.95) = 0.0475N}}.\PSbr{}\lr{\mbox{E[X] = E[E[X\textbar{}N]] = E[0.05N] = 0.05(10) = 0.5}}\PSbr{}\lr{Var(X) = E[Var(X\textbar{}N)] + Var(E[X\textbar{}N]) = E[0.0475N] + Var(0.05N) = 0.0475(10) + 0.05\textsuperscript{2}(10) = 0.475 + 0.025 = 0.5}
+\PSsolution{} \lr{$X \mid N \sim \mathrm{Binomial}(N,\, 0.05)$. $E[X \mid N] = 0.05\,\mathrm{N}$. $\operatorname{Var}(X \mid N) = N(0.05)(0.95) = 0.0475\,\mathrm{N}$.}\PSbr{}\lr{$E[X] = E[E[X \mid N]] = E[0.05\,\mathrm{N}] = 0.05(10) = 0.5$}\PSbr{}\lr{$\operatorname{Var}(X) = E[\operatorname{Var}(X \mid N)] + \operatorname{Var}(E[X \mid N]) = E[0.0475\,\mathrm{N}] + \operatorname{Var}(0.05\,\mathrm{N}) = 0.0475(10) + 0.05^{2}(10) = 0.475 + 0.025 = 0.5$}
 
 \end{PSbox}
 

@@ -10,11 +10,11 @@
 \item
   خطاهای نوع اول و نوع دوم و پیامدهای مهندسی آن‌ها را تشخیص دهند
 \item
-  آماره آزمون و مقادیر \lr{\mbox{p}} را محاسبه کنند
+  آماره آزمون و مقادیر \lr{$p$} را محاسبه کنند
 \item
-  آزمون‌های \lr{\mbox{Z}} و \lr{\mbox{t}} را برای میانگین‌ها انجام دهند
+  آزمون‌های \lr{$Z$} و \lr{$t$} را برای میانگین‌ها انجام دهند
 \item
-  مقادیر \lr{\mbox{p}} را به‌درستی تفسیر کنند (و از تصورهای نادرست رایج پرهیز کنند)
+  مقادیر \lr{$p$} را به‌درستی تفسیر کنند (و از تصورهای نادرست رایج پرهیز کنند)
 \item
   میان آزمون‌های یک‌طرفه و دوطرفه انتخاب کنند
 \end{enumerate}
@@ -29,32 +29,32 @@
 
 \PSsection{15.2}{چارچوب}
 
-\PSsubsection{فرض صفر \lr{\mbox{H\textsubscript{0}}}}
+\PSsubsection{فرض صفر \lr{$H_{0}$}}
 
 \textbf{فرض پیش‌فرض} \lr{—} معمولاً «هیچ چیز تغییر نکرده است» یا «هیچ اثری وجود ندارد»:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\mu} = \ensuremath{\mu}\textsubscript{0}}} (حسگر اریب نیست)
+  \lr{$H_{0}: \mu = \mu_{0}$} (حسگر اریب نیست)
 \item
-  \lr{\mbox{H\textsubscript{0}}}: \lr{\ensuremath{\mu}\textsubscript{1} = \ensuremath{\mu}\textsubscript{2}} (دو روش به یک اندازه عمل می‌کنند)
+  \lr{$H_{0}: \mu_{1} = \mu_{2}$} (دو روش به یک اندازه عمل می‌کنند)
 \item
-  \lr{\mbox{H\textsubscript{0}}}: \lr{\ensuremath{\sigma}\textsuperscript{2} = \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}} (واریانس تغییر نکرده است)
+  \lr{$H_{0}: \sigma^{2} = \sigma_{0}^{2}$} (واریانس تغییر نکرده است)
 \end{itemize}
 
-\PSsubsection{فرض مقابل \lr{\mbox{H\textsubscript{1}}}}
+\PSsubsection{فرض مقابل \lr{$H_{1}$}}
 
 آنچه می‌خواهیم \textbf{آشکار کنیم} یا اثبات کنیم:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\mu} \ensuremath{\neq} \ensuremath{\mu}\textsubscript{0}} (حسگر اریب است \lr{—} دوطرفه)
+  \lr{$H_{1}: \mu \ne \mu_{0}$} (حسگر اریب است \lr{—} دوطرفه)
 \item
-  \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0}} (عملکرد بهبود یافته است \lr{—} یک‌طرفه)
+  \lr{$H_{1}: \mu > \mu_{0}$} (عملکرد بهبود یافته است \lr{—} یک‌طرفه)
 \item
-  \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}} (واریانس افزایش یافته است)
+  \lr{$H_{1}: \sigma^{2} > \sigma_{0}^{2}$} (واریانس افزایش یافته است)
 \end{itemize}
 
 \PSsubsection{تصمیم}
@@ -64,41 +64,44 @@
 \begin{itemize}
 \tightlist
 \item
-  \textbf{رد \lr{\mbox{H\textsubscript{0}}}} \lr{\mbox{\ensuremath{\to}}} شواهد از \lr{\mbox{H\textsubscript{1}}} پشتیبانی می‌کنند
+  \textbf{رد \lr{$H_{0}$}} \lr{\mbox{\ensuremath{\to}}} شواهد از \lr{$H_{1}$} پشتیبانی می‌کنند
 \item
-  \textbf{عدم رد \lr{\mbox{H\textsubscript{0}}}} \lr{\mbox{\ensuremath{\to}}} شواهد ناکافی علیه \lr{\mbox{H\textsubscript{0}}}
+  \textbf{عدم رد \lr{$H_{0}$}} \lr{\mbox{\ensuremath{\to}}} شواهد ناکافی علیه \lr{$H_{0}$}
 \end{itemize}
 
 \begin{PSquote}
 
-\lr{\mbox{\PSwarn{}}} «عدم رد \lr{\mbox{H\textsubscript{0}» \ensuremath{\neq} «H\textsubscript{0}}} درست است». نبودِ شواهد \lr{\mbox{\ensuremath{\neq}}} شواهدِ نبود.
+\lr{\mbox{\PSwarn{}}} «عدم رد \lr{\mbox{$H_{0}$» \ensuremath{\neq} «$H_{0}$}} درست است». نبودِ شواهد \lr{\mbox{\ensuremath{\neq}}} شواهدِ نبود.
 
 \end{PSquote}
 
 \PSsection{15.3}{انواع خطا}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[c]{@{}ccc@{}}
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}& \PSth{\lr{\mbox{H\textsubscript{0}}} درست (واقعیت)} & \PSth{\lr{\mbox{H\textsubscript{1}}} درست (واقعیت)} \\
+\rowcolor{PSnavy} & \PSth{\lr{$H_{0}$} درست (واقعیت)} & \PSth{\lr{$H_{1}$} درست (واقعیت)} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{رد \lr{\mbox{H\textsubscript{0}}}} (تصمیم) & خطای نوع اول \lr{\mbox{(\ensuremath{\alpha})}} & درست! (توان = \lr{\mbox{1-\ensuremath{\beta}}}) \\
-\textbf{عدم رد \lr{\mbox{H\textsubscript{0}}}} (تصمیم) & درست! & خطای نوع دوم \lr{\mbox{(\ensuremath{\beta})}} \\
+\textbf{رد \lr{$H_{0}$}} (تصمیم) & خطای نوع اول \lr{$(\alpha)$} & درست! (توان \lr{$= 1-\beta$}) \\
+\textbf{عدم رد \lr{$H_{0}$}} (تصمیم) & درست! & خطای نوع دوم \lr{$(\beta)$} \\
 \end{longtable}
 }
 
-\PSsubsection{خطای نوع اول (هشدار کاذب) \lr{—} با احتمال \lr{\mbox{\ensuremath{\alpha}}}}
+\PSsubsection{خطای نوع اول (هشدار کاذب) \lr{—} با احتمال \lr{$\alpha$}}
 
-رد \lr{\mbox{H\textsubscript{0}}} هنگامی که در واقع درست است. «فریاد گرگ.»
+رد \lr{$H_{0}$} هنگامی که در واقع درست است. «فریاد گرگ.»
 
 قیاس مهندسی: اعلام تغییر یک فرایند در حالی که تغییر نکرده است \lr{\mbox{\ensuremath{\to}}} کالیبراسیون مجدد بی‌مورد.
 
-\PSsubsection{خطای نوع دوم (آشکارسازی از‌دست‌رفته) \lr{—} با احتمال \lr{\mbox{\ensuremath{\beta}}}}
+\PSsubsection{خطای نوع دوم (آشکارسازی از‌دست‌رفته) \lr{—} با احتمال \lr{$\beta$}}
 
-عدم رد \lr{\mbox{H\textsubscript{0}}} هنگامی که \lr{\mbox{H\textsubscript{1}}} در واقع درست است. «از دست دادن سیگنال.»
+عدم رد \lr{$H_{0}$} هنگامی که \lr{$H_{1}$} در واقع درست است. «از دست دادن سیگنال.»
 
 قیاس مهندسی: عدم آشکارسازی اریبی یک حسگر \lr{\mbox{\ensuremath{\to}}} ادامه اندازه‌گیری‌های اریب.
 
@@ -112,36 +115,36 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\lr{\mbox{H\textsubscript{0}}}: هیچ هدفی نیست & هیچ هواپیمایی حاضر نیست \\
-\lr{\mbox{H\textsubscript{1}}}: هدف حاضر است & هواپیما حاضر است \\
-خطای نوع اول \lr{\mbox{(\ensuremath{\alpha})}} & هشدار کاذب \\
-خطای نوع دوم \lr{\mbox{(\ensuremath{\beta})}} & آشکارسازی از‌دست‌رفته \\
-توان \lr{\mbox{(1-\ensuremath{\beta})}} & احتمال آشکارسازی \\
+\lr{$H_{0}$}: هیچ هدفی نیست & هیچ هواپیمایی حاضر نیست \\
+\lr{$H_{1}$}: هدف حاضر است & هواپیما حاضر است \\
+خطای نوع اول \lr{$(\alpha)$} & هشدار کاذب \\
+خطای نوع دوم \lr{$(\beta)$} & آشکارسازی از‌دست‌رفته \\
+توان \lr{$(1-\beta)$} & احتمال آشکارسازی \\
 \end{longtable}
 }
 
 \PSsubsection{توازن}
 
-کاهش \lr{\mbox{\ensuremath{\alpha}}} (هشدارهای کاذب کمتر) \lr{\mbox{\ensuremath{\to}}} افزایش \lr{\mbox{\ensuremath{\beta}}} (آشکارسازی‌های از‌دست‌رفته بیشتر)، و برعکس.
+کاهش \lr{$\alpha$} (هشدارهای کاذب کمتر) \lr{\mbox{\ensuremath{\to}}} افزایش \lr{$\beta$} (آشکارسازی‌های از‌دست‌رفته بیشتر)، و برعکس.
 
-\lr{\mbox{\ensuremath{\alpha}}} را ثابت کنید (سطح معناداری)، سپس توان = \lr{\mbox{1 - \ensuremath{\beta}}} را بیشینه کنید.
+\lr{$\alpha$} را ثابت کنید (سطح معناداری)، سپس توان \lr{$= 1 - \beta$} را بیشینه کنید.
 
-\PSsection{15.4}{سطح معناداری \lr{\mbox{\ensuremath{\alpha}}}}
+\PSsection{15.4}{سطح معناداری \lr{$\alpha$}}
 
 \textbf{حداکثر نرخ قابل‌قبول خطای نوع اول}، که \textbf{پیش از} نگاه‌کردن به داده انتخاب می‌شود.
 
-انتخاب‌های رایج: \lr{\mbox{\ensuremath{\alpha} = 0.05}}، \PSnum{0.01}، \PSnum{0.10}
+انتخاب‌های رایج: \lr{$\alpha = 0.05$}، \PSnum{0.01}، \PSnum{0.10}
 
-\textbf{انتخاب \lr{\mbox{\ensuremath{\alpha}}}:} هزینه هشدار کاذب را در نظر بگیرید:
+\textbf{انتخاب \lr{$\alpha$}:} هزینه هشدار کاذب را در نظر بگیرید:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{\ensuremath{\alpha} = 0.01}}: بسیار محافظه‌کارانه (مثلاً ایمنی تجهیزات پزشکی)
+  \lr{$\alpha = 0.01$}: بسیار محافظه‌کارانه (مثلاً ایمنی تجهیزات پزشکی)
 \item
-  \lr{\mbox{\ensuremath{\alpha} = 0.05}}: استاندارد در بیشتر شاخه‌های مهندسی/علوم
+  \lr{$\alpha = 0.05$}: استاندارد در بیشتر شاخه‌های مهندسی/علوم
 \item
-  \lr{\mbox{\ensuremath{\alpha} = 0.10}}: با رواداری بیشتر (تحلیل اکتشافی)
+  \lr{$\alpha = 0.10$}: با رواداری بیشتر (تحلیل اکتشافی)
 \end{itemize}
 
 \PSsection{15.5}{توان یک آزمون}
@@ -156,18 +159,18 @@
 \item
   \textbf{اندازه اثر:} تفاوت واقعی بزرگ‌تر \lr{\mbox{\ensuremath{\to}}} آشکارسازی آسان‌تر \lr{\mbox{\ensuremath{\to}}} توان بیشتر
 \item
-  \textbf{اندازه نمونه \lr{\mbox{n}}:} داده بیشتر \lr{\mbox{\ensuremath{\to}}} توان بیشتر
+  \textbf{اندازه نمونه \lr{$n$}:} داده بیشتر \lr{\mbox{\ensuremath{\to}}} توان بیشتر
 \item
-  \textbf{سطح معناداری \lr{\mbox{\ensuremath{\alpha}}}:} \lr{\mbox{\ensuremath{\alpha}}} بزرگ‌تر \lr{\mbox{\ensuremath{\to}}} توان بیشتر (اما هشدار کاذب بیشتر)
+  \textbf{سطح معناداری \lr{$\alpha$}:} \lr{$\alpha$} بزرگ‌تر \lr{\mbox{\ensuremath{\to}}} توان بیشتر (اما هشدار کاذب بیشتر)
 \item
-  \textbf{تغییرپذیری \lr{\mbox{\ensuremath{\sigma}}}:} نویز کمتر \lr{\mbox{\ensuremath{\to}}} توان بیشتر
+  \textbf{تغییرپذیری \lr{$\sigma$}:} نویز کمتر \lr{\mbox{\ensuremath{\to}}} توان بیشتر
 \end{enumerate}
 
-\PSsection{15.6}{مقدار \lr{\mbox{p}}}
+\PSsection{15.6}{مقدار \lr{$p$}}
 
 \begin{PSbox}[unbreakable]{def}{تعریف}
 
-\textbf{مقدار \lr{\mbox{p}}} احتمال به‌دست‌آوردن یک آماره آزمون \textbf{به‌اندازه مشاهده‌شده حدی یا حدی‌تر} است، \textbf{با فرض درست‌بودن \lr{\mbox{H\textsubscript{0}}}}.
+\textbf{مقدار \lr{$p$}} احتمال به‌دست‌آوردن یک آماره آزمون \textbf{به‌اندازه مشاهده‌شده حدی یا حدی‌تر} است، \textbf{با فرض درست‌بودن \lr{$H_{0}$}}.
 
 \PSdisplay{p\PSmtext{-value} = P(\PSmtext{data this extreme or more} | H_0 \PSmtext{ true})}
 
@@ -178,16 +181,16 @@
 \begin{itemize}
 \tightlist
 \item
-  اگر مقدار \lr{p \textless{} \ensuremath{\alpha} \ensuremath{\to} H\textsubscript{0}} را رد کنید
+  اگر مقدار \lr{$p < \alpha \to H_{0}$} را رد کنید
 \item
-  اگر مقدار \lr{p \ensuremath{\ge} \ensuremath{\alpha} \ensuremath{\to} H\textsubscript{0}} را رد نکنید
+  اگر مقدار \lr{$p \ge \alpha \to H_{0}$} را رد نکنید
 \end{itemize}
 
 \PSsubsection{\lr{\mbox{\PSyes{}}} تفسیر درست}
 
 \begin{PSquote}
 
-«مقدار \lr{\mbox{p}} احتمال مشاهده داده‌ای به این حدی است (یا حدی‌تر) اگر \lr{\mbox{H\textsubscript{0}}} درست بود. مقدار \lr{\mbox{p}} کوچک به این معناست که داده تحت \lr{\mbox{H\textsubscript{0}}} نامحتمل است.»
+«مقدار \lr{$p$} احتمال مشاهده داده‌ای به این حدی است (یا حدی‌تر) اگر \lr{$H_{0}$} درست بود. مقدار \lr{$p$} کوچک به این معناست که داده تحت \lr{$H_{0}$} نامحتمل است.»
 
 \end{PSquote}
 
@@ -195,18 +198,18 @@
 
 \begin{PSquote}
 
-{«مقدار \lr{\mbox{p}} احتمال درست‌بودن \lr{\mbox{H\textsubscript{0}}} است.»}
+{«مقدار \lr{$p$} احتمال درست‌بودن \lr{$H_{0}$} است.»}
 
 \end{PSquote}
 
-\textbf{چرا نادرست است:} \lr{\mbox{H\textsubscript{0}}} یا درست است یا نادرست (ثابت). مقدار \lr{\mbox{p}} هیچ چیزی درباره \lr{\mbox{P(H\textsubscript{0} true)}} نمی‌گوید. این مقدار می‌سنجد که داده تحت \lr{\mbox{H\textsubscript{0}}} چقدر شگفت‌آور است.
+\textbf{چرا نادرست است:} \lr{$H_{0}$} یا درست است یا نادرست (ثابت). مقدار \lr{$p$} هیچ چیزی درباره \lr{$P(H_{0}\ \PSmtext{true})$} نمی‌گوید. این مقدار می‌سنجد که داده تحت \lr{$H_{0}$} چقدر شگفت‌آور است.
 
 \PSsubsection{درجه‌بندی}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{مقدار \lr{\mbox{p}}} & \PSth{شواهد علیه \lr{\mbox{H\textsubscript{0}}}} \\
+\rowcolor{PSnavy}\PSth{مقدار \lr{$p$}} & \PSth{شواهد علیه \lr{$H_{0}$}} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -221,28 +224,28 @@
 
 \PSsection{15.7}{آزمون‌های یک‌طرفه در برابر دوطرفه}
 
-\PSsubsection{دوطرفه \lr{(H\textsubscript{1}: \ensuremath{\mu} \ensuremath{\neq} \ensuremath{\mu}\textsubscript{0})}}
+\PSsubsection{دوطرفه \lr{\mbox{($H_{1}$: $\mu \ne \mu_{0}$)}}}
 
 هنگامی به کار می‌رود که انحراف در \textbf{هر} جهت مهم باشد.
 
 \begin{itemize}
 \tightlist
 \item
-  رد کنید اگر \lr{\textbar{}T\textbar{} \textgreater{} t\textsubscript{\ensuremath{\alpha}/2, n-1}}
+  رد کنید اگر \lr{$\lvert T\rvert > t_{\alpha /2, n-1}$}
 \item
-  مقدار \lr{p = 2\ensuremath{\cdot}P(T \textgreater{} \textbar{}t\textsubscript{obs}\textbar{})}
+  مقدار \lr{$p = 2 \cdot P(T > \lvert t_{\PSmtext{obs}}\rvert)$}
 \end{itemize}
 
-\PSsubsection{یک‌طرفه (\lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0}} یا \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\mu} \textless{} \ensuremath{\mu}\textsubscript{0}})}
+\PSsubsection{یک‌طرفه (\lr{\mbox{$H_{1}$: $\mu > \mu_{0}$}} یا \lr{$H_{1}: \mu < \mu_{0}$})}
 
 هنگامی به کار می‌رود که تنها یک جهت انحراف اهمیت دارد.
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\mu} \textgreater{} \ensuremath{\mu}\textsubscript{0}}: رد کنید اگر \lr{\mbox{T \textgreater{} t\textsubscript{\ensuremath{\alpha}, n-1}}}
+  \lr{$H_{1}: \mu > \mu_{0}$}: رد کنید اگر \lr{$T > t_{\alpha, n-1}$}
 \item
-  \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\mu} \textless{} \ensuremath{\mu}\textsubscript{0}}: رد کنید اگر \lr{\mbox{T \textless{} -t\textsubscript{\ensuremath{\alpha}, n-1}}}
+  \lr{$H_{1}: \mu < \mu_{0}$}: رد کنید اگر \lr{$T < -t_{\alpha, n-1}$}
 \end{itemize}
 
 \PSsubsection{چه زمانی کدام را به کار ببریم}
@@ -258,35 +261,35 @@
 \bottomrule\noalign{}
 \endlastfoot
 آیا حسگر اریب است (هر جهت)؟ & دوطرفه \\
-آیا الگوریتم جدید \lr{\mbox{BER}} را \textbf{بهبود می‌دهد}؟ & یک‌طرفه \lr{(H\textsubscript{1}: BER \textless{} BER\textsubscript{old})} \\
-آیا توان نویز \textbf{افزایش یافته} است؟ & یک‌طرفه \lr{(H\textsubscript{1}: \ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2})} \\
+آیا الگوریتم جدید \lr{\mbox{BER}} را \textbf{بهبود می‌دهد}؟ & یک‌طرفه \lr{\mbox{($H_{1}$: $\mathrm{BER} < \mathrm{BER}_{\mathrm{old}}$)}} \\
+آیا توان نویز \textbf{افزایش یافته} است؟ & یک‌طرفه \lr{\mbox{($H_{1}$: $\sigma^{2} > \sigma_{0}^{2}$)}} \\
 آیا میانگین فرایند \textbf{تغییر کرده} است؟ & دوطرفه \\
 \end{longtable}
 }
 
 \PSsection{15.8}{آزمون‌های میانگین}
 
-\PSsubsection{آزمون \lr{\mbox{Z}} تک‌نمونه‌ای (\lr{\mbox{\ensuremath{\sigma}}} معلوم)}
+\PSsubsection{آزمون \lr{$Z$} تک‌نمونه‌ای (\lr{$\sigma$} معلوم)}
 
-آزمون: \lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\mu} = \ensuremath{\mu}\textsubscript{0}}}
+آزمون: \lr{$H_{0}: \mu = \mu_{0}$}
 
-آماره آزمون: \lr{Z = (\ensuremath{\bar{X}} - \ensuremath{\mu}\textsubscript{0})/(\ensuremath{\sigma}/\ensuremath{\surd}n)}
+آماره آزمون: \lr{$Z = \frac{\bar{X} - \mu_{0}}{\frac{\sigma}{\sqrt{n}}}$}
 
-تحت \lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{Z \textasciitilde{} N(0,1)}}
+تحت \lr{$H_{0}: Z \sim N(0,\,1)$}
 
-\PSsubsection{آزمون \lr{\mbox{t}} تک‌نمونه‌ای (\lr{\mbox{\ensuremath{\sigma}}} نامعلوم)}
+\PSsubsection{آزمون \lr{$t$} تک‌نمونه‌ای (\lr{$\sigma$} نامعلوم)}
 
-آزمون: \lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\mu} = \ensuremath{\mu}\textsubscript{0}}}
+آزمون: \lr{$H_{0}: \mu = \mu_{0}$}
 
-آماره آزمون: \lr{T = (\ensuremath{\bar{X}} - \ensuremath{\mu}\textsubscript{0})/(S/\ensuremath{\surd}n)}
+آماره آزمون: \lr{$T = \frac{\bar{X} - \mu_{0}}{\frac{S}{\sqrt{n}}}$}
 
-تحت \lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{T \textasciitilde{} t(n-1)}}
+تحت \lr{$H_{0}: T \sim t(n-1)$}
 
-\PSsubsection{آزمون \lr{\mbox{t}} دو‌نمونه‌ای (مقایسه دو میانگین)}
+\PSsubsection{آزمون \lr{$t$} دو‌نمونه‌ای (مقایسه دو میانگین)}
 
-آزمون: \lr{\mbox{H\textsubscript{0}}}: \lr{\ensuremath{\mu}\textsubscript{1} = \ensuremath{\mu}\textsubscript{2}}
+آزمون: \lr{$H_{0}: \mu_{1} = \mu_{2}$}
 
-آماره آزمون: \lr{T = (\ensuremath{\bar{X}}\textsubscript{1} - \ensuremath{\bar{X}}\textsubscript{2}) / \ensuremath{\surd}(S\textsubscript{1}\textsuperscript{2}/n\textsubscript{1} + S\textsubscript{2}\textsuperscript{2}/n\textsubscript{2})}
+آماره آزمون: \lr{$T = \frac{\bar{X}_{1} - \bar{X}_{2}}{\sqrt{\frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}}}}$}
 
 درجات آزادی تقریبی بر اساس فرمول ولچ-ساترث‌ویت.
 
@@ -294,20 +297,20 @@
 
 \PSsubsection{آزمون تک‌نمونه‌ای}
 
-\lr{\mbox{H\textsubscript{0}}}: \lr{\ensuremath{\sigma}\textsuperscript{2} = \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}}
+\lr{$H_{0}: \sigma^{2} = \sigma_{0}^{2}$}
 
-آماره آزمون: \lr{\ensuremath{\chi}\textsuperscript{2} = (n-1)S\textsuperscript{2}/\ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}}
+آماره آزمون: \lr{$\chi^{2} = \frac{(n-1)S^{2}}{\sigma_{0}^{2}}$}
 
-تحت \lr{\mbox{H\textsubscript{0}}}: \lr{\ensuremath{\chi}\textsuperscript{2} \textasciitilde{} \ensuremath{\chi}\textsuperscript{2}(n-1)}
+تحت \lr{$H_{0}: \chi^{2} \sim \chi^{2}(n-1)$}
 
 \PSsubsection{تصمیم}
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\sigma}\textsuperscript{2} \textgreater{} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}}: رد کنید اگر \lr{\ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{\ensuremath{\alpha}, n-1}}
+  \lr{$H_{1}: \sigma^{2} > \sigma_{0}^{2}$}: رد کنید اگر \lr{$\chi^{2} > \chi^{2}_{\alpha, n-1}$}
 \item
-  \lr{\mbox{H\textsubscript{1}}}: \lr{\ensuremath{\sigma}\textsuperscript{2} \ensuremath{\neq} \ensuremath{\sigma}\textsubscript{0}\textsuperscript{2}}: رد کنید اگر \lr{\ensuremath{\chi}\textsuperscript{2} \textless{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{1-\ensuremath{\alpha}/2, n-1}} یا \lr{\ensuremath{\chi}\textsuperscript{2} \textgreater{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{\ensuremath{\alpha}/2, n-1}}
+  \lr{$H_{1}: \sigma^{2} \ne \sigma_{0}^{2}$}: رد کنید اگر \lr{$\chi^{2} < \chi^{2}_{1-\alpha /2, n-1}$} یا \lr{$\chi^{2} > \chi^{2}_{\alpha /2, n-1}$}
 \end{itemize}
 
 \PSsection{15.10}{رویه گام‌به‌گام آزمون فرض}
@@ -316,17 +319,17 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{بیان فرض‌ها:} \lr{\mbox{H\textsubscript{0}}} و \lr{\mbox{H\textsubscript{1}}}
+  \textbf{بیان فرض‌ها:} \lr{$H_{0}$} و \lr{$H_{1}$}
 \item
-  \textbf{انتخاب سطح معناداری:} \lr{\mbox{\ensuremath{\alpha}}} (مثلاً \PSnum{0.05)}
+  \textbf{انتخاب سطح معناداری:} \lr{$\alpha$} (مثلاً \PSnum{0.05)}
 \item
-  \textbf{انتخاب آماره آزمون:} \lr{\mbox{Z}}، \lr{\mbox{t}} یا \lr{\mbox{\ensuremath{\chi}\textsuperscript{2}}} بسته به سناریو
+  \textbf{انتخاب آماره آزمون:} \lr{$Z$}، \lr{$t$} یا \lr{$\chi^{2}$} بسته به سناریو
 \item
-  \textbf{تعیین مقدار(های) بحرانی} یا محاسبه مقدار \lr{\mbox{p}}
+  \textbf{تعیین مقدار(های) بحرانی} یا محاسبه مقدار \lr{$p$}
 \item
   \textbf{محاسبه آماره آزمون} از داده
 \item
-  \textbf{اتخاذ تصمیم:} رد \lr{\mbox{H\textsubscript{0}}} اگر آماره آزمون در ناحیه بحرانی باشد (یا \lr{\mbox{p \textless{} \ensuremath{\alpha}}})
+  \textbf{اتخاذ تصمیم:} رد \lr{$H_{0}$} اگر آماره آزمون در ناحیه بحرانی باشد (یا \lr{$p < \alpha$})
 \item
   \textbf{بیان نتیجه‌گیری} به زبان مهندسی
 \end{enumerate}
@@ -335,15 +338,15 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال 1: آیا یک حسگر اریب است؟}
 
-یک حسگر باید بدون ورودی مقدار \lr{\mbox{0V}} را بخواند. 20 اندازه‌گیری \lr{\mbox{\ensuremath{\bar{X}} = 0.012V}} و \lr{\mbox{S = 0.03V}} می‌دهد.
+یک حسگر باید بدون ورودی مقدار \lr{\mbox{0V}} را بخواند. 20 اندازه‌گیری \lr{$\bar{X} = 0.012\,\mathrm{V}$} و \lr{$S = 0.03\,\mathrm{V}$} می‌دهد.
 
-\lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\mu} = 0}} (بدون اریبی)، \lr{\mbox{H\textsubscript{1}}}: \lr{\mbox{\ensuremath{\mu} \ensuremath{\neq} 0}} (اریب)، \lr{\mbox{\ensuremath{\alpha} = 0.05}}
+\lr{$H_{0}: \mu = 0$} (بدون اریبی)، \lr{$H_{1}: \mu \ne 0$} (اریب)، \lr{$\alpha = 0.05$}
 
-\lr{T = (0.012 - 0)/(0.03/\ensuremath{\surd}20) = 0.012/0.00671 = 1.789}
+\lr{$\displaystyle T = \frac{0.012 - 0}{\frac{0.03}{\sqrt{20}}} = \frac{0.012}{0.00671} = 1.789$}
 
-\lr{\mbox{t\textsubscript{0.025, 19} = 2.093}}. از آنجا که \lr{\textbar{}T\textbar{} = 1.789 \textless{} 2.093 \ensuremath{\to}} \textbf{\lr{\mbox{H\textsubscript{0}}} را رد نکنید.}
+\lr{$t_{0.025, 19} = 2.093$}. از آنجا که \lr{$\lvert T\rvert = 1.789 < 2.093 \to \ast \ast H_{0}$} را رد نکنید.**
 
-مقدار \lr{p = 2\ensuremath{\cdot}P(t(19) \textgreater{} 1.789) \ensuremath{\approx} 0.090}. در سطح 5\% معنادار نیست.
+مقدار \lr{$p = 2 \cdot P(t(19) > 1.789) \approx 0.090$}. در سطح 5\% معنادار نیست.
 
 نتیجه‌گیری: شواهد کافی برای نتیجه‌گیری اریب‌بودن حسگر وجود ندارد.
 
@@ -351,27 +354,27 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال 2: آیا فرایند تولید تغییر کرده است؟}
 
-پیش از تغییر: \lr{\mbox{\ensuremath{\mu}\textsubscript{0} = 100\ensuremath{\Omega}}} (تثبیت‌شده). پس از اصلاح: \lr{\mbox{n = 30}}، \lr{\mbox{\ensuremath{\bar{X}} = 101.2\ensuremath{\Omega}}}، \lr{\mbox{S = 3.5\ensuremath{\Omega}}}.
+پیش از تغییر: \lr{$\mu_{0} = 100\,\Omega$} (تثبیت‌شده). پس از اصلاح: \lr{$n = 30$}، \lr{$\bar{X} = 101.2\,\Omega$}، \lr{$S = 3.5\,\Omega$}.
 
-\lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\mu} = 100}}، \lr{\mbox{H\textsubscript{1}}}: \lr{\mbox{\ensuremath{\mu} \ensuremath{\neq} 100}}، \lr{\mbox{\ensuremath{\alpha} = 0.05}}
+\lr{$H_{0}: \mu = 100$}، \lr{$H_{1}: \mu \ne 100$}، \lr{$\alpha = 0.05$}
 
-\lr{T = (101.2 - 100)/(3.5/\ensuremath{\surd}30) = 1.2/0.639 = 1.878}
+\lr{$\displaystyle T = \frac{101.2 - 100}{\frac{3.5}{\sqrt{30}}} = \frac{1.2}{0.639} = 1.878$}
 
-\lr{\mbox{t\textsubscript{0.025, 29} = 2.045}}. \lr{\textbar{}T\textbar{} = 1.878 \textless{} 2.045 \ensuremath{\to}} \textbf{\lr{\mbox{H\textsubscript{0}}} را رد نکنید.}
+\lr{$t_{0.025, 29} = 2.045$. $\lvert T\rvert = 1.878 < 2.045 \to \ast \ast H_{0}$} را رد نکنید.**
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{ex}{مثال 3: آیا الگوریتم جدید \lr{\mbox{BER}} را بهبود می‌دهد؟}
 
-الگوریتم قدیمی: \lr{\mbox{BER\textsubscript{0} = 10\textsuperscript{-3}}}. الگوریتم جدید آزمایش‌شده: \lr{\mbox{n = 50000}} بیت، 38 خطا.
+الگوریتم قدیمی: \lr{$\mathrm{BER}_{0} = 10^{-3}$}. الگوریتم جدید آزمایش‌شده: \lr{$n = 50000$} بیت، 38 خطا.
 
-\lr{BER\textsubscript{new} = 38/50000 = 7.6\ensuremath{\times}10\textsuperscript{-4}}
+\lr{$\displaystyle \mathrm{BER}_{\mathrm{new}} = \frac{38}{50000} = 7.6 \times 10^{-4}$}
 
-\lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{p = 0.001}}، \lr{\mbox{H\textsubscript{1}}}: \lr{\mbox{p \textless{} 0.001}} (بهبود)، \lr{\mbox{\ensuremath{\alpha} = 0.05}}
+\lr{$H_{0}: p = 0.001$}، \lr{$H_{1}: p < 0.001$} (بهبود)، \lr{$\alpha = 0.05$}
 
-\lr{Z = (\ensuremath{\hat{p}} - p\textsubscript{0})/\ensuremath{\surd}(p\textsubscript{0}(1-p\textsubscript{0})/n) = (0.00076 - 0.001)/\ensuremath{\surd}(0.001\ensuremath{\times}0.999/50000) = -0.00024/0.000141 = -1.70}
+\lr{$\displaystyle Z = \frac{\hat{p} - p_{0}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}} = \frac{0.00076 - 0.001}{\sqrt{0.001 \times \frac{0.999}{50000}}} = -\frac{0.00024}{0.000141} = -1.70$}
 
-مقدار \lr{p = P(Z \textless{} -1.70) = 0.0446 \textless{} 0.05 \ensuremath{\to}} \textbf{\lr{\mbox{H\textsubscript{0}}} را رد کنید.}
+مقدار \lr{$p = P(Z < -1.70) = 0.0446 < 0.05 \to \ast \ast H_{0}$} را رد کنید.**
 
 نتیجه‌گیری: شواهد از این که الگوریتم جدید \lr{\mbox{BER}} کمتری دارد پشتیبانی می‌کند.
 
@@ -379,19 +382,19 @@
 
 \begin{PSbox}[unbreakable]{ex}{مثال 4: آیا توان نویز افزایش یافته است؟}
 
-مقدار تاریخی: \lr{\ensuremath{\sigma}\textsubscript{0}\textsuperscript{2} = 0.04 V\textsuperscript{2}}. اندازه‌گیری‌های جدید: \lr{\mbox{n = 25}}، \lr{\mbox{S\textsuperscript{2} = 0.058 V\textsuperscript{2}}}.
+مقدار تاریخی: \lr{$\sigma_{0}^{2} = 0.04\,\mathrm{V}^{2}$}. اندازه‌گیری‌های جدید: \lr{$n = 25$}، \lr{$S^{2} = 0.058\,\mathrm{V}^{2}$}.
 
-\lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2} = 0.04}}، \lr{\mbox{H\textsubscript{1}}}: \lr{\mbox{\ensuremath{\sigma}\textsuperscript{2} \textgreater{} 0.04}}، \lr{\mbox{\ensuremath{\alpha} = 0.05}}
+\lr{$H_{0}: \sigma^{2} = 0.04$}، \lr{$H_{1}: \sigma^{2} > 0.04$}، \lr{$\alpha = 0.05$}
 
-\lr{\ensuremath{\chi}\textsuperscript{2} = (24)(0.058)/0.04 = 34.8}
+\lr{$\displaystyle \chi^{2} = \frac{(24)(0.058)}{0.04} = 34.8$}
 
-\lr{\ensuremath{\chi}\textsuperscript{2}\textsubscript{0.05, 24} = 36.415}. از آنجا که \lr{\mbox{34.8 \textless{} 36.415 \ensuremath{\to}}} \textbf{\lr{\mbox{H\textsubscript{0}}} را رد نکنید.}
+\lr{$\chi^{2}_{0.05, 24} = 36.415$}. از آنجا که \lr{$34.8 < 36.415 \to \ast \ast H_{0}$} را رد نکنید.**
 
 \end{PSbox}
 
 \PSsection{15.12}{مثال‌های \lr{\mbox{MATLAB}}}
 
-\begin{PSbox}[unbreakable]{ex}{مثال 1: آزمون \lr{\mbox{t}} تک‌نمونه‌ای}
+\begin{PSbox}[unbreakable]{ex}{مثال 1: آزمون \lr{$t$} تک‌نمونه‌ای}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -414,7 +417,7 @@
 
 \end{PSbox}
 
-\begin{PSbox}[unbreakable]{ex}{مثال 2: آزمون \lr{\mbox{t}} دو‌نمونه‌ای}
+\begin{PSbox}[unbreakable]{ex}{مثال 2: آزمون \lr{$t$} دو‌نمونه‌ای}
 
 \tcbset{PScodemode/.style={unbreakable}}
 
@@ -478,25 +481,25 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1}
 
-یک مشخصه ساخت و تولید میانگین مقاومت = \lr{\mbox{100\ensuremath{\Omega}}} را می‌طلبد. یک نمونه 16 مقاومتی \lr{\mbox{\ensuremath{\bar{X}} = 101.5\ensuremath{\Omega}}} و \lr{\mbox{S = 3\ensuremath{\Omega}}} می‌دهد. در \lr{\mbox{\ensuremath{\alpha} = 0.05}}، آیا شاهدی بر رانش فرایند وجود دارد؟
+یک مشخصه ساخت و تولید میانگین مقاومت = \lr{\mbox{100\ensuremath{\Omega}}} را می‌طلبد. یک نمونه 16 مقاومتی \lr{$\bar{X} = 101.5\,\Omega$} و \lr{$S = 3\,\Omega$} می‌دهد. در \lr{$\alpha = 0.05$}، آیا شاهدی بر رانش فرایند وجود دارد؟
 
-\PSsolution{} \lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\mu}=100}}، \lr{\mbox{H\textsubscript{1}}}: \lr{\mbox{\ensuremath{\mu}\ensuremath{\neq}100}}. \lr{\mbox{T = (101.5-100)/(3/4) = 2.0}}. \lr{\mbox{t\textsubscript{0.025,15} = 2.131}}. \lr{\textbar{}T\textbar{}=2.0 \textless{} 2.131 \ensuremath{\to}} رد نکنید. مقدار \lr{\mbox{p \ensuremath{\approx} 0.064 \textgreater{} 0.05}}.
+\PSsolution{} \lr{$H_{0}: \mu = 100$}، \lr{$H_{1}: \mu \ne 100$. $T = \frac{101.5-100}{\frac{3}{4}} = 2.0$. $t_{0.025,15} = 2.131$. $\lvert T\rvert = 2.0 < 2.131$ \ensuremath{\to}} رد نکنید. مقدار \lr{$p \approx 0.064 > 0.05$}.
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2}
 
-میانگین تأخیر بسته \lr{\mbox{5ms}} بود. پس از ارتقای شبکه، 40 اندازه‌گیری \lr{\mbox{\ensuremath{\bar{X}} = 4.6ms}} و \lr{\mbox{S = 1.2ms}} می‌دهد. در \lr{\mbox{\ensuremath{\alpha} = 0.01}} آزمون کنید که آیا تأخیر کاهش یافته است.
+میانگین تأخیر بسته \lr{\mbox{5ms}} بود. پس از ارتقای شبکه، 40 اندازه‌گیری \lr{$\bar{X} = 4.6\,\mathrm{ms}$} و \lr{$S = 1.2\,\mathrm{ms}$} می‌دهد. در \lr{$\alpha = 0.01$} آزمون کنید که آیا تأخیر کاهش یافته است.
 
-\PSsolution{} \lr{\mbox{H\textsubscript{0}}}: \lr{\mbox{\ensuremath{\mu}=5}}، \lr{\mbox{H\textsubscript{1}}}: \lr{\mbox{\ensuremath{\mu}\textless{}5}}. \lr{\mbox{T = (4.6-5)/(1.2/\ensuremath{\surd}40) = -0.4/0.190 = -2.11}}. \lr{\mbox{t\textsubscript{0.01,39} \ensuremath{\approx} -2.426}}. \lr{\mbox{T = -2.11 \textgreater{} -2.426 \ensuremath{\to}}} در سطح 1\% رد نکنید. (در سطح 5\% رد می‌شد چون \lr{\mbox{t\textsubscript{0.05,39}\ensuremath{\approx}-1.685}}.)
+\PSsolution{} \lr{$H_{0}: \mu = 5$}، \lr{$H_{1}: \mu < 5$. $T = \frac{4.6-5}{\frac{1.2}{\sqrt{40}}} = -\frac{0.4}{0.190} = -2.11$. $t_{0.01,39} \approx -2.426$. $T = -2.11 > -2.426$ \ensuremath{\to}} در سطح 1\% رد نکنید. (در سطح 5\% رد می‌شد چون \lr{$t_{0.05,39} \approx -1.685.$})
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3}
 
-توضیح دهید چرا «\lr{\mbox{p = 0.04}} به این معناست که تنها 4\% شانس وجود دارد که \lr{\mbox{H\textsubscript{0}}} درست باشد» \textbf{نادرست} است.
+توضیح دهید چرا «\lr{$p = 0.04$} به این معناست که تنها 4\% شانس وجود دارد که \lr{$H_{0}$} درست باشد» \textbf{نادرست} است.
 
-\PSsolution{} مقدار \lr{\mbox{p}} همان \lr{P(\rl{داده‌ای به این حدی \lr{\textbar{}}} H\textsubscript{0} true)} است، نه \lr{\mbox{P(H\textsubscript{0} true \textbar{} \rl{داده})}}. این مقدار به \lr{\mbox{H\textsubscript{0}}} درست‌بودن مشروط می‌شود و درباره حدی‌بودن داده می‌پرسد. برای به‌دست‌آوردن \lr{\mbox{P(H\textsubscript{0} true \textbar{} \rl{داده})}} به تحلیل بیزی با یک پیشین نیاز است. مقدار \lr{\mbox{p}} ویژگی فرایند تولید داده تحت \lr{\mbox{H\textsubscript{0}}} است، نه احتمال پسینی درباره \lr{\mbox{H\textsubscript{0}}}.
+\PSsolution{} مقدار \lr{$p$} همان \lr{$P(\text{\rl{داده‌ای به این حدی}}\ \mid H_{0}\ \PSmtext{true})$} است، نه \lr{$P(H_{0}\ \PSmtext{true}\ \mid \text{\rl{داده}})$}. این مقدار به \lr{$H_{0}$} درست‌بودن مشروط می‌شود و درباره حدی‌بودن داده می‌پرسد. برای به‌دست‌آوردن \lr{$P(H_{0}\ \PSmtext{true}\ \mid \text{\rl{داده}})$} به تحلیل بیزی با یک پیشین نیاز است. مقدار \lr{$p$} ویژگی فرایند تولید داده تحت \lr{$H_{0}$} است، نه احتمال پسینی درباره \lr{$H_{0}$}.
 
 \emph{ماژول بعدی: {ماژول 16 \lr{—} کاربردهای آماری مهندسی}}
 

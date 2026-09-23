@@ -35,17 +35,17 @@ The Gaussian distribution appears in:
 
 \PSsubsection{Weak Law of Large Numbers}
 
-For X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n} i.i.d. with mean \ensuremath{\mu} and finite variance \ensuremath{\sigma}\textsuperscript{2}:
+For $X_{1},\, X_{2},\, \ldots,\, X_{n}$ i.i.d. with mean $\mu$ and finite variance $\sigma^{2}$:
 
 \PSdisplay{\bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{P} \mu \quad \text{as } n \to \infty}
 
-(``Convergence in probability'': P(\textbar{}\ensuremath{\bar{X}}\textsubscript{n} - \ensuremath{\mu}\textbar{} \textgreater{} \ensuremath{\varepsilon}) \ensuremath{\to} 0 for any \ensuremath{\varepsilon} \textgreater{} 0)
+(``Convergence in probability'': $P(\lvert \bar{X}_{n} - \mu\rvert > \varepsilon) \to 0$ for any $\varepsilon > 0$)
 
 \PSsubsection{Strong Law of Large Numbers}
 
 \PSdisplay{\bar{X}_n \xrightarrow{a.s.} \mu \quad \text{as } n \to \infty}
 
-(``Almost sure convergence'': P(\ensuremath{\bar{X}}\textsubscript{n} \ensuremath{\to} \ensuremath{\mu}) = 1)
+(``Almost sure convergence'': $P(\bar{X}_{n} \to \mu) = 1$)
 
 \PSsubsection{Engineering Significance}
 
@@ -63,21 +63,21 @@ For X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n} i.i.d. with 
 
 \PSsubsection{How Fast?}
 
-By Chebyshev: P(\textbar{}\ensuremath{\bar{X}}\textsubscript{n} - \ensuremath{\mu}\textbar{} \textgreater{} \ensuremath{\varepsilon}) \ensuremath{\le} \ensuremath{\sigma}\textsuperscript{2}/(n\ensuremath{\varepsilon}\textsuperscript{2})
+By Chebyshev: $P(\lvert \bar{X}_{n} - \mu\rvert > \varepsilon) \le \frac{\sigma^{2}}{n\varepsilon^{2}}$
 
-For 95\% confidence that error \textless{} \ensuremath{\varepsilon}: need n \ensuremath{\ge} \ensuremath{\sigma}\textsuperscript{2}/(0.05 \ensuremath{\cdot} \ensuremath{\varepsilon}\textsuperscript{2})
+For 95\% confidence that error $< \varepsilon$: need $n \ge \frac{\sigma^{2}}{0.05 \cdot \varepsilon^{2}}$
 
 \PSsection{11.3}{Central Limit Theorem (CLT)}
 
 \PSsubsection{Formal Statement}
 
-For X\textsubscript{1}, X\textsubscript{2}, …, X\textsubscript{n} i.i.d. with mean \ensuremath{\mu} and finite variance \ensuremath{\sigma}\textsuperscript{2}:
+For $X_{1},\, X_{2},\, \ldots,\, X_{n}$ i.i.d. with mean $\mu$ and finite variance $\sigma^{2}$:
 
 \PSdisplay{Z_n = \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} = \frac{\sum_{i=1}^n X_i - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} N(0,1)}
 
 \PSsubsection{Practical Form}
 
-For large n:\PSdisplay{\bar{X}_n \approx N\left(\mu, \frac{\sigma^2}{n}\right)}
+For large $n$:\PSdisplay{\bar{X}_n \approx N\left(\mu, \frac{\sigma^2}{n}\right)}
 
 \PSdisplay{S_n = \sum_{i=1}^n X_i \approx N(n\mu, n\sigma^2)}
 
@@ -87,13 +87,13 @@ For large n:\PSdisplay{\bar{X}_n \approx N\left(\mu, \frac{\sigma^2}{n}\right)}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  X\textsubscript{1}, …, X\textsubscript{n} are independent
+  $X_{1},\, \ldots,\, X_{n}$ are independent
 \item
   Identically distributed (can be relaxed with Lyapunov/Lindeberg CLT)
 \item
-  Finite mean \ensuremath{\mu} and finite variance \ensuremath{\sigma}\textsuperscript{2}
+  Finite mean $\mu$ and finite variance $\sigma^{2}$
 \item
-  n is ``large enough'' (rule of thumb: n \ensuremath{\ge} 30, but depends on distribution shape)
+  $n$ is ``large enough'' (rule of thumb: $n \ge 30$, but depends on distribution shape)
 \end{enumerate}
 
 \PSsubsection{What CLT Does NOT Require}
@@ -101,9 +101,9 @@ For large n:\PSdisplay{\bar{X}_n \approx N\left(\mu, \frac{\sigma^2}{n}\right)}
 \begin{itemize}
 \tightlist
 \item
-  Does NOT require X\textsubscript{i} to be Gaussian
+  Does NOT require $X_{i}$ to be Gaussian
 \item
-  Does NOT require X\textsubscript{i} to be continuous
+  Does NOT require $X_{i}$ to be continuous
 \item
   Does NOT require any specific distribution
 \end{itemize}
@@ -115,15 +115,15 @@ How fast does the CLT ``kick in''?
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}cc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{Original Distribution} & \PSth{n needed for good approximation} \\
+\rowcolor{PSnavy}\PSth{Original Distribution} & \PSth{$n$ needed for good approximation} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Symmetric (uniform) & n \ensuremath{\approx} 5-10 \\
-Mildly skewed & n \ensuremath{\approx} 20-30 \\
-Highly skewed (exponential) & n \ensuremath{\approx} 30-50 \\
-Extremely skewed & n \ensuremath{\approx} 50-100+ \\
+Symmetric (uniform) & $n \approx 5-10$ \\
+Mildly skewed & $n \approx 20-30$ \\
+Highly skewed (exponential) & $n \approx 30-50$ \\
+Extremely skewed & $n \approx 50-100+$ \\
 \end{longtable}
 }
 
@@ -136,15 +136,15 @@ Extremely skewed & n \ensuremath{\approx} 50-100+ \\
 \begin{itemize}
 \tightlist
 \item
-  n=1: Uniform (flat)
+  $n = 1$: Uniform (flat)
 \item
-  n=2: Triangular
+  $n = 2$: Triangular
 \item
-  n=3: Starts looking bell-shaped
+  $n = 3$: Starts looking bell-shaped
 \item
-  n=5: Nearly Gaussian
+  $n = 5$: Nearly Gaussian
 \item
-  n=12: Practically indistinguishable from Gaussian
+  $n = 12$: Practically indistinguishable from Gaussian
 \end{itemize}
 
 \PSsubsection{Sum of Exponential RVs \ensuremath{\to} Gaussian}
@@ -152,25 +152,25 @@ Extremely skewed & n \ensuremath{\approx} 50-100+ \\
 \begin{itemize}
 \tightlist
 \item
-  n=1: Exponential (heavily right-skewed)
+  $n = 1$: Exponential (heavily right-skewed)
 \item
-  n=3: Still skewed but less so (Gamma(3))
+  $n = 3$: Still skewed but less so $(\mathrm{Gamma}(3))$
 \item
-  n=10: Nearly symmetric, bell-shaped
+  $n = 10$: Nearly symmetric, bell-shaped
 \item
-  n=30: Essentially Gaussian
+  $n = 30$: Essentially Gaussian
 \end{itemize}
 
 \PSsubsection{Binomial \ensuremath{\to} Normal Approximation}
 
-Binomial(n, p) \ensuremath{\approx} N(np, np(1-p)) for large n
+$\mathrm{Binomial}(n,\, p) \approx N(np,\, np(1-p))$ for large $n$
 
 This is CLT applied to sum of Bernoulli trials!
 
 \begin{itemize}
 \tightlist
 \item
-  Continuity correction: P(X \ensuremath{\le} k) \ensuremath{\approx} \ensuremath{\Phi}((k + 0.5 - np)/(\ensuremath{\surd}(np(1-p))))
+  Continuity correction: $P(X \le k) \approx \Phi \left(\frac{k + 0.5 - np}{\sqrt{np(1-p)}}\right)$
 \end{itemize}
 
 \PSsection{11.6}{Engineering Significance}
@@ -181,15 +181,15 @@ Thermal noise = aggregate effect of billions of electrons moving randomly. Each 
 
 \PSsubsection{Why Aggregate Interference is Gaussian}
 
-In a cellular network, total interference = sum of signals from many independent users. CLT \ensuremath{\to} interference \ensuremath{\approx} Gaussian (for many users).
+In a cellular network, total interference = sum of signals from many independent users. $\mathrm{CLT}$ \ensuremath{\to} interference \ensuremath{\approx} Gaussian (for many users).
 
 \PSsubsection{Why Measurement Errors are Gaussian}
 
-Total error = sum of many independent small error sources (calibration, quantization, thermal, vibration, etc.) \ensuremath{\to} CLT \ensuremath{\to} error \ensuremath{\approx} Gaussian.
+Total error = sum of many independent small error sources (calibration, quantization, thermal, vibration, etc.) $\to \mathrm{CLT}$ \ensuremath{\to} error \ensuremath{\approx} Gaussian.
 
 \PSsubsection{Why Manufacturing Variations are Gaussian}
 
-Resistor value = nominal + sum of many small process variations (doping, etching, temperature, etc.) \ensuremath{\to} CLT \ensuremath{\to} value \ensuremath{\approx} Gaussian around nominal.
+Resistor value = nominal + sum of many small process variations (doping, etching, temperature, etc.) $\to \mathrm{CLT}$ \ensuremath{\to} value \ensuremath{\approx} Gaussian around nominal.
 
 \PSsection{11.7}{MATLAB Monte Carlo Demonstrations}
 
@@ -339,17 +339,17 @@ Resistor value = nominal + sum of many small process variations (doping, etching
 
 \PSsubsection{General Procedure}
 
-To approximate P(S\textsubscript{n} \ensuremath{\le} x) where S\textsubscript{n} = X\textsubscript{1} + … + X\textsubscript{n}:
+To approximate $P(S_{n} \le x)$ where $S_{n} = X_{1} + \ldots + X_{n}$:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Compute \ensuremath{\mu} = E[X\textsubscript{i}], \ensuremath{\sigma}\textsuperscript{2} = Var(X\textsubscript{i})
+  Compute $\mu = E[X_{i}],\, \sigma^{2} = \operatorname{Var}(X_{i})$
 \item
-  S\textsubscript{n} \ensuremath{\approx} N(n\ensuremath{\mu}, n\ensuremath{\sigma}\textsuperscript{2})
+  $S_{n} \approx N(n\mu,\, n\sigma^{2})$
 \item
-  P(S\textsubscript{n} \ensuremath{\le} x) \ensuremath{\approx} \ensuremath{\Phi}((x - n\ensuremath{\mu})/(\ensuremath{\sigma}\ensuremath{\surd}n))
+  $\displaystyle P(S_{n} \le x) \approx \Phi \left(\frac{x - n\mu}{\sigma \sqrt{n}}\right)$
 \end{enumerate}
 
 \PSsubsection{Continuity Correction (for Discrete RVs)}
@@ -359,16 +359,16 @@ When approximating a discrete sum by Gaussian:
 \begin{itemize}
 \tightlist
 \item
-  P(X \ensuremath{\le} k) \ensuremath{\approx} \ensuremath{\Phi}((k + 0.5 - n\ensuremath{\mu})/(\ensuremath{\sigma}\ensuremath{\surd}n))
+  $\displaystyle P(X \le k) \approx \Phi \left(\frac{k + 0.5 - n\mu}{\sigma \sqrt{n}}\right)$
 \item
-  P(X = k) \ensuremath{\approx} \ensuremath{\Phi}((k + 0.5 - n\ensuremath{\mu})/(\ensuremath{\sigma}\ensuremath{\surd}n)) - \ensuremath{\Phi}((k - 0.5 - n\ensuremath{\mu})/(\ensuremath{\sigma}\ensuremath{\surd}n))
+  $\displaystyle P(X = k) \approx \Phi \left(\frac{k + 0.5 - n\mu}{\sigma \sqrt{n}}\right) - \Phi \left(\frac{k - 0.5 - n\mu}{\sigma \sqrt{n}}\right)$
 \end{itemize}
 
 \begin{PSbox}[unbreakable]{ex}{Example: Packet Errors}
 
-1000 packets, each error probability 0.02. X = total errors.\PSbr{}Exact: X \textasciitilde{} Binomial(1000, 0.02)\PSbr{}CLT approx: X \ensuremath{\approx} N(20, 19.6)
+1000 packets, each error probability 0.02. $X$ = total errors.\PSbr{}Exact: $X \sim \mathrm{Binomial}(1000,\, 0.02)$\PSbr{}CLT approx: $X \approx N(20,\, 19.6)$
 
-P(X \textgreater{} 30) \ensuremath{\approx} 1 - \ensuremath{\Phi}((30.5 - 20)/\ensuremath{\surd}19.6) = 1 - \ensuremath{\Phi}(2.37) = 0.0089
+$\displaystyle P(X > 30) \approx 1 - \Phi \left(\frac{30.5 - 20}{\sqrt{19.6}}\right) = 1 - \Phi (2.37) = 0.0089$
 
 \end{PSbox}
 
@@ -376,13 +376,13 @@ P(X \textgreater{} 30) \ensuremath{\approx} 1 - \ensuremath{\Phi}((30.5 - 20)/\e
 
 \begin{PSbox}[unbreakable]{prob}{Problem 1}
 
-A factory produces bolts. Length X \textasciitilde{} distribution with \ensuremath{\mu} = 10cm, \ensuremath{\sigma} = 0.2cm. A batch of 100 bolts is measured.
+A factory produces bolts. Length $X$ \textasciitilde{} distribution with $\mu = 10\,\mathrm{cm},\, \sigma = 0.2\,\mathrm{cm}$. A batch of 100 bolts is measured.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  What is the approximate distribution of \ensuremath{\bar{X}}? (b) P(\ensuremath{\bar{X}} \textgreater{} 10.05)? (c) P(9.96 \textless{} \ensuremath{\bar{X}} \textless{} 10.04)?
+  What is the approximate distribution of $\bar{X}$? (b) $P(\bar{X} > 10.05)$? (c) $P(9.96 < \bar{X} < 10.04)$?
 \end{enumerate}
 
 \PSsolution{} 
@@ -391,26 +391,26 @@ A factory produces bolts. Length X \textasciitilde{} distribution with \ensurema
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  \ensuremath{\bar{X}} \textasciitilde{} N(10, 0.04/100) = N(10, 0.0004), \ensuremath{\sigma}\textsubscript{X}̄ = 0.02
+  $\displaystyle \bar{X} \sim N\left(10,\, \frac{0.04}{100}\right) = N(10,\, 0.0004),\, \sigma_{\bar{X}} = 0.02$
 \item
-  P(\ensuremath{\bar{X}} \textgreater{} 10.05) = P(Z \textgreater{} 2.5) = 0.0062
+  $P(\bar{X} > 10.05) = P(Z > 2.5) = 0.0062$
 \item
-  P(9.96 \textless{} \ensuremath{\bar{X}} \textless{} 10.04) = \ensuremath{\Phi}(2) - \ensuremath{\Phi}(-2) = 0.9545
+  $P(9.96 < \bar{X} < 10.04) = \Phi (2) - \Phi (-2) = 0.9545$
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 2}
 
-A communication link has 10000 bits with BER = 0.001. Approximate P(more than 15 errors) using CLT.
+A communication link has 10000 bits with $\mathrm{BER} = 0.001$. Approximate $P(\text{more than 15 errors})$ using CLT.
 
-\PSsolution{} X \textasciitilde{} Binomial(10000, 0.001). \ensuremath{\mu}=10, \ensuremath{\sigma}\textsuperscript{2}=9.99.\PSbr{}P(X \textgreater{} 15) \ensuremath{\approx} 1 - \ensuremath{\Phi}((15.5-10)/\ensuremath{\surd}9.99) = 1 - \ensuremath{\Phi}(1.74) = 0.0409
+\PSsolution{} $X \sim \mathrm{Binomial}(10000,\, 0.001)$. $\mu = 10,\, \sigma^{2} = 9.99$.\PSbr{}$\displaystyle P(X > 15) \approx 1 - \Phi \left(\frac{15.5-10}{\sqrt{9.99}}\right) = 1 - \Phi (1.74) = 0.0409$
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 3}
 
-Write MATLAB code to verify the CLT for chi-squared(1) distribution (very skewed) and show convergence for n=2,5,10,50.
+Write MATLAB code to verify the CLT for chi-squared(1) distribution (very skewed) and show convergence for $n = 2,\,5,\,10,\,50$.
 
 \PSsolution{} 
 

@@ -72,6 +72,10 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.45em}
 \setlength{\emergencystretch}{3em}
+% tall inline formulas (fractions, sums) never touch the neighbouring lines
+\setlength{\lineskiplimit}{2pt}\setlength{\lineskip}{3pt}
+% inline formulas keep natural spacing when a justified line is stretched
+\thickmuskip=5mu plus 1mu\relax \medmuskip=4mu plus 1mu minus 3mu\relax
 \raggedbottom
 \clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
 
@@ -146,6 +150,7 @@
 % ---------- boxes ----------
 \tcbset{
   PSbase/.style={enhanced, breakable, arc=2.2mm, boxrule=0.7pt,
+    before upper app={\setlength{\lineskiplimit}{2pt}\setlength{\lineskip}{3pt}},
     left=3mm, right=3mm, top=1.6mm, bottom=1.6mm,
     toptitle=1.1mm, bottomtitle=1.1mm,
     fonttitle=\bfseries, coltitle=white,
@@ -160,6 +165,7 @@
   \begin{tcolorbox}[PS@#2, title={#3}, #1]}{\end{tcolorbox}}
 
 \newtcolorbox{PSquote}{enhanced, breakable, frame hidden, arc=0mm,
+  before upper app={\setlength{\lineskiplimit}{2pt}\setlength{\lineskip}{3pt}},
   colback=PSgold!9, boxrule=0pt, left=4mm, right=4mm, top=1.5mm, bottom=1.5mm,
   before skip=0.7em, after skip=0.7em,
   overlay={\ifPSrtl
@@ -189,7 +195,8 @@
 \setlength{\tabcolsep}{5pt}
 \arrayrulecolor{PSnavy!55}
 \setlength{\aboverulesep}{0pt}\setlength{\belowrulesep}{0pt}
-\AtBeginEnvironment{longtable}{\small\rowcolors{2}{white}{PSzebra}}
+\newcommand{\PScodesmall}[1]{{\ttfamily\scriptsize\color{PSnavyL}#1}}
+\AtBeginEnvironment{longtable}{\small\rowcolors{2}{white}{PSzebra}\relpenalty=500 \binoppenalty=700 \let\PScode\PScodesmall}
 \setlength{\LTpre}{0.8em}\setlength{\LTpost}{0.8em}
 
 % ---------- header / footer ----------

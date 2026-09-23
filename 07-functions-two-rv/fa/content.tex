@@ -6,7 +6,7 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  توزیع \lr{\mbox{Z = X + Y}} را با استفاده از کانولوشن استخراج کنند
+  توزیع \lr{$Z = X + Y$} را با استفاده از کانولوشن استخراج کنند
 \item
   توزیع تفاضل، حاصل‌ضرب، نسبت، بیشینه و کمینه را بیابند
 \item
@@ -24,134 +24,134 @@
 \begin{itemize}
 \tightlist
 \item
-  \textbf{سیگنال دریافتی} = ارسالی + نویز: \lr{\mbox{R = S + N}}
+  \textbf{سیگنال دریافتی} = ارسالی + نویز: \lr{$R = S + N$}
 \item
-  \textbf{تداخل کل} = جمع چند منبع: \lr{I = I\textsubscript{1} + I\textsubscript{2} + … + I\textsubscript{n}}
+  \textbf{تداخل کل} = جمع چند منبع: \lr{$I = I_{1} + I_{2} + \ldots + I_{n}$}
 \item
-  \textbf{عمر سیستم} = کمینه عمر قطعات: \lr{\mbox{T = min(T\textsubscript{1}, T\textsubscript{2})}}
+  \textbf{عمر سیستم} = کمینه عمر قطعات: \lr{$T = \min (T_{1},\, T_{2})$}
 \item
-  \lr{\mbox{\textbf{\lr{\mbox{SNR}}}}} = توان سیگنال / توان نویز: نسبت متغیرهای تصادفی
+  \lr{\textbf{\lr{\mbox{SNR}}} $= \dfrac{\text{\rl{توان سیگنال}}}{\text{\rl{توان نویز}}}$}: نسبت متغیرهای تصادفی
 \end{itemize}
 
 به روش‌هایی برای یافتن توزیع \textbf{توابع دو (یا چند) متغیر تصادفی} نیاز داریم.
 
-\PSsection{7.2}{جمع دو متغیر تصادفی: \lr{\mbox{Z = X + Y}}}
+\PSsection{7.2}{جمع دو متغیر تصادفی: \lr{$Z = X + Y$}}
 
 \PSsubsection{روش \lr{\mbox{CDF}}}
 
-\lr{F\textsubscript{Z}(z) = P(X + Y \ensuremath{\le} z) = \ensuremath{\int}\ensuremath{\int}\emph{\lr{\mbox{\{x+y\ensuremath{\le}z\} f}}}\{X,Y\}(x,y) dx dy}
+\lr{$F_{Z}(z) = P(X + Y \le z) = \int \int_{x+y \le z} f_{X,Y}(x,\,y)\,dx\,dy$}
 
 \PSsubsection{فرمول کانولوشن (حالت مستقل)}
 
-اگر \lr{\mbox{X}} و \lr{\mbox{Y}} \textbf{مستقل} باشند:
+اگر \lr{$X$} و \lr{$Y$} \textbf{مستقل} باشند:
 
 \PSdisplay{f_Z(z) = \int_{-\infty}^{\infty} f_X(x) \cdot f_Y(z-x) \, dx = (f_X * f_Y)(z)}
 
-این همان \textbf{کانولوشن} \lr{\mbox{f\textsubscript{X}}} و \lr{\mbox{f\textsubscript{Y}}} است.
+این همان \textbf{کانولوشن} \lr{$f_{X}$} و \lr{$f_{Y}$} است.
 
 \PSsubsection{استخراج}
 
-\lr{F\textsubscript{Z}(z) = P(X + Y \ensuremath{\le} z) = \ensuremath{\int}\emph{\lr{\{-\ensuremath{\infty}\}\textsuperscript{\ensuremath{\infty}} \ensuremath{\int}}}\{-\ensuremath{\infty}\}\textsuperscript{z-x} f\textsubscript{X}(x)f\textsubscript{Y}(y) dy dx}\PSbr{}\lr{= \ensuremath{\int}\textsubscript{-\ensuremath{\infty}}\textsuperscript{\ensuremath{\infty}} f\textsubscript{X}(x) F\textsubscript{Y}(z-x) dx}
+\lr{$F_{Z}(z) = P(X + Y \le z) = \int_{-\infty}^{\infty} \int_{-\infty}^{z-x} f_{X}(x)f_{Y}(y)\,dy\,dx$}\PSbr{}\lr{$= \int_{-\infty}^{\infty} f_{X}(x) F_{Y}(z-x)\,dx$}
 
-با مشتق‌گیری: \lr{f\textsubscript{Z}(z) = \ensuremath{\int}\textsubscript{-\ensuremath{\infty}}\textsuperscript{\ensuremath{\infty}} f\textsubscript{X}(x) f\textsubscript{Y}(z-x) dx \PSyes{}}
+با مشتق‌گیری: \lr{$f_{Z}(z) = \int_{-\infty}^{\infty} f_{X}(x) f_{Y}(z-x)\,dx$ \PSyes{}}
 
 \PSsubsection{حالت‌های خاص مهم}
 
-\textbf{جمع دو گاوسی (مستقل):}\PSbr{}\lr{X \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2})}، \lr{Y \textasciitilde{} N(\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}) \ensuremath{\to} Z = X+Y \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}+\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})}
+\textbf{جمع دو گاوسی (مستقل):}\PSbr{}\lr{$X \sim N(\mu_{1},\, \sigma_{1}^{2})$}، \lr{$Y \sim N(\mu_{2},\, \sigma_{2}^{2}) \to Z = X+Y \sim N(\mu_{1}+\mu_{2},\, \sigma_{1}^{2}+\sigma_{2}^{2})$}
 
-\textbf{جمع دو نمایی (با نرخ یکسان):}\PSbr{}\lr{\mbox{X}}، \lr{\mbox{Y \textasciitilde{} Exp(\ensuremath{\lambda})}} مستقل \lr{\ensuremath{\to} Z \textasciitilde{} Gamma(2, 1/\ensuremath{\lambda}) = Erlang(2, \ensuremath{\lambda})}
+\textbf{جمع دو نمایی (با نرخ یکسان):}\PSbr{}\lr{$X$}، \lr{$Y \sim \mathrm{Exp}(\lambda)$} مستقل \lr{$\to Z \sim \mathrm{Gamma}\left(2,\, \frac{1}{\lambda}\right) = \mathrm{Erlang}(2,\, \lambda)$}
 
-\textbf{جمع دو پواسون:}\PSbr{}\lr{X \textasciitilde{} Poisson(\ensuremath{\lambda}\textsubscript{1})}، \lr{Y \textasciitilde{} Poisson(\ensuremath{\lambda}\textsubscript{2})} مستقل \lr{\ensuremath{\to} Z \textasciitilde{} Poisson(\ensuremath{\lambda}\textsubscript{1}+\ensuremath{\lambda}\textsubscript{2})}
+\textbf{جمع دو پواسون:}\PSbr{}\lr{$X \sim \mathrm{Poisson}(\lambda_{1})$}، \lr{$Y \sim \mathrm{Poisson}(\lambda_{2})$} مستقل \lr{$\to Z \sim \mathrm{Poisson}(\lambda_{1}+\lambda_{2})$}
 
-\textbf{جمع دو یکنواخت:}\PSbr{}\lr{\mbox{X}}، \lr{\mbox{Y \textasciitilde{} Uniform(0,1)}} مستقل \lr{\mbox{\ensuremath{\to} Z}} توزیع مثلثی روی \lr{\mbox{[0,2]}} دارد
+\textbf{جمع دو یکنواخت:}\PSbr{}\lr{$X$}، \lr{$Y \sim \mathrm{Uniform}(0,\,1)$} مستقل \lr{$\to Z$} توزیع مثلثی روی \lr{\mbox{[0,2]}} دارد
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: سیگنال + نویز}
 
-سیگنال ارسالی \lr{S \textasciitilde{} N(A, \ensuremath{\sigma}\textsubscript{s}\textsuperscript{2})}، نویز \lr{N \textasciitilde{} N(0, \ensuremath{\sigma}\textsubscript{n}\textsuperscript{2})}، مستقل.\PSbr{}دریافتی: \lr{R = S + N \textasciitilde{} N(A, \ensuremath{\sigma}\textsubscript{s}\textsuperscript{2} + \ensuremath{\sigma}\textsubscript{n}\textsuperscript{2})}
+سیگنال ارسالی \lr{$S \sim N(A,\, \sigma_{s}^{2})$}، نویز \lr{$N \sim N(0,\, \sigma_{n}^{2})$}، مستقل.\PSbr{}دریافتی: \lr{$R = S + N \sim N(A,\, \sigma_{s}^{2} + \sigma_{n}^{2})$}
 
 سیگنال دریافتی همچنان گاوسی است \lr{—} با واریانس بیشتر (\lr{\mbox{SNR}} کاهش‌یافته).
 
 \end{PSbox}
 
-\PSsection{7.3}{تفاضل: \lr{\mbox{Z = X - Y}}}
+\PSsection{7.3}{تفاضل: \lr{$Z = X - Y$}}
 
-برای \lr{\mbox{X}}، \lr{\mbox{Y}} مستقل:\PSdisplay{f_Z(z) = \int_{-\infty}^{\infty} f_X(x) \cdot f_Y(x-z) \, dx}
+برای \lr{$X$}، \lr{$Y$} مستقل:\PSdisplay{f_Z(z) = \int_{-\infty}^{\infty} f_X(x) \cdot f_Y(x-z) \, dx}
 
-\textbf{حالت گاوسی:} \lr{X \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2})}، \lr{Y \textasciitilde{} N(\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2}) \ensuremath{\to} Z = X-Y \textasciitilde{} N(\ensuremath{\mu}\textsubscript{1}-\ensuremath{\mu}\textsubscript{2}, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2}+\ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})}
+\textbf{حالت گاوسی:} \lr{$X \sim N(\mu_{1},\, \sigma_{1}^{2})$}، \lr{$Y \sim N(\mu_{2},\, \sigma_{2}^{2}) \to Z = X-Y \sim N(\mu_{1}-\mu_{2},\, \sigma_{1}^{2}+\sigma_{2}^{2})$}
 
-توجه: واریانس‌ها همچنان \textbf{جمع} می‌شوند (نه تفریق) زیرا \lr{\mbox{Var(-Y) = Var(Y)}}.
+توجه: واریانس‌ها همچنان \textbf{جمع} می‌شوند (نه تفریق) زیرا \lr{$\operatorname{Var}(-Y) = \operatorname{Var}(Y)$}.
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: اندازه‌گیری تفاضلی}
 
-دو حسگر یک کمیت را اندازه‌گیری می‌کنند: \lr{X\textsubscript{1} = \ensuremath{\theta} + N\textsubscript{1}}، \lr{X\textsubscript{2} = \ensuremath{\theta} + N\textsubscript{2}}.\PSbr{}تفاضل: \lr{X\textsubscript{1} - X\textsubscript{2} = N\textsubscript{1} - N\textsubscript{2} \textasciitilde{} N(0, \ensuremath{\sigma}\textsubscript{1}\textsuperscript{2} + \ensuremath{\sigma}\textsubscript{2}\textsuperscript{2})}
+دو حسگر یک کمیت را اندازه‌گیری می‌کنند: \lr{$X_{1} = \theta + N_{1}$}، \lr{$X_{2} = \theta + N_{2}$}.\PSbr{}تفاضل: \lr{$X_{1} - X_{2} = N_{1} - N_{2} \sim N(0,\, \sigma_{1}^{2} + \sigma_{2}^{2})$}
 
 تفاضل، سیگنال مشترک را حذف می‌کند اما واریانس نویز را دو برابر می‌کند.
 
 \end{PSbox}
 
-\PSsection{7.4}{حاصل‌ضرب: \lr{\mbox{Z = XY}}}
+\PSsection{7.4}{حاصل‌ضرب: \lr{\mbox{$Z$ = XY}}}
 
-برای \lr{\mbox{X}}، \lr{\mbox{Y}} مستقل:\PSdisplay{f_Z(z) = \int_{-\infty}^{\infty} \frac{1}{|x|} f_X(x) \cdot f_Y(z/x) \, dx}
+برای \lr{$X$}، \lr{$Y$} مستقل:\PSdisplay{f_Z(z) = \int_{-\infty}^{\infty} \frac{1}{|x|} f_X(x) \cdot f_Y(z/x) \, dx}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: توان}
 
-ولتاژ \lr{\mbox{V}} و جریان \lr{\mbox{I}} در یک مدار خطی: \lr{\mbox{P = V\ensuremath{\cdot}I}}.\PSbr{}اگر \lr{\mbox{V}} و \lr{\mbox{I}} توزیع مشترک معلومی داشته باشند، می‌توانیم توزیع توان را بیابیم.
+ولتاژ \lr{$V$} و جریان \lr{$I$} در یک مدار خطی: \lr{$P = V \cdot I$}.\PSbr{}اگر \lr{$V$} و \lr{$I$} توزیع مشترک معلومی داشته باشند، می‌توانیم توزیع توان را بیابیم.
 
 \end{PSbox}
 
-\PSsection{7.5}{نسبت: \lr{\mbox{Z = X/Y}}}
+\PSsection{7.5}{نسبت: \lr{$Z = \frac{X}{Y}$}}
 
-برای \lr{\mbox{X}}، \lr{\mbox{Y}} مستقل:\PSdisplay{f_Z(z) = \int_{-\infty}^{\infty} |y| \cdot f_X(zy) \cdot f_Y(y) \, dy}
+برای \lr{$X$}، \lr{$Y$} مستقل:\PSdisplay{f_Z(z) = \int_{-\infty}^{\infty} |y| \cdot f_X(zy) \cdot f_Y(y) \, dy}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: \lr{\mbox{SNR}}}
 
-\lr{\mbox{SNR}} = توان سیگنال / توان نویز = \lr{\mbox{P\textsubscript{s} / P\textsubscript{n}}}
+\lr{$\mathrm{SNR} = \dfrac{\text{\rl{توان سیگنال}}}{\text{\rl{توان نویز}}} = \dfrac{P_s}{P_n}$}
 
-اگر هر دو دارای توزیع کای‌دو باشند (جمع مربعات گاوسی‌ها)، نسبت از یک \textbf{توزیع \lr{\mbox{F}}} پیروی می‌کند.
+اگر هر دو دارای توزیع کای‌دو باشند (جمع مربعات گاوسی‌ها)، نسبت از یک \textbf{توزیع \lr{$F$}} پیروی می‌کند.
 
 \end{PSbox}
 
-\PSsection{7.6}{بیشینه: \lr{\mbox{Z = max(X, Y)}}}
+\PSsection{7.6}{بیشینه: \lr{$Z = \max (X,\, Y)$}}
 
 \PSsubsection{رویکرد \lr{\mbox{CDF}}}
 
-\lr{F\textsubscript{Z}(z) = P(max(X,Y) \ensuremath{\le} z) = P(X \ensuremath{\le} z AND Y \ensuremath{\le} z)}
+\lr{$F_{Z}(z) = P(\max (X,\,Y) \le z) = P(X \le z\ \PSmtext{AND}\ Y \le z)$}
 
-اگر مستقل باشند: \lr{F\textsubscript{Z}(z) = F\textsubscript{X}(z) \ensuremath{\cdot} F\textsubscript{Y}(z)}
+اگر مستقل باشند: \lr{$F_{Z}(z) = F_{X}(z) \cdot F_{Y}(z)$}
 
-\lr{\mbox{PDF}}: \lr{f\textsubscript{Z}(z) = f\textsubscript{X}(z)F\textsubscript{Y}(z) + F\textsubscript{X}(z)f\textsubscript{Y}(z)}
+\lr{\mbox{PDF}}: \lr{$f_{Z}(z) = f_{X}(z)F_{Y}(z) + F_{X}(z)f_{Y}(z)$}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: افزونگی موازی}
 
-سیستم کار می‌کند اگر \textbf{حداقل یکی} از قطعات کار کند. سیستم تنها زمانی خراب می‌شود که \textbf{همه} خراب شوند.\PSbr{}عمر سیستم = \lr{\mbox{max(T\textsubscript{1}, T\textsubscript{2})}} برای قطعات افزونه موازی.
+سیستم کار می‌کند اگر \textbf{حداقل یکی} از قطعات کار کند. سیستم تنها زمانی خراب می‌شود که \textbf{همه} خراب شوند.\PSbr{}عمر سیستم \lr{$= \max (T_{1},\, T_{2})$} برای قطعات افزونه موازی.
 
-برای \lr{\mbox{T\textsubscript{1}}}، \lr{T\textsubscript{2} \textasciitilde{} Exp(\ensuremath{\lambda})} مستقل:\PSbr{}\lr{F\textsubscript{Z}(z) = (1 - e\textsuperscript{-\ensuremath{\lambda}z})\textsuperscript{2}} برای \lr{\mbox{z \ensuremath{\ge} 0}}
+برای \lr{$T_{1}$}، \lr{$T_{2} \sim \mathrm{Exp}(\lambda)$} مستقل:\PSbr{}\lr{$F_{Z}(z) = (1 - e^{-\lambda z})^{2}$} برای \lr{$z \ge 0$}
 
-\lr{f\textsubscript{Z}(z) = 2\ensuremath{\lambda}e\textsuperscript{-\ensuremath{\lambda}z}(1 - e\textsuperscript{-\ensuremath{\lambda}z})}
+\lr{$f_{Z}(z) = 2\lambda e^{-\lambda z}(1 - e^{-\lambda z})$}
 
-عمر میانگین: \lr{E[max] = 3/(2\ensuremath{\lambda}) \textgreater{} 1/\ensuremath{\lambda} = E}[تک قطعه] (قابلیت اطمینان بهبود یافته!)
+عمر میانگین: \lr{$E[\max] = \frac{3}{2\lambda} > \frac{1}{\lambda} = E[\text{\rl{تک قطعه}}]$} (قابلیت اطمینان بهبود یافته!)
 
 \end{PSbox}
 
-\PSsection{7.7}{کمینه: \lr{\mbox{Z = min(X, Y)}}}
+\PSsection{7.7}{کمینه: \lr{$Z = \min (X,\, Y)$}}
 
 \PSsubsection{رویکرد تابع بقا}
 
-\lr{P(Z \textgreater{} z) = P(min(X,Y) \textgreater{} z) = P(X \textgreater{} z AND Y \textgreater{} z)}
+\lr{$P(Z > z) = P(\min (X,\,Y) > z) = P(X > z\ \PSmtext{AND}\ Y > z)$}
 
-اگر مستقل باشند: \lr{P(Z \textgreater{} z) = P(X \textgreater{} z) \ensuremath{\cdot} P(Y \textgreater{} z) = [1-F\textsubscript{X}(z)][1-F\textsubscript{Y}(z)]}
+اگر مستقل باشند: \lr{$P(Z > z) = P(X > z) \cdot P(Y > z) = [1-F_{X}(z)][1-F_{Y}(z)]$}
 
-\lr{\mbox{CDF}}: \lr{F\textsubscript{Z}(z) = 1 - [1-F\textsubscript{X}(z)][1-F\textsubscript{Y}(z)]}
+\lr{\mbox{CDF}}: \lr{$F_{Z}(z) = 1 - [1-F_{X}(z)][1-F_{Y}(z)]$}
 
 \begin{PSbox}[unbreakable]{ex}{مثال مهندسی: سیستم سری}
 
-سیستم زمانی خراب می‌شود که \textbf{نخستین} قطعه خراب شود. عمر سیستم = \lr{\mbox{min(T\textsubscript{1}, T\textsubscript{2})}}.
+سیستم زمانی خراب می‌شود که \textbf{نخستین} قطعه خراب شود. عمر سیستم \lr{$= \min (T_{1},\, T_{2})$}.
 
-برای \lr{T\textsubscript{1} \textasciitilde{} Exp(\ensuremath{\lambda}\textsubscript{1})}، \lr{T\textsubscript{2} \textasciitilde{} Exp(\ensuremath{\lambda}\textsubscript{2})} مستقل:\PSbr{}\lr{P(Z \textgreater{} z) = e\textsuperscript{-\ensuremath{\lambda}\textsubscript{1}z} \ensuremath{\cdot} e\textsuperscript{-\ensuremath{\lambda}\textsubscript{2}z} = e\textsuperscript{-(\ensuremath{\lambda}\textsubscript{1}+\ensuremath{\lambda}\textsubscript{2})z}}
+برای \lr{$T_{1} \sim \mathrm{Exp}(\lambda_{1})$}، \lr{$T_{2} \sim \mathrm{Exp}(\lambda_{2})$} مستقل:\PSbr{}\lr{$P(Z > z) = e^{-\lambda_{1}z} \cdot e^{-\lambda_{2}z} = e^{-(\lambda_{1}+\lambda_{2})z}$}
 
-بنابراین: \lr{min(T\textsubscript{1}, T\textsubscript{2}) \textasciitilde{} Exp(\ensuremath{\lambda}\textsubscript{1} + \ensuremath{\lambda}\textsubscript{2})}
+بنابراین: \lr{$\min (T_{1},\, T_{2}) \sim \mathrm{Exp}(\lambda_{1} + \lambda_{2})$}
 
-\textbf{نتیجه کلیدی:} نرخ‌های خرابی در سیستم‌های سری \textbf{جمع} می‌شوند. عمر میانگین = \lr{1/(\ensuremath{\lambda}\textsubscript{1}+\ensuremath{\lambda}\textsubscript{2}) \textless{} min(1/\ensuremath{\lambda}\textsubscript{1}, 1/\ensuremath{\lambda}\textsubscript{2})}.
+\textbf{نتیجه کلیدی:} نرخ‌های خرابی در سیستم‌های سری \textbf{جمع} می‌شوند. عمر میانگین \lr{$= \frac{1}{\lambda_{1}+\lambda_{2}} < \min \left(\frac{1}{\lambda_{1}},\, \frac{1}{\lambda_{2}}\right)$}.
 
 \end{PSbox}
 
@@ -159,14 +159,14 @@
 
 \PSsubsection{صورت‌بندی}
 
-با داشتن \lr{\mbox{(X, Y)}} با \lr{\mbox{PDF}} مشترک معلوم، \lr{\mbox{PDF}} مشترک \lr{\mbox{(U, V)}} را بیابید که در آن:
+با داشتن \lr{$(X,\, Y)$} با \lr{\mbox{PDF}} مشترک معلوم، \lr{\mbox{PDF}} مشترک \lr{$(U,\, V)$} را بیابید که در آن:
 
 \begin{itemize}
 \tightlist
 \item
-  \lr{\mbox{U = g\textsubscript{1}(X, Y)}}
+  \lr{$U = g_{1}(X,\, Y)$}
 \item
-  \lr{\mbox{V = g\textsubscript{2}(X, Y)}}
+  \lr{$V = g_{2}(X,\, Y)$}
 \end{itemize}
 
 \PSsubsection{رویه}
@@ -175,7 +175,7 @@
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  برای وارون حل کنید: \lr{\mbox{X = h\textsubscript{1}(U, V)}}، \lr{\mbox{Y = h\textsubscript{2}(U, V)}}
+  برای وارون حل کنید: \lr{$X = h_{1}(U,\, V)$}، \lr{$Y = h_{2}(U,\, V)$}
 \item
   دترمینان ژاکوبی را محاسبه کنید:
 \end{enumerate}
@@ -188,16 +188,16 @@
 \item
   اعمال کنید:\PSdisplay{f_{U,V}(u,v) = f_{X,Y}(h_1(u,v), h_2(u,v)) \cdot |J|}
 \item
-  اگر فقط \lr{\mbox{U}} لازم باشد، \lr{\mbox{V}} را حاشیه‌سازی کنید.
+  اگر فقط \lr{$U$} لازم باشد، \lr{$V$} را حاشیه‌سازی کنید.
 \end{enumerate}
 
 \begin{PSbox}[unbreakable]{ex}{مثال: جمع و تفاضل}
 
-\lr{\mbox{U = X + Y}}، \lr{\mbox{V = X - Y \ensuremath{\to} X = (U+V)/2}}، \lr{\mbox{Y = (U-V)/2}}
+\lr{$U = X + Y$}، \lr{$V = X - Y \to X = \frac{U+V}{2}$}، \lr{$Y = \frac{U-V}{2}$}
 
-\lr{J = \textbar{}\ensuremath{\partial}x/\ensuremath{\partial}u \ensuremath{\cdot} \ensuremath{\partial}y/\ensuremath{\partial}v - \ensuremath{\partial}x/\ensuremath{\partial}v \ensuremath{\cdot} \ensuremath{\partial}y/\ensuremath{\partial}u\textbar{} = \textbar{}(1/2)(-1/2) - (1/2)(1/2)\textbar{} = 1/2}
+\lr{$\displaystyle J = \lvert \frac{\partial x}{\partial u} \cdot \frac{\partial y}{\partial v} - \frac{\partial x}{\partial v} \cdot \frac{\partial y}{\partial u}\rvert = \lvert \frac{1}{2}\left(-\frac{1}{2}\right) - \frac{1}{2}\left(\frac{1}{2}\right)\rvert = \frac{1}{2}$}
 
-\lr{f\textsubscript{U,V}(u,v) = (1/2) \ensuremath{\cdot} f\textsubscript{X,Y}((u+v)/2, (u-v)/2)}
+\lr{$\displaystyle f_{U,V}(u,\,v) = \frac{1}{2} \cdot f_{X,Y}\left(\frac{u+v}{2},\, \frac{u-v}{2}\right)$}
 
 \end{PSbox}
 
@@ -298,21 +298,21 @@
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1}
 
-\lr{\mbox{X \textasciitilde{} Exp(1)}}، \lr{\mbox{Y \textasciitilde{} Exp(1)}}، مستقل. \lr{\mbox{PDF}} مربوط به \lr{\mbox{Z = X + Y}} را بیابید.
+\lr{$X \sim \mathrm{Exp}(1)$}، \lr{$Y \sim \mathrm{Exp}(1)$}، مستقل. \lr{\mbox{PDF}} مربوط به \lr{$Z = X + Y$} را بیابید.
 
-\PSsolution{} کانولوشن: \lr{f\textsubscript{Z}(z) = \ensuremath{\int}\textsubscript{0}\textsuperscript{z} e\textsuperscript{-x}\ensuremath{\cdot}e\textsuperscript{-(z-x)} dx = \ensuremath{\int}\textsubscript{0}\textsuperscript{z} e\textsuperscript{-z} dx = ze\textsuperscript{-z}}، \lr{\mbox{z\ensuremath{\ge}0}}.\PSbr{}این \lr{\mbox{Gamma(2,1) = Erlang(2,1)}} است. \lr{\mbox{E[Z] = 2}}، \lr{\mbox{Var(Z) = 2}}.
+\PSsolution{} کانولوشن: \lr{$f_{Z}(z) = \int_{0}^{z} e^{-x} \cdot e^{-(z-x)}\,dx = \int_{0}^{z} e^{-z}\,dx = ze^{-z}$}، \lr{$z \ge 0$}.\PSbr{}این \lr{$\mathrm{Gamma}(2,\,1) = \mathrm{Erlang}(2,\,1)$} است. \lr{$E[Z] = 2$}، \lr{$\operatorname{Var}(Z) = 2$}.
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 2}
 
-سه قطعه در آرایش سری با نرخ‌های خرابی \lr{\mbox{\ensuremath{\lambda}\textsubscript{1}=0.001}}، \lr{\mbox{\ensuremath{\lambda}\textsubscript{2}=0.002}}، \lr{\mbox{\ensuremath{\lambda}\textsubscript{3}=0.003}} در هر ساعت.
+سه قطعه در آرایش سری با نرخ‌های خرابی \lr{$\lambda_{1} = 0.001$}، \lr{$\lambda_{2} = 0.002$}، \lr{$\lambda_{3} = 0.003$} در هر ساعت.
 
 \begin{enumerate}
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{\mbox{MTTF}} سیستم را بیابید. (ب) \lr{\mbox{P(\rl{سیستم 100 ساعت دوام می‌آورد})}} را بیابید.
+  \lr{\mbox{MTTF}} سیستم را بیابید. (ب) \lr{$P(\text{\rl{سیستم 100 ساعت دوام می‌آورد}})$} را بیابید.
 \end{enumerate}
 
 \PSsolution{} 
@@ -321,18 +321,18 @@
 \def\labelenumi{(\PSalph{enumi})}
 \tightlist
 \item
-  \lr{\mbox{MTTF = 1/(0.001+0.002+0.003) = 1/0.006 = 166.7}} ساعت
+  \lr{$\mathrm{MTTF} = \frac{1}{0.001+0.002+0.003} = \frac{1}{0.006} = 166.7$} ساعت
 \item
-  \lr{P(T\textsubscript{sys} \textgreater{} 100) = e\textsuperscript{-0.006\ensuremath{\times}100} = e\textsuperscript{-0.6} = 0.549}
+  \lr{$P(T_{\PSmtext{sys}} > 100) = e^{-0.006 \times 100} = e^{-0.6} = 0.549$}
 \end{enumerate}
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 3}
 
-\lr{\mbox{X \textasciitilde{} N(5, 4)}}، \lr{\mbox{Y \textasciitilde{} N(3, 9)}}، مستقل. توزیع و \lr{\mbox{P(X + Y \textgreater{} 12)}} را بیابید.
+\lr{$X \sim N(5,\, 4)$}، \lr{$Y \sim N(3,\, 9)$}، مستقل. توزیع و \lr{$P(X + Y > 12)$} را بیابید.
 
-\PSsolution{} \lr{\mbox{Z = X+Y \textasciitilde{} N(8, 13)}}. \lr{P(Z\textgreater{}12) = P(Z’ \textgreater{} (12-8)/\ensuremath{\surd}13) = Q(1.109) = 0.1337}.
+\PSsolution{} \lr{$Z = X+Y \sim N(8,\, 13)$. $P(Z > 12) = P\left(Z' > \frac{12-8}{\sqrt{13}}\right) = Q(1.109) = 0.1337$.}
 
 \emph{ماژول بعدی: {ماژول 8 \lr{—} امید ریاضی و واریانس شرطی}}
 

@@ -23,7 +23,7 @@ After completing this module, students will be able to:
 
 \PSsection{14.1}{Introduction: Why Point Estimates Aren’t Enough}
 
-A point estimate (e.g., \ensuremath{\bar{X}} = 3.47) gives no information about \textbf{precision}. We need to quantify uncertainty:
+A point estimate (e.g., $\bar{X} = 3.47$) gives no information about \textbf{precision}. We need to quantify uncertainty:
 
 ``The true mean is estimated to be 3.47, \textbf{give or take} some amount.''
 
@@ -35,21 +35,21 @@ A \textbf{confidence interval} provides a range that, with a specified confidenc
 
 \begin{PSquote}
 
-``If we repeat this experiment many times, each time computing a 95\% CI, then approximately 95\% of those intervals will contain the true parameter \ensuremath{\mu}.''
+``If we repeat this experiment many times, each time computing a 95\% CI, then approximately 95\% of those intervals will contain the true parameter $\mu$.''
 
 \end{PSquote}
 
-The \textbf{procedure} has a 95\% success rate. Each specific interval either contains \ensuremath{\mu} or it doesn’t.
+The \textbf{procedure} has a 95\% success rate. Each specific interval either contains $\mu$ or it doesn’t.
 
 \PSsubsection{\PSno{} WRONG Interpretation}
 
 \begin{PSquote}
 
-{``There is a 95\% probability that \ensuremath{\mu} is inside this particular interval [2.1, 4.8].''}
+$\sim \sim "\mathrm{There}$ is a 95\% probability that $\mu$ is inside this particular interval $[2.1,\, 4.8]." \sim \sim$
 
 \end{PSquote}
 
-\textbf{Why this is wrong:} \ensuremath{\mu} is a fixed (non-random) number. It’s either in [2.1, 4.8] or not — there is no probability about it. The \textbf{interval} is random (varies from sample to sample), not the parameter.
+\textbf{Why this is wrong:} $\mu$ is a fixed (non-random) number. It’s either in [2.1, 4.8] or not — there is no probability about it. The \textbf{interval} is random (varies from sample to sample), not the parameter.
 
 \PSsubsection{Analogy}
 
@@ -62,22 +62,22 @@ Think of CIs like a fishing net:
 \item
   After you cast: the fish is either caught or not — no probability anymore
 \item
-  The fish (\ensuremath{\mu}) doesn’t move; your net (CI) does
+  The fish $(\mu)$ doesn’t move; your net $(\mathrm{CI})$ does
 \end{itemize}
 
 \PSsection{14.3}{CI for Mean — Known Variance (Z-interval)}
 
 \PSsubsection{Setup}
 
-Data: X\textsubscript{1}, …, X\textsubscript{n} i.i.d. from N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}) with \ensuremath{\sigma}\textsuperscript{2} \textbf{known}.
+Data: $X_{1},\, \ldots,\, X_{n}$ i.i.d. from $N(\mu,\, \sigma^{2})$ with $\sigma^{2}$ \textbf{known}.
 
 \PSsubsection{Derivation}
 
-\ensuremath{\bar{X}} \textasciitilde{} N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}/n), so Z = (\ensuremath{\bar{X}} - \ensuremath{\mu})/(\ensuremath{\sigma}/\ensuremath{\surd}n) \textasciitilde{} N(0,1)
+$\bar{X} \sim N\left(\mu,\, \frac{\sigma^{2}}{n}\right)$, so $Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,\,1)$
 
-P(-z\textsubscript{\ensuremath{\alpha}/2} \ensuremath{\le} Z \ensuremath{\le} z\textsubscript{\ensuremath{\alpha}/2}) = 1 - \ensuremath{\alpha}
+$P(-z_{\alpha /2} \le Z \le z_{\alpha /2}) = 1 - \alpha$
 
-Solving for \ensuremath{\mu}:\PSdisplay{P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha}
+Solving for $\mu$:\PSdisplay{P\left(\bar{X} - z_{\alpha/2}\frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} + z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right) = 1 - \alpha}
 
 \PSsubsection{Formula}
 
@@ -88,7 +88,7 @@ Solving for \ensuremath{\mu}:\PSdisplay{P\left(\bar{X} - z_{\alpha/2}\frac{\sigm
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}ccc@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{Confidence Level} & \PSth{\ensuremath{\alpha}} & \PSth{z\textsubscript{\ensuremath{\alpha}/2}} \\
+\rowcolor{PSnavy}\PSth{Confidence Level} & \PSth{$\alpha$} & \PSth{$z_{\alpha /2}$} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -101,9 +101,9 @@ Solving for \ensuremath{\mu}:\PSdisplay{P\left(\bar{X} - z_{\alpha/2}\frac{\sigm
 
 \begin{PSbox}[unbreakable]{ex}{Example}
 
-Noise measurements: n = 36, \ensuremath{\bar{X}} = 0.52V, \ensuremath{\sigma} = 0.12V (known from equipment spec).
+Noise measurements: $n = 36,\, \bar{X} = 0.52\,\mathrm{V},\, \sigma = 0.12\,\mathrm{V}$ (known from equipment spec).
 
-95\% CI: 0.52 \ensuremath{\pm} 1.96 \ensuremath{\times} 0.12/\ensuremath{\surd}36 = 0.52 \ensuremath{\pm} 0.0392 = \textbf{[0.481, 0.559] V}
+95\% CI: $0.52 \pm 1.96 \times \frac{0.12}{\sqrt{36}} = 0.52 \pm 0.0392 = \ast \ast [0.481,\, 0.559] V$**
 
 \end{PSbox}
 
@@ -111,7 +111,7 @@ Noise measurements: n = 36, \ensuremath{\bar{X}} = 0.52V, \ensuremath{\sigma} = 
 
 \PSsubsection{The Problem}
 
-Usually \ensuremath{\sigma} is unknown. We estimate it with S. But \ensuremath{\bar{X}}/(S/\ensuremath{\surd}n) does NOT follow N(0,1).
+Usually $\sigma$ is unknown. We estimate it with $S$. But $\frac{\bar{X}}{\frac{S}{\sqrt{n}}}$ does NOT follow $N(0,\,1)$.
 
 \PSsubsection{Student’s t-Distribution}
 
@@ -124,13 +124,13 @@ The t-distribution:
 \item
   Symmetric about 0
 \item
-  Heavier tails than N(0,1) (more uncertainty because S is estimated)
+  Heavier tails than $N(0,\,1)$ (more uncertainty because $S$ is estimated)
 \item
-  Degrees of freedom: \ensuremath{\nu} = n - 1
+  Degrees of freedom: $\nu = n - 1$
 \item
-  As \ensuremath{\nu} \ensuremath{\to} \ensuremath{\infty}: t(\ensuremath{\nu}) \ensuremath{\to} N(0,1)
+  As $\nu \to \infty$: $t(\nu) \to N(0,\,1)$
 \item
-  For \ensuremath{\nu} \ensuremath{\ge} 30: t \ensuremath{\approx} z (practically)
+  For $\nu \ge 30$: $t \approx z$ (practically)
 \end{itemize}
 
 \PSsubsection{Formula}
@@ -139,11 +139,11 @@ The t-distribution:
 
 \begin{PSbox}[unbreakable]{ex}{Example}
 
-Component delay: n = 15, \ensuremath{\bar{X}} = 2.34 ns, S = 0.45 ns.
+Component delay: $n = 15,\, \bar{X} = 2.34$ ns, $S = 0.45$ ns.
 
-95\% CI: t\textsubscript{0.025, 14} = 2.145
+95\% CI: $t_{0.025, 14} = 2.145$
 
-CI: 2.34 \ensuremath{\pm} 2.145 \ensuremath{\times} 0.45/\ensuremath{\surd}15 = 2.34 \ensuremath{\pm} 0.249 = \textbf{[2.09, 2.59] ns}
+CI: $2.34 \pm 2.145 \times \frac{0.45}{\sqrt{15}} = 2.34 \pm 0.249 = \ast \ast [2.09,\, 2.59]$ ns**
 
 (Wider than z-interval because of additional uncertainty in S.)
 
@@ -153,7 +153,7 @@ CI: 2.34 \ensuremath{\pm} 2.145 \ensuremath{\times} 0.45/\ensuremath{\surd}15 = 
 
 \PSsubsection{Setup}
 
-Data from N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}). Want CI for \ensuremath{\sigma}\textsuperscript{2}.
+Data from $N(\mu,\, \sigma^{2})$. Want CI for $\sigma^{2}$.
 
 \PSsubsection{Key Distribution}
 
@@ -165,13 +165,13 @@ Data from N(\ensuremath{\mu}, \ensuremath{\sigma}\textsuperscript{2}). Want CI f
 
 \begin{PSbox}[unbreakable]{ex}{Example}
 
-Noise power: n = 20, S\textsuperscript{2} = 0.045 V\textsuperscript{2}.
+Noise power: $n = 20,\, S^{2} = 0.045\,\mathrm{V}^{2}$.
 
-95\% CI for \ensuremath{\sigma}\textsuperscript{2}: \ensuremath{\chi}\textsuperscript{2}\textsubscript{0.025, 19} = 32.852, \ensuremath{\chi}\textsuperscript{2}\textsubscript{0.975, 19} = 8.907
+95\% CI for $\sigma^{2}$: $\chi^{2}_{0.025, 19} = 32.852,\, \chi^{2}_{0.975, 19} = 8.907$
 
-CI: [(19)(0.045)/32.852, (19)(0.045)/8.907] = [0.026, 0.096] V\textsuperscript{2}
+CI: $\left[\frac{(19)(0.045)}{32.852},\, \frac{(19)(0.045)}{8.907}\right] = [0.026,\, 0.096] V^{2}$
 
-95\% CI for \ensuremath{\sigma}: [\ensuremath{\surd}0.026, \ensuremath{\surd}0.096] = [0.161, 0.310] V
+95\% CI for $\sigma$: $\left[\sqrt{0.026},\, \sqrt{0.096}\right] = [0.161,\, 0.310] V$
 
 \end{PSbox}
 
@@ -179,7 +179,7 @@ CI: [(19)(0.045)/32.852, (19)(0.045)/8.907] = [0.026, 0.096] V\textsuperscript{2
 
 \PSsubsection{Setup}
 
-n trials, \ensuremath{\hat{x}} = k/n successes. Estimate p = true proportion.
+$n$ trials, $\hat{x} = \frac{k}{n}$ successes. Estimate $p$ = true proportion.
 
 \PSsubsection{Large-Sample Formula (Wald Interval)}
 
@@ -187,27 +187,30 @@ n trials, \ensuremath{\hat{x}} = k/n successes. Estimate p = true proportion.
 
 \begin{PSbox}[unbreakable]{ex}{Example: Bit Error Rate}
 
-Transmitted 100,000 bits, observed 53 errors. \ensuremath{\hat{p}} = 53/100000 = 5.3\ensuremath{\times}10\textsuperscript{-4}.
+Transmitted 100,000 bits, observed 53 errors. $\hat{p} = \frac{53}{100000} = 5.3 \times 10^{-4}$.
 
-95\% CI: 5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.96\ensuremath{\surd}(5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\times} 0.9995 / 100000) = 5.3\ensuremath{\times}10\textsuperscript{-4} \ensuremath{\pm} 1.43\ensuremath{\times}10\textsuperscript{-4}
+95\% CI: $5.3 \times 10^{-4} \pm 1.96\sqrt{5.3 \times 10^{-4} \times \frac{0.9995}{100000}} = 5.3 \times 10^{-4} \pm 1.43 \times 10^{-4}$
 
-CI: \textbf{[3.9\ensuremath{\times}10\textsuperscript{-4}, 6.7\ensuremath{\times}10\textsuperscript{-4}]}
+CI: \textbf{$[3.9 \times 10^{-4},\, 6.7 \times 10^{-4}]$}
 
 \end{PSbox}
 
 \PSsection{14.7}{Factors Affecting CI Width}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[c]{@{}ccc@{}}
+\begin{longtable}[c]{@{}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.2162}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.4324}}
+  >{\centering\arraybackslash}p{(0.965\linewidth - 4\tabcolsep) * \real{0.3514}}@{}}
 \toprule\noalign{}
 \rowcolor{PSnavy}\PSth{Factor} & \PSth{Effect on Width} & \PSth{Explanation} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\ensuremath{\uparrow} Sample size n & Narrower & More data \ensuremath{\to} more precision \\
+\ensuremath{\uparrow} Sample size $n$ & Narrower & More data \ensuremath{\to} more precision \\
 \ensuremath{\uparrow} Confidence level & Wider & More confidence \ensuremath{\to} wider net \\
-\ensuremath{\uparrow} Variability \ensuremath{\sigma} & Wider & More noise \ensuremath{\to} harder to pin down \ensuremath{\mu} \\
+\ensuremath{\uparrow} Variability $\sigma$ & Wider & More noise \ensuremath{\to} harder to pin down $\mu$ \\
 \end{longtable}
 }
 
@@ -225,17 +228,17 @@ CI: \textbf{[3.9\ensuremath{\times}10\textsuperscript{-4}, 6.7\ensuremath{\times
 
 \PSsection{14.8}{Sample Size Determination}
 
-\PSsubsection{Question: How many measurements do I need?}
+\PSsubsection{Question: How many measurements $do$ I need?}
 
-For CI width \ensuremath{\le} 2E (margin of error E):
+For CI width $\le 2E$ (margin of error $E$):
 
 \PSdisplay{n \geq \left(\frac{z_{\alpha/2} \cdot \sigma}{E}\right)^2}
 
 \begin{PSbox}[unbreakable]{ex}{Example}
 
-Want to estimate mean delay within \ensuremath{\pm}0.5ms with 95\% confidence. Expect \ensuremath{\sigma} \ensuremath{\approx} 3ms.
+Want to estimate mean delay within $\pm 0.5\,\mathrm{ms}$ with 95\% confidence. Expect $\sigma \approx 3\,\mathrm{ms}$.
 
-n \ensuremath{\ge} (1.96 \ensuremath{\times} 3 / 0.5)\textsuperscript{2} = (11.76)\textsuperscript{2} = 138.3 \ensuremath{\to} need \textbf{n = 139 measurements}
+$n \ge \left(1.96 \times \frac{3}{0.5}\right)^{2} = (11.76)^{2} = 138.3$ \ensuremath{\to} need \textbf{$n = 139$ measurements}
 
 \end{PSbox}
 
@@ -335,13 +338,13 @@ n \ensuremath{\ge} (1.96 \ensuremath{\times} 3 / 0.5)\textsuperscript{2} = (11.7
 
 \begin{PSbox}[unbreakable]{prob}{Problem 1}
 
-A sensor measures voltage. From 50 measurements: \ensuremath{\bar{X}} = 3.32V, S = 0.15V.
+A sensor measures voltage. From 50 measurements: $\bar{X} = 3.32\,\mathrm{V},\, S = 0.15\,\mathrm{V}$.
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Construct 95\% CI for \ensuremath{\mu}. (b) Construct 99\% CI for \ensuremath{\mu}. (c) Which is wider and why?
+  Construct 95\% CI for $\mu$. (b) Construct 99\% CI for $\mu$. (c) Which is wider and why?
 \end{enumerate}
 
 \PSsolution{} 
@@ -350,9 +353,9 @@ A sensor measures voltage. From 50 measurements: \ensuremath{\bar{X}} = 3.32V, S
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  t\textsubscript{0.025,49} \ensuremath{\approx} 2.010. CI: 3.32 \ensuremath{\pm} 2.010(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.043 = [3.277, 3.363]
+  $t_{0.025,49} \approx 2.010$. CI: $3.32 \pm 2.010\left(\frac{0.15}{\sqrt{50}}\right) = 3.32 \pm 0.043 = [3.277,\, 3.363]$
 \item
-  t\textsubscript{0.005,49} \ensuremath{\approx} 2.680. CI: 3.32 \ensuremath{\pm} 2.680(0.15/\ensuremath{\surd}50) = 3.32 \ensuremath{\pm} 0.057 = [3.263, 3.377]
+  $t_{0.005,49} \approx 2.680$. CI: $3.32 \pm 2.680\left(\frac{0.15}{\sqrt{50}}\right) = 3.32 \pm 0.057 = [3.263,\, 3.377]$
 \item
   99\% CI is wider — higher confidence requires a wider interval.
 \end{enumerate}
@@ -361,17 +364,17 @@ A sensor measures voltage. From 50 measurements: \ensuremath{\bar{X}} = 3.32V, S
 
 \begin{PSbox}[unbreakable]{prob}{Problem 2}
 
-From 25 noise power measurements: S\textsuperscript{2} = 0.048 V\textsuperscript{2}. Construct 95\% CI for \ensuremath{\sigma}\textsuperscript{2}.
+From 25 noise power measurements: $S^{2} = 0.048\,\mathrm{V}^{2}$. Construct 95\% CI for $\sigma^{2}$.
 
-\PSsolution{} \ensuremath{\chi}\textsuperscript{2}\textsubscript{0.025,24} = 39.364, \ensuremath{\chi}\textsuperscript{2}\textsubscript{0.975,24} = 12.401\PSbr{}CI: [24(0.048)/39.364, 24(0.048)/12.401] = [0.029, 0.093] V\textsuperscript{2}
+\PSsolution{} $\chi^{2}_{0.025,24} = 39.364,\, \chi^{2}_{0.975,24} = 12.401$\PSbr{}CI: $\left[\frac{24(0.048)}{39.364},\, \frac{24(0.048)}{12.401}\right] = [0.029,\, 0.093] V^{2}$
 
 \end{PSbox}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 3}
 
-How many BER measurements needed to estimate BER within \ensuremath{\pm}20\% of its true value with 95\% confidence, if expected BER \ensuremath{\approx} 10\textsuperscript{-3}?
+How many BER measurements needed to estimate BER within $\pm 20\%$ of its true value with 95\% confidence, if expected $\mathrm{BER} \approx 10^{-3}$?
 
-\PSsolution{} For proportion: n \ensuremath{\ge} z\textsuperscript{2}p(1-p)/E\textsuperscript{2} where E = 0.2p = 2\ensuremath{\times}10\textsuperscript{-4}.\PSbr{}n \ensuremath{\ge} (1.96)\textsuperscript{2}(10\textsuperscript{-3})(0.999)/(2\ensuremath{\times}10\textsuperscript{-4})\textsuperscript{2} = 3.84 \ensuremath{\times} 10\textsuperscript{-3} / (4\ensuremath{\times}10\textsuperscript{-8}) \ensuremath{\approx} 96,000 bits.\PSbr{}Need to transmit approximately 96,000 bits (or observe \textasciitilde{}96 errors).
+\PSsolution{} For proportion: $n \ge \frac{z^{2}p(1-p)}{E^{2}}$ where $E = 0.2p = 2 \times 10^{-4}$.\PSbr{}$n \ge \frac{(1.96)^{2}(10^{-3})(0.999)}{(2 \times 10^{-4})^{2}} = 3.84 \times \frac{10^{-3}}{4 \times 10^{-8}} \approx 96{,}000$ bits.\PSbr{}Need to transmit approximately 96,000 bits (or observe $\sim 96$ errors).
 
 \emph{Next Module: {Module 15 — Hypothesis Testing}}
 

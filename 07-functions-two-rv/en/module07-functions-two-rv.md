@@ -3,7 +3,7 @@
 ## Learning Objectives
 
 After completing this module, students will be able to:
-1. Derive the distribution of Z = X + Y using convolution
+1. Derive the distribution of $Z = X + Y$ using convolution
 2. Find distributions of differences, products, ratios, max, and min
 3. Apply the bivariate Jacobian transformation method
 4. Connect these results to engineering applications (signal+noise, reliability)
@@ -13,146 +13,146 @@ After completing this module, students will be able to:
 ## 7.1 Introduction
 
 Engineering systems combine random variables:
-- **Received signal** = transmitted + noise: R = S + N
-- **Total interference** = sum of multiple sources: I = I₁ + I₂ + ... + Iₙ
-- **System lifetime** = minimum of component lifetimes: T = min(T₁, T₂)
-- **SNR** = signal power / noise power: ratio of RVs
+- **Received signal** = transmitted + noise: $R = S + N$
+- **Total interference** = sum of multiple sources: $I = I_{1} + I_{2} + \ldots + I_{n}$
+- **System lifetime** = minimum of component lifetimes: $T = \min (T_{1},\, T_{2})$
+- **SNR** $= \dfrac{\text{signal power}}{\text{noise power}}$: ratio of RVs
 
 We need methods to find distributions of **functions of two (or more) RVs**.
 
 ---
 
-## 7.2 Sum of Two Random Variables: Z = X + Y
+## 7.2 Sum of Two Random Variables: $Z = X + Y$
 
 ### CDF Method
 
-F_Z(z) = P(X + Y ≤ z) = ∫∫_{x+y≤z} f_{X,Y}(x,y) dx dy
+$F_{Z}(z) = P(X + Y \le z) = \int \int_{x+y \le z} f_{X,Y}(x,\,y)\,dx\,dy$
 
 ### Convolution Formula (Independent Case)
 
-If X and Y are **independent**:
+If $X$ and $Y$ are **independent**:
 
 $$f_Z(z) = \int_{-\infty}^{\infty} f_X(x) \cdot f_Y(z-x) \, dx = (f_X * f_Y)(z)$$
 
-This is the **convolution** of f_X and f_Y.
+This is the **convolution** of $f_{X}$ and $f_{Y}$.
 
 ### Derivation
 
-F_Z(z) = P(X + Y ≤ z) = ∫_{-∞}^{∞} ∫_{-∞}^{z-x} f_X(x)f_Y(y) dy dx
-       = ∫_{-∞}^{∞} f_X(x) F_Y(z-x) dx
+$F_{Z}(z) = P(X + Y \le z) = \int_{-\infty}^{\infty} \int_{-\infty}^{z-x} f_{X}(x)f_{Y}(y)\,dy\,dx$
+       $= \int_{-\infty}^{\infty} f_{X}(x) F_{Y}(z-x)\,dx$
 
-Differentiating: f_Z(z) = ∫_{-∞}^{∞} f_X(x) f_Y(z-x) dx ✓
+Differentiating: $f_{Z}(z) = \int_{-\infty}^{\infty} f_{X}(x) f_{Y}(z-x)\,dx$ ✓
 
 ### Important Special Cases
 
 **Sum of two Gaussians (independent):**
-X ~ N(μ₁, σ₁²), Y ~ N(μ₂, σ₂²) → Z = X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²)
+$X \sim N(\mu_{1},\, \sigma_{1}^{2}),\, Y \sim N(\mu_{2},\, \sigma_{2}^{2}) \to Z = X+Y \sim N(\mu_{1}+\mu_{2},\, \sigma_{1}^{2}+\sigma_{2}^{2})$
 
 **Sum of two exponentials (same rate):**
-X, Y ~ Exp(λ) independent → Z ~ Gamma(2, 1/λ) = Erlang(2, λ)
+$X,\, Y \sim \mathrm{Exp}(\lambda)$ independent $\to Z \sim \mathrm{Gamma}\left(2,\, \frac{1}{\lambda}\right) = \mathrm{Erlang}(2,\, \lambda)$
 
 **Sum of two Poissons:**
-X ~ Poisson(λ₁), Y ~ Poisson(λ₂) independent → Z ~ Poisson(λ₁+λ₂)
+$X \sim \mathrm{Poisson}(\lambda_{1}),\, Y \sim \mathrm{Poisson}(\lambda_{2})$ independent $\to Z \sim \mathrm{Poisson}(\lambda_{1}+\lambda_{2})$
 
 **Sum of two uniforms:**
-X, Y ~ Uniform(0,1) independent → Z has triangular distribution on [0,2]
+$X,\, Y \sim \mathrm{Uniform}(0,\,1)$ independent $\to Z$ has triangular distribution on [0,2]
 
 ### Engineering Example: Signal + Noise
 
-Transmitted signal S ~ N(A, σ_s²), noise N ~ N(0, σ_n²), independent.
-Received: R = S + N ~ N(A, σ_s² + σ_n²)
+Transmitted signal $S \sim N(A,\, \sigma_{s}^{2})$, noise $N \sim N(0,\, \sigma_{n}^{2})$, independent.
+Received: $R = S + N \sim N(A,\, \sigma_{s}^{2} + \sigma_{n}^{2})$
 
 The received signal is still Gaussian — with increased variance (reduced SNR).
 
 ---
 
-## 7.3 Difference: Z = X - Y
+## 7.3 Difference: $Z = X - Y$
 
-For independent X, Y:
+For independent $X,\, Y$:
 $$f_Z(z) = \int_{-\infty}^{\infty} f_X(x) \cdot f_Y(x-z) \, dx$$
 
-**Gaussian case:** X ~ N(μ₁, σ₁²), Y ~ N(μ₂, σ₂²) → Z = X-Y ~ N(μ₁-μ₂, σ₁²+σ₂²)
+**Gaussian case:** $X \sim N(\mu_{1},\, \sigma_{1}^{2}),\, Y \sim N(\mu_{2},\, \sigma_{2}^{2}) \to Z = X-Y \sim N(\mu_{1}-\mu_{2},\, \sigma_{1}^{2}+\sigma_{2}^{2})$
 
-Note: variances still ADD (not subtract) because Var(-Y) = Var(Y).
+Note: variances still ADD (not subtract) because $\operatorname{Var}(-Y) = \operatorname{Var}(Y)$.
 
 ### Engineering Example: Differential Measurement
 
-Two sensors measure same quantity: X₁ = θ + N₁, X₂ = θ + N₂.
-Difference: X₁ - X₂ = N₁ - N₂ ~ N(0, σ₁² + σ₂²)
+Two sensors measure same quantity: $X_{1} = \theta + N_{1},\, X_{2} = \theta + N_{2}$.
+Difference: $X_{1} - X_{2} = N_{1} - N_{2} \sim N(0,\, \sigma_{1}^{2} + \sigma_{2}^{2})$
 
 The difference eliminates the common signal but doubles the noise variance.
 
 ---
 
-## 7.4 Product: Z = XY
+## 7.4 Product: $Z$ = XY
 
-For independent X, Y:
+For independent $X,\, Y$:
 $$f_Z(z) = \int_{-\infty}^{\infty} \frac{1}{|x|} f_X(x) \cdot f_Y(z/x) \, dx$$
 
 ### Engineering Example: Power
 
-Voltage V and current I in a linear circuit: P = V·I.
-If V and I have known joint distribution, we can find the power distribution.
+Voltage $V$ and current I in a linear circuit: $P = V \cdot I$.
+If $V$ and I have known joint distribution, we can find the power distribution.
 
 ---
 
-## 7.5 Ratio: Z = X/Y
+## 7.5 Ratio: $Z = \frac{X}{Y}$
 
-For independent X, Y:
+For independent $X,\, Y$:
 $$f_Z(z) = \int_{-\infty}^{\infty} |y| \cdot f_X(zy) \cdot f_Y(y) \, dy$$
 
 ### Engineering Example: SNR
 
-SNR = Signal Power / Noise Power = P_s / P_n
+$\mathrm{SNR} = \dfrac{\text{Signal Power}}{\text{Noise Power}} = \dfrac{P_s}{P_n}$
 
 If both are chi-squared distributed (sum of squared Gaussians), the ratio follows an **F-distribution**.
 
 ---
 
-## 7.6 Maximum: Z = max(X, Y)
+## 7.6 Maximum: $Z = \max (X,\, Y)$
 
 ### CDF Approach
 
-F_Z(z) = P(max(X,Y) ≤ z) = P(X ≤ z AND Y ≤ z)
+$F_{Z}(z) = P(\max (X,\,Y) \le z) = P(X \le z\ \text{AND}\ Y \le z)$
 
-If independent: F_Z(z) = F_X(z) · F_Y(z)
+If independent: $F_{Z}(z) = F_{X}(z) \cdot F_{Y}(z)$
 
-PDF: f_Z(z) = f_X(z)F_Y(z) + F_X(z)f_Y(z)
+PDF: $f_{Z}(z) = f_{X}(z)F_{Y}(z) + F_{X}(z)f_{Y}(z)$
 
 ### Engineering Example: Parallel Redundancy
 
 System works if AT LEAST ONE component works. System fails only when ALL fail.
-System lifetime = max(T₁, T₂) for parallel redundant components.
+System lifetime $= \max (T_{1},\, T_{2})$ for parallel redundant components.
 
-For T₁, T₂ ~ Exp(λ) independent:
-F_Z(z) = (1 - e^(-λz))² for z ≥ 0
+For $T_{1},\, T_{2} \sim \mathrm{Exp}(\lambda)$ independent:
+$F_{Z}(z) = (1 - e^{-\lambda z})^{2}$ for $z \ge 0$
 
-f_Z(z) = 2λe^(-λz)(1 - e^(-λz))
+$f_{Z}(z) = 2\lambda e^{-\lambda z}(1 - e^{-\lambda z})$
 
-Mean lifetime: E[max] = 3/(2λ) > 1/λ = E[single component] (reliability improved!)
+Mean lifetime: $E[\max] = \frac{3}{2\lambda} > \frac{1}{\lambda} = E[\text{single component}]$ (reliability improved!)
 
 ---
 
-## 7.7 Minimum: Z = min(X, Y)
+## 7.7 Minimum: $Z = \min (X,\, Y)$
 
 ### Survival Function Approach
 
-P(Z > z) = P(min(X,Y) > z) = P(X > z AND Y > z)
+$P(Z > z) = P(\min (X,\,Y) > z) = P(X > z\ \text{AND}\ Y > z)$
 
-If independent: P(Z > z) = P(X > z) · P(Y > z) = [1-F_X(z)][1-F_Y(z)]
+If independent: $P(Z > z) = P(X > z) \cdot P(Y > z) = [1-F_{X}(z)][1-F_{Y}(z)]$
 
-CDF: F_Z(z) = 1 - [1-F_X(z)][1-F_Y(z)]
+CDF: $F_{Z}(z) = 1 - [1-F_{X}(z)][1-F_{Y}(z)]$
 
 ### Engineering Example: Series System
 
-System fails when FIRST component fails. System lifetime = min(T₁, T₂).
+System fails when FIRST component fails. System lifetime $= \min (T_{1},\, T_{2})$.
 
-For T₁ ~ Exp(λ₁), T₂ ~ Exp(λ₂) independent:
-P(Z > z) = e^(-λ₁z) · e^(-λ₂z) = e^(-(λ₁+λ₂)z)
+For $T_{1} \sim \mathrm{Exp}(\lambda_{1}),\, T_{2} \sim \mathrm{Exp}(\lambda_{2})$ independent:
+$P(Z > z) = e^{-\lambda_{1}z} \cdot e^{-\lambda_{2}z} = e^{-(\lambda_{1}+\lambda_{2})z}$
 
-Therefore: min(T₁, T₂) ~ Exp(λ₁ + λ₂)
+Therefore: $\min (T_{1},\, T_{2}) \sim \mathrm{Exp}(\lambda_{1} + \lambda_{2})$
 
-**Key result:** Failure rates ADD in series systems. Mean lifetime = 1/(λ₁+λ₂) < min(1/λ₁, 1/λ₂).
+**Key result:** Failure rates ADD in series systems. Mean lifetime $= \frac{1}{\lambda_{1}+\lambda_{2}} < \min \left(\frac{1}{\lambda_{1}},\, \frac{1}{\lambda_{2}}\right)$.
 
 ---
 
@@ -160,13 +160,13 @@ Therefore: min(T₁, T₂) ~ Exp(λ₁ + λ₂)
 
 ### Setup
 
-Given (X, Y) with known joint PDF, find the joint PDF of (U, V) where:
-- U = g₁(X, Y)
-- V = g₂(X, Y)
+Given $(X,\, Y)$ with known joint PDF, find the joint PDF of $(U,\, V)$ where:
+- $U = g_{1}(X,\, Y)$
+- $V = g_{2}(X,\, Y)$
 
 ### Procedure
 
-1. Solve for the inverse: X = h₁(U, V), Y = h₂(U, V)
+1. Solve for the inverse: $X = h_{1}(U,\, V),\, Y = h_{2}(U,\, V)$
 2. Compute the Jacobian determinant:
 
 $$J = \begin{vmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{vmatrix}$$
@@ -174,15 +174,15 @@ $$J = \begin{vmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial
 3. Apply:
 $$f_{U,V}(u,v) = f_{X,Y}(h_1(u,v), h_2(u,v)) \cdot |J|$$
 
-4. If only U is needed, marginalize out V.
+4. If only $U$ is needed, marginalize out $V$.
 
 ### Example: Sum and Difference
 
-U = X + Y, V = X - Y → X = (U+V)/2, Y = (U-V)/2
+$U = X + Y,\, V = X - Y \to X = \frac{U+V}{2},\, Y = \frac{U-V}{2}$
 
-J = |∂x/∂u · ∂y/∂v - ∂x/∂v · ∂y/∂u| = |(1/2)(-1/2) - (1/2)(1/2)| = 1/2
+$J = \lvert \frac{\partial x}{\partial u} \cdot \frac{\partial y}{\partial v} - \frac{\partial x}{\partial v} \cdot \frac{\partial y}{\partial u}\rvert = \lvert \frac{1}{2}\left(-\frac{1}{2}\right) - \frac{1}{2}\left(\frac{1}{2}\right)\rvert = \frac{1}{2}$
 
-f_{U,V}(u,v) = (1/2) · f_{X,Y}((u+v)/2, (u-v)/2)
+$f_{U,V}(u,\,v) = \frac{1}{2} \cdot f_{X,Y}\left(\frac{u+v}{2},\, \frac{u-v}{2}\right)$
 
 ---
 
@@ -260,23 +260,23 @@ fprintf('MTTF parallel (sim): %.0f hours\n', mean(T_parallel));
 ## 7.10 Practice Problems
 
 ### Problem 1
-X ~ Exp(1), Y ~ Exp(1), independent. Find the PDF of Z = X + Y.
+$X \sim \mathrm{Exp}(1),\, Y \sim \mathrm{Exp}(1)$, independent. Find the PDF of $Z = X + Y$.
 
-**Solution:** Convolution: f_Z(z) = ∫₀ᶻ e^(-x)·e^(-(z-x)) dx = ∫₀ᶻ e^(-z) dx = ze^(-z), z≥0.
-This is Gamma(2,1) = Erlang(2,1). E[Z] = 2, Var(Z) = 2.
+**Solution:** Convolution: $f_{Z}(z) = \int_{0}^{z} e^{-x} \cdot e^{-(z-x)}\,dx = \int_{0}^{z} e^{-z}\,dx = ze^{-z},\, z \ge 0$.
+This is $\mathrm{Gamma}(2,\,1) = \mathrm{Erlang}(2,\,1)$. $E[Z] = 2,\, \operatorname{Var}(Z) = 2$.
 
 ### Problem 2
-Three components in series with failure rates λ₁=0.001, λ₂=0.002, λ₃=0.003 per hour.
-(a) Find system MTTF. (b) Find P(system survives 100 hours).
+Three components in series with failure rates $\lambda_{1} = 0.001,\, \lambda_{2} = 0.002,\, \lambda_{3} = 0.003$ per hour.
+(a) Find system MTTF. (b) Find $P(\text{system survives 100}\,\mathrm{hours})$.
 
 **Solution:**
-(a) MTTF = 1/(0.001+0.002+0.003) = 1/0.006 = 166.7 hours
-(b) P(T_sys > 100) = e^(-0.006×100) = e^(-0.6) = 0.549
+(a) $\mathrm{MTTF} = \frac{1}{0.001+0.002+0.003} = \frac{1}{0.006} = 166.7$ hours
+(b) $P(T_{\text{sys}} > 100) = e^{-0.006 \times 100} = e^{-0.6} = 0.549$
 
 ### Problem 3
-X ~ N(5, 4), Y ~ N(3, 9), independent. Find distribution and P(X + Y > 12).
+$X \sim N(5,\, 4),\, Y \sim N(3,\, 9)$, independent. Find distribution and $P(X + Y > 12)$.
 
-**Solution:** Z = X+Y ~ N(8, 13). P(Z>12) = P(Z' > (12-8)/√13) = Q(1.109) = 0.1337.
+**Solution:** $Z = X+Y \sim N(8,\, 13)$. $P(Z > 12) = P\left(Z' > \frac{12-8}{\sqrt{13}}\right) = Q(1.109) = 0.1337$.
 
 ---
 

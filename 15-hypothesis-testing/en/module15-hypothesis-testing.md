@@ -22,46 +22,46 @@ We need a **systematic framework** to answer such questions from data, while con
 
 ## 15.2 Framework
 
-### Null Hypothesis H₀
+### Null Hypothesis $H_{0}$
 
 The **default assumption** — typically "nothing changed" or "no effect":
-- H₀: μ = μ₀ (sensor is not biased)
-- H₀: μ₁ = μ₂ (two methods perform equally)
-- H₀: σ² = σ₀² (variance hasn't changed)
+- $H_{0}: \mu = \mu_{0}$ (sensor is not biased)
+- $H_{0}: \mu_{1} = \mu_{2}$ (two methods perform equally)
+- $H_{0}: \sigma^{2} = \sigma_{0}^{2}$ (variance hasn't changed)
 
-### Alternative Hypothesis H₁
+### Alternative Hypothesis $H_{1}$
 
 What we want to **detect** or prove:
-- H₁: μ ≠ μ₀ (sensor IS biased — two-sided)
-- H₁: μ > μ₀ (performance improved — one-sided)
-- H₁: σ² > σ₀² (variance increased)
+- $H_{1}: \mu \ne \mu_{0}$ (sensor IS biased — two-sided)
+- $H_{1}: \mu > \mu_{0}$ (performance improved — one-sided)
+- $H_{1}: \sigma^{2} > \sigma_{0}^{2}$ (variance increased)
 
 ### Decision
 
 Based on data, either:
-- **Reject H₀** → evidence supports H₁
-- **Fail to reject H₀** → insufficient evidence against H₀
+- **Reject $H_{0}$** → evidence supports $H_{1}$
+- **Fail to reject $H_{0}$** → insufficient evidence against $H_{0}$
 
-> ⚠️ "Fail to reject H₀" ≠ "H₀ is true". Absence of evidence ≠ evidence of absence.
+> ⚠️ "Fail to reject $H_{0}$" ≠ "$H_{0}$ is true". Absence of evidence ≠ evidence of absence.
 
 ---
 
 ## 15.3 Types of Errors
 
-| | H₀ True (reality) | H₁ True (reality) |
+| | $H_{0}$ True (reality) | $H_{1}$ True (reality) |
 |---|---|---|
-| **Reject H₀** (decision) | Type I Error (α) | Correct! (Power = 1-β) |
-| **Fail to reject H₀** (decision) | Correct! | Type II Error (β) |
+| **Reject $H_{0}$** (decision) | Type I Error $(\alpha)$ | Correct! (Power $= 1-\beta$) |
+| **Fail to reject $H_{0}$** (decision) | Correct! | Type II Error $(\beta)$ |
 
-### Type I Error (False Alarm) — probability α
+### Type I Error (False Alarm) — probability $\alpha$
 
-Rejecting H₀ when it's actually true. "Crying wolf."
+Rejecting $H_{0}$ when it's actually true. "Crying wolf."
 
 Engineering analogy: Declaring a process has changed when it hasn't → unnecessary recalibration.
 
-### Type II Error (Missed Detection) — probability β
+### Type II Error (Missed Detection) — probability $\beta$
 
-Failing to reject H₀ when H₁ is actually true. "Missing the signal."
+Failing to reject $H_{0}$ when $H_{1}$ is actually true. "Missing the signal."
 
 Engineering analogy: Failing to detect a sensor bias → biased measurements continue.
 
@@ -69,30 +69,30 @@ Engineering analogy: Failing to detect a sensor bias → biased measurements con
 
 | Statistical Term | Radar Equivalent |
 |-----------------|------------------|
-| H₀: no target | No aircraft present |
-| H₁: target present | Aircraft present |
-| Type I error (α) | False alarm |
-| Type II error (β) | Missed detection |
-| Power (1-β) | Probability of detection |
+| $H_{0}$: no target | No aircraft present |
+| $H_{1}$: target present | Aircraft present |
+| Type I error $(\alpha)$ | False alarm |
+| Type II error $(\beta)$ | Missed detection |
+| Power $(1-\beta)$ | Probability of detection |
 
 ### The Tradeoff
 
-Reducing α (fewer false alarms) → increases β (more missed detections), and vice versa.
+Reducing $\alpha$ (fewer false alarms) → increases $\beta$ (more missed detections), and vice versa.
 
-Fix α (significance level), then maximize power = 1 - β.
+Fix $\alpha$ (significance level), then maximize power $= 1 - \beta$.
 
 ---
 
-## 15.4 Significance Level α
+## 15.4 Significance Level $\alpha$
 
 The **maximum acceptable Type I error rate**, chosen BEFORE looking at data.
 
-Common choices: α = 0.05, 0.01, 0.10
+Common choices: $\alpha = 0.05,\, 0.01,\, 0.10$
 
-**Choosing α:** Consider the cost of a false alarm:
-- α = 0.01: Very conservative (e.g., medical device safety)
-- α = 0.05: Standard in most engineering/science
-- α = 0.10: More tolerant (exploratory analysis)
+**Choosing $\alpha$:** Consider the cost of a false alarm:
+- $\alpha = 0.01$: Very conservative (e.g., medical device safety)
+- $\alpha = 0.05$: Standard in most engineering/science
+- $\alpha = 0.10$: More tolerant (exploratory analysis)
 
 ---
 
@@ -102,9 +102,9 @@ $$\text{Power} = 1 - \beta = P(\text{reject } H_0 | H_1 \text{ is true})$$
 
 Power depends on:
 1. **Effect size:** Larger true difference → easier to detect → more power
-2. **Sample size n:** More data → more power
-3. **Significance level α:** Larger α → more power (but more false alarms)
-4. **Variability σ:** Less noise → more power
+2. **Sample size $n$:** More data → more power
+3. **Significance level $\alpha$:** Larger $\alpha$ → more power (but more false alarms)
+4. **Variability $\sigma$:** Less noise → more power
 
 ---
 
@@ -112,28 +112,28 @@ Power depends on:
 
 ### Definition
 
-The **p-value** is the probability of obtaining a test statistic **as extreme or more extreme** than the observed value, **assuming H₀ is true**.
+The **p-value** is the probability of obtaining a test statistic **as extreme or more extreme** than the observed value, **assuming $H_{0}$ is true**.
 
 $$p\text{-value} = P(\text{data this extreme or more} | H_0 \text{ true})$$
 
 ### Decision Rule
 
-- If p-value < α → Reject H₀
-- If p-value ≥ α → Fail to reject H₀
+- If p-value $< \alpha$ → Reject $H_{0}$
+- If p-value $\ge \alpha$ → Fail to reject $H_{0}$
 
 ### ✅ CORRECT Interpretation
 
-> "The p-value is the probability of seeing data this extreme (or more) if H₀ were true. A small p-value means the data is unlikely under H₀."
+> "The p-value is the probability of seeing data this extreme (or more) if $H_{0}$ were true. A small p-value means the data is unlikely under $H_{0}$."
 
 ### ❌ WRONG Interpretation
 
-> ~~"The p-value is the probability that H₀ is true."~~
+> $\sim \sim "\text{The}$ p-value is the probability that $H_{0}$ is $\mathrm{true}." \sim \sim$
 
-**Why wrong:** H₀ is either true or false (fixed). The p-value says nothing about P(H₀ true). It measures how surprising the data is under H₀.
+**Why wrong:** $H_{0}$ is either true or false (fixed). The p-value says nothing about $P(H_{0}\ \text{true})$. It measures how surprising the data is under $H_{0}$.
 
 ### Calibration
 
-| p-value | Evidence against H₀ |
+| p-value | Evidence against $H_{0}$ |
 |---------|---------------------|
 | > 0.10 | Weak or none |
 | 0.05 – 0.10 | Marginal |
@@ -145,54 +145,54 @@ $$p\text{-value} = P(\text{data this extreme or more} | H_0 \text{ true})$$
 
 ## 15.7 One-Sided vs. Two-Sided Tests
 
-### Two-Sided (H₁: μ ≠ μ₀)
+### Two-Sided ($H_{1}$: $\mu \ne \mu_{0}$)
 
 Used when deviation in **either** direction is important.
-- Reject if |T| > t_{α/2, n-1}
-- p-value = 2·P(T > |t_obs|)
+- Reject if $\lvert T\rvert > t_{\alpha /2, n-1}$
+- p-value $= 2 \cdot P(T > \lvert t_{\text{obs}}\rvert)$
 
-### One-Sided (H₁: μ > μ₀ or H₁: μ < μ₀)
+### One-Sided ($H_{1}$: $\mu > \mu_{0}$ or $H_{1}: \mu < \mu_{0}$)
 
 Used when only one direction of deviation matters.
-- H₁: μ > μ₀: Reject if T > t_{α, n-1}
-- H₁: μ < μ₀: Reject if T < -t_{α, n-1}
+- $H_{1}: \mu > \mu_{0}$: Reject if $T > t_{\alpha, n-1}$
+- $H_{1}: \mu < \mu_{0}$: Reject if $T < -t_{\alpha, n-1}$
 
 ### When to Use Which
 
 | Scenario | Test Type |
 |----------|-----------|
 | Is the sensor biased (either direction)? | Two-sided |
-| Does the new algorithm IMPROVE BER? | One-sided (H₁: BER < BER_old) |
-| Has noise power INCREASED? | One-sided (H₁: σ² > σ₀²) |
+| Does the new algorithm IMPROVE BER? | One-sided ($H_{1}$: $\mathrm{BER} < \mathrm{BER}_{\mathrm{old}}$) |
+| Has noise power INCREASED? | One-sided ($H_{1}$: $\sigma^{2} > \sigma_{0}^{2}$) |
 | Did the process mean CHANGE? | Two-sided |
 
 ---
 
 ## 15.8 Tests for Means
 
-### One-Sample Z-Test (σ known)
+### One-Sample Z-Test ($\sigma$ known)
 
-Test: H₀: μ = μ₀
+Test: $H_{0}: \mu = \mu_{0}$
 
-Test statistic: Z = (X̄ - μ₀)/(σ/√n)
+Test statistic: $Z = \frac{\bar{X} - \mu_{0}}{\frac{\sigma}{\sqrt{n}}}$
 
-Under H₀: Z ~ N(0,1)
+Under $H_{0}: Z \sim N(0,\,1)$
 
-### One-Sample t-Test (σ unknown)
+### One-Sample t-Test ($\sigma$ unknown)
 
-Test: H₀: μ = μ₀
+Test: $H_{0}: \mu = \mu_{0}$
 
-Test statistic: T = (X̄ - μ₀)/(S/√n)
+Test statistic: $T = \frac{\bar{X} - \mu_{0}}{\frac{S}{\sqrt{n}}}$
 
-Under H₀: T ~ t(n-1)
+Under $H_{0}: T \sim t(n-1)$
 
 ### Two-Sample t-Test (comparing two means)
 
-Test: H₀: μ₁ = μ₂
+Test: $H_{0}: \mu_{1} = \mu_{2}$
 
-Test statistic: T = (X̄₁ - X̄₂) / √(S₁²/n₁ + S₂²/n₂)
+Test statistic: $T = \frac{\bar{X}_{1} - \bar{X}_{2}}{\sqrt{\frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}}}}$
 
-Approximate df by Welch-Satterthwaite formula.
+Approximate $df$ by Welch-Satterthwaite formula.
 
 ---
 
@@ -200,27 +200,27 @@ Approximate df by Welch-Satterthwaite formula.
 
 ### One-Sample Test
 
-H₀: σ² = σ₀²
+$H_{0}: \sigma^{2} = \sigma_{0}^{2}$
 
-Test statistic: χ² = (n-1)S²/σ₀²
+Test statistic: $\chi^{2} = \frac{(n-1)S^{2}}{\sigma_{0}^{2}}$
 
-Under H₀: χ² ~ χ²(n-1)
+Under $H_{0}: \chi^{2} \sim \chi^{2}(n-1)$
 
 ### Decision
 
-- H₁: σ² > σ₀²: Reject if χ² > χ²_{α, n-1}
-- H₁: σ² ≠ σ₀²: Reject if χ² < χ²_{1-α/2, n-1} or χ² > χ²_{α/2, n-1}
+- $H_{1}: \sigma^{2} > \sigma_{0}^{2}$: Reject if $\chi^{2} > \chi^{2}_{\alpha, n-1}$
+- $H_{1}: \sigma^{2} \ne \sigma_{0}^{2}$: Reject if $\chi^{2} < \chi^{2}_{1-\alpha /2, n-1}$ or $\chi^{2} > \chi^{2}_{\alpha /2, n-1}$
 
 ---
 
 ## 15.10 Step-by-Step Hypothesis Testing Procedure
 
-1. **State hypotheses:** H₀ and H₁
-2. **Choose significance level:** α (e.g., 0.05)
-3. **Select test statistic:** Z, t, or χ² depending on scenario
+1. **State hypotheses:** $H_{0}$ and $H_{1}$
+2. **Choose significance level:** $\alpha$ (e.g., 0.05)
+3. **Select test statistic:** $Z,\, t$, or $\chi^{2}$ depending on scenario
 4. **Determine critical value(s)** or compute p-value
 5. **Compute test statistic** from data
-6. **Make decision:** Reject H₀ if test statistic in critical region (or p < α)
+6. **Make decision:** Reject $H_{0}$ if test statistic in critical region (or $p < \alpha$)
 7. **State conclusion** in engineering terms
 
 ---
@@ -229,51 +229,51 @@ Under H₀: χ² ~ χ²(n-1)
 
 ### Example 1: Is a Sensor Biased?
 
-A sensor should read 0V with no input. 20 measurements give X̄ = 0.012V, S = 0.03V.
+A sensor should read 0V with no input. 20 measurements give $\bar{X} = 0.012\,\mathrm{V},\, S = 0.03\,\mathrm{V}$.
 
-H₀: μ = 0 (no bias), H₁: μ ≠ 0 (biased), α = 0.05
+$H_{0}: \mu = 0$ (no bias), $H_{1}: \mu \ne 0$ (biased), $\alpha = 0.05$
 
-T = (0.012 - 0)/(0.03/√20) = 0.012/0.00671 = 1.789
+$T = \frac{0.012 - 0}{\frac{0.03}{\sqrt{20}}} = \frac{0.012}{0.00671} = 1.789$
 
-t_{0.025, 19} = 2.093. Since |T| = 1.789 < 2.093 → **Fail to reject H₀.**
+$t_{0.025, 19} = 2.093$. Since $\lvert T\rvert = 1.789 < 2.093$ → **Fail to reject $H_{0}$.**
 
-p-value = 2·P(t(19) > 1.789) ≈ 0.090. Not significant at 5% level.
+p-value $= 2 \cdot P(t(19) > 1.789) \approx 0.090$. Not significant at 5% level.
 
 Conclusion: Insufficient evidence to conclude the sensor is biased.
 
 ### Example 2: Did Manufacturing Process Change?
 
-Before: μ₀ = 100Ω (established). After modification: n = 30, X̄ = 101.2Ω, S = 3.5Ω.
+Before: $\mu_{0} = 100\,\Omega$ (established). After modification: $n = 30,\, \bar{X} = 101.2\,\Omega,\, S = 3.5\,\Omega$.
 
-H₀: μ = 100, H₁: μ ≠ 100, α = 0.05
+$H_{0}: \mu = 100,\, H_{1}: \mu \ne 100,\, \alpha = 0.05$
 
-T = (101.2 - 100)/(3.5/√30) = 1.2/0.639 = 1.878
+$T = \frac{101.2 - 100}{\frac{3.5}{\sqrt{30}}} = \frac{1.2}{0.639} = 1.878$
 
-t_{0.025, 29} = 2.045. |T| = 1.878 < 2.045 → **Fail to reject H₀.**
+$t_{0.025, 29} = 2.045$. $\lvert T\rvert = 1.878 < 2.045$ → **Fail to reject $H_{0}$.**
 
 ### Example 3: Does New Algorithm Improve BER?
 
-Old algorithm: BER₀ = 10⁻³. New algorithm tested: n = 50000 bits, 38 errors.
+Old algorithm: $\mathrm{BER}_{0} = 10^{-3}$. New algorithm tested: $n = 50000$ bits, 38 errors.
 
-BER_new = 38/50000 = 7.6×10⁻⁴
+$\mathrm{BER}_{\mathrm{new}} = \frac{38}{50000} = 7.6 \times 10^{-4}$
 
-H₀: p = 0.001, H₁: p < 0.001 (improvement), α = 0.05
+$H_{0}: p = 0.001,\, H_{1}: p < 0.001$ (improvement), $\alpha = 0.05$
 
-Z = (p̂ - p₀)/√(p₀(1-p₀)/n) = (0.00076 - 0.001)/√(0.001×0.999/50000) = -0.00024/0.000141 = -1.70
+$Z = \frac{\hat{p} - p_{0}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}} = \frac{0.00076 - 0.001}{\sqrt{0.001 \times \frac{0.999}{50000}}} = -\frac{0.00024}{0.000141} = -1.70$
 
-p-value = P(Z < -1.70) = 0.0446 < 0.05 → **Reject H₀.**
+p-value $= P(Z < -1.70) = 0.0446 < 0.05$ → **Reject $H_{0}$.**
 
 Conclusion: Evidence supports that the new algorithm has lower BER.
 
 ### Example 4: Has Noise Power Increased?
 
-Historical: σ₀² = 0.04 V². New measurements: n = 25, S² = 0.058 V².
+Historical: $\sigma_{0}^{2} = 0.04\,\mathrm{V}^{2}$. New measurements: $n = 25,\, S^{2} = 0.058\,\mathrm{V}^{2}$.
 
-H₀: σ² = 0.04, H₁: σ² > 0.04, α = 0.05
+$H_{0}: \sigma^{2} = 0.04,\, H_{1}: \sigma^{2} > 0.04,\, \alpha = 0.05$
 
-χ² = (24)(0.058)/0.04 = 34.8
+$\chi^{2} = \frac{(24)(0.058)}{0.04} = 34.8$
 
-χ²_{0.05, 24} = 36.415. Since 34.8 < 36.415 → **Fail to reject H₀.**
+$\chi^{2}_{0.05, 24} = 36.415$. Since $34.8 < 36.415$ → **Fail to reject $H_{0}$.**
 
 ---
 
@@ -349,19 +349,19 @@ fprintf('Need n ≈ %d for 80%% power\n', n_values(find(power >= 0.8, 1)));
 ## 15.13 Practice Problems
 
 ### Problem 1
-A manufacturing spec requires mean resistance = 100Ω. A sample of 16 resistors gives X̄ = 101.5Ω, S = 3Ω. At α = 0.05, is there evidence the process has drifted?
+A manufacturing spec requires mean resistance = 100Ω. A sample of 16 resistors gives $\bar{X} = 101.5\,\Omega,\, S = 3\,\Omega$. At $\alpha = 0.05$, is there evidence the process has drifted?
 
-**Solution:** H₀: μ=100, H₁: μ≠100. T = (101.5-100)/(3/4) = 2.0. t_{0.025,15} = 2.131. |T|=2.0 < 2.131 → Fail to reject. p-value ≈ 0.064 > 0.05.
+**Solution:** $H_{0}: \mu = 100,\, H_{1}: \mu \ne 100$. $T = \frac{101.5-100}{\frac{3}{4}} = 2.0$. $t_{0.025,15} = 2.131$. $\lvert T\rvert = 2.0 < 2.131$ → Fail to reject. p-value $\approx 0.064 > 0.05$.
 
 ### Problem 2
-Average packet delay was 5ms. After network upgrade, 40 measurements give X̄ = 4.6ms, S = 1.2ms. Test if delay decreased at α = 0.01.
+Average packet delay was 5ms. After network upgrade, 40 measurements give $\bar{X} = 4.6\,\mathrm{ms},\, S = 1.2\,\mathrm{ms}$. Test if delay decreased at $\alpha = 0.01$.
 
-**Solution:** H₀: μ=5, H₁: μ<5. T = (4.6-5)/(1.2/√40) = -0.4/0.190 = -2.11. t_{0.01,39} ≈ -2.426. T = -2.11 > -2.426 → Fail to reject at 1% level. (Would reject at 5% since t_{0.05,39}≈-1.685.)
+**Solution:** $H_{0}: \mu = 5,\, H_{1}: \mu < 5$. $T = \frac{4.6-5}{\frac{1.2}{\sqrt{40}}} = -\frac{0.4}{0.190} = -2.11$. $t_{0.01,39} \approx -2.426$. $T = -2.11 > -2.426$ → Fail to reject at 1% level. (Would reject at 5% since $t_{0.05,39} \approx -1.685.$)
 
 ### Problem 3
-Explain why "p = 0.04 means there is only a 4% chance H₀ is true" is WRONG.
+Explain why "$p = 0.04$ means there is only a 4% chance $H_{0}$ is true" is WRONG.
 
-**Solution:** The p-value is P(data this extreme | H₀ true), NOT P(H₀ true | data). It conditions on H₀ being true and asks about data extremity. To get P(H₀ true | data) would require Bayesian analysis with a prior. The p-value is a property of the data-generating process under H₀, not a posterior probability about H₀.
+**Solution:** The p-value is $P(\text{data this extreme}\ \mid H_{0}\ \text{true})$, NOT $P(H_{0}\ \text{true}\ \mid \text{data})$. It conditions on $H_{0}$ being true and asks about data extremity. To get $P(H_{0}\ \text{true}\ \mid \text{data})$ would require Bayesian analysis with a prior. The p-value is a property of the data-generating process under $H_{0}$, not a posterior probability about $H_{0}$.
 
 ---
 

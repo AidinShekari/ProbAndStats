@@ -5,7 +5,7 @@
 After completing this module, students will be able to:
 
 1. Identify which probability distribution models a given engineering scenario
-2. State the PMF/PDF, CDF, mean, and variance for all major distributions
+2. State the $\frac{\mathrm{PMF}}{\mathrm{PDF}}$, CDF, mean, and variance for all major distributions
 3. Explain the physical interpretation and engineering context for each distribution
 4. Determine when to use (and when NOT to use) each distribution
 5. Implement distributions in MATLAB for simulation
@@ -51,13 +51,13 @@ Any binary random outcome:
 
 ### Mathematical Definition
 
-X ~ Bernoulli(p), where p = probability of success.
+$X \sim \mathrm{Bernoulli}(p)$, where $p$ = probability of success.
 
 ### PMF
 
 $$p_X(x) = \begin{cases} p & x = 1 \\ 1-p = q & x = 0 \end{cases}$$
 
-Compact form: p_X(x) = pˣ(1-p)^(1-x) for x ∈ {0, 1}
+Compact form: $p_{X}(x) = p^{x}(1-p)^{1-x}$ for $x \in \{0,\, 1\}$
 
 ### CDF
 
@@ -71,13 +71,13 @@ $$E[X] = p$$
 
 $$\text{Var}(X) = p(1-p)$$
 
-Maximum variance at p = 0.5 (maximum uncertainty).
+Maximum variance at $p = 0.5$ (maximum uncertainty).
 
 ### When to Use
 
 ✅ Single binary trial with fixed probability
 ✅ Building block for more complex distributions
-✅ Modeling ON/OFF states, pass/fail outcomes
+✅ Modeling $\frac{ON}{\mathrm{OFF}}$ states, pass/fail outcomes
 
 ### When NOT to Use
 
@@ -104,24 +104,24 @@ fprintf('Var:  %.4f (theory: %.4f)\n', var(X), p*(1-p));
 
 ### Physical Interpretation
 
-Models the **number of successes** in n **independent** trials, each with the same success probability p.
+Models the **number of successes** in $n$ **independent** trials, each with the same success probability $p$.
 
 ### Engineering Context
 
-- Number of bit errors in n transmitted bits
-- Number of defective components in a batch of n
-- Number of successful packet transmissions out of n attempts
-- Number of sensors that detect a signal (out of n sensors)
+- Number of bit errors in $n$ transmitted bits
+- Number of defective components in a batch of $n$
+- Number of successful packet transmissions out of $n$ attempts
+- Number of sensors that detect a signal (out of $n$ sensors)
 
 ### Mathematical Definition
 
-X ~ Binomial(n, p)
+$X \sim \mathrm{Binomial}(n,\, p)$
 
 ### PMF
 
 $$p_X(k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, 2, \ldots, n$$
 
-where C(n,k) = n! / (k!(n-k)!)
+where $C(n,\,k) = \frac{n!}{k!(n-k)!}$
 
 ### CDF
 
@@ -139,17 +139,17 @@ $$\text{Var}(X) = np(1-p)$$
 
 ### When to Use
 
-✅ Fixed number of trials n
+✅ Fixed number of trials $n$
 ✅ Each trial is independent
-✅ Each trial has the same probability p
+✅ Each trial has the same probability $p$
 ✅ Counting the number of "successes"
 
 ### When NOT to Use
 
 ❌ Trials are not independent (correlated failures)
 ❌ Probability changes between trials
-❌ n is not fixed (use Negative Binomial or Poisson)
-❌ Very large n with small p (use Poisson approximation)
+❌ $n$ is not fixed (use Negative Binomial or Poisson)
+❌ Very large $n$ with small $p$ (use Poisson approximation)
 
 ### MATLAB Implementation
 
@@ -217,15 +217,15 @@ Models the **number of trials until the first success** (or equivalently, the nu
 
 ### Mathematical Definition
 
-X ~ Geometric(p)
+$X \sim \mathrm{Geometric}(p)$
 
-Convention: X = number of the trial on which first success occurs (X ∈ {1, 2, 3, ...}).
+Convention: $X$ = number of the trial on which first success occurs $(X \in \{1,\, 2,\, 3,\, \ldots \})$.
 
 ### PMF
 
 $$p_X(k) = (1-p)^{k-1} p, \quad k = 1, 2, 3, \ldots$$
 
-(k-1 failures, then one success)
+($k-1$ failures, then one success)
 
 ### CDF
 
@@ -245,7 +245,7 @@ The geometric distribution is the ONLY discrete distribution with the memoryless
 
 $$P(X > m + n \mid X > m) = P(X > n)$$
 
-**Engineering meaning:** If a system hasn't succeeded in m attempts, the probability of needing n more attempts is the same as starting fresh. "Past failures don't affect future probability."
+**Engineering meaning:** If a system hasn't succeeded in $m$ attempts, the probability of needing $n$ more attempts is the same as starting fresh. "Past failures don't affect future probability."
 
 ### When to Use
 
@@ -257,7 +257,7 @@ $$P(X > m + n \mid X > m) = P(X > n)$$
 
 ❌ Success probability changes over time (aging, learning)
 ❌ Trials are not independent
-❌ Looking for the r-th success (use Negative Binomial)
+❌ Looking for the $r-\mathrm{th}$ success (use Negative Binomial)
 
 ### MATLAB Implementation
 
@@ -297,23 +297,23 @@ fprintf('E[X]: Theory = %.2f, Simulation = %.2f\n', 1/p_success, mean(X_sim));
 
 ### Physical Interpretation
 
-Models the **number of trials until the r-th success** (generalization of Geometric).
+Models the **number of trials until the $r-\mathrm{th}$ success** (generalization of Geometric).
 
 ### Engineering Context
 
-- Number of transmissions until r packets are successfully delivered
-- Number of components inspected until finding r defectives
-- Number of time slots until r channels become available
+- Number of transmissions until $r$ packets are successfully delivered
+- Number of components inspected until finding $r$ defectives
+- Number of time slots until $r$ channels become available
 
 ### Mathematical Definition
 
-X ~ NegBin(r, p) = number of trials until r-th success.
+$X \sim \mathrm{NegBin}(r,\, p)$ = number of trials until $r-\mathrm{th}$ success.
 
 ### PMF
 
 $$p_X(k) = \binom{k-1}{r-1} p^r (1-p)^{k-r}, \quad k = r, r+1, r+2, \ldots$$
 
-(Choose which r-1 of the first k-1 trials were successes, the k-th is the r-th success.)
+(Choose which $r-1$ of the first $k-1$ trials were successes, the $k-\mathrm{th}$ is the $r-\mathrm{th}$ success.)
 
 ### CDF
 
@@ -329,11 +329,11 @@ $$\text{Var}(X) = \frac{r(1-p)}{p^2}$$
 
 ### Relationship to Geometric
 
-When r = 1, the Negative Binomial reduces to the Geometric distribution.
+When $r = 1$, the Negative Binomial reduces to the Geometric distribution.
 
 ### When to Use
 
-✅ Repeated independent trials until r-th success
+✅ Repeated independent trials until $r-\mathrm{th}$ success
 ✅ Constant probability per trial
 ✅ Generalizing geometric to multiple required successes
 
@@ -379,15 +379,15 @@ Models the **number of events occurring in a fixed interval** (time, space, area
 
 ### Engineering Context
 
-- Number of photons hitting a detector in 1 μs
+- Number of photons hitting a detector in $1 \mu s$
 - Number of packets arriving at a router in 1 second
-- Number of defects per cm² on a silicon wafer
+- Number of defects per $cm^{2}$ on a silicon wafer
 - Number of cosmic ray events in a sensor per hour
 - Number of interference spikes in a measurement window
 
 ### Mathematical Definition
 
-X ~ Poisson(λ), where λ = average number of events per interval.
+$X \sim \mathrm{Poisson}(\lambda)$, where $\lambda$ = average number of events per interval.
 
 ### PMF
 
@@ -409,25 +409,25 @@ $$\text{Var}(X) = \lambda$$
 
 ### Poisson as Binomial Approximation
 
-When n is large and p is small, with λ = np:
+When $n$ is large and $p$ is small, with $\lambda$ = np:
 
 $$\text{Binomial}(n, p) \approx \text{Poisson}(\lambda = np)$$
 
-Rule of thumb: n ≥ 20 and p ≤ 0.05.
+Rule of thumb: $n \ge 20$ and $p \le 0.05$.
 
 ### When to Use
 
 ✅ Counting events in a fixed interval
 ✅ Events occur independently
 ✅ Events occur at a constant average rate
-✅ Rare events with many opportunities (large n, small p)
+✅ Rare events with many opportunities (large $n$, small $p$)
 ✅ Mean ≈ Variance in data
 
 ### When NOT to Use
 
 ❌ Events are not independent (clustered arrivals)
 ❌ Rate varies with time (non-homogeneous process)
-❌ Events are not rare (p not small) — use Binomial
+❌ Events are not rare ($p$ not small) — use Binomial
 ❌ Mean ≠ Variance (look at overdispersion/underdispersion)
 
 ### MATLAB Implementation
@@ -486,18 +486,18 @@ fprintf('Sample Mean = %.3f, Sample Variance = %.3f\n', mean(X_sim), var(X_sim))
 
 ### Physical Interpretation
 
-Models a quantity that is **equally likely** to take any value in an interval [a, b]. Represents **maximum uncertainty** within a known range.
+Models a quantity that is **equally likely** to take any value in an interval $[a,\, b]$. Represents **maximum uncertainty** within a known range.
 
 ### Engineering Context
 
-- Phase of a received signal (unknown, equally likely in [0, 2π))
-- Round-off error in an ADC (uniform in [-Δ/2, Δ/2] where Δ = quantization step)
+- Phase of a received signal (unknown, equally likely in $[0,\, 2\pi)$)
+- Round-off error in an ADC (uniform in $\left[-\frac{\Delta}{2},\, \frac{\Delta}{2}\right]$ where $\Delta$ = quantization step)
 - Arrival time within a time slot (unknown position)
 - Random access protocol: choose a random backoff time
 
 ### Mathematical Definition
 
-X ~ Uniform(a, b) or X ~ U(a, b)
+$X \sim \mathrm{Uniform}(a,\, b)$ or $X \sim U(a,\, b)$
 
 ### PDF
 
@@ -567,15 +567,15 @@ Models the **time between events** in a Poisson process, or the **lifetime** of 
 
 ### Mathematical Definition
 
-X ~ Exponential(λ) where λ = rate parameter (events per unit time).
+$X \sim \mathrm{Exponential}(\lambda)$ where $\lambda$ = rate parameter (events per unit time).
 
-Alternative parameterization: X ~ Exp(β) where β = 1/λ = mean.
+Alternative parameterization: $X \sim \mathrm{Exp}(\beta)$ where $\beta = \frac{1}{\lambda}$ = mean.
 
 ### PDF
 
 $$f_X(x) = \lambda e^{-\lambda x}, \quad x \geq 0$$
 
-Or with mean β: f_X(x) = (1/β)e^(-x/β)
+Or with mean $\beta$: $f_{X}(x) = \frac{1}{\beta}e^{-x/\beta}$
 
 ### CDF
 
@@ -597,13 +597,13 @@ $$P(X > s + t \mid X > s) = P(X > t)$$
 
 The exponential is the ONLY continuous distribution with this property.
 
-**Engineering meaning:** A component that has been working for s hours is statistically "as good as new." Its remaining lifetime has the same distribution as a brand-new component.
+**Engineering meaning:** A component that has been working for $s$ hours is statistically "as good as new." Its remaining lifetime has the same distribution as a brand-new component.
 
 ### Relationship to Poisson
 
-If events arrive as a Poisson process with rate λ:
-- Number of events in time T ~ Poisson(λT)
-- Time between events ~ Exponential(λ)
+If events arrive as a Poisson process with rate $\lambda$:
+- Number of events in time $T \sim \mathrm{Poisson}(\lambda T)$
+- Time between events $\sim \mathrm{Exponential}(\lambda)$
 
 ### When to Use
 
@@ -682,7 +682,7 @@ Models quantities that result from the **sum of many small, independent random e
 
 ### Mathematical Definition
 
-X ~ N(μ, σ²) where μ = mean, σ² = variance.
+$X \sim N(\mu,\, \sigma^{2})$ where $\mu$ = mean, $\sigma^{2}$ = variance.
 
 ### PDF
 
@@ -704,24 +704,24 @@ $$\text{Var}(X) = \sigma^2$$
 
 ### Standard Normal
 
-Z ~ N(0, 1): standardized form.
+$Z \sim N(0,\, 1)$: standardized form.
 
-Any Normal can be standardized: Z = (X - μ)/σ
+Any Normal can be standardized: $Z = \frac{X - \mu}{\sigma}$
 
-### Key Probability Rules (σ-rules)
+### Key Probability Rules $(\sigma -\text{rules})$
 
 | Range | Probability |
 |-------|-------------|
-| μ ± 1σ | 68.27% |
-| μ ± 2σ | 95.45% |
-| μ ± 3σ | 99.73% |
-| μ ± 4σ | 99.9937% |
+| $\mu \pm 1\sigma$ | 68.27% |
+| $\mu \pm 2\sigma$ | 95.45% |
+| $\mu \pm 3\sigma$ | 99.73% |
+| $\mu \pm 4\sigma$ | 99.9937% |
 
 ### Properties
 
-1. **Symmetric** about μ
-2. **Linear transformation:** If X ~ N(μ, σ²), then aX + b ~ N(aμ + b, a²σ²)
-3. **Sum of Gaussians:** If X ~ N(μ₁, σ₁²) and Y ~ N(μ₂, σ₂²) are independent, then X + Y ~ N(μ₁+μ₂, σ₁²+σ₂²)
+1. **Symmetric** about $\mu$
+2. **Linear transformation:** If $X \sim N(\mu,\, \sigma^{2})$, then aX $+ b \sim N(a\mu + b,\, a^{2}\sigma^{2})$
+3. **Sum of Gaussians:** If $X \sim N(\mu_{1},\, \sigma_{1}^{2})$ and $Y \sim N(\mu_{2},\, \sigma_{2}^{2})$ are independent, then $X + Y \sim N(\mu_{1}+\mu_{2},\, \sigma_{1}^{2}+\sigma_{2}^{2})$
 4. **Fully characterized** by mean and variance (all higher moments determined)
 
 ### When to Use
@@ -811,28 +811,28 @@ grid on;
 
 ### Physical Interpretation
 
-Models the **total waiting time until the k-th event** in a Poisson process, or any sum of k independent exponential random variables.
+Models the **total waiting time until the $k-\mathrm{th}$ event** in a Poisson process, or any sum of $k$ independent exponential random variables.
 
 ### Engineering Context
 
-- Total repair time for k components (each with exponential repair time)
-- Time until k-th packet arrival
-- Aggregate service time for k queued jobs
+- Total repair time for $k$ components (each with exponential repair time)
+- Time until $k-\mathrm{th}$ packet arrival
+- Aggregate service time for $k$ queued jobs
 - Rainfall amount modeling
 
 ### Mathematical Definition
 
-X ~ Gamma(α, β) where α = shape parameter, β = scale parameter (or rate λ = 1/β).
+$X \sim \mathrm{Gamma}(\alpha,\, \beta)$ where $\alpha$ = shape parameter, $\beta$ = scale parameter (or rate $\lambda = \frac{1}{\beta}$).
 
 ### PDF
 
 $$f_X(x) = \frac{x^{\alpha-1} e^{-x/\beta}}{\beta^\alpha \Gamma(\alpha)}, \quad x \geq 0$$
 
-where Γ(α) = (α-1)! for integer α, and Γ(α) = ∫₀^∞ t^(α-1)e^(-t)dt in general.
+where $\Gamma (\alpha) = (\alpha -1)$! for integer $\alpha$, and $\Gamma (\alpha) = \int_{0}^{\infty} t^{\alpha -1}e^{-t}dt$ in general.
 
 ### CDF
 
-No closed form for general α. Available via incomplete gamma function.
+No closed form for general $\alpha$. Available via incomplete gamma function.
 
 ### Mean
 
@@ -846,14 +846,14 @@ $$\text{Var}(X) = \alpha\beta^2$$
 
 | Parameters | Distribution |
 |-----------|-------------|
-| α = 1 | Exponential(β) |
-| α = n/2, β = 2 | Chi-square(n) |
-| α = integer k | Erlang(k, β) |
+| $\alpha = 1$ | $\mathrm{Exponential}(\beta)$ |
+| $\alpha = \frac{n}{2},\, \beta = 2$ | Chi-square(n) |
+| $\alpha$ = integer $k$ | $\mathrm{Erlang}(k,\, \beta)$ |
 
 ### When to Use
 
 ✅ Sum of independent exponential lifetimes
-✅ Waiting time for k-th Poisson event
+✅ Waiting time for $k-\mathrm{th}$ Poisson event
 ✅ Skewed, non-negative data
 ✅ Flexible shape (adjustable skewness)
 
@@ -861,7 +861,7 @@ $$\text{Var}(X) = \alpha\beta^2$$
 
 ❌ Data can be negative
 ❌ Data is symmetric (use Gaussian)
-❌ Simpler distribution fits (exponential for k=1)
+❌ Simpler distribution fits (exponential for $k = 1$)
 
 ### MATLAB Implementation
 
@@ -895,18 +895,18 @@ fprintf('Var:  Theory=%.2f, Sim=%.2f\n', alpha*beta^2, var(X_sim));
 
 ### Physical Interpretation
 
-Models the **magnitude (envelope)** of a 2D Gaussian random vector. When X and Y are independent N(0, σ²), then R = √(X² + Y²) follows a Rayleigh distribution.
+Models the **magnitude (envelope)** of a $2D$ Gaussian random vector. When $X$ and $Y$ are independent $N(0,\, \sigma^{2})$, then $R = \sqrt{X^{2} + Y^{2}}$ follows a Rayleigh distribution.
 
 ### Engineering Context
 
 - Envelope of narrowband noise (in-phase + quadrature)
 - Magnitude of wireless fading channel coefficient (Rayleigh fading)
 - Wind speed modeling
-- Distance error in 2D positioning (when errors are Gaussian in x and y)
+- Distance error in $2D$ positioning (when errors are Gaussian in $x$ and $y$)
 
 ### Mathematical Definition
 
-R ~ Rayleigh(σ), where σ is the parameter (NOT the standard deviation of R).
+$R \sim \mathrm{Rayleigh}(\sigma)$, where $\sigma$ is the parameter (NOT the standard deviation of $R$).
 
 ### PDF
 
@@ -926,14 +926,14 @@ $$\text{Var}(R) = \frac{4-\pi}{2}\sigma^2 \approx 0.4292\sigma^2$$
 
 ### Relationship to Other Distributions
 
-- R² ~ Exponential(2σ²) — the power is exponentially distributed
-- If X, Y ~ N(0, σ²) independent, then √(X²+Y²) ~ Rayleigh(σ)
+- $R^{2} \sim \mathrm{Exponential}(2\sigma^{2})$ — the power is exponentially distributed
+- If $X,\, Y \sim N(0,\, \sigma^{2})$ independent, then $\sqrt{X^{2}+Y^{2}} \sim \mathrm{Rayleigh}(\sigma)$
 
 ### When to Use
 
 ✅ Envelope/magnitude of complex Gaussian signal
 ✅ Rayleigh fading channel modeling (no line-of-sight)
-✅ 2D distance with Gaussian errors in each dimension
+✅ $2D$ distance with Gaussian errors in each dimension
 ✅ RSS (root-sum-square) of two independent Gaussian components
 
 ### When NOT to Use
@@ -1012,10 +1012,10 @@ Models the **sum of squares of independent standard normal** random variables. A
 
 ### Mathematical Definition
 
-If Z₁, Z₂, ..., Zₙ are independent N(0,1), then:
+If $Z_{1},\, Z_{2},\, \ldots,\, Z_{n}$ are independent $N(0,\,1)$, then:
 $$\chi^2 = Z_1^2 + Z_2^2 + \cdots + Z_n^2 \sim \chi^2(n)$$
 
-n = degrees of freedom.
+$n$ = degrees of freedom.
 
 ### PDF
 
@@ -1023,7 +1023,7 @@ $$f_X(x) = \frac{x^{n/2-1} e^{-x/2}}{2^{n/2}\Gamma(n/2)}, \quad x \geq 0$$
 
 ### CDF
 
-No closed form for general n. Computed via incomplete gamma function.
+No closed form for general $n$. Computed via incomplete gamma function.
 
 ### Mean
 
@@ -1035,17 +1035,17 @@ $$\text{Var}(X) = 2n$$
 
 ### Relationship to Other Distributions
 
-- Chi-square(n) = Gamma(n/2, 2)
-- Chi-square(1) = square of N(0,1)
-- Chi-square(2) = Exponential(1/2)
-- For large n: χ²(n) ≈ N(n, 2n) by CLT
+- Chi-square(n) $= \mathrm{Gamma}\left(\frac{n}{2},\, 2\right)$
+- Chi-square(1) = square of $N(0,\,1)$
+- Chi-square(2) $= \mathrm{Exponential}\left(\frac{1}{2}\right)$
+- For large $n$: $\chi^{2}(n) \approx N(n,\, 2n)$ by CLT
 
 ### When to Use
 
 ✅ Sum of squared Gaussian random variables
 ✅ Variance testing and confidence intervals
 ✅ Goodness-of-fit tests
-✅ Energy detection in N dimensions
+✅ Energy detection in $N$ dimensions
 
 ### When NOT to Use
 
@@ -1135,13 +1135,13 @@ Is the random variable continuous?
 | If you see... | Think... |
 |--------------|----------|
 | Binary outcome | Bernoulli |
-| "n trials, k successes" | Binomial |
+| "$n$ trials, $k$ successes" | Binomial |
 | "How many until first..." | Geometric |
 | "Events per interval" | Poisson |
-| "Equal chance anywhere in [a,b]" | Uniform |
+| "Equal chance anywhere in $[a,\,b]$" | Uniform |
 | "Time until next event" | Exponential |
 | "Sum of many effects" or "noise" | Gaussian |
-| "Total waiting time for k events" | Gamma |
+| "Total waiting time for $k$ events" | Gamma |
 | "Signal envelope" or "fading" | Rayleigh |
 | "Sum of squared normals" | Chi-square |
 
@@ -1151,17 +1151,17 @@ Is the random variable continuous?
 
 | Distribution | Type | Parameters | Mean | Variance | MATLAB |
 |-------------|------|-----------|------|----------|--------|
-| Bernoulli | Discrete | p | p | p(1-p) | binornd(1,p) |
-| Binomial | Discrete | n, p | np | np(1-p) | binornd(n,p) |
-| Geometric | Discrete | p | 1/p | (1-p)/p² | geornd(p)+1 |
-| Neg. Binomial | Discrete | r, p | r/p | r(1-p)/p² | nbinrnd(r,p)+r |
-| Poisson | Discrete | λ | λ | λ | poissrnd(λ) |
-| Uniform | Continuous | a, b | (a+b)/2 | (b-a)²/12 | unifrnd(a,b) |
-| Exponential | Continuous | λ (or β=1/λ) | 1/λ | 1/λ² | exprnd(β) |
-| Gaussian | Continuous | μ, σ² | μ | σ² | normrnd(μ,σ) |
-| Gamma | Continuous | α, β | αβ | αβ² | gamrnd(α,β) |
-| Rayleigh | Continuous | σ | σ√(π/2) | (4-π)σ²/2 | raylrnd(σ) |
-| Chi-square | Continuous | n | n | 2n | chi2rnd(n) |
+| Bernoulli | Discrete | $p$ | $p$ | $p(1-p)$ | `binornd(1,p)` |
+| Binomial | Discrete | $n,\, p$ | $np$ | $np(1-p)$ | `binornd(n,p)` |
+| Geometric | Discrete | $p$ | $\frac{1}{p}$ | $\frac{1-p}{p^{2}}$ | `geornd(p)+1` |
+| Neg. Binomial | Discrete | $r,\, p$ | $\frac{r}{p}$ | $\frac{r(1-p)}{p^{2}}$ | `nbinrnd(r,p)+r` |
+| Poisson | Discrete | $\lambda$ | $\lambda$ | $\lambda$ | `poissrnd(λ)` |
+| Uniform | Continuous | a, $b$ | $\frac{a+b}{2}$ | $\frac{(b-a)^{2}}{12}$ | `unifrnd(a,b)` |
+| Exponential | Continuous | $\lambda$ (or $\beta = \frac{1}{\lambda}$) | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^{2}}$ | `exprnd(β)` |
+| Gaussian | Continuous | $\mu,\, \sigma^{2}$ | $\mu$ | $\sigma^{2}$ | `normrnd(μ,σ)` |
+| Gamma | Continuous | $\alpha,\, \beta$ | $\alpha \beta$ | $\alpha \beta^{2}$ | `gamrnd(α,β)` |
+| Rayleigh | Continuous | $\sigma$ | $\sigma \sqrt{\frac{\pi}{2}}$ | $\frac{(4-\pi)\sigma^{2}}{2}$ | `raylrnd(σ)` |
+| Chi-square | Continuous | $n$ | $n$ | $2n$ | `chi2rnd(n)` |
 
 ---
 
@@ -1176,33 +1176,33 @@ Identify the appropriate distribution for each scenario:
 (d) Number of defective ICs out of a batch of 100 (defect rate 3%)
 (e) Envelope of received signal through multipath with no LOS
 
-**Solution:** (a) Poisson(λ=2), (b) Gaussian(0, σ²), (c) Exponential(λ), (d) Binomial(100, 0.03), (e) Rayleigh(σ)
+**Solution:** (a) $\mathrm{Poisson}(\lambda = 2)$, (b) $\mathrm{Gaussian}(0,\, \sigma^{2})$, (c) $\mathrm{Exponential}(\lambda)$, (d) $\mathrm{Binomial}(100,\, 0.03)$, (e) $\mathrm{Rayleigh}(\sigma)$
 
 ### Problem 2: Exponential vs Poisson
-Packets arrive at a router as a Poisson process with rate λ = 5 packets/second.
+Packets arrive at a router as a Poisson process with rate $\lambda = 5$ packets/second.
 
-(a) What is P(more than 8 packets in 1 second)?
-(b) What is P(no packet arrives in the next 0.5 seconds)?
+(a) What is $P(\text{more than 8 packets in 1 second})$?
+(b) What is $P(\text{no packet arrives in the next 0.5 seconds})$?
 (c) What distribution describes the inter-arrival time?
 (d) What is the mean inter-arrival time?
 
 **Solution:**
-(a) X ~ Poisson(5): P(X > 8) = 1 - poisscdf(8, 5) = 0.0681
-(b) T ~ Exp(5): P(T > 0.5) = e^(-5×0.5) = e^(-2.5) = 0.0821
-(c) Exponential with rate λ = 5
-(d) Mean = 1/λ = 0.2 seconds
+(a) $X \sim \mathrm{Poisson}(5)$: $P(X > 8) = 1 - \texttt{poisscdf}(8,\, 5) = 0.0681$
+(b) $T \sim \mathrm{Exp}(5)$: $P(T > 0.5) = e^{-5 \times 0.5} = e^{-2.5} = 0.0821$
+(c) Exponential with rate $\lambda = 5$
+(d) Mean $= \frac{1}{\lambda} = 0.2$ seconds
 
 ### Problem 3: Gaussian Probability
-A resistor has nominal value 1000Ω with manufacturing variation modeled as N(1000, 25) (σ = 5Ω).
+A resistor has nominal value 1000Ω with manufacturing variation modeled as $N(1000,\, 25) (\sigma = 5\,\Omega)$.
 
-(a) What fraction of resistors are within ±10Ω of nominal (spec: 990-1010Ω)?
-(b) What fraction fail the ±1% tolerance test?
+(a) What fraction of resistors are within $\pm 10\,\Omega$ of nominal (spec: $990-1010\,\Omega$)?
+(b) What fraction fail the $\pm 1\%$ tolerance test?
 (c) What tolerance range contains 99.7% of resistors?
 
 **Solution:**
-(a) P(990 ≤ X ≤ 1010) = P(-2 ≤ Z ≤ 2) = 0.9545 → 95.45%
-(b) ±1% = ±10Ω → same as (a), fail rate = 1 - 0.9545 = 4.55%
-(c) ±3σ = ±15Ω → range [985, 1015]Ω
+(a) $P(990 \le X \le 1010) = P(-2 \le Z \le 2) = 0.9545 \to 95.45\%$
+(b) $\pm 1\% = \pm 10\,\Omega$ → same as (a), fail rate $= 1 - 0.9545 = 4.55\%$
+(c) $\pm 3\sigma = \pm 15\,\Omega$ → range $[985,\, 1015]\Omega$
 
 ---
 

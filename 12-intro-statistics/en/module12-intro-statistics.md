@@ -7,7 +7,7 @@ After completing this module, students will be able to:
 2. Distinguish between parameter and statistic
 3. Define and compute sample mean and sample variance
 4. Explain sampling distributions and why they matter
-5. Understand the transition from probability (model→predictions) to statistics (data→model)
+5. Understand the transition from probability $(\text{model}\ \to \text{predictions})$ to statistics $(\text{data}\ \to \text{model})$
 
 ---
 
@@ -27,8 +27,8 @@ After completing this module, students will be able to:
 
 ### Engineering Context
 
-- **Probability:** "If noise is N(0, 0.01), what is P(error)?"
-- **Statistics:** "I measured 1000 noise samples. What is σ²?"
+- **Probability:** "If noise is $N(0,\, 0.01)$, what is $P(\text{error})$?"
+- **Statistics:** "I measured 1000 noise samples. What is $\sigma^{2}$?"
 
 ---
 
@@ -71,31 +71,31 @@ The goal: **Infer properties of the population from the sample.**
 ### Parameter
 
 A **fixed** (but unknown) number that describes the population:
-- μ = true population mean
-- σ² = true population variance
-- p = true defect rate
-- λ = true failure rate
+- $\mu$ = true population mean
+- $\sigma^{2}$ = true population variance
+- $p$ = true defect rate
+- $\lambda$ = true failure rate
 
 Parameters are **constants** — they have ONE true value (we just don't know it).
 
 ### Statistic
 
 A **function of sample data** used to estimate or test parameters:
-- X̄ = sample mean (estimates μ)
-- S² = sample variance (estimates σ²)
-- p̂ = sample proportion (estimates p)
+- $\bar{X}$ = sample mean (estimates $\mu$)
+- $S^{2}$ = sample variance (estimates $\sigma^{2}$)
+- $\hat{p}$ = sample proportion (estimates $p$)
 
 > ⚠️ **Key insight:** Statistics are RANDOM VARIABLES! Different samples give different values.
 
 ### Example
 
-True noise power: σ² = 0.04 V² (parameter — fixed, unknown)
+True noise power: $\sigma^{2} = 0.04\,\mathrm{V}^{2}$ (parameter — fixed, unknown)
 
-Experiment 1: Collect 100 samples → compute S² = 0.038 (one realization)
-Experiment 2: Collect 100 samples → compute S² = 0.042 (different realization)
-Experiment 3: Collect 100 samples → compute S² = 0.041 (another realization)
+Experiment 1: Collect 100 samples → compute $S^{2} = 0.038$ (one realization)
+Experiment 2: Collect 100 samples → compute $S^{2} = 0.042$ (different realization)
+Experiment 3: Collect 100 samples → compute $S^{2} = 0.041$ (another realization)
 
-Each S² is different because of randomness in sampling.
+Each $S^{2}$ is different because of randomness in sampling.
 
 ---
 
@@ -103,7 +103,7 @@ Each S² is different because of randomness in sampling.
 
 ### Definition
 
-A **random sample** X₁, X₂, ..., Xₙ is a set of n independent, identically distributed (i.i.d.) random variables from the population distribution.
+A **random sample** $X_{1},\, X_{2},\, \ldots,\, X_{n}$ is a set of $n$ independent, identically distributed $(i.i.d.)$ random variables from the population distribution.
 
 ### Requirements
 1. **Independent:** Each observation doesn't influence others
@@ -126,11 +126,11 @@ A **random sample** X₁, X₂, ..., Xₙ is a set of n independent, identically
 
 ### Definition
 
-The **sampling distribution** of a statistic is the probability distribution of that statistic across all possible samples of size n.
+The **sampling distribution** of a statistic is the probability distribution of that statistic across all possible samples of size $n$.
 
 ### Why It Matters
 
-A statistic (like X̄) is a random variable. Its distribution tells us:
+A statistic (like $\bar{X}$) is a random variable. Its distribution tells us:
 - How much will it vary from sample to sample?
 - How close is it likely to be to the true parameter?
 - How should we quantify our uncertainty?
@@ -139,7 +139,7 @@ This is the foundation for confidence intervals and hypothesis testing.
 
 ---
 
-## 12.6 Sample Mean X̄
+## 12.6 Sample Mean $\bar{X}$
 
 ### Definition
 
@@ -147,12 +147,12 @@ $$\bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$$
 
 ### Properties
 
-**Mean of X̄:**
+**Mean of $\bar{X}$:**
 $$E[\bar{X}] = \mu$$
 
-X̄ is an **unbiased** estimator of μ (on average, it equals the truth).
+$\bar{X}$ is an **unbiased** estimator of $\mu$ (on average, it equals the truth).
 
-**Variance of X̄:**
+**Variance of $\bar{X}$:**
 $$\text{Var}(\bar{X}) = \frac{\sigma^2}{n}$$
 
 More measurements → less variability → more precise estimate.
@@ -160,40 +160,40 @@ More measurements → less variability → more precise estimate.
 **Standard Error:**
 $$\text{SE}(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
 
-### Sampling Distribution of X̄
+### Sampling Distribution of $\bar{X}$
 
-- If population is Gaussian: X̄ ~ N(μ, σ²/n) **exactly** for any n
-- If population is NOT Gaussian: X̄ ≈ N(μ, σ²/n) **approximately** for large n (by CLT)
+- If population is Gaussian: $\bar{X} \sim N\left(\mu,\, \frac{\sigma^{2}}{n}\right)$ **exactly** for any $n$
+- If population is NOT Gaussian: $\bar{X} \approx N\left(\mu,\, \frac{\sigma^{2}}{n}\right)$ **approximately** for large $n$ (by CLT)
 
 ---
 
-## 12.7 Sample Variance S²
+## 12.7 Sample Variance $S^{2}$
 
 ### Definition
 
 $$S^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2$$
 
-### Why n-1? (Bessel's Correction)
+### Why $n-1$? (Bessel's Correction)
 
-Using n in the denominator gives a **biased** estimator (systematically underestimates σ²):
+Using $n$ in the denominator gives a **biased** estimator (systematically underestimates $\sigma^{2}$):
 
-E[1/n · Σ(Xᵢ - X̄)²] = ((n-1)/n)σ² ≠ σ²
+$E\left[\frac{1}{n} \cdot \sum (X_{i} - \bar{X})^{2}\right] = \frac{n-1}{n}\sigma^{2} \ne \sigma^{2}$
 
-Using n-1 corrects this:
+Using $n-1$ corrects this:
 $$E[S^2] = \sigma^2$$
 
-**Intuition:** X̄ is computed from the same data, so deviations from X̄ are smaller than deviations from μ. We "lose one degree of freedom" by estimating the mean.
+**Intuition:** $\bar{X}$ is computed from the same data, so deviations from $\bar{X}$ are smaller than deviations from $\mu$. We "lose one degree of freedom" by estimating the mean.
 
 ### Degrees of Freedom
 
-With n data points and X̄ estimated:
-- The n deviations (Xᵢ - X̄) sum to zero: Σ(Xᵢ - X̄) = 0
-- Only n-1 are "free" — the last is determined
-- df = n - 1
+With $n$ data points and $\bar{X}$ estimated:
+- The $n$ deviations $(X_{i} - \bar{X})$ sum to zero: $\sum (X_{i} - \bar{X}) = 0$
+- Only $n-1$ are "free" — the last is determined
+- $df = n - 1$
 
 ### Sampling Distribution (Normal Population)
 
-If population is N(μ, σ²):
+If population is $N(\mu,\, \sigma^{2})$:
 $$(n-1)S^2/\sigma^2 \sim \chi^2(n-1)$$
 
 ---
@@ -202,15 +202,15 @@ $$(n-1)S^2/\sigma^2 \sim \chi^2(n-1)$$
 
 $$S = \sqrt{S^2} = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2}$$
 
-Note: E[S] ≠ σ (S is slightly biased for σ, though S² is unbiased for σ²).
+Note: $E[S] \ne \sigma$ (S is slightly biased for $\sigma$, though $S^{2}$ is unbiased for $\sigma^{2}$).
 
 ---
 
 ## 12.9 Connection to CLT
 
-From Module 11: X̄ → N(μ, σ²/n) as n → ∞.
+From Module 11: $\bar{X} \to N\left(\mu,\, \frac{\sigma^{2}}{n}\right)$ as $n \to \infty$.
 
-This means the sampling distribution of X̄ is approximately Gaussian. This is what allows us to:
+This means the sampling distribution of $\bar{X}$ is approximately Gaussian. This is what allows us to:
 1. Build confidence intervals (Module 14)
 2. Perform hypothesis tests (Module 15)
 3. Quantify uncertainty in estimates
@@ -219,7 +219,7 @@ This means the sampling distribution of X̄ is approximately Gaussian. This is w
 
 ## 12.10 MATLAB Examples
 
-### Example 1: Sampling Distribution of X̄
+### Example 1: Sampling Distribution of $\bar{X}$
 
 ```matlab
 %% Demonstrate: X̄ is a random variable with its own distribution
@@ -297,23 +297,23 @@ end
 ## 12.11 Practice Problems
 
 ### Problem 1
-A population has μ = 50 and σ = 10. A random sample of n = 64 is taken.
-(a) What is E[X̄]? (b) What is Var(X̄)? (c) What is P(48 < X̄ < 52)?
+A population has $\mu = 50$ and $\sigma = 10$. A random sample of $n = 64$ is taken.
+(a) What is $E[\bar{X}]$? (b) What is $\operatorname{Var}(\bar{X})$? (c) What is $P(48 < \bar{X} < 52)$?
 
 **Solution:**
-(a) E[X̄] = 50
-(b) Var(X̄) = 100/64 = 1.5625, SE = 1.25
-(c) P(48 < X̄ < 52) = P(-1.6 < Z < 1.6) = 2Φ(1.6) - 1 = 0.8904
+(a) $E[\bar{X}] = 50$
+(b) $\operatorname{Var}(\bar{X}) = \frac{100}{64} = 1.5625,\, \operatorname{SE} = 1.25$
+(c) $P(48 < \bar{X} < 52) = P(-1.6 < Z < 1.6) = 2\Phi (1.6) - 1 = 0.8904$
 
 ### Problem 2
-Why do we use n-1 in the sample variance formula instead of n? Explain both mathematically and intuitively.
+Why $do$ we use $n-1$ in the sample variance formula instead of $n$? Explain both mathematically and intuitively.
 
-**Solution:** Mathematically: E[(1/n)Σ(Xᵢ-X̄)²] = (n-1)/n · σ², so dividing by n-1 gives E[S²] = σ². Intuitively: we use X̄ from the same data (not the true μ), so deviations from X̄ are artificially small. One degree of freedom is "used up" estimating the mean.
+**Solution:** Mathematically: $E\left[\frac{1}{n}\sum (X_{i}-\bar{X})^{2}\right] = \frac{n-1}{n} \cdot \sigma^{2}$, so dividing by $n-1$ gives $E[S^{2}] = \sigma^{2}$. Intuitively: we use $\bar{X}$ from the same data (not the true $\mu$), so deviations from $\bar{X}$ are artificially small. One degree of freedom is "used up" estimating the mean.
 
 ### Problem 3
-An engineer measures noise power from 20 samples and gets S² = 0.045 V². The true variance is σ² = 0.04 V². Is this concerning? Use the sampling distribution to assess.
+An engineer measures noise power from 20 samples and gets $S^{2} = 0.045\,\mathrm{V}^{2}$. The true variance is $\sigma^{2} = 0.04\,\mathrm{V}^{2}$. Is this concerning? Use the sampling distribution to assess.
 
-**Solution:** Under H₀: σ²=0.04, (n-1)S²/σ² ~ χ²(19). Observed: 19(0.045)/0.04 = 21.375. P(χ²(19) > 21.375) ≈ 0.31. This is not unusual — about 31% of samples would give S² ≥ 0.045 when σ²=0.04. Not concerning.
+**Solution:** Under $H_{0}: \sigma^{2} = 0.04,\, \frac{(n-1)S^{2}}{\sigma^{2}} \sim \chi^{2}(19)$. Observed: $\frac{19(0.045)}{0.04} = 21.375$. $P(\chi^{2}(19) > 21.375) \approx 0.31$. This is not unusual — about 31% of samples would give $S^{2} \ge 0.045$ when $\sigma^{2} = 0.04$. Not concerning.
 
 ---
 
