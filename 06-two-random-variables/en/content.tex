@@ -16,7 +16,7 @@ After completing this module, students will be able to:
 \item
   Compute conditional expectations
 \item
-  Visualize joint distributions in MATLAB
+  Visualize and analyze joint distributions
 \end{enumerate}
 
 \end{PSbox}
@@ -257,119 +257,7 @@ Given temperature, we can predict resistance.
 
 \end{PSbox}
 
-\PSsection{6.9}{MATLAB Examples}
-
-\begin{PSbox}[unbreakable]{ex}{Example 1: Joint PMF Visualization}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Joint PMF: Retransmissions vs Delay Category}
-\VariableTok{pXY} \OperatorTok{=}\NormalTok{ [}\FloatTok{0.30} \FloatTok{0.10}\OperatorTok{;} \FloatTok{0.15} \FloatTok{0.20}\OperatorTok{;} \FloatTok{0.05} \FloatTok{0.20}\NormalTok{]}\OperatorTok{;}
-\VariableTok{x} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\FloatTok{2}\OperatorTok{;} \VariableTok{y} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\FloatTok{2}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{bar3}\NormalTok{(}\VariableTok{pXY}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Delay Category Y\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Retransmissions X\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{zlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X=x, Y=y)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Joint PMF\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Marginals}
-\VariableTok{pX} \OperatorTok{=} \VariableTok{sum}\NormalTok{(}\VariableTok{pXY}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{\textquotesingle{};}   \CommentTok{\% Sum over Y}
-\VariableTok{pY} \OperatorTok{=} \VariableTok{sum}\NormalTok{(}\VariableTok{pXY}\OperatorTok{,} \FloatTok{1}\NormalTok{)}\OperatorTok{;}    \CommentTok{\% Sum over X}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Marginal of X: [\%.2f \%.2f \%.2f]\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{pX}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Marginal of Y: [\%.2f \%.2f]\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{pY}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\begin{PSbox}[unbreakable]{ex}{Example 2: Bivariate Gaussian Visualization}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Joint Gaussian PDF with Correlation}
-\VariableTok{mu} \OperatorTok{=}\NormalTok{ [}\FloatTok{0} \FloatTok{0}\NormalTok{]}\OperatorTok{;} \VariableTok{sigma\_x} \OperatorTok{=} \FloatTok{1}\OperatorTok{;} \VariableTok{sigma\_y} \OperatorTok{=} \FloatTok{1.5}\OperatorTok{;} \VariableTok{rho} \OperatorTok{=} \FloatTok{0.7}\OperatorTok{;}
-\VariableTok{Sigma} \OperatorTok{=}\NormalTok{ [}\VariableTok{sigma\_x}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{,} \VariableTok{rho}\OperatorTok{*}\VariableTok{sigma\_x}\OperatorTok{*}\VariableTok{sigma\_y}\OperatorTok{;} \VariableTok{rho}\OperatorTok{*}\VariableTok{sigma\_x}\OperatorTok{*}\VariableTok{sigma\_y}\OperatorTok{,} \VariableTok{sigma\_y}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{]}\OperatorTok{;}
-
-\NormalTok{[}\VariableTok{X}\OperatorTok{,} \VariableTok{Y}\NormalTok{] }\OperatorTok{=} \VariableTok{meshgrid}\NormalTok{(}\VariableTok{linspace}\NormalTok{(}\OperatorTok{{-}}\FloatTok{4}\OperatorTok{,} \FloatTok{4}\OperatorTok{,} \FloatTok{100}\NormalTok{)}\OperatorTok{,} \VariableTok{linspace}\NormalTok{(}\OperatorTok{{-}}\FloatTok{5}\OperatorTok{,} \FloatTok{5}\OperatorTok{,} \FloatTok{100}\NormalTok{))}\OperatorTok{;}
-\VariableTok{XY} \OperatorTok{=}\NormalTok{ [}\VariableTok{X}\NormalTok{(}\OperatorTok{:}\NormalTok{) }\VariableTok{Y}\NormalTok{(}\OperatorTok{:}\NormalTok{)]}\OperatorTok{;}
-\VariableTok{Z} \OperatorTok{=} \VariableTok{mvnpdf}\NormalTok{(}\VariableTok{XY}\OperatorTok{,} \VariableTok{mu}\OperatorTok{,} \VariableTok{Sigma}\NormalTok{)}\OperatorTok{;}
-\VariableTok{Z} \OperatorTok{=} \VariableTok{reshape}\NormalTok{(}\VariableTok{Z}\OperatorTok{,} \VariableTok{size}\NormalTok{(}\VariableTok{X}\NormalTok{))}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{surf}\NormalTok{(}\VariableTok{X}\OperatorTok{,} \VariableTok{Y}\OperatorTok{,} \VariableTok{Z}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}EdgeColor\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{view}\NormalTok{(}\FloatTok{30}\OperatorTok{,} \FloatTok{40}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}X\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{zlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_\{X,Y\}(x,y)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Joint Gaussian (ρ = \%.1f)\textquotesingle{}}\OperatorTok{,} \VariableTok{rho}\NormalTok{))}\OperatorTok{;}
-
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{contour}\NormalTok{(}\VariableTok{X}\OperatorTok{,} \VariableTok{Y}\OperatorTok{,} \VariableTok{Z}\OperatorTok{,} \FloatTok{20}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}X\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Contour Plot\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{axis} \VariableTok{equal}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\begin{PSbox}[unbreakable]{ex}{Example 3: Testing Independence}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Independence Check via Simulation}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\CommentTok{\% Case 1: Independent (signal and noise)}
-\VariableTok{S} \OperatorTok{=} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}               \CommentTok{\% Signal}
-\VariableTok{Noise} \OperatorTok{=} \FloatTok{0.5}\OperatorTok{*}\VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}       \CommentTok{\% Independent noise}
-\VariableTok{R} \OperatorTok{=} \VariableTok{S} \OperatorTok{+} \VariableTok{Noise}\OperatorTok{;}                  \CommentTok{\% Received}
-
-\CommentTok{\% Case 2: Dependent (voltage and current through same resistor)}
-\VariableTok{V} \OperatorTok{=} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}               \CommentTok{\% Voltage}
-\VariableTok{I} \OperatorTok{=} \VariableTok{V} \OperatorTok{/} \FloatTok{50} \OperatorTok{+} \FloatTok{0.01}\OperatorTok{*}\VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\VariableTok{N}\NormalTok{)}\OperatorTok{;} \CommentTok{\% Current (dependent on V!)}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Independent (S, Noise): corr = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{corr}\NormalTok{(}\VariableTok{S}\OperatorTok{\textquotesingle{},} \VariableTok{Noise}\OperatorTok{\textquotesingle{}}\NormalTok{))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Dependent (V, I): corr = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{corr}\NormalTok{(}\VariableTok{V}\OperatorTok{\textquotesingle{},} \VariableTok{I}\OperatorTok{\textquotesingle{}}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\begin{PSbox}[unbreakable]{ex}{Example 4: Conditional Distribution}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Conditional PDF: Slice of Bivariate Gaussian}
-\VariableTok{rho} \OperatorTok{=} \FloatTok{0.8}\OperatorTok{;} \VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{X} \OperatorTok{=} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{Y} \OperatorTok{=} \VariableTok{rho}\OperatorTok{*}\VariableTok{X} \OperatorTok{+} \VariableTok{sqrt}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{rho}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{)}\OperatorTok{*}\VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}  \CommentTok{\% Y|X \textasciitilde{} N(rho*x, 1{-}rho\^{}2)}
-
-\CommentTok{\% Conditional: Y given X ≈ 1 (take samples where 0.9 \textless{} X \textless{} 1.1)}
-\VariableTok{mask} \OperatorTok{=}\NormalTok{ (}\VariableTok{X} \OperatorTok{\textgreater{}} \FloatTok{0.9}\NormalTok{) }\OperatorTok{\&}\NormalTok{ (}\VariableTok{X} \OperatorTok{\textless{}} \FloatTok{1.1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{Y\_cond} \OperatorTok{=} \VariableTok{Y}\NormalTok{(}\VariableTok{mask}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{histogram}\NormalTok{(}\VariableTok{Y\_cond}\OperatorTok{,} \FloatTok{50}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}pdf\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\VariableTok{y} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\OperatorTok{{-}}\FloatTok{3}\OperatorTok{,} \FloatTok{4}\OperatorTok{,} \FloatTok{200}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{y}\OperatorTok{,} \VariableTok{normpdf}\NormalTok{(}\VariableTok{y}\OperatorTok{,} \VariableTok{rho}\OperatorTok{*}\FloatTok{1}\OperatorTok{,} \VariableTok{sqrt}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{rho}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{))}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}PDF\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_\{Y|X\}(y|X≈1) for Bivariate Gaussian\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Empirical\textquotesingle{}}\OperatorTok{,} \VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}N(\%.1f, \%.2f)\textquotesingle{}}\OperatorTok{,} \VariableTok{rho}\OperatorTok{,} \FloatTok{1}\OperatorTok{{-}}\VariableTok{rho}\OperatorTok{\^{}}\FloatTok{2}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\PSsection{6.10}{Practice Problems}
+\PSsection{6.9}{Practice Problems}
 
 \begin{PSbox}[unbreakable]{prob}{Problem 1}
 

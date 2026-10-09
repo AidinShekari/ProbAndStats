@@ -156,91 +156,7 @@ $= 0.6(25^{2}) + 0.4(15^{2}) - [0.6(25) + 0.4(15)]^{2} = 375 + 90 - (21)^{2} = 4
 
 ---
 
-## 8.6 مثال‌های MATLAB
-
-### مثال 1: قانون امید ریاضی کل
-
-```matlab
-%% Average BER across channel states
-% State probabilities and conditional BERs
-p_state = [0.6, 0.3, 0.1];
-BER_cond = [1e-6, 1e-4, 1e-2];
-
-% Total expectation
-BER_overall = sum(p_state .* BER_cond);
-fprintf('Overall BER = %.4e\n', BER_overall);
-
-% Simulation verification
-N = 1000000;
-states = randsample(1:3, N, true, p_state);
-errors = rand(1,N) < BER_cond(states);
-BER_sim = mean(errors);
-fprintf('Simulated BER = %.4e\n', BER_sim);
-```
-
-### مثال 2: قانون واریانس کل
-
-```matlab
-%% Total Variance Decomposition: Sensor Example
-N = 100000;
-p_indoor = 0.6;
-
-% Generate environment (1=indoor, 2=outdoor)
-env = (rand(1,N) > p_indoor) + 1;
-
-% Generate measurements conditional on environment
-X = zeros(1, N);
-X(env==1) = 25 + 1*randn(1, sum(env==1));    % Indoor: N(25, 1)
-X(env==2) = 15 + 4*randn(1, sum(env==2));    % Outdoor: N(15, 16)
-
-% Total variance
-total_var = var(X);
-
-% E[Var(X|Y)]
-within_var = p_indoor*var(X(env==1)) + (1-p_indoor)*var(X(env==2));
-
-% Var(E[X|Y])
-cond_means = [mean(X(env==1)), mean(X(env==2))];
-between_var = p_indoor*cond_means(1)^2 + (1-p_indoor)*cond_means(2)^2 ...
-              - (p_indoor*cond_means(1) + (1-p_indoor)*cond_means(2))^2;
-
-fprintf('Total Var(X) = %.2f (theory: 31.0)\n', total_var);
-fprintf('E[Var(X|Y)]  = %.2f (theory: 7.0)\n', within_var);
-fprintf('Var(E[X|Y])  = %.2f (theory: 24.0)\n', between_var);
-fprintf('Sum           = %.2f\n', within_var + between_var);
-```
-
-### مثال 3: امید ریاضی شرطی به‌عنوان بهترین پیش‌بینی‌کننده
-
-```matlab
-%% E[X|Y] as a function of Y
-% Joint: X = Y + N, Y ~ Uniform(0,10), N ~ N(0, 1)
-N_samp = 50000;
-Y = 10*rand(1, N_samp);
-X = Y + randn(1, N_samp);
-
-% Estimate E[X|Y=y] for various y
-y_bins = 0:0.5:10;
-E_X_given_Y = zeros(size(y_bins)-[0 1]);
-for i = 1:length(y_bins)-1
-    mask = Y >= y_bins(i) & Y < y_bins(i+1);
-    E_X_given_Y(i) = mean(X(mask));
-end
-y_centers = (y_bins(1:end-1) + y_bins(2:end))/2;
-
-figure;
-scatter(Y(1:5000), X(1:5000), 1, 'b', '.');
-hold on;
-plot(y_centers, E_X_given_Y, 'r-', 'LineWidth', 3);
-plot(y_centers, y_centers, 'g--', 'LineWidth', 2);
-xlabel('Y'); ylabel('X');
-legend('Data (X,Y)', 'E[X|Y] (estimated)', 'E[X|Y] = Y (theory)');
-title('Conditional Expectation');
-```
-
----
-
-## 8.7 مسائل تمرینی
+## 8.6 مسائل تمرینی
 
 ### مسئله 1
 یک لینک دیجیتال روی دو نوع کانال کار می‌کند:
@@ -262,18 +178,6 @@ title('Conditional Expectation');
 $X \mid N \sim \mathrm{Binomial}(N,\, 0.05)$. $E[X \mid N] = 0.05\,\mathrm{N}$. $\operatorname{Var}(X \mid N) = N(0.05)(0.95) = 0.0475\,\mathrm{N}$.
 $E[X] = E[E[X \mid N]] = E[0.05\,\mathrm{N}] = 0.05(10) = 0.5$
 $\operatorname{Var}(X) = E[\operatorname{Var}(X \mid N)] + \operatorname{Var}(E[X \mid N]) = E[0.0475\,\mathrm{N}] + \operatorname{Var}(0.05\,\mathrm{N}) = 0.0475(10) + 0.05^{2}(10) = 0.475 + 0.025 = 0.5$
-
-### مسئله 3
-کد MATLAB را برای بررسی مسئله 2 با شبیه‌سازی بنویسید.
-
-**حل:**
-```matlab
-N_trials = 100000; p = 0.05; lambda = 10;
-N = poissrnd(lambda, 1, N_trials);
-X = binornd(N, p);
-fprintf('E[X]: theory=0.5, sim=%.3f\n', mean(X));
-fprintf('Var(X): theory=0.5, sim=%.3f\n', var(X));
-```
 
 ---
 

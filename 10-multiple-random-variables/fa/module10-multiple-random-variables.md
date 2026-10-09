@@ -160,90 +160,7 @@ $$\boldsymbol{\Sigma}_Y = A\boldsymbol{\Sigma}_X A^T$$
 
 ---
 
-## 10.8 مثال‌های MATLAB
-
-### مثال 1: تولید گاوسی چندمتغیره
-
-```matlab
-%% Generate and Visualize 2D Gaussian Random Vector
-mu = [1; 2];
-Sigma = [4, 2; 2, 3];  % Covariance matrix
-
-N = 5000;
-X = mvnrnd(mu', Sigma, N);
-
-figure;
-scatter(X(:,1), X(:,2), 5, 'b', '.');
-hold on;
-plot(mu(1), mu(2), 'r+', 'MarkerSize', 15, 'LineWidth', 3);
-xlabel('X_1'); ylabel('X_2');
-title('Bivariate Gaussian Samples');
-axis equal; grid on;
-
-% Verify statistics
-fprintf('Mean: [%.2f, %.2f] (theory: [%.1f, %.1f])\n', mean(X), mu');
-fprintf('Cov matrix:\n'); disp(cov(X));
-```
-
-### مثال 2: تبدیل خطی
-
-```matlab
-%% Transform: Y = AX + b
-mu_x = [0; 0]; Sigma_x = eye(2);   % Standard normal
-A = [2, 1; -1, 3];  b = [1; -2];
-
-N = 10000;
-X = mvnrnd(mu_x', Sigma_x, N)';
-Y = A*X + b;
-
-% Theoretical
-mu_y_theory = A*mu_x + b;
-Sigma_y_theory = A*Sigma_x*A';
-
-fprintf('E[Y] theory: [%.1f; %.1f], sim: [%.2f; %.2f]\n', ...
-    mu_y_theory, mean(Y,2));
-fprintf('Σ_Y theory:\n'); disp(Sigma_y_theory);
-fprintf('Σ_Y simulated:\n'); disp(cov(Y'));
-```
-
-### مثال 3: آرایه حسگر با نویز همبسته
-
-```matlab
-%% 4-Element Sensor Array with Spatially Correlated Noise
-n_sensors = 4;
-sigma2 = 1;      % Noise power per sensor
-rho = 0.6;       % Adjacent sensor correlation
-
-% Build covariance matrix (exponential decay model)
-Sigma = zeros(n_sensors);
-for i = 1:n_sensors
-    for j = 1:n_sensors
-        Sigma(i,j) = sigma2 * rho^abs(i-j);
-    end
-end
-
-fprintf('Noise covariance matrix:\n'); disp(Sigma);
-
-% Generate noise samples
-N_samp = 10000;
-L = chol(Sigma, 'lower');
-noise = L * randn(n_sensors, N_samp);
-
-% Signal present in direction: s = [1; 1; 1; 1] (broadside)
-signal = 3;
-s = ones(n_sensors, 1) / sqrt(n_sensors);
-received = signal * s + noise;  % N_sensors x N_samp
-
-% Beamformer output: y = w'*received (w = s for matched filter)
-w = s;
-y = w' * received;
-SNR_out = signal^2 / (w'*Sigma*w);
-fprintf('Output SNR = %.2f (%.1f dB)\n', SNR_out, 10*log10(SNR_out));
-```
-
----
-
-## 10.9 مسائل تمرینی
+## 10.8 مسائل تمرینی
 
 ### مسئله 1
 بردار تصادفی $X = [X_{1},\, X_{2},\, X_{3}]^{T}$ با $\mu = [1,\, 0,\, -1]^{T}$ و ماتریس کوواریانس $\Sigma = \begin{bmatrix} 4 & 1 & 0 \\ 1 & 2 & -1 \\ 0 & -1 & 3 \end{bmatrix}$.
@@ -263,19 +180,6 @@ $X_{1} \mid X_{2} = x_{2} \sim N\left(\mu_{1} + \rho \left(\frac{\sigma_{1}}{\si
 $= N(\rho x_{2},\, 1-\rho^{2})$
 
 میانگین شرطی تابعی خطی از $x_{2}$ است و واریانس شرطی با ضریب $(1-\rho^{2})$ کاهش می‌یابد.
-
-### مسئله 3
-کد MATLAB را برای تولید یک بردار گاوسی سه‌بعدی با $\mu$ و $\Sigma$ معلوم، محاسبه کوواریانس نمونه و بررسی آن بنویسید.
-
-**حل:**
-```matlab
-mu = [1; 0; -1];
-Sigma = [4 1 0; 1 2 -1; 0 -1 3];
-N = 50000;
-X = mvnrnd(mu', Sigma, N);
-fprintf('Sample mean: '); disp(mean(X)');
-fprintf('Sample cov:\n'); disp(cov(X));
-```
 
 ---
 

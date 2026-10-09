@@ -8,7 +8,7 @@ After completing this module, students will be able to:
 3. Compute conditional distributions
 4. Test independence of two random variables
 5. Compute conditional expectations
-6. Visualize joint distributions in MATLAB
+6. Visualize and analyze joint distributions
 
 ---
 
@@ -183,97 +183,7 @@ Given temperature, we can predict resistance.
 
 ---
 
-## 6.9 MATLAB Examples
-
-### Example 1: Joint PMF Visualization
-
-```matlab
-%% Joint PMF: Retransmissions vs Delay Category
-pXY = [0.30 0.10; 0.15 0.20; 0.05 0.20];
-x = 0:2; y = 1:2;
-
-figure;
-bar3(pXY);
-xlabel('Delay Category Y'); ylabel('Retransmissions X');
-zlabel('P(X=x, Y=y)');
-title('Joint PMF');
-
-% Marginals
-pX = sum(pXY, 2)';   % Sum over Y
-pY = sum(pXY, 1);    % Sum over X
-fprintf('Marginal of X: [%.2f %.2f %.2f]\n', pX);
-fprintf('Marginal of Y: [%.2f %.2f]\n', pY);
-```
-
-### Example 2: Bivariate Gaussian Visualization
-
-```matlab
-%% Joint Gaussian PDF with Correlation
-mu = [0 0]; sigma_x = 1; sigma_y = 1.5; rho = 0.7;
-Sigma = [sigma_x^2, rho*sigma_x*sigma_y; rho*sigma_x*sigma_y, sigma_y^2];
-
-[X, Y] = meshgrid(linspace(-4, 4, 100), linspace(-5, 5, 100));
-XY = [X(:) Y(:)];
-Z = mvnpdf(XY, mu, Sigma);
-Z = reshape(Z, size(X));
-
-figure;
-subplot(1,2,1);
-surf(X, Y, Z, 'EdgeColor', 'none'); view(30, 40);
-xlabel('X'); ylabel('Y'); zlabel('f_{X,Y}(x,y)');
-title(sprintf('Joint Gaussian (ρ = %.1f)', rho));
-
-subplot(1,2,2);
-contour(X, Y, Z, 20);
-xlabel('X'); ylabel('Y');
-title('Contour Plot');
-axis equal;
-```
-
-### Example 3: Testing Independence
-
-```matlab
-%% Independence Check via Simulation
-N = 100000;
-
-% Case 1: Independent (signal and noise)
-S = randn(1, N);               % Signal
-Noise = 0.5*randn(1, N);       % Independent noise
-R = S + Noise;                  % Received
-
-% Case 2: Dependent (voltage and current through same resistor)
-V = randn(1, N);               % Voltage
-I = V / 50 + 0.01*randn(1,N); % Current (dependent on V!)
-
-fprintf('Independent (S, Noise): corr = %.4f\n', corr(S', Noise'));
-fprintf('Dependent (V, I): corr = %.4f\n', corr(V', I'));
-```
-
-### Example 4: Conditional Distribution
-
-```matlab
-%% Conditional PDF: Slice of Bivariate Gaussian
-rho = 0.8; N = 100000;
-X = randn(1, N);
-Y = rho*X + sqrt(1-rho^2)*randn(1, N);  % Y|X ~ N(rho*x, 1-rho^2)
-
-% Conditional: Y given X ≈ 1 (take samples where 0.9 < X < 1.1)
-mask = (X > 0.9) & (X < 1.1);
-Y_cond = Y(mask);
-
-figure;
-histogram(Y_cond, 50, 'Normalization', 'pdf');
-hold on;
-y = linspace(-3, 4, 200);
-plot(y, normpdf(y, rho*1, sqrt(1-rho^2)), 'r', 'LineWidth', 2);
-xlabel('Y'); ylabel('PDF');
-title('f_{Y|X}(y|X≈1) for Bivariate Gaussian');
-legend('Empirical', sprintf('N(%.1f, %.2f)', rho, 1-rho^2));
-```
-
----
-
-## 6.10 Practice Problems
+## 6.9 Practice Problems
 
 ### Problem 1
 Joint PDF: $f_{X,Y}(x,\,y) = 6(1-y)$ for $0 \le x \le y \le 1$, zero elsewhere.

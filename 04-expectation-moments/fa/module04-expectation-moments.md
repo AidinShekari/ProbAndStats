@@ -229,7 +229,6 @@ $$\text{Var}(\bar{X}) = \text{Var}\left(\frac{1}{n}\sum X_i\right) = \frac{\sigm
 اندازه‌گیری‌های بیشتر → عدم‌قطعیت کمتر در میانگین.
 
 
-
 ---
 
 ## 4.8 گشتاورهای مراتب بالاتر
@@ -365,131 +364,7 @@ $$\text{SNR} = \frac{E[S^2]}{\sigma_N^2} = \frac{\text{Signal Power}}{\text{Nois
 
 ---
 
-## 4.11 مثال‌های MATLAB
-
-### مثال 1: محاسبه گشتاورها از یک توزیع
-
-```matlab
-%% Moments of Common Distributions
-
-% Exponential: failure time, lambda = 0.01 (per hour)
-lambda = 0.01;
-beta = 1/lambda;  % mean = 100 hours
-
-fprintf('=== Exponential Distribution (λ = %.3f) ===\n', lambda);
-fprintf('Mean (MTTF) = %.1f hours\n', beta);
-fprintf('Variance = %.1f hours²\n', beta^2);
-fprintf('Std Dev = %.1f hours\n', beta);
-fprintf('Coefficient of Variation = %.2f\n', beta/beta);
-
-% Gaussian: noise voltage, sigma = 0.1V
-mu = 0; sigma = 0.1;
-fprintf('\n=== Gaussian Distribution (μ=%.1f, σ=%.2f V) ===\n', mu, sigma);
-fprintf('Mean = %.2f V\n', mu);
-fprintf('Variance (noise power) = %.4f V²\n', sigma^2);
-fprintf('RMS noise = %.3f V\n', sigma);
-fprintf('E[X²] (total power) = %.4f V²\n', mu^2 + sigma^2);
-```
-
-### مثال 2: بررسی ویژگی‌های واریانس
-
-```matlab
-%% Variance of Sum of Independent RVs
-N = 100000;
-
-% Two independent noise sources
-sigma1 = 0.1;   % RMS of noise 1
-sigma2 = 0.2;   % RMS of noise 2
-
-X1 = sigma1 * randn(1, N);
-X2 = sigma2 * randn(1, N);
-Y = X1 + X2;   % Combined noise
-
-fprintf('Var(X1) = %.4f (theory: %.4f)\n', var(X1), sigma1^2);
-fprintf('Var(X2) = %.4f (theory: %.4f)\n', var(X2), sigma2^2);
-fprintf('Var(X1+X2) = %.4f (theory: %.4f)\n', var(Y), sigma1^2 + sigma2^2);
-fprintf('Std(X1+X2) = %.4f (theory: %.4f)\n', std(Y), sqrt(sigma1^2+sigma2^2));
-fprintf('\nNote: std devs do NOT add: %.3f + %.3f = %.3f ≠ %.3f\n', ...
-    sigma1, sigma2, sigma1+sigma2, sqrt(sigma1^2+sigma2^2));
-```
-
-### مثال 3: میانگین و واریانس یک متغیر تصادفی تبدیل‌شده
-
-```matlab
-%% E[g(X)] using LOTUS: Power from Voltage
-% X = voltage ~ N(0, 0.5V)
-% P = X^2 / R, with R = 50 ohms
-
-sigma = 0.5;    % noise voltage RMS
-R = 50;         % resistance
-N = 100000;
-
-X = sigma * randn(1, N);
-P = X.^2 / R;   % instantaneous power
-
-% Using LOTUS: E[X^2/R] = E[X^2]/R = sigma^2/R
-E_P_theory = sigma^2 / R;
-E_P_sim = mean(P);
-
-fprintf('Mean power: Theory = %.6f W, Sim = %.6f W\n', E_P_theory, E_P_sim);
-fprintf('Mean power = %.3f mW\n', E_P_theory * 1000);
-```
-
-### مثال 4: گشتاورهای مراتب بالاتر و چولگی
-
-```matlab
-%% Skewness and Kurtosis Comparison
-N = 100000;
-
-% Gaussian (symmetric)
-X_gauss = randn(1, N);
-
-% Exponential (right-skewed)
-X_exp = exprnd(1, 1, N);
-
-% Uniform (symmetric, light tails)
-X_unif = rand(1, N);
-
-fprintf('Distribution    | Skewness | Kurtosis\n');
-fprintf('----------------+----------+---------\n');
-fprintf('Gaussian        | %+.3f   | %+.3f\n', skewness(X_gauss), kurtosis(X_gauss)-3);
-fprintf('Exponential     | %+.3f   | %+.3f\n', skewness(X_exp), kurtosis(X_exp)-3);
-fprintf('Uniform         | %+.3f   | %+.3f\n', skewness(X_unif), kurtosis(X_unif)-3);
-fprintf('\nTheoretical:\n');
-fprintf('Gaussian:    skew=0, kurt=0\n');
-fprintf('Exponential: skew=2, kurt=6\n');
-fprintf('Uniform:     skew=0, kurt=-1.2\n');
-```
-
-### مثال 5: بررسی MGF
-
-```matlab
-%% Verify MGF: Compute moments by differentiation (numerical)
-% For X ~ Exponential(lambda)
-lambda_rate = 2;
-beta_scale = 1/lambda_rate;
-
-% MGF: M(t) = lambda/(lambda - t)
-% M'(0) = E[X], M''(0) = E[X^2]
-
-t = 0;
-dt = 1e-6;
-
-% Numerical derivatives
-M = @(t) lambda_rate ./ (lambda_rate - t);
-M_prime = (M(t+dt) - M(t-dt)) / (2*dt);
-M_double_prime = (M(t+dt) - 2*M(t) + M(t-dt)) / dt^2;
-
-fprintf('From MGF derivatives:\n');
-fprintf('  E[X] = M''(0) = %.4f (theory: %.4f)\n', M_prime, 1/lambda_rate);
-fprintf('  E[X²] = M''''(0) = %.4f (theory: %.4f)\n', M_double_prime, 2/lambda_rate^2);
-fprintf('  Var(X) = E[X²] - (E[X])² = %.4f (theory: %.4f)\n', ...
-    M_double_prime - M_prime^2, 1/lambda_rate^2);
-```
-
----
-
-## 4.12 مسائل تمرینی
+## 4.11 مسائل تمرینی
 
 ### مسئله 1: محاسبه پایه
 یک متغیر تصادفی گسسته $X$ دارای PMF زیر است: $P(X = -1) = 0.2$، $P(X = 0) = 0.5$، $P(X = 1) = 0.2$، $P(X = 2) = 0.1$.
@@ -585,7 +460,7 @@ $X$ دارای MGF زیر است: $M_{X}(t) = \frac{1}{3}e^{t} + \frac{2}{3}e^{2
 
 ---
 
-## 4.13 نکات کلیدی
+## 4.12 نکات کلیدی
 
 1. **$E[X]$ = میانگین درازمدت** — مرکز توزیع، مؤلفه DC
 2. **$\operatorname{Var}(X)$ = پراکندگی/توان** — برای سیگنال‌های با میانگین صفر، واریانس همان توان است

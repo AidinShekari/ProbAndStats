@@ -10,7 +10,7 @@
 3. PMF، PDF و CDF را محاسبه و تفسیر کنند
 4. تفاوت میان جرم احتمال، چگالی و احتمال تجمعی را به‌روشنی توضیح دهند
 5. تبدیل‌ها را روی متغیرهای تصادفی اعمال کنند
-6. از MATLAB برای تولید، مصورسازی و تحلیل متغیرهای تصادفی استفاده کنند
+6. متغیرهای تصادفی را تحلیل و مصورسازی کنند
 
 ---
 
@@ -283,7 +283,6 @@ F_X(x)
 | $\mathrm{CDF}$ → PDF | $f_{X}(x) = \frac{dF_{X}}{dx}$ | مشتق‌گیری از CDF برای به‌دست‌آوردن چگالی |
 
 
-
 ---
 
 ## 2.8 تمایز کلیدی: جرم در برابر چگالی در برابر تجمعی
@@ -431,185 +430,7 @@ $$f_Y(y) = \frac{1}{|a|} f_X\left(\frac{y-b}{a}\right)$$
 
 ---
 
-## 2.10 مثال‌های MATLAB
-
-### مثال 1: رسم یک PMF
-
-```matlab
-%% PMF of Number of Bit Errors in a Byte
-n = 8;           % bits per byte
-p = 0.1;         % bit error probability
-k = 0:n;         % possible values
-
-% Compute PMF (binomial distribution)
-pmf = binopdf(k, n, p);
-
-% Plot
-figure;
-stem(k, pmf, 'filled', 'LineWidth', 2);
-xlabel('Number of Errors (k)');
-ylabel('P(X = k)');
-title('PMF: Bit Errors in 8-bit Byte (p = 0.1)');
-grid on;
-
-% Verify normalization
-fprintf('Sum of PMF = %.6f (should be 1)\n', sum(pmf));
-```
-
-### مثال 2: رسم یک PDF و بررسی ویژگی‌ها
-
-```matlab
-%% PDF of Gaussian Noise Voltage
-sigma = 0.5;     % RMS noise voltage
-x = linspace(-3*sigma, 3*sigma, 1000);
-
-% Compute PDF
-pdf_x = normpdf(x, 0, sigma);
-
-% Plot
-figure;
-plot(x, pdf_x, 'b-', 'LineWidth', 2);
-xlabel('Voltage (V)');
-ylabel('f_X(x) [V^{-1}]');
-title('PDF: Gaussian Noise (σ = 0.5 V)');
-grid on;
-
-% Verify normalization (numerical integration)
-dx = x(2) - x(1);
-total_area = trapz(x, pdf_x);
-fprintf('Total area under PDF = %.6f (should be 1)\n', total_area);
-
-% Note: PDF values can exceed 1!
-fprintf('Maximum PDF value = %.4f (can be > 1!)\n', max(pdf_x));
-
-% Compute P(|X| > 1V)
-prob_exceed = 1 - normcdf(1, 0, sigma) + normcdf(-1, 0, sigma);
-fprintf('P(|X| > 1V) = %.4f\n', prob_exceed);
-```
-
-### مثال 3: مصورسازی CDF
-
-```matlab
-%% Comparing CDF for Discrete vs Continuous
-
-figure;
-
-% Subplot 1: Discrete CDF (Poisson, packets per second)
-subplot(1,2,1);
-lambda = 3;      % average arrivals per second
-k = 0:10;
-cdf_discrete = poisscdf(k, lambda);
-stairs(k, cdf_discrete, 'r-', 'LineWidth', 2);
-xlabel('Number of Packets');
-ylabel('F_X(x) = P(X ≤ x)');
-title('CDF: Discrete (Poisson, λ=3)');
-grid on; ylim([0 1.1]);
-
-% Subplot 2: Continuous CDF (Exponential, time to failure)
-subplot(1,2,2);
-mu = 5;          % mean time to failure (hours)
-t = linspace(0, 20, 500);
-cdf_continuous = expcdf(t, mu);
-plot(t, cdf_continuous, 'b-', 'LineWidth', 2);
-xlabel('Time (hours)');
-ylabel('F_X(x) = P(X ≤ x)');
-title('CDF: Continuous (Exponential, μ=5)');
-grid on; ylim([0 1.1]);
-```
-
-### مثال 4: تبدیل یک متغیر تصادفی
-
-```matlab
-%% Transformation: Power from Noise Voltage
-% X = noise voltage, Gaussian(0, sigma)
-% Y = X^2 = instantaneous power (in 1-ohm load)
-
-sigma = 1;
-N = 100000;
-
-% Generate Gaussian noise samples
-X = sigma * randn(1, N);
-
-% Transform: power = voltage^2
-Y = X.^2;
-
-% Plot empirical PDF of Y using histogram
-figure;
-subplot(2,1,1);
-histogram(X, 100, 'Normalization', 'pdf');
-hold on;
-x_theory = linspace(-4, 4, 500);
-plot(x_theory, normpdf(x_theory, 0, sigma), 'r-', 'LineWidth', 2);
-xlabel('Voltage X'); ylabel('f_X(x)');
-title('Input: Gaussian Noise Voltage');
-legend('Empirical', 'Theoretical');
-
-subplot(2,1,2);
-histogram(Y, 100, 'Normalization', 'pdf');
-hold on;
-% Theoretical: Y ~ chi-squared with 1 degree of freedom
-y_theory = linspace(0.01, 10, 500);
-pdf_y_theory = chi2pdf(y_theory, 1);
-plot(y_theory, pdf_y_theory, 'r-', 'LineWidth', 2);
-xlabel('Power Y = X^2'); ylabel('f_Y(y)');
-title('Output: Instantaneous Power');
-legend('Empirical', 'Theoretical (χ²₁)');
-```
-
-### مثال 5: مقایسه PMF در برابر PDF در برابر CDF
-
-```matlab
-%% Complete Visualization: PMF/PDF and CDF side by side
-figure;
-
-% --- Discrete Case: Number of retransmissions ---
-% Geometric distribution: number of trials until first success
-p_success = 0.3;   % success probability per trial
-k = 1:15;
-
-% PMF
-subplot(2,2,1);
-pmf_geom = geopdf(k-1, p_success);  % MATLAB's geopdf counts failures
-stem(k, pmf_geom, 'filled', 'LineWidth', 1.5);
-xlabel('k (transmissions)'); ylabel('P(X = k)');
-title('Discrete PMF: Retransmissions');
-grid on;
-
-% CDF
-subplot(2,2,2);
-cdf_geom = geocdf(k-1, p_success);
-stairs(k, cdf_geom, 'LineWidth', 2);
-xlabel('k'); ylabel('P(X ≤ k)');
-title('Discrete CDF');
-grid on; ylim([0 1.1]);
-
-% --- Continuous Case: Delay time ---
-% Exponential distribution
-mu = 2;  % mean delay in ms
-t = linspace(0, 10, 500);
-
-% PDF
-subplot(2,2,3);
-pdf_exp = exppdf(t, mu);
-plot(t, pdf_exp, 'LineWidth', 2);
-xlabel('Delay (ms)'); ylabel('f_X(x) [ms^{-1}]');
-title('Continuous PDF: Delay');
-grid on;
-
-% CDF
-subplot(2,2,4);
-cdf_exp = expcdf(t, mu);
-plot(t, cdf_exp, 'LineWidth', 2);
-xlabel('Delay (ms)'); ylabel('P(X ≤ x)');
-title('Continuous CDF');
-grid on; ylim([0 1.1]);
-
-sgtitle('PMF/PDF vs CDF: Discrete and Continuous', 'FontSize', 14);
-```
-
----
-
-## 2.11 مسائل تمرینی
+## 2.10 مسائل تمرینی
 
 ### مسئله 1: تشخیص نوع متغیر تصادفی
 هر مورد را به‌عنوان گسسته یا پیوسته دسته‌بندی کنید و محدوده را بیان کنید:
@@ -693,7 +514,6 @@ $f_{Y}(y) = \frac{1}{\lvert a\rvert} \cdot f_{X}\left(\frac{y-b}{a}\right) = \fr
 
 (a) CDF مربوط به $Y$ را بیابید.
 (b) PDF مربوط به $Y$ را بیابید.
-(c) با شبیه‌سازی MATLAB بررسی کنید.
 
 **حل:**
 (a) برای $0 \le y \le 1$:
@@ -705,22 +525,9 @@ $F_{Y}(y) = \frac{\sqrt{y} + 1}{2} - \frac{-\sqrt{y} + 1}{2} = \sqrt{y}$
 
 (b) $f_{Y}(y) = \frac{dF_{Y}}{dy} = \frac{1}{2\sqrt{y}}$ برای $0 < y \le 1$
 
-(c) MATLAB:
-```matlab
-N = 100000;
-X = 2*rand(1,N) - 1;   % Uniform[-1,1]
-Y = X.^2;
-histogram(Y, 100, 'Normalization', 'pdf');
-hold on;
-y = linspace(0.01, 1, 200);
-plot(y, 1./(2*sqrt(y)), 'r-', 'LineWidth', 2);
-legend('Empirical', 'Theory: 1/(2√y)');
-xlabel('Y = X²'); ylabel('f_Y(y)');
-```
-
 ---
 
-## 2.12 نکات کلیدی
+## 2.11 نکات کلیدی
 
 1. **متغیرهای تصادفی** خروجی‌های آزمایش را به اعداد برای تحلیل ریاضی تبدیل می‌کنند
 2. **PMF** احتمال واقعی را برای متغیرهای تصادفی گسسته می‌دهد (ارتفاع میله‌ها جمعاً 1 می‌شود)

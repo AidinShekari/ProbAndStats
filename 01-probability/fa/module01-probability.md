@@ -12,7 +12,7 @@
 5. استقلال آماری را تعیین کنند
 6. قضیه بیز را در مسائل استنباط مهندسی به کار ببرند
 7. از قضیه احتمال کل برای تحلیل چندمسیری استفاده کنند
-8. آزمایش‌های تصادفی را در MATLAB شبیه‌سازی کنند
+8. آزمایش‌های تصادفی را با مدل‌های احتمالاتی تحلیل کنند
 
 ---
 
@@ -461,163 +461,7 @@ $P(B \mid \text{معیوب}) = \frac{(0.05)(0.40)}{0.032} = 0.625$
 
 ---
 
-## 1.11 مثال‌های MATLAB
-
-### مثال 1: شبیه‌سازی پرتاب سکه (آزمایش تصادفی)
-
-```matlab
-%% Simulating a Random Experiment: Biased Coin
-% A communication channel has bit error probability p = 0.1
-% Simulate transmitting N bits and count errors
-
-p = 0.1;          % Bit error probability
-N = 10000;        % Number of bits transmitted
-
-% Generate random outcomes: 1 = error, 0 = correct
-errors = rand(1, N) < p;
-
-% Empirical probability of error
-p_empirical = sum(errors) / N;
-
-fprintf('Theoretical P(error) = %.4f\n', p);
-fprintf('Empirical P(error)   = %.4f (from %d trials)\n', p_empirical, N);
-fprintf('Difference           = %.4f\n', abs(p - p_empirical));
-```
-
-### مثال 2: راستی‌آزمایی قاعده جمع
-
-```matlab
-%% Verifying Inclusion-Exclusion with Simulation
-% Two independent failure modes:
-% A = overheating (P = 0.05)
-% B = power surge (P = 0.03)
-
-N = 100000;       % Number of trials
-pA = 0.05;
-pB = 0.03;
-
-% Generate independent failures
-A = rand(1, N) < pA;
-B = rand(1, N) < pB;
-
-% Empirical probabilities
-pA_emp = mean(A);
-pB_emp = mean(B);
-pAB_emp = mean(A & B);           % Both occur
-pAuB_emp = mean(A | B);          % At least one occurs
-
-% Theoretical (independent)
-pAB_theory = pA * pB;
-pAuB_theory = pA + pB - pA*pB;
-
-fprintf('P(A ∩ B): Theory = %.5f, Empirical = %.5f\n', pAB_theory, pAB_emp);
-fprintf('P(A ∪ B): Theory = %.5f, Empirical = %.5f\n', pAuB_theory, pAuB_emp);
-```
-
-### مثال 3: شبیه‌سازی احتمال شرطی
-
-```matlab
-%% Conditional Probability: Binary Symmetric Channel
-% P(error | sent 0) = P(error | sent 1) = p = 0.1
-
-p_crossover = 0.1;
-N = 100000;
-
-% Randomly generate transmitted bits (equally likely 0 or 1)
-transmitted = randi([0, 1], 1, N);
-
-% Channel: flip each bit with probability p_crossover
-noise = rand(1, N) < p_crossover;
-received = xor(transmitted, noise);
-
-% Compute conditional probabilities
-sent_0_idx = (transmitted == 0);
-sent_1_idx = (transmitted == 1);
-
-% P(received = 1 | sent = 0)
-p_1_given_sent0 = mean(received(sent_0_idx));
-% P(received = 0 | sent = 1)  
-p_0_given_sent1 = mean(received(sent_1_idx));
-
-fprintf('P(receive 1 | sent 0) = %.4f (theory: %.4f)\n', p_1_given_sent0, p_crossover);
-fprintf('P(receive 0 | sent 1) = %.4f (theory: %.4f)\n', p_0_given_sent1, p_crossover);
-```
-
-### مثال 4: شبیه‌سازی قضیه بیز
-
-```matlab
-%% Bayes' Theorem: Fault Diagnosis Simulation
-N = 100000;
-
-% Prior probabilities of fault types
-p_power = 0.3;   p_proc = 0.5;   p_mem = 0.2;
-
-% Likelihoods of symptom (overheating) given fault type
-p_sym_power = 0.8;  p_sym_proc = 0.3;  p_sym_mem = 0.1;
-
-% Simulate: generate fault type for each trial
-fault_type = zeros(1, N);
-r = rand(1, N);
-fault_type(r < p_power) = 1;                          % Power supply
-fault_type(r >= p_power & r < p_power + p_proc) = 2;  % Processor
-fault_type(r >= p_power + p_proc) = 3;                % Memory
-
-% Generate symptom based on fault type
-symptom = zeros(1, N);
-symptom(fault_type == 1) = rand(1, sum(fault_type==1)) < p_sym_power;
-symptom(fault_type == 2) = rand(1, sum(fault_type==2)) < p_sym_proc;
-symptom(fault_type == 3) = rand(1, sum(fault_type==3)) < p_sym_mem;
-
-% Compute posterior: P(fault_type | symptom = 1)
-sym_idx = logical(symptom);
-p_power_given_sym = mean(fault_type(sym_idx) == 1);
-p_proc_given_sym = mean(fault_type(sym_idx) == 2);
-p_mem_given_sym = mean(fault_type(sym_idx) == 3);
-
-% Theoretical values
-p_sym = p_sym_power*p_power + p_sym_proc*p_proc + p_sym_mem*p_mem;
-theory_power = p_sym_power*p_power / p_sym;
-theory_proc = p_sym_proc*p_proc / p_sym;
-theory_mem = p_sym_mem*p_mem / p_sym;
-
-fprintf('P(power fault | symptom): Empirical = %.3f, Theory = %.3f\n', p_power_given_sym, theory_power);
-fprintf('P(proc fault  | symptom): Empirical = %.3f, Theory = %.3f\n', p_proc_given_sym, theory_proc);
-fprintf('P(mem fault   | symptom): Empirical = %.3f, Theory = %.3f\n', p_mem_given_sym, theory_mem);
-```
-
-### مثال 5: آزمون استقلال
-
-```matlab
-%% Testing Independence vs. Dependence
-N = 100000;
-
-% Case 1: Independent events
-A_ind = rand(1, N) < 0.3;
-B_ind = rand(1, N) < 0.4;  % Generated independently
-
-pA = mean(A_ind);
-pB = mean(B_ind);
-pAB = mean(A_ind & B_ind);
-fprintf('Independent case:\n');
-fprintf('  P(A)*P(B) = %.4f, P(A∩B) = %.4f\n', pA*pB, pAB);
-
-% Case 2: Dependent events (B depends on A)
-A_dep = rand(1, N) < 0.3;
-B_dep = zeros(1, N);
-B_dep(A_dep == 1) = rand(1, sum(A_dep)) < 0.7;   % P(B|A) = 0.7
-B_dep(A_dep == 0) = rand(1, sum(~A_dep)) < 0.2;  % P(B|not A) = 0.2
-
-pA = mean(A_dep);
-pB = mean(B_dep);
-pAB = mean(A_dep & B_dep);
-fprintf('Dependent case:\n');
-fprintf('  P(A)*P(B) = %.4f, P(A∩B) = %.4f\n', pA*pB, pAB);
-fprintf('  These differ => events are dependent\n');
-```
-
----
-
-## 1.12 خلاصه: تمایزهای کلیدی
+## 1.11 خلاصه: تمایزهای کلیدی
 
 | مفهوم | تعریف | معنای مهندسی |
 |---------|-----------|---------------------|
@@ -628,7 +472,7 @@ fprintf('  These differ => events are dependent\n');
 
 ---
 
-## 1.13 مسائل تمرینی
+## 1.12 مسائل تمرینی
 
 ### مسئله 1: قابلیت اطمینان قطعات
 یک سیستم دارای دو پردازنده مستقل است. پردازنده 1 با احتمال 0.02 و پردازنده 2 با احتمال 0.03 خراب می‌شود. سیستم فقط در صورتی از کار می‌افتد که هر دو پردازنده خراب شوند.
@@ -672,7 +516,6 @@ $= \frac{(0.98)(0.001)}{0.01097} = 0.0894$
 (a) $P(\text{عدم وجود خطا در بسته})$ چقدر است؟
 (b) $P(\text{دقیقاً یک خطا})$ چقدر است؟
 (c) $P(\text{دست‌کم یک خطا})$ چقدر است؟
-(d) کد MATLAB را برای راستی‌آزمایی از طریق شبیه‌سازی بنویسید.
 
 **راه‌حل:**
 (a) $P(\text{عدم وجود خطا}) = (0.95)^{8} = 0.6634$
@@ -680,15 +523,6 @@ $= \frac{(0.98)(0.001)}{0.01097} = 0.0894$
 (b) $P(\text{دقیقاً یک خطا}) = C(8,\,1)(0.05)^{1}(0.95)^{7} = 8 \times 0.05 \times 0.6983 = 0.2793$
 
 (c) $P(\text{دست‌کم یک خطا}) = 1 - P(\text{عدم وجود خطا}) = 1 - 0.6634 = 0.3366$
-
-(d) راستی‌آزمایی MATLAB:
-```matlab
-p = 0.05; n_bits = 8; N_packets = 100000;
-errors_per_packet = sum(rand(n_bits, N_packets) < p, 1);
-fprintf('P(0 errors) = %.4f (theory: %.4f)\n', mean(errors_per_packet==0), 0.95^8);
-fprintf('P(1 error)  = %.4f (theory: %.4f)\n', mean(errors_per_packet==1), 8*0.05*0.95^7);
-fprintf('P(>=1 error)= %.4f (theory: %.4f)\n', mean(errors_per_packet>=1), 1-0.95^8);
-```
 
 ---
 
@@ -726,14 +560,14 @@ fprintf('P(>=1 error)= %.4f (theory: %.4f)\n', mean(errors_per_packet>=1), 1-0.9
 
 ---
 
-## 1.14 نکات کلیدی
+## 1.13 نکات کلیدی
 
 1. **احتمال عدم‌قطعیت را کمّی می‌کند** — برای طراحی مهندسی تحت عدم‌قطعیت ضروری است
 2. **احتمال شرطی باورها را به‌روزرسانی می‌کند** — مبنای آشکارسازی، تخمین و تشخیص
 3. **استقلال تحلیل را ساده می‌کند** — اما باید توجیه شود، نه اینکه صرفاً فرض شود
 4. **قضیه بیز احتمال‌های شرطی را معکوس می‌کند** — از «احتمال شواهد با توجه به علت» به «احتمال علت با توجه به شواهد»
 5. **نرخ‌های پایه اهمیت دارند** — حتی آشکارسازهای خوب نیز هنگامی که رویدادها نادر هستند، هشدار کاذب تولید می‌کنند
-6. **شبیه‌سازی تحلیل را اعتبارسنجی می‌کند** — مونت‌کارلوی MATLAB محاسبات نظری را تأیید می‌کند
+6. **شبیه‌سازی تحلیل را اعتبارسنجی می‌کند** — آزمایش‌های عددی می‌توانند محاسبات نظری را تأیید کنند
 
 ---
 

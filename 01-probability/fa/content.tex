@@ -19,8 +19,6 @@
   قضیه بیز را در مسایل استنباط مهندسی به کار ببرند
 \item
   از قضیه احتمال کل برای تحلیل چندمسیری استفاده کنند
-\item
-  آزمایش‌های تصادفی را در \lr{\mbox{MATLAB}} شبیه‌سازی کنند
 \end{enumerate}
 
 \end{PSbox}
@@ -681,189 +679,7 @@
 
 \end{PSbox}
 
-\PSsection{1.11}{مثال‌های \lr{\mbox{MATLAB}}}
-
-\begin{PSbox}[unbreakable]{ex}{مثال 1: شبیه‌سازی پرتاب سکه (آزمایش تصادفی)}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Simulating a Random Experiment: Biased Coin}
-\CommentTok{\% A communication channel has bit error probability p = 0.1}
-\CommentTok{\% Simulate transmitting N bits and count errors}
-
-\VariableTok{p} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}          \CommentTok{\% Bit error probability}
-\VariableTok{N} \OperatorTok{=} \FloatTok{10000}\OperatorTok{;}        \CommentTok{\% Number of bits transmitted}
-
-\CommentTok{\% Generate random outcomes: 1 = error, 0 = correct}
-\VariableTok{errors} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{\textless{}} \VariableTok{p}\OperatorTok{;}
-
-\CommentTok{\% Empirical probability of error}
-\VariableTok{p\_empirical} \OperatorTok{=} \VariableTok{sum}\NormalTok{(}\VariableTok{errors}\NormalTok{) }\OperatorTok{/} \VariableTok{N}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Theoretical P(error) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Empirical P(error)   = \%.4f (from \%d trials)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_empirical}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Difference           = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{abs}\NormalTok{(}\VariableTok{p} \OperatorTok{{-}} \VariableTok{p\_empirical}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\begin{PSbox}[unbreakable]{ex}{مثال 2: راستی‌آزمایی قاعده جمع}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Verifying Inclusion{-}Exclusion with Simulation}
-\CommentTok{\% Two independent failure modes:}
-\CommentTok{\% A = overheating (P = 0.05)}
-\CommentTok{\% B = power surge (P = 0.03)}
-
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}       \CommentTok{\% Number of trials}
-\VariableTok{pA} \OperatorTok{=} \FloatTok{0.05}\OperatorTok{;}
-\VariableTok{pB} \OperatorTok{=} \FloatTok{0.03}\OperatorTok{;}
-
-\CommentTok{\% Generate independent failures}
-\VariableTok{A} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{\textless{}} \VariableTok{pA}\OperatorTok{;}
-\VariableTok{B} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{\textless{}} \VariableTok{pB}\OperatorTok{;}
-
-\CommentTok{\% Empirical probabilities}
-\VariableTok{pA\_emp} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{A}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pB\_emp} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{B}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pAB\_emp} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{A} \OperatorTok{\&} \VariableTok{B}\NormalTok{)}\OperatorTok{;}           \CommentTok{\% Both occur}
-\VariableTok{pAuB\_emp} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{A} \OperatorTok{|} \VariableTok{B}\NormalTok{)}\OperatorTok{;}          \CommentTok{\% At least one occurs}
-
-\CommentTok{\% Theoretical (independent)}
-\VariableTok{pAB\_theory} \OperatorTok{=} \VariableTok{pA} \OperatorTok{*} \VariableTok{pB}\OperatorTok{;}
-\VariableTok{pAuB\_theory} \OperatorTok{=} \VariableTok{pA} \OperatorTok{+} \VariableTok{pB} \OperatorTok{{-}} \VariableTok{pA}\OperatorTok{*}\VariableTok{pB}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(A ∩ B): Theory = \%.5f, Empirical = \%.5f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{pAB\_theory}\OperatorTok{,} \VariableTok{pAB\_emp}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(A ∪ B): Theory = \%.5f, Empirical = \%.5f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{pAuB\_theory}\OperatorTok{,} \VariableTok{pAuB\_emp}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\begin{PSbox}[unbreakable]{ex}{مثال 3: شبیه‌سازی احتمال شرطی}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Conditional Probability: Binary Symmetric Channel}
-\CommentTok{\% P(error | sent 0) = P(error | sent 1) = p = 0.1}
-
-\VariableTok{p\_crossover} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\CommentTok{\% Randomly generate transmitted bits (equally likely 0 or 1)}
-\VariableTok{transmitted} \OperatorTok{=} \VariableTok{randi}\NormalTok{([}\FloatTok{0}\OperatorTok{,} \FloatTok{1}\NormalTok{]}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Channel: flip each bit with probability p\_crossover}
-\VariableTok{noise} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{\textless{}} \VariableTok{p\_crossover}\OperatorTok{;}
-\VariableTok{received} \OperatorTok{=} \VariableTok{xor}\NormalTok{(}\VariableTok{transmitted}\OperatorTok{,} \VariableTok{noise}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Compute conditional probabilities}
-\VariableTok{sent\_0\_idx} \OperatorTok{=}\NormalTok{ (}\VariableTok{transmitted} \OperatorTok{==} \FloatTok{0}\NormalTok{)}\OperatorTok{;}
-\VariableTok{sent\_1\_idx} \OperatorTok{=}\NormalTok{ (}\VariableTok{transmitted} \OperatorTok{==} \FloatTok{1}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% P(received = 1 | sent = 0)}
-\VariableTok{p\_1\_given\_sent0} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{received}\NormalTok{(}\VariableTok{sent\_0\_idx}\NormalTok{))}\OperatorTok{;}
-\CommentTok{\% P(received = 0 | sent = 1)  }
-\VariableTok{p\_0\_given\_sent1} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{received}\NormalTok{(}\VariableTok{sent\_1\_idx}\NormalTok{))}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(receive 1 | sent 0) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_1\_given\_sent0}\OperatorTok{,} \VariableTok{p\_crossover}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(receive 0 | sent 1) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_0\_given\_sent1}\OperatorTok{,} \VariableTok{p\_crossover}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\PSsubsection{مثال 4: شبیه‌سازی قضیه بیز}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Bayes\textquotesingle{} Theorem: Fault Diagnosis Simulation}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\CommentTok{\% Prior probabilities of fault types}
-\VariableTok{p\_power} \OperatorTok{=} \FloatTok{0.3}\OperatorTok{;}   \VariableTok{p\_proc} \OperatorTok{=} \FloatTok{0.5}\OperatorTok{;}   \VariableTok{p\_mem} \OperatorTok{=} \FloatTok{0.2}\OperatorTok{;}
-
-\CommentTok{\% Likelihoods of symptom (overheating) given fault type}
-\VariableTok{p\_sym\_power} \OperatorTok{=} \FloatTok{0.8}\OperatorTok{;}  \VariableTok{p\_sym\_proc} \OperatorTok{=} \FloatTok{0.3}\OperatorTok{;}  \VariableTok{p\_sym\_mem} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}
-
-\CommentTok{\% Simulate: generate fault type for each trial}
-\VariableTok{fault\_type} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{r} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fault\_type}\NormalTok{(}\VariableTok{r} \OperatorTok{\textless{}} \VariableTok{p\_power}\NormalTok{) }\OperatorTok{=} \FloatTok{1}\OperatorTok{;}                          \CommentTok{\% Power supply}
-\VariableTok{fault\_type}\NormalTok{(}\VariableTok{r} \OperatorTok{\textgreater{}=} \VariableTok{p\_power} \OperatorTok{\&} \VariableTok{r} \OperatorTok{\textless{}} \VariableTok{p\_power} \OperatorTok{+} \VariableTok{p\_proc}\NormalTok{) }\OperatorTok{=} \FloatTok{2}\OperatorTok{;}  \CommentTok{\% Processor}
-\VariableTok{fault\_type}\NormalTok{(}\VariableTok{r} \OperatorTok{\textgreater{}=} \VariableTok{p\_power} \OperatorTok{+} \VariableTok{p\_proc}\NormalTok{) }\OperatorTok{=} \FloatTok{3}\OperatorTok{;}                \CommentTok{\% Memory}
-
-\CommentTok{\% Generate symptom based on fault type}
-\VariableTok{symptom} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{symptom}\NormalTok{(}\VariableTok{fault\_type} \OperatorTok{==} \FloatTok{1}\NormalTok{) }\OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{sum}\NormalTok{(}\VariableTok{fault\_type}\OperatorTok{==}\FloatTok{1}\NormalTok{)) }\OperatorTok{\textless{}} \VariableTok{p\_sym\_power}\OperatorTok{;}
-\VariableTok{symptom}\NormalTok{(}\VariableTok{fault\_type} \OperatorTok{==} \FloatTok{2}\NormalTok{) }\OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{sum}\NormalTok{(}\VariableTok{fault\_type}\OperatorTok{==}\FloatTok{2}\NormalTok{)) }\OperatorTok{\textless{}} \VariableTok{p\_sym\_proc}\OperatorTok{;}
-\VariableTok{symptom}\NormalTok{(}\VariableTok{fault\_type} \OperatorTok{==} \FloatTok{3}\NormalTok{) }\OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{sum}\NormalTok{(}\VariableTok{fault\_type}\OperatorTok{==}\FloatTok{3}\NormalTok{)) }\OperatorTok{\textless{}} \VariableTok{p\_sym\_mem}\OperatorTok{;}
-
-\CommentTok{\% Compute posterior: P(fault\_type | symptom = 1)}
-\VariableTok{sym\_idx} \OperatorTok{=} \VariableTok{logical}\NormalTok{(}\VariableTok{symptom}\NormalTok{)}\OperatorTok{;}
-\VariableTok{p\_power\_given\_sym} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{fault\_type}\NormalTok{(}\VariableTok{sym\_idx}\NormalTok{) }\OperatorTok{==} \FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{p\_proc\_given\_sym} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{fault\_type}\NormalTok{(}\VariableTok{sym\_idx}\NormalTok{) }\OperatorTok{==} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{p\_mem\_given\_sym} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{fault\_type}\NormalTok{(}\VariableTok{sym\_idx}\NormalTok{) }\OperatorTok{==} \FloatTok{3}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Theoretical values}
-\VariableTok{p\_sym} \OperatorTok{=} \VariableTok{p\_sym\_power}\OperatorTok{*}\VariableTok{p\_power} \OperatorTok{+} \VariableTok{p\_sym\_proc}\OperatorTok{*}\VariableTok{p\_proc} \OperatorTok{+} \VariableTok{p\_sym\_mem}\OperatorTok{*}\VariableTok{p\_mem}\OperatorTok{;}
-\VariableTok{theory\_power} \OperatorTok{=} \VariableTok{p\_sym\_power}\OperatorTok{*}\VariableTok{p\_power} \OperatorTok{/} \VariableTok{p\_sym}\OperatorTok{;}
-\VariableTok{theory\_proc} \OperatorTok{=} \VariableTok{p\_sym\_proc}\OperatorTok{*}\VariableTok{p\_proc} \OperatorTok{/} \VariableTok{p\_sym}\OperatorTok{;}
-\VariableTok{theory\_mem} \OperatorTok{=} \VariableTok{p\_sym\_mem}\OperatorTok{*}\VariableTok{p\_mem} \OperatorTok{/} \VariableTok{p\_sym}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(power fault | symptom): Empirical = \%.3f, Theory = \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_power\_given\_sym}\OperatorTok{,} \VariableTok{theory\_power}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(proc fault  | symptom): Empirical = \%.3f, Theory = \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_proc\_given\_sym}\OperatorTok{,} \VariableTok{theory\_proc}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(mem fault   | symptom): Empirical = \%.3f, Theory = \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_mem\_given\_sym}\OperatorTok{,} \VariableTok{theory\_mem}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{PSbox}[unbreakable]{ex}{مثال 5: آزمون استقلال}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Testing Independence vs. Dependence}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\CommentTok{\% Case 1: Independent events}
-\VariableTok{A\_ind} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{\textless{}} \FloatTok{0.3}\OperatorTok{;}
-\VariableTok{B\_ind} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{\textless{}} \FloatTok{0.4}\OperatorTok{;}  \CommentTok{\% Generated independently}
-
-\VariableTok{pA} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{A\_ind}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pB} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{B\_ind}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pAB} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{A\_ind} \OperatorTok{\&} \VariableTok{B\_ind}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Independent case:\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}  P(A)*P(B) = \%.4f, P(A∩B) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{pA}\OperatorTok{*}\VariableTok{pB}\OperatorTok{,} \VariableTok{pAB}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Case 2: Dependent events (B depends on A)}
-\VariableTok{A\_dep} \OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{\textless{}} \FloatTok{0.3}\OperatorTok{;}
-\VariableTok{B\_dep} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{B\_dep}\NormalTok{(}\VariableTok{A\_dep} \OperatorTok{==} \FloatTok{1}\NormalTok{) }\OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{sum}\NormalTok{(}\VariableTok{A\_dep}\NormalTok{)) }\OperatorTok{\textless{}} \FloatTok{0.7}\OperatorTok{;}   \CommentTok{\% P(B|A) = 0.7}
-\VariableTok{B\_dep}\NormalTok{(}\VariableTok{A\_dep} \OperatorTok{==} \FloatTok{0}\NormalTok{) }\OperatorTok{=} \VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{sum}\NormalTok{(}\OperatorTok{\textasciitilde{}}\VariableTok{A\_dep}\NormalTok{)) }\OperatorTok{\textless{}} \FloatTok{0.2}\OperatorTok{;}  \CommentTok{\% P(B|not A) = 0.2}
-
-\VariableTok{pA} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{A\_dep}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pB} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{B\_dep}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pAB} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{A\_dep} \OperatorTok{\&} \VariableTok{B\_dep}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Dependent case:\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}  P(A)*P(B) = \%.4f, P(A∩B) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{pA}\OperatorTok{*}\VariableTok{pB}\OperatorTok{,} \VariableTok{pAB}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}  These differ =\textgreater{} events are dependent\textbackslash{}n\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\PSsection{1.12}{خلاصه: تمایزهای کلیدی}
+\PSsection{1.11}{خلاصه: تمایزهای کلیدی}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}
@@ -883,7 +699,7 @@
 \end{longtable}
 }
 
-\PSsection{1.13}{مسایل تمرینی}
+\PSsection{1.12}{مسایل تمرینی}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1: قابلیت اطمینان قطعات}
 
@@ -956,8 +772,6 @@
   \lr{$P(\text{\rl{دقیقاً یک خطا}})$} چقدر است؟
 \item
   \lr{$P(\text{\rl{دست‌کم یک خطا}})$} چقدر است؟
-\item
-  کد \lr{\mbox{MATLAB}} را برای راستی‌آزمایی از طریق شبیه‌سازی بنویسید.
 \end{enumerate}
 
 \textbf{راه‌حل:}
@@ -970,21 +784,7 @@
   \lr{$P(\text{\rl{دقیقاً یک خطا}}) = C(8,\,1)(0.05)^{1}(0.95)^{7} = 8 \times 0.05 \times 0.6983 = 0.2793$}
 \item
   \lr{$P(\text{\rl{دست‌کم یک خطا}}) = 1 - P(\text{\rl{عدم وجود خطا}}) = 1 - 0.6634 = 0.3366$}
-\item
-  راستی‌آزمایی \lr{\mbox{MATLAB}}:
 \end{enumerate}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\VariableTok{p} \OperatorTok{=} \FloatTok{0.05}\OperatorTok{;} \VariableTok{n\_bits} \OperatorTok{=} \FloatTok{8}\OperatorTok{;} \VariableTok{N\_packets} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{errors\_per\_packet} \OperatorTok{=} \VariableTok{sum}\NormalTok{(}\VariableTok{rand}\NormalTok{(}\VariableTok{n\_bits}\OperatorTok{,} \VariableTok{N\_packets}\NormalTok{) }\OperatorTok{\textless{}} \VariableTok{p}\OperatorTok{,} \FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(0 errors) = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{errors\_per\_packet}\OperatorTok{==}\FloatTok{0}\NormalTok{)}\OperatorTok{,} \FloatTok{0.95}\OperatorTok{\^{}}\FloatTok{8}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(1 error)  = \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{errors\_per\_packet}\OperatorTok{==}\FloatTok{1}\NormalTok{)}\OperatorTok{,} \FloatTok{8}\OperatorTok{*}\FloatTok{0.05}\OperatorTok{*}\FloatTok{0.95}\OperatorTok{\^{}}\FloatTok{7}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(\textgreater{}=1 error)= \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{errors\_per\_packet}\OperatorTok{\textgreater{}=}\FloatTok{1}\NormalTok{)}\OperatorTok{,} \FloatTok{1}\OperatorTok{{-}}\FloatTok{0.95}\OperatorTok{\^{}}\FloatTok{8}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
 
 \end{PSbox}
 
@@ -1054,7 +854,7 @@
 
 \end{PSbox}
 
-\PSsection{1.14}{نکات کلیدی}
+\PSsection{1.13}{نکات کلیدی}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1069,8 +869,6 @@
   \textbf{قضیه بیز احتمال‌های شرطی را معکوس می‌کند} \lr{—} از «احتمال شواهد با توجه به علت» به «احتمال علت با توجه به شواهد»
 \item
   \textbf{نرخ‌های پایه اهمیت دارند} \lr{—} حتی آشکارسازهای خوب نیز هنگامی که رویدادها نادر هستند، هشدار کاذب تولید می‌کنند
-\item
-  \textbf{شبیه‌سازی تحلیل را اعتبارسنجی می‌کند} \lr{—} مونت‌کارلوی \lr{\mbox{MATLAB}} محاسبات نظری را تأیید می‌کند
 \end{enumerate}
 
 \emph{ماژول بعدی: {ماژول 2 \lr{—} یک متغیر تصادفی و توابع آن}}

@@ -8,7 +8,7 @@ After completing this module, students will be able to:
 2. State the $\frac{\mathrm{PMF}}{\mathrm{PDF}}$, CDF, mean, and variance for all major distributions
 3. Explain the physical interpretation and engineering context for each distribution
 4. Determine when to use (and when NOT to use) each distribution
-5. Implement distributions in MATLAB for simulation
+5. Analyze and compare probability distributions
 6. Recognize distribution patterns from data characteristics
 
 ---
@@ -85,21 +85,6 @@ Maximum variance at $p = 0.5$ (maximum uncertainty).
 ❌ Outcome is not binary
 ❌ Probability changes between trials
 
-### MATLAB Implementation
-
-```matlab
-% Generate Bernoulli random variables
-p = 0.1;          % Bit error probability
-N = 10000;
-X = binornd(1, p, 1, N);  % or: X = rand(1,N) < p;
-
-% Verify
-fprintf('Mean: %.4f (theory: %.4f)\n', mean(X), p);
-fprintf('Var:  %.4f (theory: %.4f)\n', var(X), p*(1-p));
-```
-
----
-
 ## 3.3 Binomial Distribution
 
 ### Physical Interpretation
@@ -127,7 +112,7 @@ where $C(n,\,k) = \frac{n!}{k!(n-k)!}$
 
 $$F_X(k) = \sum_{i=0}^{\lfloor k \rfloor} \binom{n}{i} p^i (1-p)^{n-i}$$
 
-No closed-form expression — use tables or MATLAB.
+No closed-form expression — use tables or numerical summation.
 
 ### Mean
 
@@ -150,55 +135,6 @@ $$\text{Var}(X) = np(1-p)$$
 ❌ Probability changes between trials
 ❌ $n$ is not fixed (use Negative Binomial or Poisson)
 ❌ Very large $n$ with small $p$ (use Poisson approximation)
-
-### MATLAB Implementation
-
-```matlab
-%% Binomial Distribution: Bit Errors in a Frame
-n = 100;         % bits per frame
-p = 0.05;        % bit error probability
-k = 0:20;        % range of interest
-
-% PMF and CDF
-pmf = binopdf(k, n, p);
-cdf_vals = binocdf(k, n, p);
-
-% Plot PMF
-figure;
-stem(k, pmf, 'filled', 'LineWidth', 1.5);
-xlabel('Number of Errors (k)');
-ylabel('P(X = k)');
-title(sprintf('Binomial PMF: n=%d, p=%.2f', n, p));
-grid on;
-
-% Simulation verification
-N_sim = 100000;
-X_sim = binornd(n, p, 1, N_sim);
-fprintf('E[X]: Theory = %.2f, Simulation = %.2f\n', n*p, mean(X_sim));
-fprintf('Var(X): Theory = %.2f, Simulation = %.2f\n', n*p*(1-p), var(X_sim));
-```
-
-### Simulation Example: Packet Error Rate
-
-```matlab
-%% Engineering Scenario: How many packets out of 50 have errors?
-% Each packet has 1000 bits, BER = 1e-4
-% A packet has an error if ANY bit is in error.
-
-BER = 1e-4;
-bits_per_packet = 1000;
-n_packets = 50;
-
-% P(packet error) = 1 - P(all bits correct)
-p_packet_error = 1 - (1 - BER)^bits_per_packet;
-fprintf('P(packet error) = %.4f\n', p_packet_error);
-
-% Number of errored packets ~ Binomial(50, p_packet_error)
-k = 0:10;
-pmf_packets = binopdf(k, n_packets, p_packet_error);
-fprintf('P(0 packet errors) = %.4f\n', pmf_packets(1));
-fprintf('P(≤ 2 packet errors) = %.4f\n', sum(pmf_packets(1:3)));
-```
 
 ---
 
@@ -259,40 +195,6 @@ $$P(X > m + n \mid X > m) = P(X > n)$$
 ❌ Trials are not independent
 ❌ Looking for the $r-\mathrm{th}$ success (use Negative Binomial)
 
-### MATLAB Implementation
-
-```matlab
-%% Geometric Distribution: Retransmissions Until Success
-p_success = 0.7;   % P(successful transmission)
-k = 1:15;
-
-% PMF
-pmf_geom = geopdf(k-1, p_success);  % MATLAB counts failures (k-1)
-
-% Simulation
-N = 100000;
-X_sim = geornd(p_success, 1, N) + 1;  % +1 to count trial number
-
-figure;
-subplot(1,2,1);
-stem(k, pmf_geom, 'filled');
-xlabel('Trial Number k'); ylabel('P(X = k)');
-title(sprintf('Geometric PMF (p = %.1f)', p_success));
-grid on;
-
-subplot(1,2,2);
-histogram(X_sim, 'Normalization', 'probability', 'BinMethod', 'integers');
-xlabel('Trial Number k'); ylabel('Relative Frequency');
-title('Simulation Histogram');
-grid on;
-
-fprintf('E[X]: Theory = %.2f, Simulation = %.2f\n', 1/p_success, mean(X_sim));
-```
-
-
-
----
-
 ## 3.5 Negative Binomial Distribution
 
 ### Physical Interpretation
@@ -317,7 +219,7 @@ $$p_X(k) = \binom{k-1}{r-1} p^r (1-p)^{k-r}, \quad k = r, r+1, r+2, \ldots$$
 
 ### CDF
 
-No simple closed form. Computed by summation or MATLAB.
+No simple closed form. Computed by summation or numerical methods.
 
 ### Mean
 
@@ -342,34 +244,6 @@ When $r = 1$, the Negative Binomial reduces to the Geometric distribution.
 ❌ Only need first success (use Geometric — simpler)
 ❌ Trials not independent
 ❌ Fixed number of trials (use Binomial)
-
-### MATLAB Implementation
-
-```matlab
-%% Negative Binomial: Transmissions Until r Successes
-r = 5;             % Need 5 successful deliveries
-p_success = 0.8;   % P(success per trial)
-
-% MATLAB's nbinpdf counts FAILURES before r-th success
-% X_matlab = number of failures, so total trials = X_matlab + r
-k_failures = 0:20;
-
-pmf_nb = nbinpdf(k_failures, r, p_success);
-
-figure;
-stem(k_failures + r, pmf_nb, 'filled');
-xlabel('Total Trials Until 5th Success');
-ylabel('Probability');
-title(sprintf('Negative Binomial: r=%d, p=%.1f', r, p_success));
-grid on;
-
-% Simulation
-N = 100000;
-X_sim = nbinrnd(r, p_success, 1, N) + r;  % total trials
-fprintf('E[trials]: Theory = %.2f, Simulation = %.2f\n', r/p_success, mean(X_sim));
-```
-
----
 
 ## 3.6 Poisson Distribution
 
@@ -430,56 +304,6 @@ Rule of thumb: $n \ge 20$ and $p \le 0.05$.
 ❌ Events are not rare ($p$ not small) — use Binomial
 ❌ Mean ≠ Variance (look at overdispersion/underdispersion)
 
-### MATLAB Implementation
-
-```matlab
-%% Poisson Distribution: Network Packet Arrivals
-lambda = 4.5;     % Average packets per millisecond
-k = 0:15;
-
-pmf_pois = poisspdf(k, lambda);
-cdf_pois = poisscdf(k, lambda);
-
-figure;
-subplot(1,2,1);
-stem(k, pmf_pois, 'filled', 'LineWidth', 1.5);
-xlabel('Number of Arrivals (k)');
-ylabel('P(X = k)');
-title(sprintf('Poisson PMF (λ = %.1f)', lambda));
-grid on;
-
-subplot(1,2,2);
-stairs(k, cdf_pois, 'LineWidth', 2);
-xlabel('k'); ylabel('P(X ≤ k)');
-title('Poisson CDF');
-grid on;
-```
-
-### Simulation Example: Photon Counting
-
-```matlab
-%% Engineering Scenario: Photon Detection
-% An optical receiver detects photons. Average rate: 10 photons/μs.
-% What is P(detecting fewer than 5 photons in one μs)?
-
-lambda = 10;   % average photons per μs
-N = 100000;
-
-% Analytical
-p_fewer_5 = poisscdf(4, lambda);
-fprintf('P(X < 5): Analytical = %.6f\n', p_fewer_5);
-
-% Simulation
-X_sim = poissrnd(lambda, 1, N);
-p_fewer_5_sim = mean(X_sim < 5);
-fprintf('P(X < 5): Simulation = %.6f\n', p_fewer_5_sim);
-
-% Verify mean = variance (Poisson signature)
-fprintf('Sample Mean = %.3f, Sample Variance = %.3f\n', mean(X_sim), var(X_sim));
-```
-
-
-
 ---
 
 ## 3.7 Uniform Distribution (Continuous)
@@ -527,29 +351,6 @@ $$\text{Var}(X) = \frac{(b-a)^2}{12}$$
 ❌ Values near the center are more likely (use Gaussian)
 ❌ Values are non-negative with exponential decay (use Exponential)
 ❌ Range is unbounded
-
-### MATLAB Implementation
-
-```matlab
-%% Uniform Distribution: Quantization Error
-a = -0.5;  b = 0.5;  % Quantization step = 1 LSB
-N = 100000;
-
-X = a + (b-a)*rand(1, N);  % or: unifrnd(a, b, 1, N)
-
-figure;
-histogram(X, 50, 'Normalization', 'pdf');
-hold on;
-plot([a a b b], [0 1/(b-a) 1/(b-a) 0], 'r-', 'LineWidth', 2);
-xlabel('Quantization Error'); ylabel('f_X(x)');
-title('Uniform PDF: Quantization Error');
-legend('Simulated', 'Theoretical');
-
-fprintf('Mean: Theory=%.3f, Sim=%.3f\n', (a+b)/2, mean(X));
-fprintf('Var:  Theory=%.4f, Sim=%.4f\n', (b-a)^2/12, var(X));
-```
-
----
 
 ## 3.8 Exponential Distribution
 
@@ -616,53 +417,6 @@ If events arrive as a Poisson process with rate $\lambda$:
 ❌ Failure rate increases with age (wear-out) — use Weibull or Gamma
 ❌ Failure rate decreases with age (burn-in) — use Weibull
 ❌ Data shows increasing hazard — NOT memoryless
-
-### MATLAB Implementation
-
-```matlab
-%% Exponential Distribution: Component Lifetime
-lambda = 0.001;          % Failure rate: 0.001 per hour
-beta = 1/lambda;         % Mean lifetime: 1000 hours
-
-x = linspace(0, 5000, 1000);
-pdf_exp = exppdf(x, beta);
-cdf_exp = expcdf(x, beta);
-
-figure;
-subplot(2,1,1);
-plot(x, pdf_exp, 'b-', 'LineWidth', 2);
-xlabel('Time (hours)'); ylabel('f_X(x)');
-title(sprintf('Exponential PDF: Mean Lifetime = %d hours', beta));
-grid on;
-
-subplot(2,1,2);
-plot(x, cdf_exp, 'r-', 'LineWidth', 2);
-xlabel('Time (hours)'); ylabel('F_X(x) = P(failure by time x)');
-title('Exponential CDF');
-grid on;
-
-% P(component lasts more than 2000 hours)
-p_survive_2000 = 1 - expcdf(2000, beta);
-fprintf('P(T > 2000 hours) = %.4f\n', p_survive_2000);
-```
-
-### Simulation Example: Memoryless Property Verification
-
-```matlab
-%% Verify Memoryless Property
-beta = 100;   % Mean lifetime = 100 hours
-N = 100000;
-
-X = exprnd(beta, 1, N);
-
-% Conditional: given X > 50, what is distribution of (X - 50)?
-survivors = X(X > 50);
-remaining_life = survivors - 50;
-
-fprintf('Mean of X: %.1f (should be %.1f)\n', mean(X), beta);
-fprintf('Mean of remaining life given survival past 50: %.1f\n', mean(remaining_life));
-fprintf('Should also be %.1f (memoryless!)\n', beta);
-```
 
 ---
 
@@ -740,71 +494,6 @@ Any Normal can be standardized: $Z = \frac{X - \mu}{\sigma}$
 ❌ Discrete counts
 ❌ Heavy-tailed phenomena (use t-distribution or Cauchy)
 
-### MATLAB Implementation
-
-```matlab
-%% Gaussian Distribution: Thermal Noise
-mu = 0;           % Zero-mean noise
-sigma = 0.1;      % RMS noise = 100 mV
-
-x = linspace(mu - 4*sigma, mu + 4*sigma, 1000);
-pdf_norm = normpdf(x, mu, sigma);
-
-figure;
-plot(x, pdf_norm, 'b-', 'LineWidth', 2);
-hold on;
-% Shade the ±2σ region
-x_fill = linspace(mu-2*sigma, mu+2*sigma, 200);
-fill([x_fill, fliplr(x_fill)], [normpdf(x_fill,mu,sigma), zeros(size(x_fill))], ...
-     'b', 'FaceAlpha', 0.3);
-xlabel('Noise Voltage (V)');
-ylabel('f_X(x)');
-title(sprintf('Gaussian PDF: μ=%.1f, σ=%.3f V', mu, sigma));
-legend('PDF', '±2σ region (95.45%)');
-grid on;
-
-% Probability computations
-fprintf('P(|noise| > 0.2V) = %.4f\n', 2*(1-normcdf(0.2, 0, sigma)));
-fprintf('P(|noise| > 0.3V) = %.4f\n', 2*(1-normcdf(0.3, 0, sigma)));
-```
-
-### Simulation Example: Q-Function and BER
-
-```matlab
-%% Engineering Application: Binary Communication BER
-% In BPSK with AWGN: BER = Q(sqrt(2*Eb/N0))
-% Q(x) = 1 - Phi(x) = probability that N(0,1) > x
-
-EbN0_dB = 0:0.5:12;
-EbN0 = 10.^(EbN0_dB/10);
-
-% Theoretical BER
-BER_theory = qfunc(sqrt(2*EbN0));
-
-% Simulated BER
-N_bits = 1e6;
-BER_sim = zeros(size(EbN0_dB));
-for idx = 1:length(EbN0)
-    % BPSK: transmit ±1
-    bits = 2*randi([0,1], 1, N_bits) - 1;
-    noise_std = 1/sqrt(2*EbN0(idx));
-    received = bits + noise_std * randn(1, N_bits);
-    decisions = sign(received);
-    BER_sim(idx) = mean(decisions ~= bits);
-end
-
-figure;
-semilogy(EbN0_dB, BER_theory, 'b-', 'LineWidth', 2);
-hold on;
-semilogy(EbN0_dB, BER_sim, 'ro', 'MarkerSize', 6);
-xlabel('E_b/N_0 (dB)'); ylabel('Bit Error Rate');
-title('BPSK BER: Theory vs Simulation');
-legend('Theory: Q(√(2E_b/N_0))', 'Simulation');
-grid on;
-```
-
-
-
 ---
 
 ## 3.10 Gamma Distribution
@@ -863,34 +552,6 @@ $$\text{Var}(X) = \alpha\beta^2$$
 ❌ Data is symmetric (use Gaussian)
 ❌ Simpler distribution fits (exponential for $k = 1$)
 
-### MATLAB Implementation
-
-```matlab
-%% Gamma Distribution: Total Repair Time
-% 3 components must be repaired sequentially
-% Each repair time ~ Exp(mean = 2 hours)
-alpha = 3;         % shape (number of stages)
-beta = 2;          % scale (mean per stage)
-
-x = linspace(0, 20, 500);
-pdf_gamma = gampdf(x, alpha, beta);
-
-figure;
-plot(x, pdf_gamma, 'b-', 'LineWidth', 2);
-xlabel('Total Repair Time (hours)');
-ylabel('f_X(x)');
-title(sprintf('Gamma PDF: α=%d, β=%d', alpha, beta));
-grid on;
-
-% Verify by summing exponentials
-N = 100000;
-X_sim = sum(exprnd(beta, alpha, N), 1);  % Sum of 3 exponentials
-fprintf('Mean: Theory=%.2f, Sim=%.2f\n', alpha*beta, mean(X_sim));
-fprintf('Var:  Theory=%.2f, Sim=%.2f\n', alpha*beta^2, var(X_sim));
-```
-
----
-
 ## 3.11 Rayleigh Distribution
 
 ### Physical Interpretation
@@ -941,58 +602,6 @@ $$\text{Var}(R) = \frac{4-\pi}{2}\sigma^2 \approx 0.4292\sigma^2$$
 ❌ Strong line-of-sight component present (use Rician)
 ❌ Not modeling a magnitude/envelope
 ❌ Components are not Gaussian or not equal-variance
-
-### MATLAB Implementation
-
-```matlab
-%% Rayleigh Distribution: Wireless Fading Channel
-sigma = 1;   % Rayleigh parameter
-r = linspace(0, 5, 500);
-
-pdf_ray = raylpdf(r, sigma);
-cdf_ray = raylcdf(r, sigma);
-
-figure;
-subplot(2,1,1);
-plot(r, pdf_ray, 'b-', 'LineWidth', 2);
-xlabel('Channel Gain |h|'); ylabel('f_R(r)');
-title(sprintf('Rayleigh PDF (σ = %d)', sigma));
-grid on;
-
-subplot(2,1,2);
-plot(r, cdf_ray, 'r-', 'LineWidth', 2);
-xlabel('r'); ylabel('P(R ≤ r)');
-title('Rayleigh CDF = Outage Probability');
-grid on;
-
-% Outage probability: P(|h| < threshold)
-threshold = 0.5;
-p_outage = raylcdf(threshold, sigma);
-fprintf('P(outage, |h| < %.1f) = %.4f\n', threshold, p_outage);
-```
-
-### Simulation Example: Rayleigh Fading
-
-```matlab
-%% Generate Rayleigh Fading from Complex Gaussian
-sigma = 1;
-N = 100000;
-
-% Complex Gaussian channel coefficient
-h = sigma/sqrt(2) * (randn(1,N) + 1j*randn(1,N));
-
-% Magnitude is Rayleigh distributed
-R = abs(h);
-
-figure;
-histogram(R, 100, 'Normalization', 'pdf');
-hold on;
-r = linspace(0, 5, 300);
-plot(r, raylpdf(r, sigma/sqrt(2)), 'r-', 'LineWidth', 2);
-xlabel('|h|'); ylabel('PDF');
-title('Rayleigh Fading: Simulated vs Theory');
-legend('Simulation', 'Theory');
-```
 
 ---
 
@@ -1052,36 +661,6 @@ $$\text{Var}(X) = 2n$$
 ❌ Variables are not Gaussian
 ❌ Variables are not independent
 ❌ Variables are not standard normal (need scaling)
-
-### MATLAB Implementation
-
-```matlab
-%% Chi-Square Distribution: Noise Power
-% Noise power from N complex dimensions = sum of 2N squared Gaussians
-
-n_dof = 10;        % degrees of freedom
-x = linspace(0, 30, 500);
-
-pdf_chi2 = chi2pdf(x, n_dof);
-cdf_chi2 = chi2cdf(x, n_dof);
-
-figure;
-plot(x, pdf_chi2, 'b-', 'LineWidth', 2);
-xlabel('χ² Value (Noise Power)');
-ylabel('f_X(x)');
-title(sprintf('Chi-Square PDF: %d degrees of freedom', n_dof));
-grid on;
-
-% Simulation: sum of squared standard normals
-N = 100000;
-Z = randn(n_dof, N);
-X_sim = sum(Z.^2, 1);
-
-fprintf('Mean: Theory=%d, Sim=%.2f\n', n_dof, mean(X_sim));
-fprintf('Var:  Theory=%d, Sim=%.2f\n', 2*n_dof, var(X_sim));
-```
-
----
 
 ## 3.13 Distribution Selection Guide
 
@@ -1149,19 +728,19 @@ Is the random variable continuous?
 
 ## 3.14 Summary Table
 
-| Distribution | Type | Parameters | Mean | Variance | MATLAB |
-|-------------|------|-----------|------|----------|--------|
-| Bernoulli | Discrete | $p$ | $p$ | $p(1-p)$ | `binornd(1,p)` |
-| Binomial | Discrete | $n,\, p$ | $np$ | $np(1-p)$ | `binornd(n,p)` |
-| Geometric | Discrete | $p$ | $\frac{1}{p}$ | $\frac{1-p}{p^{2}}$ | `geornd(p)+1` |
-| Neg. Binomial | Discrete | $r,\, p$ | $\frac{r}{p}$ | $\frac{r(1-p)}{p^{2}}$ | `nbinrnd(r,p)+r` |
-| Poisson | Discrete | $\lambda$ | $\lambda$ | $\lambda$ | `poissrnd(λ)` |
-| Uniform | Continuous | a, $b$ | $\frac{a+b}{2}$ | $\frac{(b-a)^{2}}{12}$ | `unifrnd(a,b)` |
-| Exponential | Continuous | $\lambda$ (or $\beta = \frac{1}{\lambda}$) | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^{2}}$ | `exprnd(β)` |
-| Gaussian | Continuous | $\mu,\, \sigma^{2}$ | $\mu$ | $\sigma^{2}$ | `normrnd(μ,σ)` |
-| Gamma | Continuous | $\alpha,\, \beta$ | $\alpha \beta$ | $\alpha \beta^{2}$ | `gamrnd(α,β)` |
-| Rayleigh | Continuous | $\sigma$ | $\sigma \sqrt{\frac{\pi}{2}}$ | $\frac{(4-\pi)\sigma^{2}}{2}$ | `raylrnd(σ)` |
-| Chi-square | Continuous | $n$ | $n$ | $2n$ | `chi2rnd(n)` |
+| Distribution | Type | Parameters | Mean | Variance |
+|-------------|------|-----------|------|----------|
+| Bernoulli | Discrete | $p$ | $p$ | $p(1-p)$ |
+| Binomial | Discrete | $n,\, p$ | $np$ | $np(1-p)$ |
+| Geometric | Discrete | $p$ | $\frac{1}{p}$ | $\frac{1-p}{p^{2}}$ |
+| Neg. Binomial | Discrete | $r,\, p$ | $\frac{r}{p}$ | $\frac{r(1-p)}{p^{2}}$ |
+| Poisson | Discrete | $\lambda$ | $\lambda$ | $\lambda$ |
+| Uniform | Continuous | a, $b$ | $\frac{a+b}{2}$ | $\frac{(b-a)^{2}}{12}$ |
+| Exponential | Continuous | $\lambda$ (or $\beta = \frac{1}{\lambda}$) | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^{2}}$ |
+| Gaussian | Continuous | $\mu,\, \sigma^{2}$ | $\mu$ | $\sigma^{2}$ |
+| Gamma | Continuous | $\alpha,\, \beta$ | $\alpha \beta$ | $\alpha \beta^{2}$ |
+| Rayleigh | Continuous | $\sigma$ | $\sigma \sqrt{\frac{\pi}{2}}$ | $\frac{(4-\pi)\sigma^{2}}{2}$ |
+| Chi-square | Continuous | $n$ | $n$ | $2n$ |
 
 ---
 

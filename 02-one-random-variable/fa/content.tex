@@ -15,8 +15,6 @@
   تفاوت میان جرم احتمال، چگالی و احتمال تجمعی را به‌روشنی توضیح دهند
 \item
   تبدیل‌ها را روی متغیرهای تصادفی اعمال کنند
-\item
-  از \lr{\mbox{MATLAB}} برای تولید، مصورسازی و تحلیل متغیرهای تصادفی استفاده کنند
 \end{enumerate}
 
 \end{PSbox}
@@ -512,209 +510,7 @@
 
 \end{PSbox}
 
-\PSsection{2.10}{مثال‌های \lr{\mbox{MATLAB}}}
-
-\begin{PSbox}[unbreakable]{ex}{مثال 1: رسم یک \lr{\mbox{PMF}}}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% PMF of Number of Bit Errors in a Byte}
-\VariableTok{n} \OperatorTok{=} \FloatTok{8}\OperatorTok{;}           \CommentTok{\% bits per byte}
-\VariableTok{p} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}         \CommentTok{\% bit error probability}
-\VariableTok{k} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\VariableTok{n}\OperatorTok{;}         \CommentTok{\% possible values}
-
-\CommentTok{\% Compute PMF (binomial distribution)}
-\VariableTok{pmf} \OperatorTok{=} \VariableTok{binopdf}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{n}\OperatorTok{,} \VariableTok{p}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Plot}
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{stem}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{pmf}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}filled\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Number of Errors (k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X = k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}PMF: Bit Errors in 8{-}bit Byte (p = 0.1)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Verify normalization}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Sum of PMF = \%.6f (should be 1)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{sum}\NormalTok{(}\VariableTok{pmf}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\begin{PSbox}[unbreakable]{ex}{مثال 2: رسم یک \lr{\mbox{PDF}} و بررسی ویژگی‌ها}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% PDF of Gaussian Noise Voltage}
-\VariableTok{sigma} \OperatorTok{=} \FloatTok{0.5}\OperatorTok{;}     \CommentTok{\% RMS noise voltage}
-\VariableTok{x} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\OperatorTok{{-}}\FloatTok{3}\OperatorTok{*}\VariableTok{sigma}\OperatorTok{,} \FloatTok{3}\OperatorTok{*}\VariableTok{sigma}\OperatorTok{,} \FloatTok{1000}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Compute PDF}
-\VariableTok{pdf\_x} \OperatorTok{=} \VariableTok{normpdf}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \FloatTok{0}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Plot}
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{pdf\_x}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Voltage (V)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x) [V\^{}\{{-}1\}]\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}PDF: Gaussian Noise (σ = 0.5 V)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Verify normalization (numerical integration)}
-\VariableTok{dx} \OperatorTok{=} \VariableTok{x}\NormalTok{(}\FloatTok{2}\NormalTok{) }\OperatorTok{{-}} \VariableTok{x}\NormalTok{(}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{total\_area} \OperatorTok{=} \VariableTok{trapz}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{pdf\_x}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Total area under PDF = \%.6f (should be 1)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{total\_area}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Note: PDF values can exceed 1!}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Maximum PDF value = \%.4f (can be \textgreater{} 1!)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{max}\NormalTok{(}\VariableTok{pdf\_x}\NormalTok{))}\OperatorTok{;}
-
-\CommentTok{\% Compute P(|X| \textgreater{} 1V)}
-\VariableTok{prob\_exceed} \OperatorTok{=} \FloatTok{1} \OperatorTok{{-}} \VariableTok{normcdf}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \FloatTok{0}\OperatorTok{,} \VariableTok{sigma}\NormalTok{) }\OperatorTok{+} \VariableTok{normcdf}\NormalTok{(}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{,} \FloatTok{0}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(|X| \textgreater{} 1V) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{prob\_exceed}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\begin{PSbox}[unbreakable]{ex}{مثال 3: مصورسازی \lr{\mbox{CDF}}}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Comparing CDF for Discrete vs Continuous}
-
-\VariableTok{figure}\OperatorTok{;}
-
-\CommentTok{\% Subplot 1: Discrete CDF (Poisson, packets per second)}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{lambda} \OperatorTok{=} \FloatTok{3}\OperatorTok{;}      \CommentTok{\% average arrivals per second}
-\VariableTok{k} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\FloatTok{10}\OperatorTok{;}
-\VariableTok{cdf\_discrete} \OperatorTok{=} \VariableTok{poisscdf}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{lambda}\NormalTok{)}\OperatorTok{;}
-\VariableTok{stairs}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{cdf\_discrete}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Number of Packets\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}F\_X(x) = P(X ≤ x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}CDF: Discrete (Poisson, λ=3)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;} \VariableTok{ylim}\NormalTok{([}\FloatTok{0} \FloatTok{1.1}\NormalTok{])}\OperatorTok{;}
-
-\CommentTok{\% Subplot 2: Continuous CDF (Exponential, time to failure)}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{mu} \OperatorTok{=} \FloatTok{5}\OperatorTok{;}          \CommentTok{\% mean time to failure (hours)}
-\VariableTok{t} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0}\OperatorTok{,} \FloatTok{20}\OperatorTok{,} \FloatTok{500}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_continuous} \OperatorTok{=} \VariableTok{expcdf}\NormalTok{(}\VariableTok{t}\OperatorTok{,} \VariableTok{mu}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{t}\OperatorTok{,} \VariableTok{cdf\_continuous}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Time (hours)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}F\_X(x) = P(X ≤ x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}CDF: Continuous (Exponential, μ=5)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;} \VariableTok{ylim}\NormalTok{([}\FloatTok{0} \FloatTok{1.1}\NormalTok{])}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\end{PSbox}
-
-\PSsubsection{مثال 4: تبدیل یک متغیر تصادفی}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Transformation: Power from Noise Voltage}
-\CommentTok{\% X = noise voltage, Gaussian(0, sigma)}
-\CommentTok{\% Y = X\^{}2 = instantaneous power (in 1{-}ohm load)}
-
-\VariableTok{sigma} \OperatorTok{=} \FloatTok{1}\OperatorTok{;}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\CommentTok{\% Generate Gaussian noise samples}
-\VariableTok{X} \OperatorTok{=} \VariableTok{sigma} \OperatorTok{*} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Transform: power = voltage\^{}2}
-\VariableTok{Y} \OperatorTok{=} \VariableTok{X}\OperatorTok{.\^{}}\FloatTok{2}\OperatorTok{;}
-
-\CommentTok{\% Plot empirical PDF of Y using histogram}
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{histogram}\NormalTok{(}\VariableTok{X}\OperatorTok{,} \FloatTok{100}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}pdf\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\VariableTok{x\_theory} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\OperatorTok{{-}}\FloatTok{4}\OperatorTok{,} \FloatTok{4}\OperatorTok{,} \FloatTok{500}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{x\_theory}\OperatorTok{,} \VariableTok{normpdf}\NormalTok{(}\VariableTok{x\_theory}\OperatorTok{,} \FloatTok{0}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Voltage X\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Input: Gaussian Noise Voltage\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Empirical\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Theoretical\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{histogram}\NormalTok{(}\VariableTok{Y}\OperatorTok{,} \FloatTok{100}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}pdf\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\CommentTok{\% Theoretical: Y \textasciitilde{} chi{-}squared with 1 degree of freedom}
-\VariableTok{y\_theory} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0.01}\OperatorTok{,} \FloatTok{10}\OperatorTok{,} \FloatTok{500}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pdf\_y\_theory} \OperatorTok{=} \VariableTok{chi2pdf}\NormalTok{(}\VariableTok{y\_theory}\OperatorTok{,} \FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{y\_theory}\OperatorTok{,} \VariableTok{pdf\_y\_theory}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Power Y = X\^{}2\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_Y(y)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Output: Instantaneous Power\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Empirical\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Theoretical (χ²₁)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\PSsubsection{مثال 5: مقایسه \lr{\mbox{PMF}} در برابر \lr{\mbox{PDF}} در برابر \lr{\mbox{CDF}}}
-
-\tcbset{PScodemode/.style={breakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Complete Visualization: PMF/PDF and CDF side by side}
-\VariableTok{figure}\OperatorTok{;}
-
-\CommentTok{\% {-}{-}{-} Discrete Case: Number of retransmissions {-}{-}{-}}
-\CommentTok{\% Geometric distribution: number of trials until first success}
-\VariableTok{p\_success} \OperatorTok{=} \FloatTok{0.3}\OperatorTok{;}   \CommentTok{\% success probability per trial}
-\VariableTok{k} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\FloatTok{15}\OperatorTok{;}
-
-\CommentTok{\% PMF}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pmf\_geom} \OperatorTok{=} \VariableTok{geopdf}\NormalTok{(}\VariableTok{k}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{,} \VariableTok{p\_success}\NormalTok{)}\OperatorTok{;}  \CommentTok{\% MATLAB\textquotesingle{}s geopdf counts failures}
-\VariableTok{stem}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{pmf\_geom}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}filled\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{1.5}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}k (transmissions)\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X = k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Discrete PMF: Retransmissions\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% CDF}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_geom} \OperatorTok{=} \VariableTok{geocdf}\NormalTok{(}\VariableTok{k}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{,} \VariableTok{p\_success}\NormalTok{)}\OperatorTok{;}
-\VariableTok{stairs}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{cdf\_geom}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X ≤ k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Discrete CDF\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;} \VariableTok{ylim}\NormalTok{([}\FloatTok{0} \FloatTok{1.1}\NormalTok{])}\OperatorTok{;}
-
-\CommentTok{\% {-}{-}{-} Continuous Case: Delay time {-}{-}{-}}
-\CommentTok{\% Exponential distribution}
-\VariableTok{mu} \OperatorTok{=} \FloatTok{2}\OperatorTok{;}  \CommentTok{\% mean delay in ms}
-\VariableTok{t} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0}\OperatorTok{,} \FloatTok{10}\OperatorTok{,} \FloatTok{500}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% PDF}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{3}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pdf\_exp} \OperatorTok{=} \VariableTok{exppdf}\NormalTok{(}\VariableTok{t}\OperatorTok{,} \VariableTok{mu}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{t}\OperatorTok{,} \VariableTok{pdf\_exp}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Delay (ms)\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x) [ms\^{}\{{-}1\}]\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Continuous PDF: Delay\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% CDF}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{4}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_exp} \OperatorTok{=} \VariableTok{expcdf}\NormalTok{(}\VariableTok{t}\OperatorTok{,} \VariableTok{mu}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{t}\OperatorTok{,} \VariableTok{cdf\_exp}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Delay (ms)\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X ≤ x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Continuous CDF\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;} \VariableTok{ylim}\NormalTok{([}\FloatTok{0} \FloatTok{1.1}\NormalTok{])}\OperatorTok{;}
-
-\VariableTok{sgtitle}\NormalTok{(}\SpecialStringTok{\textquotesingle{}PMF/PDF vs CDF: Discrete and Continuous\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}FontSize\textquotesingle{}}\OperatorTok{,} \FloatTok{14}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\PSsection{2.11}{مسایل تمرینی}
+\PSsection{2.10}{مسایل تمرینی}
 
 \begin{PSbox}[unbreakable]{prob}{مسیله 1: تشخیص نوع متغیر تصادفی}
 
@@ -860,8 +656,6 @@
   \lr{\mbox{CDF}} مربوط به \lr{$Y$} را بیابید.
 \item
   \lr{\mbox{PDF}} مربوط به \lr{$Y$} را بیابید.
-\item
-  با شبیه‌سازی \lr{\mbox{MATLAB}} بررسی کنید.
 \end{enumerate}
 
 \PSsolution{} 
@@ -882,29 +676,11 @@
 \setcounter{enumi}{1}
 \item
   \lr{$f_{Y}(y) = \frac{dF_{Y}}{dy} = \frac{1}{2\sqrt{y}}$} برای \lr{$0 < y \le 1$}
-\item
-  \lr{\mbox{MATLAB:}}
 \end{enumerate}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{X} \OperatorTok{=} \FloatTok{2}\OperatorTok{*}\VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\VariableTok{N}\NormalTok{) }\OperatorTok{{-}} \FloatTok{1}\OperatorTok{;}   \CommentTok{\% Uniform[{-}1,1]}
-\VariableTok{Y} \OperatorTok{=} \VariableTok{X}\OperatorTok{.\^{}}\FloatTok{2}\OperatorTok{;}
-\VariableTok{histogram}\NormalTok{(}\VariableTok{Y}\OperatorTok{,} \FloatTok{100}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}pdf\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\VariableTok{y} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0.01}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \FloatTok{200}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{y}\OperatorTok{,} \FloatTok{1}\OperatorTok{./}\NormalTok{(}\FloatTok{2}\OperatorTok{*}\VariableTok{sqrt}\NormalTok{(}\VariableTok{y}\NormalTok{))}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Empirical\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Theory: 1/(2√y)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Y = X²\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_Y(y)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
 
 \end{PSbox}
 
-\PSsection{2.12}{نکات کلیدی}
+\PSsection{2.11}{نکات کلیدی}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}

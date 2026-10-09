@@ -14,7 +14,7 @@ After completing this module, students will be able to:
 \item
   Determine when to use (and when NOT to use) each distribution
 \item
-  Implement distributions in MATLAB for simulation
+  Analyze and compare probability distributions
 \item
   Recognize distribution patterns from data characteristics
 \end{enumerate}
@@ -109,23 +109,6 @@ Maximum variance at $p = 0.5$ (maximum uncertainty).
 
 \PSno{} Multiple trials (use Binomial)\PSbr{}\PSno{} Outcome is not binary\PSbr{}\PSno{} Probability changes between trials
 
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\% Generate Bernoulli random variables}
-\VariableTok{p} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}          \CommentTok{\% Bit error probability}
-\VariableTok{N} \OperatorTok{=} \FloatTok{10000}\OperatorTok{;}
-\VariableTok{X} \OperatorTok{=} \VariableTok{binornd}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{p}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}  \CommentTok{\% or: X = rand(1,N) \textless{} p;}
-
-\CommentTok{\% Verify}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean: \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X}\NormalTok{)}\OperatorTok{,} \VariableTok{p}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var:  \%.4f (theory: \%.4f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X}\NormalTok{)}\OperatorTok{,} \VariableTok{p}\OperatorTok{*}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{p}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
 \PSsection{3.3}{Binomial Distribution}
 
 \PSsubsection{Physical Interpretation}
@@ -162,7 +145,7 @@ where $C(n,\,k) = \frac{n!}{k!(n-k)!}$
 
 \PSdisplay{F_X(k) = \sum_{i=0}^{\lfloor k \rfloor} \binom{n}{i} p^i (1-p)^{n-i}}
 
-No closed-form expression — use tables or MATLAB.
+No closed-form expression — use tables or numerical summation.
 
 \PSsubsection{Mean}
 
@@ -179,63 +162,6 @@ No closed-form expression — use tables or MATLAB.
 \PSsubsection{When NOT to Use}
 
 \PSno{} Trials are not independent (correlated failures)\PSbr{}\PSno{} Probability changes between trials\PSbr{}\PSno{} $n$ is not fixed (use Negative Binomial or Poisson)\PSbr{}\PSno{} Very large $n$ with small $p$ (use Poisson approximation)
-
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Binomial Distribution: Bit Errors in a Frame}
-\VariableTok{n} \OperatorTok{=} \FloatTok{100}\OperatorTok{;}         \CommentTok{\% bits per frame}
-\VariableTok{p} \OperatorTok{=} \FloatTok{0.05}\OperatorTok{;}        \CommentTok{\% bit error probability}
-\VariableTok{k} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\FloatTok{20}\OperatorTok{;}        \CommentTok{\% range of interest}
-
-\CommentTok{\% PMF and CDF}
-\VariableTok{pmf} \OperatorTok{=} \VariableTok{binopdf}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{n}\OperatorTok{,} \VariableTok{p}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_vals} \OperatorTok{=} \VariableTok{binocdf}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{n}\OperatorTok{,} \VariableTok{p}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Plot PMF}
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{stem}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{pmf}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}filled\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{1.5}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Number of Errors (k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X = k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Binomial PMF: n=\%d, p=\%.2f\textquotesingle{}}\OperatorTok{,} \VariableTok{n}\OperatorTok{,} \VariableTok{p}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Simulation verification}
-\VariableTok{N\_sim} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{X\_sim} \OperatorTok{=} \VariableTok{binornd}\NormalTok{(}\VariableTok{n}\OperatorTok{,} \VariableTok{p}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N\_sim}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}E[X]: Theory = \%.2f, Simulation = \%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{n}\OperatorTok{*}\VariableTok{p}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var(X): Theory = \%.2f, Simulation = \%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{n}\OperatorTok{*}\VariableTok{p}\OperatorTok{*}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{p}\NormalTok{)}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\PSsubsection{Simulation Example: Packet Error Rate}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Engineering Scenario: How many packets out of 50 have errors?}
-\CommentTok{\% Each packet has 1000 bits, BER = 1e{-}4}
-\CommentTok{\% A packet has an error if ANY bit is in error.}
-
-\VariableTok{BER} \OperatorTok{=} \FloatTok{1e{-}4}\OperatorTok{;}
-\VariableTok{bits\_per\_packet} \OperatorTok{=} \FloatTok{1000}\OperatorTok{;}
-\VariableTok{n\_packets} \OperatorTok{=} \FloatTok{50}\OperatorTok{;}
-
-\CommentTok{\% P(packet error) = 1 {-} P(all bits correct)}
-\VariableTok{p\_packet\_error} \OperatorTok{=} \FloatTok{1} \OperatorTok{{-}}\NormalTok{ (}\FloatTok{1} \OperatorTok{{-}} \VariableTok{BER}\NormalTok{)}\OperatorTok{\^{}}\VariableTok{bits\_per\_packet}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(packet error) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_packet\_error}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Number of errored packets \textasciitilde{} Binomial(50, p\_packet\_error)}
-\VariableTok{k} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\FloatTok{10}\OperatorTok{;}
-\VariableTok{pmf\_packets} \OperatorTok{=} \VariableTok{binopdf}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{n\_packets}\OperatorTok{,} \VariableTok{p\_packet\_error}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(0 packet errors) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{pmf\_packets}\NormalTok{(}\FloatTok{1}\NormalTok{))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(≤ 2 packet errors) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{sum}\NormalTok{(}\VariableTok{pmf\_packets}\NormalTok{(}\FloatTok{1}\OperatorTok{:}\FloatTok{3}\NormalTok{)))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
 
 \PSsection{3.4}{Geometric Distribution}
 
@@ -299,40 +225,6 @@ The geometric distribution is the ONLY discrete distribution with the memoryless
 
 \PSno{} Success probability changes over time (aging, learning)\PSbr{}\PSno{} Trials are not independent\PSbr{}\PSno{} Looking for the $r-\mathrm{th}$ success (use Negative Binomial)
 
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Geometric Distribution: Retransmissions Until Success}
-\VariableTok{p\_success} \OperatorTok{=} \FloatTok{0.7}\OperatorTok{;}   \CommentTok{\% P(successful transmission)}
-\VariableTok{k} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\FloatTok{15}\OperatorTok{;}
-
-\CommentTok{\% PMF}
-\VariableTok{pmf\_geom} \OperatorTok{=} \VariableTok{geopdf}\NormalTok{(}\VariableTok{k}\OperatorTok{{-}}\FloatTok{1}\OperatorTok{,} \VariableTok{p\_success}\NormalTok{)}\OperatorTok{;}  \CommentTok{\% MATLAB counts failures (k{-}1)}
-
-\CommentTok{\% Simulation}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{X\_sim} \OperatorTok{=} \VariableTok{geornd}\NormalTok{(}\VariableTok{p\_success}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{+} \FloatTok{1}\OperatorTok{;}  \CommentTok{\% +1 to count trial number}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{stem}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{pmf\_geom}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}filled\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Trial Number k\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X = k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Geometric PMF (p = \%.1f)\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_success}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{histogram}\NormalTok{(}\VariableTok{X\_sim}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}probability\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}BinMethod\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}integers\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Trial Number k\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Relative Frequency\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Simulation Histogram\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}E[X]: Theory = \%.2f, Simulation = \%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \FloatTok{1}\OperatorTok{/}\VariableTok{p\_success}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
 \PSsection{3.5}{Negative Binomial Distribution}
 
 \PSsubsection{Physical Interpretation}
@@ -365,7 +257,7 @@ $X \sim \mathrm{NegBin}(r,\, p)$ = number of trials until $r-\mathrm{th}$ succes
 
 \PSsubsection{CDF}
 
-No simple closed form. Computed by summation or MATLAB.
+No simple closed form. Computed by summation or numerical methods.
 
 \PSsubsection{Mean}
 
@@ -386,36 +278,6 @@ When $r = 1$, the Negative Binomial reduces to the Geometric distribution.
 \PSsubsection{When NOT to Use}
 
 \PSno{} Only need first success (use Geometric — simpler)\PSbr{}\PSno{} Trials not independent\PSbr{}\PSno{} Fixed number of trials (use Binomial)
-
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Negative Binomial: Transmissions Until r Successes}
-\VariableTok{r} \OperatorTok{=} \FloatTok{5}\OperatorTok{;}             \CommentTok{\% Need 5 successful deliveries}
-\VariableTok{p\_success} \OperatorTok{=} \FloatTok{0.8}\OperatorTok{;}   \CommentTok{\% P(success per trial)}
-
-\CommentTok{\% MATLAB\textquotesingle{}s nbinpdf counts FAILURES before r{-}th success}
-\CommentTok{\% X\_matlab = number of failures, so total trials = X\_matlab + r}
-\VariableTok{k\_failures} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\FloatTok{20}\OperatorTok{;}
-
-\VariableTok{pmf\_nb} \OperatorTok{=} \VariableTok{nbinpdf}\NormalTok{(}\VariableTok{k\_failures}\OperatorTok{,} \VariableTok{r}\OperatorTok{,} \VariableTok{p\_success}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{stem}\NormalTok{(}\VariableTok{k\_failures} \OperatorTok{+} \VariableTok{r}\OperatorTok{,} \VariableTok{pmf\_nb}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}filled\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Total Trials Until 5th Success\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Probability\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Negative Binomial: r=\%d, p=\%.1f\textquotesingle{}}\OperatorTok{,} \VariableTok{r}\OperatorTok{,} \VariableTok{p\_success}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Simulation}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{X\_sim} \OperatorTok{=} \VariableTok{nbinrnd}\NormalTok{(}\VariableTok{r}\OperatorTok{,} \VariableTok{p\_success}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{) }\OperatorTok{+} \VariableTok{r}\OperatorTok{;}  \CommentTok{\% total trials}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}E[trials]: Theory = \%.2f, Simulation = \%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{r}\OperatorTok{/}\VariableTok{p\_success}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
 
 \PSsection{3.6}{Poisson Distribution}
 
@@ -479,62 +341,6 @@ Rule of thumb: $n \ge 20$ and $p \le 0.05$.
 
 \PSno{} Events are not independent (clustered arrivals)\PSbr{}\PSno{} Rate varies with time (non-homogeneous process)\PSbr{}\PSno{} Events are not rare ($p$ not small) — use Binomial\PSbr{}\PSno{} Mean \ensuremath{\neq} Variance (look at overdispersion/underdispersion)
 
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Poisson Distribution: Network Packet Arrivals}
-\VariableTok{lambda} \OperatorTok{=} \FloatTok{4.5}\OperatorTok{;}     \CommentTok{\% Average packets per millisecond}
-\VariableTok{k} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\FloatTok{15}\OperatorTok{;}
-
-\VariableTok{pmf\_pois} \OperatorTok{=} \VariableTok{poisspdf}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{lambda}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_pois} \OperatorTok{=} \VariableTok{poisscdf}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{lambda}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{stem}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{pmf\_pois}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}filled\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{1.5}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Number of Arrivals (k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X = k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Poisson PMF (λ = \%.1f)\textquotesingle{}}\OperatorTok{,} \VariableTok{lambda}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\VariableTok{subplot}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{stairs}\NormalTok{(}\VariableTok{k}\OperatorTok{,} \VariableTok{cdf\_pois}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X ≤ k)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Poisson CDF\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\PSsubsection{Simulation Example: Photon Counting}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Engineering Scenario: Photon Detection}
-\CommentTok{\% An optical receiver detects photons. Average rate: 10 photons/μs.}
-\CommentTok{\% What is P(detecting fewer than 5 photons in one μs)?}
-
-\VariableTok{lambda} \OperatorTok{=} \FloatTok{10}\OperatorTok{;}   \CommentTok{\% average photons per μs}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\CommentTok{\% Analytical}
-\VariableTok{p\_fewer\_5} \OperatorTok{=} \VariableTok{poisscdf}\NormalTok{(}\FloatTok{4}\OperatorTok{,} \VariableTok{lambda}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X \textless{} 5): Analytical = \%.6f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_fewer\_5}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Simulation}
-\VariableTok{X\_sim} \OperatorTok{=} \VariableTok{poissrnd}\NormalTok{(}\VariableTok{lambda}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{p\_fewer\_5\_sim} \OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{X\_sim} \OperatorTok{\textless{}} \FloatTok{5}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(X \textless{} 5): Simulation = \%.6f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_fewer\_5\_sim}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Verify mean = variance (Poisson signature)}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Sample Mean = \%.3f, Sample Variance = \%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{)}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
 \PSsection{3.7}{Uniform Distribution (Continuous)}
 
 \PSsubsection{Physical Interpretation}
@@ -584,31 +390,6 @@ $X \sim \mathrm{Uniform}(a,\, b)$ or $X \sim U(a,\, b)$
 \PSsubsection{When NOT to Use}
 
 \PSno{} Values near the center are more likely (use Gaussian)\PSbr{}\PSno{} Values are non-negative with exponential decay (use Exponential)\PSbr{}\PSno{} Range is unbounded
-
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Uniform Distribution: Quantization Error}
-\VariableTok{a} \OperatorTok{=} \OperatorTok{{-}}\FloatTok{0.5}\OperatorTok{;}  \VariableTok{b} \OperatorTok{=} \FloatTok{0.5}\OperatorTok{;}  \CommentTok{\% Quantization step = 1 LSB}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\VariableTok{X} \OperatorTok{=} \VariableTok{a} \OperatorTok{+}\NormalTok{ (}\VariableTok{b}\OperatorTok{{-}}\VariableTok{a}\NormalTok{)}\OperatorTok{*}\VariableTok{rand}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}  \CommentTok{\% or: unifrnd(a, b, 1, N)}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{histogram}\NormalTok{(}\VariableTok{X}\OperatorTok{,} \FloatTok{50}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}pdf\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{([}\VariableTok{a} \VariableTok{a} \VariableTok{b} \VariableTok{b}\NormalTok{]}\OperatorTok{,}\NormalTok{ [}\FloatTok{0} \FloatTok{1}\OperatorTok{/}\NormalTok{(}\VariableTok{b}\OperatorTok{{-}}\VariableTok{a}\NormalTok{) }\FloatTok{1}\OperatorTok{/}\NormalTok{(}\VariableTok{b}\OperatorTok{{-}}\VariableTok{a}\NormalTok{) }\FloatTok{0}\NormalTok{]}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Quantization Error\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Uniform PDF: Quantization Error\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Simulated\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Theoretical\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean: Theory=\%.3f, Sim=\%.3f\textbackslash{}n\textquotesingle{}}\OperatorTok{,}\NormalTok{ (}\VariableTok{a}\OperatorTok{+}\VariableTok{b}\NormalTok{)}\OperatorTok{/}\FloatTok{2}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X}\NormalTok{))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var:  Theory=\%.4f, Sim=\%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,}\NormalTok{ (}\VariableTok{b}\OperatorTok{{-}}\VariableTok{a}\NormalTok{)}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{/}\FloatTok{12}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
 
 \PSsection{3.8}{Exponential Distribution}
 
@@ -687,61 +468,6 @@ If events arrive as a Poisson process with rate $\lambda$:
 \PSsubsection{When NOT to Use}
 
 \PSno{} Failure rate increases with age (wear-out) — use Weibull or Gamma\PSbr{}\PSno{} Failure rate decreases with age (burn-in) — use Weibull\PSbr{}\PSno{} Data shows increasing hazard — NOT memoryless
-
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Exponential Distribution: Component Lifetime}
-\VariableTok{lambda} \OperatorTok{=} \FloatTok{0.001}\OperatorTok{;}          \CommentTok{\% Failure rate: 0.001 per hour}
-\VariableTok{beta} \OperatorTok{=} \FloatTok{1}\OperatorTok{/}\VariableTok{lambda}\OperatorTok{;}         \CommentTok{\% Mean lifetime: 1000 hours}
-
-\VariableTok{x} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0}\OperatorTok{,} \FloatTok{5000}\OperatorTok{,} \FloatTok{1000}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pdf\_exp} \OperatorTok{=} \VariableTok{exppdf}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_exp} \OperatorTok{=} \VariableTok{expcdf}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{pdf\_exp}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Time (hours)\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Exponential PDF: Mean Lifetime = \%d hours\textquotesingle{}}\OperatorTok{,} \VariableTok{beta}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{cdf\_exp}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Time (hours)\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}F\_X(x) = P(failure by time x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Exponential CDF\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% P(component lasts more than 2000 hours)}
-\VariableTok{p\_survive\_2000} \OperatorTok{=} \FloatTok{1} \OperatorTok{{-}} \VariableTok{expcdf}\NormalTok{(}\FloatTok{2000}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(T \textgreater{} 2000 hours) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{p\_survive\_2000}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\PSsubsection{Simulation Example: Memoryless Property Verification}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Verify Memoryless Property}
-\VariableTok{beta} \OperatorTok{=} \FloatTok{100}\OperatorTok{;}   \CommentTok{\% Mean lifetime = 100 hours}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\VariableTok{X} \OperatorTok{=} \VariableTok{exprnd}\NormalTok{(}\VariableTok{beta}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Conditional: given X \textgreater{} 50, what is distribution of (X {-} 50)?}
-\VariableTok{survivors} \OperatorTok{=} \VariableTok{X}\NormalTok{(}\VariableTok{X} \OperatorTok{\textgreater{}} \FloatTok{50}\NormalTok{)}\OperatorTok{;}
-\VariableTok{remaining\_life} \OperatorTok{=} \VariableTok{survivors} \OperatorTok{{-}} \FloatTok{50}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean of X: \%.1f (should be \%.1f)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X}\NormalTok{)}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean of remaining life given survival past 50: \%.1f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{remaining\_life}\NormalTok{))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Should also be \%.1f (memoryless!)\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
 
 \PSsection{3.9}{Gaussian (Normal) Distribution}
 
@@ -835,77 +561,6 @@ $\mu \pm 4\sigma$ & 99.9937\% \\
 
 \PSno{} Strictly positive quantities (Gaussian allows negative values)\PSbr{}\PSno{} Heavily skewed data\PSbr{}\PSno{} Bounded quantities (Gaussian has infinite support)\PSbr{}\PSno{} Discrete counts\PSbr{}\PSno{} Heavy-tailed phenomena (use t-distribution or Cauchy)
 
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Gaussian Distribution: Thermal Noise}
-\VariableTok{mu} \OperatorTok{=} \FloatTok{0}\OperatorTok{;}           \CommentTok{\% Zero{-}mean noise}
-\VariableTok{sigma} \OperatorTok{=} \FloatTok{0.1}\OperatorTok{;}      \CommentTok{\% RMS noise = 100 mV}
-
-\VariableTok{x} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\VariableTok{mu} \OperatorTok{{-}} \FloatTok{4}\OperatorTok{*}\VariableTok{sigma}\OperatorTok{,} \VariableTok{mu} \OperatorTok{+} \FloatTok{4}\OperatorTok{*}\VariableTok{sigma}\OperatorTok{,} \FloatTok{1000}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pdf\_norm} \OperatorTok{=} \VariableTok{normpdf}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{mu}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{pdf\_norm}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\CommentTok{\% Shade the ±2σ region}
-\VariableTok{x\_fill} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\VariableTok{mu}\OperatorTok{{-}}\FloatTok{2}\OperatorTok{*}\VariableTok{sigma}\OperatorTok{,} \VariableTok{mu}\OperatorTok{+}\FloatTok{2}\OperatorTok{*}\VariableTok{sigma}\OperatorTok{,} \FloatTok{200}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fill}\NormalTok{([}\VariableTok{x\_fill}\OperatorTok{,} \VariableTok{fliplr}\NormalTok{(}\VariableTok{x\_fill}\NormalTok{)]}\OperatorTok{,}\NormalTok{ [}\VariableTok{normpdf}\NormalTok{(}\VariableTok{x\_fill}\OperatorTok{,}\VariableTok{mu}\OperatorTok{,}\VariableTok{sigma}\NormalTok{)}\OperatorTok{,} \VariableTok{zeros}\NormalTok{(}\VariableTok{size}\NormalTok{(}\VariableTok{x\_fill}\NormalTok{))]}\OperatorTok{,} \OperatorTok{...}
-     \SpecialStringTok{\textquotesingle{}b\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}FaceAlpha\textquotesingle{}}\OperatorTok{,} \FloatTok{0.3}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Noise Voltage (V)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Gaussian PDF: μ=\%.1f, σ=\%.3f V\textquotesingle{}}\OperatorTok{,} \VariableTok{mu}\OperatorTok{,} \VariableTok{sigma}\NormalTok{))}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}PDF\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}±2σ region (95.45\%)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Probability computations}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(|noise| \textgreater{} 0.2V) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\OperatorTok{*}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{normcdf}\NormalTok{(}\FloatTok{0.2}\OperatorTok{,} \FloatTok{0}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(|noise| \textgreater{} 0.3V) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\OperatorTok{*}\NormalTok{(}\FloatTok{1}\OperatorTok{{-}}\VariableTok{normcdf}\NormalTok{(}\FloatTok{0.3}\OperatorTok{,} \FloatTok{0}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\PSsubsection{Simulation Example: Q-Function and BER}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Engineering Application: Binary Communication BER}
-\CommentTok{\% In BPSK with AWGN: BER = Q(sqrt(2*Eb/N0))}
-\CommentTok{\% Q(x) = 1 {-} Phi(x) = probability that N(0,1) \textgreater{} x}
-
-\VariableTok{EbN0\_dB} \OperatorTok{=} \FloatTok{0}\OperatorTok{:}\FloatTok{0.5}\OperatorTok{:}\FloatTok{12}\OperatorTok{;}
-\VariableTok{EbN0} \OperatorTok{=} \FloatTok{10}\OperatorTok{.\^{}}\NormalTok{(}\VariableTok{EbN0\_dB}\OperatorTok{/}\FloatTok{10}\NormalTok{)}\OperatorTok{;}
-
-\CommentTok{\% Theoretical BER}
-\VariableTok{BER\_theory} \OperatorTok{=} \VariableTok{qfunc}\NormalTok{(}\VariableTok{sqrt}\NormalTok{(}\FloatTok{2}\OperatorTok{*}\VariableTok{EbN0}\NormalTok{))}\OperatorTok{;}
-
-\CommentTok{\% Simulated BER}
-\VariableTok{N\_bits} \OperatorTok{=} \FloatTok{1e6}\OperatorTok{;}
-\VariableTok{BER\_sim} \OperatorTok{=} \VariableTok{zeros}\NormalTok{(}\VariableTok{size}\NormalTok{(}\VariableTok{EbN0\_dB}\NormalTok{))}\OperatorTok{;}
-\KeywordTok{for} \VariableTok{idx} \OperatorTok{=} \FloatTok{1}\OperatorTok{:}\VariableTok{length}\NormalTok{(}\VariableTok{EbN0}\NormalTok{)}
-    \CommentTok{\% BPSK: transmit ±1}
-    \VariableTok{bits} \OperatorTok{=} \FloatTok{2}\OperatorTok{*}\VariableTok{randi}\NormalTok{([}\FloatTok{0}\OperatorTok{,}\FloatTok{1}\NormalTok{]}\OperatorTok{,} \FloatTok{1}\OperatorTok{,} \VariableTok{N\_bits}\NormalTok{) }\OperatorTok{{-}} \FloatTok{1}\OperatorTok{;}
-    \VariableTok{noise\_std} \OperatorTok{=} \FloatTok{1}\OperatorTok{/}\VariableTok{sqrt}\NormalTok{(}\FloatTok{2}\OperatorTok{*}\VariableTok{EbN0}\NormalTok{(}\VariableTok{idx}\NormalTok{))}\OperatorTok{;}
-    \VariableTok{received} \OperatorTok{=} \VariableTok{bits} \OperatorTok{+} \VariableTok{noise\_std} \OperatorTok{*} \VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,} \VariableTok{N\_bits}\NormalTok{)}\OperatorTok{;}
-    \VariableTok{decisions} \OperatorTok{=} \VariableTok{sign}\NormalTok{(}\VariableTok{received}\NormalTok{)}\OperatorTok{;}
-    \VariableTok{BER\_sim}\NormalTok{(}\VariableTok{idx}\NormalTok{) }\OperatorTok{=} \VariableTok{mean}\NormalTok{(}\VariableTok{decisions} \OperatorTok{\textasciitilde{}=} \VariableTok{bits}\NormalTok{)}\OperatorTok{;}
-\KeywordTok{end}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{semilogy}\NormalTok{(}\VariableTok{EbN0\_dB}\OperatorTok{,} \VariableTok{BER\_theory}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\VariableTok{semilogy}\NormalTok{(}\VariableTok{EbN0\_dB}\OperatorTok{,} \VariableTok{BER\_sim}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}ro\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}MarkerSize\textquotesingle{}}\OperatorTok{,} \FloatTok{6}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}E\_b/N\_0 (dB)\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Bit Error Rate\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}BPSK BER: Theory vs Simulation\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Theory: Q(√(2E\_b/N\_0))\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Simulation\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
 \PSsection{3.10}{Gamma Distribution}
 
 \PSsubsection{Physical Interpretation}
@@ -974,36 +629,6 @@ $\alpha$ = integer $k$ & $\mathrm{Erlang}(k,\, \beta)$ \\
 
 \PSno{} Data can be negative\PSbr{}\PSno{} Data is symmetric (use Gaussian)\PSbr{}\PSno{} Simpler distribution fits (exponential for $k = 1$)
 
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Gamma Distribution: Total Repair Time}
-\CommentTok{\% 3 components must be repaired sequentially}
-\CommentTok{\% Each repair time \textasciitilde{} Exp(mean = 2 hours)}
-\VariableTok{alpha} \OperatorTok{=} \FloatTok{3}\OperatorTok{;}         \CommentTok{\% shape (number of stages)}
-\VariableTok{beta} \OperatorTok{=} \FloatTok{2}\OperatorTok{;}          \CommentTok{\% scale (mean per stage)}
-
-\VariableTok{x} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0}\OperatorTok{,} \FloatTok{20}\OperatorTok{,} \FloatTok{500}\NormalTok{)}\OperatorTok{;}
-\VariableTok{pdf\_gamma} \OperatorTok{=} \VariableTok{gampdf}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{alpha}\OperatorTok{,} \VariableTok{beta}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{pdf\_gamma}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Total Repair Time (hours)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Gamma PDF: α=\%d, β=\%d\textquotesingle{}}\OperatorTok{,} \VariableTok{alpha}\OperatorTok{,} \VariableTok{beta}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Verify by summing exponentials}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{X\_sim} \OperatorTok{=} \VariableTok{sum}\NormalTok{(}\VariableTok{exprnd}\NormalTok{(}\VariableTok{beta}\OperatorTok{,} \VariableTok{alpha}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{,} \FloatTok{1}\NormalTok{)}\OperatorTok{;}  \CommentTok{\% Sum of 3 exponentials}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean: Theory=\%.2f, Sim=\%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{alpha}\OperatorTok{*}\VariableTok{beta}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var:  Theory=\%.2f, Sim=\%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{alpha}\OperatorTok{*}\VariableTok{beta}\OperatorTok{\^{}}\FloatTok{2}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
 \PSsection{3.11}{Rayleigh Distribution}
 
 \PSsubsection{Physical Interpretation}
@@ -1063,66 +688,6 @@ $R \sim \mathrm{Rayleigh}(\sigma)$, where $\sigma$ is the parameter (NOT the sta
 \PSsubsection{When NOT to Use}
 
 \PSno{} Strong line-of-sight component present (use Rician)\PSbr{}\PSno{} Not modeling a magnitude/envelope\PSbr{}\PSno{} Components are not Gaussian or not equal-variance
-
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Rayleigh Distribution: Wireless Fading Channel}
-\VariableTok{sigma} \OperatorTok{=} \FloatTok{1}\OperatorTok{;}   \CommentTok{\% Rayleigh parameter}
-\VariableTok{r} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0}\OperatorTok{,} \FloatTok{5}\OperatorTok{,} \FloatTok{500}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{pdf\_ray} \OperatorTok{=} \VariableTok{raylpdf}\NormalTok{(}\VariableTok{r}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_ray} \OperatorTok{=} \VariableTok{raylcdf}\NormalTok{(}\VariableTok{r}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\OperatorTok{,}\FloatTok{1}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{r}\OperatorTok{,} \VariableTok{pdf\_ray}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Channel Gain |h|\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_R(r)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Rayleigh PDF (σ = \%d)\textquotesingle{}}\OperatorTok{,} \VariableTok{sigma}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\VariableTok{subplot}\NormalTok{(}\FloatTok{2}\OperatorTok{,}\FloatTok{1}\OperatorTok{,}\FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{r}\OperatorTok{,} \VariableTok{cdf\_ray}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(R ≤ r)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Rayleigh CDF = Outage Probability\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Outage probability: P(|h| \textless{} threshold)}
-\VariableTok{threshold} \OperatorTok{=} \FloatTok{0.5}\OperatorTok{;}
-\VariableTok{p\_outage} \OperatorTok{=} \VariableTok{raylcdf}\NormalTok{(}\VariableTok{threshold}\OperatorTok{,} \VariableTok{sigma}\NormalTok{)}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}P(outage, |h| \textless{} \%.1f) = \%.4f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{threshold}\OperatorTok{,} \VariableTok{p\_outage}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
-\PSsubsection{Simulation Example: Rayleigh Fading}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Generate Rayleigh Fading from Complex Gaussian}
-\VariableTok{sigma} \OperatorTok{=} \FloatTok{1}\OperatorTok{;}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-
-\CommentTok{\% Complex Gaussian channel coefficient}
-\VariableTok{h} \OperatorTok{=} \VariableTok{sigma}\OperatorTok{/}\VariableTok{sqrt}\NormalTok{(}\FloatTok{2}\NormalTok{) }\OperatorTok{*}\NormalTok{ (}\VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\VariableTok{N}\NormalTok{) }\OperatorTok{+} \FloatTok{1j}\OperatorTok{*}\VariableTok{randn}\NormalTok{(}\FloatTok{1}\OperatorTok{,}\VariableTok{N}\NormalTok{))}\OperatorTok{;}
-
-\CommentTok{\% Magnitude is Rayleigh distributed}
-\VariableTok{R} \OperatorTok{=} \VariableTok{abs}\NormalTok{(}\VariableTok{h}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{histogram}\NormalTok{(}\VariableTok{R}\OperatorTok{,} \FloatTok{100}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Normalization\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}pdf\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{hold} \VariableTok{on}\OperatorTok{;}
-\VariableTok{r} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0}\OperatorTok{,} \FloatTok{5}\OperatorTok{,} \FloatTok{300}\NormalTok{)}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{r}\OperatorTok{,} \VariableTok{raylpdf}\NormalTok{(}\VariableTok{r}\OperatorTok{,} \VariableTok{sigma}\OperatorTok{/}\VariableTok{sqrt}\NormalTok{(}\FloatTok{2}\NormalTok{))}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}r{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}|h|\textquotesingle{}}\NormalTok{)}\OperatorTok{;} \VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}PDF\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Rayleigh Fading: Simulated vs Theory\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{legend}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Simulation\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}Theory\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
 
 \PSsection{3.12}{Chi-Square Distribution}
 
@@ -1192,38 +757,6 @@ No closed form for general $n$. Computed via incomplete gamma function.
 
 \PSno{} Variables are not Gaussian\PSbr{}\PSno{} Variables are not independent\PSbr{}\PSno{} Variables are not standard normal (need scaling)
 
-\PSsubsection{MATLAB Implementation}
-
-\tcbset{PScodemode/.style={unbreakable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\%\% Chi{-}Square Distribution: Noise Power}
-\CommentTok{\% Noise power from N complex dimensions = sum of 2N squared Gaussians}
-
-\VariableTok{n\_dof} \OperatorTok{=} \FloatTok{10}\OperatorTok{;}        \CommentTok{\% degrees of freedom}
-\VariableTok{x} \OperatorTok{=} \VariableTok{linspace}\NormalTok{(}\FloatTok{0}\OperatorTok{,} \FloatTok{30}\OperatorTok{,} \FloatTok{500}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{pdf\_chi2} \OperatorTok{=} \VariableTok{chi2pdf}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{n\_dof}\NormalTok{)}\OperatorTok{;}
-\VariableTok{cdf\_chi2} \OperatorTok{=} \VariableTok{chi2cdf}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{n\_dof}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{figure}\OperatorTok{;}
-\VariableTok{plot}\NormalTok{(}\VariableTok{x}\OperatorTok{,} \VariableTok{pdf\_chi2}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}b{-}\textquotesingle{}}\OperatorTok{,} \SpecialStringTok{\textquotesingle{}LineWidth\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\NormalTok{)}\OperatorTok{;}
-\VariableTok{xlabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}χ² Value (Noise Power)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{ylabel}\NormalTok{(}\SpecialStringTok{\textquotesingle{}f\_X(x)\textquotesingle{}}\NormalTok{)}\OperatorTok{;}
-\VariableTok{title}\NormalTok{(}\VariableTok{sprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Chi{-}Square PDF: \%d degrees of freedom\textquotesingle{}}\OperatorTok{,} \VariableTok{n\_dof}\NormalTok{))}\OperatorTok{;}
-\VariableTok{grid} \VariableTok{on}\OperatorTok{;}
-
-\CommentTok{\% Simulation: sum of squared standard normals}
-\VariableTok{N} \OperatorTok{=} \FloatTok{100000}\OperatorTok{;}
-\VariableTok{Z} \OperatorTok{=} \VariableTok{randn}\NormalTok{(}\VariableTok{n\_dof}\OperatorTok{,} \VariableTok{N}\NormalTok{)}\OperatorTok{;}
-\VariableTok{X\_sim} \OperatorTok{=} \VariableTok{sum}\NormalTok{(}\VariableTok{Z}\OperatorTok{.\^{}}\FloatTok{2}\OperatorTok{,} \FloatTok{1}\NormalTok{)}\OperatorTok{;}
-
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Mean: Theory=\%d, Sim=\%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \VariableTok{n\_dof}\OperatorTok{,} \VariableTok{mean}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\VariableTok{fprintf}\NormalTok{(}\SpecialStringTok{\textquotesingle{}Var:  Theory=\%d, Sim=\%.2f\textbackslash{}n\textquotesingle{}}\OperatorTok{,} \FloatTok{2}\OperatorTok{*}\VariableTok{n\_dof}\OperatorTok{,} \VariableTok{var}\NormalTok{(}\VariableTok{X\_sim}\NormalTok{))}\OperatorTok{;}
-\end{Highlighting}
-\end{Shaded}
-
 \PSsection{3.13}{Distribution Selection Guide}
 
 \PSsubsection{Decision Tree: Discrete Distributions}
@@ -1261,29 +794,28 @@ Binary outcome & Bernoulli \\
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[c]{@{}
-  >{\centering\arraybackslash}p{(0.965\linewidth - 10\tabcolsep) * \real{0.2407}}
-  >{\centering\arraybackslash}p{(0.965\linewidth - 10\tabcolsep) * \real{0.1111}}
-  >{\centering\arraybackslash}p{(0.965\linewidth - 10\tabcolsep) * \real{0.2037}}
-  >{\centering\arraybackslash}p{(0.965\linewidth - 10\tabcolsep) * \real{0.1111}}
-  >{\centering\arraybackslash}p{(0.965\linewidth - 10\tabcolsep) * \real{0.1852}}
-  >{\centering\arraybackslash}p{(0.965\linewidth - 10\tabcolsep) * \real{0.1481}}@{}}
+  >{\raggedright\arraybackslash}p{0.20\linewidth}
+  >{\centering\arraybackslash}p{0.12\linewidth}
+  >{\centering\arraybackslash}p{0.21\linewidth}
+  >{\centering\arraybackslash}p{0.17\linewidth}
+  >{\centering\arraybackslash}p{0.20\linewidth}@{}}
 \toprule\noalign{}
-\rowcolor{PSnavy}\PSth{Distribution} & \PSth{Type} & \PSth{Parameters} & \PSth{Mean} & \PSth{Variance} & \PSth{MATLAB} \\
+\rowcolor{PSnavy}\PSth{Distribution} & \PSth{Type} & \PSth{Parameters} & \PSth{Mean} & \PSth{Variance} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Bernoulli & Discrete & $p$ & $p$ & $p(1-p)$ & \PScode{binornd(1,p)} \\
-Binomial & Discrete & $n,\, p$ & $np$ & $np(1-p)$ & \PScode{binornd(n,p)} \\
-Geometric & Discrete & $p$ & $\frac{1}{p}$ & $\frac{1-p}{p^{2}}$ & \PScode{geornd(p)+1} \\
-Neg. Binomial & Discrete & $r,\, p$ & $\frac{r}{p}$ & $\frac{r(1-p)}{p^{2}}$ & \PScode{nbinrnd(r,p)+r} \\
-Poisson & Discrete & $\lambda$ & $\lambda$ & $\lambda$ & \PScode{poissrnd(λ)} \\
-Uniform & Continuous & a, $b$ & $\frac{a+b}{2}$ & $\frac{(b-a)^{2}}{12}$ & \PScode{unifrnd(a,b)} \\
-Exponential & Continuous & $\lambda$ (or $\beta = \frac{1}{\lambda}$) & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^{2}}$ & \PScode{exprnd(β)} \\
-Gaussian & Continuous & $\mu,\, \sigma^{2}$ & $\mu$ & $\sigma^{2}$ & \PScode{normrnd(μ,σ)} \\
-Gamma & Continuous & $\alpha,\, \beta$ & $\alpha \beta$ & $\alpha \beta^{2}$ & \PScode{gamrnd(α,β)} \\
-Rayleigh & Continuous & $\sigma$ & $\sigma \sqrt{\frac{\pi}{2}}$ & $\frac{(4-\pi)\sigma^{2}}{2}$ & \PScode{raylrnd(σ)} \\
-Chi-square & Continuous & $n$ & $n$ & $2n$ & \PScode{chi2rnd(n)} \\
+Bernoulli & Discrete & $p$ & $p$ & $p(1-p)$ \\
+Binomial & Discrete & $n,\, p$ & $np$ & $np(1-p)$ \\
+Geometric & Discrete & $p$ & $\frac{1}{p}$ & $\frac{1-p}{p^{2}}$ \\
+Neg. Binomial & Discrete & $r,\, p$ & $\frac{r}{p}$ & $\frac{r(1-p)}{p^{2}}$ \\
+Poisson & Discrete & $\lambda$ & $\lambda$ & $\lambda$ \\
+Uniform & Continuous & a, $b$ & $\frac{a+b}{2}$ & $\frac{(b-a)^{2}}{12}$ \\
+Exponential & Continuous & $\lambda$ (or $\beta = \frac{1}{\lambda}$) & $\frac{1}{\lambda}$ & $\frac{1}{\lambda^{2}}$ \\
+Gaussian & Continuous & $\mu,\, \sigma^{2}$ & $\mu$ & $\sigma^{2}$ \\
+Gamma & Continuous & $\alpha,\, \beta$ & $\alpha \beta$ & $\alpha \beta^{2}$ \\
+Rayleigh & Continuous & $\sigma$ & $\sigma \sqrt{\frac{\pi}{2}}$ & $\frac{(4-\pi)\sigma^{2}}{2}$ \\
+Chi-square & Continuous & $n$ & $n$ & $2n$ \\
 \end{longtable}
 }
 

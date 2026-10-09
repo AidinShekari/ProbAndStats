@@ -9,7 +9,7 @@
 3. توزیع‌های شرطی را محاسبه کنند
 4. استقلال دو متغیر تصادفی را آزمون کنند
 5. امیدهای ریاضی شرطی را محاسبه کنند
-6. توزیع‌های مشترک را در MATLAB مصورسازی کنند
+6. توزیع‌های مشترک را مصورسازی و تحلیل کنند
 
 ---
 
@@ -184,97 +184,7 @@ $E[R \mid T = 50^{\circ}C] = 1000 + 0.5(50) = 1025\,\Omega$
 
 ---
 
-## 6.9 مثال‌های MATLAB
-
-### مثال 1: مصورسازی PMF مشترک
-
-```matlab
-%% Joint PMF: Retransmissions vs Delay Category
-pXY = [0.30 0.10; 0.15 0.20; 0.05 0.20];
-x = 0:2; y = 1:2;
-
-figure;
-bar3(pXY);
-xlabel('Delay Category Y'); ylabel('Retransmissions X');
-zlabel('P(X=x, Y=y)');
-title('Joint PMF');
-
-% Marginals
-pX = sum(pXY, 2)';   % Sum over Y
-pY = sum(pXY, 1);    % Sum over X
-fprintf('Marginal of X: [%.2f %.2f %.2f]\n', pX);
-fprintf('Marginal of Y: [%.2f %.2f]\n', pY);
-```
-
-### مثال 2: مصورسازی گاوسی دوبعدی
-
-```matlab
-%% Joint Gaussian PDF with Correlation
-mu = [0 0]; sigma_x = 1; sigma_y = 1.5; rho = 0.7;
-Sigma = [sigma_x^2, rho*sigma_x*sigma_y; rho*sigma_x*sigma_y, sigma_y^2];
-
-[X, Y] = meshgrid(linspace(-4, 4, 100), linspace(-5, 5, 100));
-XY = [X(:) Y(:)];
-Z = mvnpdf(XY, mu, Sigma);
-Z = reshape(Z, size(X));
-
-figure;
-subplot(1,2,1);
-surf(X, Y, Z, 'EdgeColor', 'none'); view(30, 40);
-xlabel('X'); ylabel('Y'); zlabel('f_{X,Y}(x,y)');
-title(sprintf('Joint Gaussian (ρ = %.1f)', rho));
-
-subplot(1,2,2);
-contour(X, Y, Z, 20);
-xlabel('X'); ylabel('Y');
-title('Contour Plot');
-axis equal;
-```
-
-### مثال 3: آزمون استقلال
-
-```matlab
-%% Independence Check via Simulation
-N = 100000;
-
-% Case 1: Independent (signal and noise)
-S = randn(1, N);               % Signal
-Noise = 0.5*randn(1, N);       % Independent noise
-R = S + Noise;                  % Received
-
-% Case 2: Dependent (voltage and current through same resistor)
-V = randn(1, N);               % Voltage
-I = V / 50 + 0.01*randn(1,N); % Current (dependent on V!)
-
-fprintf('Independent (S, Noise): corr = %.4f\n', corr(S', Noise'));
-fprintf('Dependent (V, I): corr = %.4f\n', corr(V', I));
-```
-
-### مثال 4: توزیع شرطی
-
-```matlab
-%% Conditional PDF: Slice of Bivariate Gaussian
-rho = 0.8; N = 100000;
-X = randn(1, N);
-Y = rho*X + sqrt(1-rho^2)*randn(1, N);  % Y|X ~ N(rho*x, 1-rho^2)
-
-% Conditional: Y given X ≈ 1 (take samples where 0.9 < X < 1.1)
-mask = (X > 0.9) & (X < 1.1);
-Y_cond = Y(mask);
-
-figure;
-histogram(Y_cond, 50, 'Normalization', 'pdf');
-hold on;
-y = linspace(-3, 4, 200);
-plot(y, normpdf(y, rho*1, sqrt(1-rho^2)), 'r', 'LineWidth', 2);
-xlabel('Y'); ylabel('PDF');
-title('f_{Y|X}(y|X≈1) for Bivariate Gaussian');
-legend('Empirical', sprintf('N(%.1f, %.2f)', rho, 1-rho^2));
-```
-
----
-
-## 6.10 مسائل تمرینی
+## 6.9 مسائل تمرینی
 
 ### مسئله 1
 PDF مشترک: $f_{X,Y}(x,\,y) = 6(1-y)$ برای $0 \le x \le y \le 1$ و در جای دیگر صفر.

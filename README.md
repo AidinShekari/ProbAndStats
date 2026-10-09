@@ -16,6 +16,12 @@
 
 ---
 
+> این شاخه نسخهٔ بدون کدهای MATLAB جزوه است. متن فارسی و انگلیسی و PDFها بر همین اساس به‌روز شده‌اند. نسخهٔ اصلی همراه کدها در شاخهٔ [main](https://github.com/AidinShekari/ProbAndStats/tree/main) باقی مانده است.
+>
+> This branch contains the notes without MATLAB code. The Persian and English sources and PDFs reflect this version. The original code examples remain on [main](https://github.com/AidinShekari/ProbAndStats/tree/main).
+
+---
+
 ## 📘 جزوه کامل · Complete Notes
 
 | | فارسی | English |

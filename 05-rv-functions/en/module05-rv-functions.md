@@ -6,7 +6,7 @@ After completing this module, students will be able to:
 1. Apply linear transformations to random variables
 2. Derive PDFs of nonlinear transformations using the CDF and Jacobian methods
 3. Apply transformations to engineering problems (power, SNR, envelope)
-4. Verify analytical results with MATLAB simulation
+4. Verify analytical results with worked examples
 
 ---
 
@@ -168,114 +168,7 @@ This is the **Rayleigh distribution** — fundamental to wireless fading channel
 
 ---
 
-## 5.7 MATLAB Examples
-
-### Example 1: Linear Transformation Verification
-
-```matlab
-%% Linear Transformation: Amplifier Output
-sigma_in = 0.1;  G = 5;  offset = 2;
-N = 100000;
-
-X = sigma_in * randn(1, N);   % Input noise
-Y = G*X + offset;              % Output
-
-figure;
-subplot(1,2,1);
-histogram(X, 80, 'Normalization', 'pdf'); hold on;
-x = linspace(-0.5, 0.5, 200);
-plot(x, normpdf(x, 0, sigma_in), 'r', 'LineWidth', 2);
-title('Input X ~ N(0, 0.01)'); xlabel('Voltage (V)');
-
-subplot(1,2,2);
-histogram(Y, 80, 'Normalization', 'pdf'); hold on;
-y = linspace(0, 4, 200);
-plot(y, normpdf(y, offset, G*sigma_in), 'r', 'LineWidth', 2);
-title('Output Y = 5X + 2'); xlabel('Voltage (V)');
-```
-
-### Example 2: Power from Gaussian Voltage
-
-```matlab
-%% Nonlinear: Y = X^2 (instantaneous power)
-sigma = 1; N = 200000;
-X = sigma * randn(1, N);
-Y = X.^2;
-
-figure;
-histogram(Y, 150, 'Normalization', 'pdf', 'BinLimits', [0, 8]);
-hold on;
-y = linspace(0.01, 8, 300);
-f_theory = chi2pdf(y/sigma^2, 1) / sigma^2;
-plot(y, f_theory, 'r', 'LineWidth', 2);
-xlabel('Power (V²)'); ylabel('PDF');
-title('Distribution of Power Y = X²');
-legend('Simulation', 'Theory (scaled χ²₁)');
-```
-
-### Example 3: SNR in dB from Linear SNR
-
-```matlab
-%% SNR transformation: Y = 10*log10(X)
-% X ~ Exponential(1) (Rayleigh fading power, normalized)
-N = 200000;
-X = exprnd(1, 1, N);
-Y = 10*log10(X);   % SNR in dB
-
-figure;
-histogram(Y, 150, 'Normalization', 'pdf');
-hold on;
-y = linspace(-30, 15, 300);
-% Theoretical PDF of Y = 10*log10(X) where X ~ Exp(1)
-f_Y = (log(10)/10) .* 10.^(y/10) .* exp(-10.^(y/10));
-plot(y, f_Y, 'r', 'LineWidth', 2);
-xlabel('SNR (dB)'); ylabel('PDF');
-title('Distribution of SNR in dB (Rayleigh Fading)');
-legend('Simulation', 'Theory');
-```
-
-### Example 4: Rayleigh Envelope from Gaussian Components
-
-```matlab
-%% Envelope of Complex Gaussian
-sigma = 1; N = 100000;
-I = sigma * randn(1, N);
-Q = sigma * randn(1, N);
-R = sqrt(I.^2 + Q.^2);
-
-figure;
-histogram(R, 100, 'Normalization', 'pdf');
-hold on;
-r = linspace(0, 5, 200);
-plot(r, raylpdf(r, sigma), 'r', 'LineWidth', 2);
-xlabel('Envelope |h|'); ylabel('PDF');
-title('Rayleigh Distribution from I/Q Components');
-legend('Simulation', 'Theory');
-fprintf('Mean: Sim=%.3f, Theory=%.3f\n', mean(R), sigma*sqrt(pi/2));
-```
-
-### Example 5: Log-Normal from Gaussian
-
-```matlab
-%% Log-Normal: Y = exp(X) where X ~ N(mu, sigma^2)
-mu = 0; sigma_x = 0.5; N = 100000;
-X = mu + sigma_x*randn(1, N);
-Y = exp(X);
-
-figure;
-histogram(Y, 150, 'Normalization', 'pdf', 'BinLimits', [0, 5]);
-hold on;
-y = linspace(0.01, 5, 300);
-f_lognorm = lognpdf(y, mu, sigma_x);
-plot(y, f_lognorm, 'r', 'LineWidth', 2);
-xlabel('Y = e^X'); ylabel('PDF');
-title('Log-Normal Distribution');
-legend('Simulation', 'Theory');
-```
-
----
-
-## 5.8 Practice Problems
+## 5.7 Practice Problems
 
 ### Problem 1
 Signal $X \sim \mathrm{Uniform}[0,\, 1]$. Output $Y = -2 \cdot \ln (X)$. Find the PDF of $Y$ and identify the distribution.
@@ -290,7 +183,7 @@ Noise voltage $X \sim N(0,\, \sigma^{2})$ with $\sigma = 2\,\mathrm{V}$. Power d
 **Solution:**
 (a) $E[P] = \frac{E[X^{2}]}{R} = \frac{\sigma^{2}}{R} = \frac{4}{50} = 0.08\,\mathrm{W}$
 (b) $P = \frac{X^{2}}{50}$. Let $W = X^{2} \sim \sigma^{2} \cdot \chi^{2}(1)$. Then $P = \frac{W}{50}$. $f_{P}(p) = 50 \cdot f_{W}(50p) = \frac{50}{2\sigma^{2}} \cdot \frac{50p}{\sigma^{2}}^{-1/2} \cdot e^{-50p/(2\sigma^{2})}$ for $p > 0$.
-(c) Use MATLAB: `1 - chi2cdf(0.2*50/4, 1)` $= 1 - \texttt{chi2cdf}(2.5,\, 1) \approx 0.114$
+(c) $P(P > 0.2) = P(\chi^2_1 > 2.5) = 1 - F_{\chi^2_1}(2.5) \approx 0.114$
 
 ### Problem 3
 $X \sim \mathrm{Exponential}(\lambda = 1)$. $Y = \sqrt{X}$. Find $f_{Y}(y)$.
@@ -306,18 +199,6 @@ $= \frac{20}{9} \cdot \left[d \cdot \log_{10}(d) - \frac{d}{\ln (10)}\right]_{1}
 
 PDF: $L$ ranges from 0 to 20 dB. $g^{-1}(l) = 10^{l/20},\, \lvert \frac{dg^{-1}}{dl}\rvert = \frac{\ln 10}{20} \cdot 10^{l/20}$.
 $f_{L}(l) = \frac{1}{9} \cdot \frac{\ln 10}{20} \cdot 10^{l/20}$ for $0 \le l \le 20$.
-
-### Problem 5
-Write MATLAB code to verify Problem 2 by simulation.
-
-**Solution:**
-```matlab
-sigma = 2; R = 50; N = 500000;
-X = sigma*randn(1,N);
-P = X.^2 / R;
-fprintf('E[P]: Theory=%.4f W, Sim=%.4f W\n', sigma^2/R, mean(P));
-fprintf('P(P>0.2): Theory=%.4f, Sim=%.4f\n', 1-chi2cdf(0.2*R/sigma^2,1), mean(P>0.2));
-```
 
 ---
 
